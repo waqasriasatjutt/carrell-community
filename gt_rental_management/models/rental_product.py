@@ -99,11 +99,11 @@ class SaleOrder(models.Model):
                 print('line.product_uom_qty++++++++_____-', line.product_uom_qty)
                 print('line.product_id.qty_available++++++++_____-', line.product_id.qty_available)
                 for order_line in sale_line:
-                    if order_line.order_id.start_date <= today and order_line.order_id.end_date >= today:
-                        raise UserError(_("This product has already been rented.\nYou cannot rent already rented product.\nChange the start date and end date."
-                                     ))
-        
-        
+                    if order_line.order_id.start_date and order_line.order_id.end_date:
+                        if order_line.order_id.start_date <= today and order_line.order_id.end_date >= today:
+                            raise UserError(_("This product has already been rented.\nYou cannot rent already rented product.\nChange the start date and end date."
+                                         ))
+
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
@@ -231,16 +231,13 @@ class SaleOrder(models.Model):
         #if self.display_type:
         #res['account_id'] = False
         return res
-
     
-    
-    
-    #@api.multi
     def create_invoice(self):
         ids =[]
         inv_line_obj = self.env['account.move.line']
         inv_obj = self.env['account.move']
         l_vals = {}
+        ir_property_obj = self.env['ir.property']
         for order in self:
             for line in order.order_line:
                 account_id = False
@@ -366,7 +363,6 @@ class SaleOrder(models.Model):
                 rec = order.create_invoice()
 
 
-    
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     
@@ -374,8 +370,7 @@ class SaleOrderLine(models.Model):
     rental_wizard_id = fields.Many2one('rental.wizard', string='Rental Wizard')
     monthly_rent = fields.Float('Monthly Rent', default=0.0)
     replace = fields.Boolean('Replace')
-    
-    
+
     @api.model_create_multi
     def create(self, vals_list):
         lines = super(SaleOrderLine, self).create(vals_list)
@@ -434,16 +429,20 @@ class SaleOrderLine(models.Model):
 
 class AccountInvoice(models.Model):
     _inherit = "account.move"
-    
-    
+
     start_date = fields.Date(string='Rental Start Date')
     end_date = fields.Date(string='Rental End Date')
+
     
 class AccountInvoiceLine(models.Model):
     _inherit = "account.move.line"    
-    
-    
-    name = fields.Text(string='Description')
+
+    # name = fields.Text(string='Description')
+    name = fields.Char(
+        string='Label',
+        compute='_compute_name', store=True, readonly=False, precompute=True,
+        tracking=True,
+    )
     serial_no = fields.Char('Serial Number')
     
     

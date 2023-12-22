@@ -77,7 +77,7 @@ class RentalWizard(models.Model):
             res.update({'picking_id': picking.id})
             if picking.state != 'done':
                 raise UserError(_("You may only return Done pickings"))
-            for move in picking.move_lines:
+            for move in picking.move_ids:
                 if move.scrapped:
                     continue
                 if move.move_dest_ids:
