@@ -317,7 +317,7 @@ class SaleOrderGF(models.Model):
                         payload = json.dumps({
                         "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} {serial.lot_id.name}",
                         # "name":' {self.name} Creating new one from epi',
-                        "templateId": "105e3109-ad03-42e3-8444-c4cdcd060b23",
+                        "templateId": "5a5ecf1f-67f6-4af7-8d0f-47011d4220b6",
                         "fields": {
                             "Order Number": {
                             "value": self.name,
