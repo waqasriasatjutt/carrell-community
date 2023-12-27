@@ -151,11 +151,15 @@ class SaleOrderGF(models.Model):
                 forms_data = response.json()
 
                 # Extract form IDs and call another API
-                unit = forms_data['fields']['Unit Number']['value']
-                if unit:
-                    serial_ids.append(unit)
-                    print(response.text)
-                    order_line.serial_no = ','.join(map(str, serial_ids))
+                try:
+                    unit = forms_data['fields']['Unit Number']['value']
+                    if unit:
+                        serial_ids.append(unit)
+                        print(response.text)
+                        order_line.serial_no = ','.join(map(str, serial_ids))
+                except:
+                    print('failed')
+
 
 
     def action_update_from_goformz3(self):
