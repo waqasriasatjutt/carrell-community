@@ -154,6 +154,8 @@
                             <field name="agreement_received"/>
                             <field name="warehouse_id"/>
                             <field name="pricelist_id"/>
+                            <field name="customer_note"/>
+                            <field name="delivery_note"/>
                         </group>
                     </group>
 			<notebook>

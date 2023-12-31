@@ -52,6 +52,8 @@ class SaleOrder(models.Model):
             rec.state_new = rec.state 
             
             
+    customer_note = fields.Char('Customer Note')
+    delivery_note = fields.Char('Delivery Note')
     start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     agreement_received = fields.Boolean('Agreement Received?')
@@ -95,14 +97,14 @@ class SaleOrder(models.Model):
             print('self.order_line++++++++_____-', self.order_line)
             sale_line = self.env['sale.order.line'].search([('product_id','=', line.product_id.id)])
             print('sale_line++++++++_____-', sale_line)
-            if line.product_uom_qty > line.product_id.qty_available:
-                print('line.product_uom_qty++++++++_____-', line.product_uom_qty)
-                print('line.product_id.qty_available++++++++_____-', line.product_id.qty_available)
-                for order_line in sale_line:
-                    if order_line.order_id.start_date and order_line.order_id.end_date:
-                        if order_line.order_id.start_date <= today and order_line.order_id.end_date >= today:
-                            raise UserError(_("This product has already been rented.\nYou cannot rent already rented product.\nChange the start date and end date."
-                                         ))
+            # if line.product_uom_qty > line.product_id.qty_available:
+            #     print('line.product_uom_qty++++++++_____-', line.product_uom_qty)
+            #     print('line.product_id.qty_available++++++++_____-', line.product_id.qty_available)
+            #     for order_line in sale_line:
+            #         if order_line.order_id.start_date and order_line.order_id.end_date:
+            #             if order_line.order_id.start_date <= today and order_line.order_id.end_date >= today:
+            #                 raise UserError(_("This product has already been rented.\nYou cannot rent already rented product.\nChange the start date and end date."
+            #                              ))
 
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):
             raise UserError(_(
