@@ -136,9 +136,15 @@
                     </div>
 		<group>
                         <group>
-                            <field name="partner_id" widget="res_partner_many2one"  context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
-			    <field name="partner_invoice_id"/>
-                            <field name="partner_shipping_id"/>
+                          <field name="address_type" widget="radio" options="{'horizontal': true}" />
+
+                            <field name="partner_id" widget="res_partner_many2one" domain="[('type', '=', address_type)]"  context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
+                          <field name="address_type_invoice" widget="radio" options="{'horizontal': true}" />
+
+			    <field name="partner_invoice_id" widget="res_partner_many2one" domain="[('type', '=', address_type_invoice)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
+                          <field name="address_type_delivery" widget="radio" options="{'horizontal': true}" />
+
+                            <field name="partner_shipping_id" widget="res_partner_many2one" domain="[('type', '=', address_type_delivery)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
                             <field name="start_date" required="1"/>
                             <field name="end_date" required="1"/>
                             <field name="initial_term"/>
@@ -150,12 +156,15 @@
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
                             <field name="currency_id" invisible="1"/>
-			    <field name="company_id" invisible="1"/>
+            			    <field name="company_id" invisible="1"/>
                             <field name="agreement_received"/>
                             <field name="warehouse_id"/>
                             <field name="pricelist_id"/>
                             <field name="customer_note"/>
                             <field name="delivery_note"/>
+                            <field name="site_note"/>
+                            <field name="door"/>
+                            <field name="plug"/>
                         </group>
                     </group>
 			<notebook>

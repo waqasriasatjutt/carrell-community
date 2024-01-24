@@ -51,9 +51,51 @@ class SaleOrder(models.Model):
         for rec in self:
             rec.state_new = rec.state 
             
+
+    address_type = fields.Selection([
+        ('contact', 'Contact'),
+        ('invoice', 'Bill To'),
+        ('delivery', 'Delivery'),
+        ('private', 'Private'),
+        ('other', 'Other'),
+    ], string='Address Type', default='contact')
+
+
+    door = fields.Selection([
+        ('cab', 'Cab'),
+        ('rear', 'Rear'),
+        ('swing', 'Swing'),
+        ('roll', 'Roll'),
+    ], string='Doors')
+
+    plug = fields.Selection([
+        ('plug', 'Plug'),
+        ('hardwire', 'Hardwire'),
+        ('have cord', 'Have Cord'),
+        ('special', 'Special'),
+    ], string='Plug')
+
+
+    address_type_invoice = fields.Selection([
+        ('contact', 'Contact'),
+        ('invoice', 'Bill To'),
+        ('delivery', 'Delivery'),
+        ('private', 'Private'),
+        ('other', 'Other'),
+    ], string='Address Type', default='invoice')
+
+    address_type_delivery = fields.Selection([
+        ('contact', 'Contact'),
+        ('invoice', 'Bill To'),
+        ('delivery', 'Delivery'),
+        ('private', 'Private'),
+        ('other', 'Other'),
+    ], string='Address Type', default='delivery')
+
             
     customer_note = fields.Char('Customer Note')
     delivery_note = fields.Char('Delivery Note')
+    site_note = fields.Char('Site Note')
     start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     agreement_received = fields.Boolean('Agreement Received?')
