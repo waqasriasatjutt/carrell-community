@@ -51,6 +51,10 @@ class SaleOrder(models.Model):
         for rec in self:
             rec.state_new = rec.state 
             
+    def _compute_all_delivery(self):
+        for rec in self.order_line:
+            self.quantity_total = self.quantity_total +  rec.product_uom_qty
+
 
     address_type = fields.Selection([
         ('contact', 'Contact'),
@@ -92,7 +96,7 @@ class SaleOrder(models.Model):
         ('other', 'Other'),
     ], string='Address Type', default='delivery')
 
-            
+    quantity_total = fields.Integer('Total Delivery', compute='_compute_all_delivery', store=False)            
     customer_note = fields.Char('Customer Note')
     delivery_note = fields.Char('Delivery Note')
     site_note = fields.Char('Site Note')

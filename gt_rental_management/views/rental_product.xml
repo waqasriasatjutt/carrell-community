@@ -165,6 +165,7 @@
                             <field name="site_note"/>
                             <field name="door"/>
                             <field name="plug"/>
+                            <field name="quantity_total"/>
                         </group>
                     </group>
 			<notebook>
