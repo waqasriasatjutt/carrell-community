@@ -95,7 +95,7 @@ class SaleOrder(models.Model):
         ('private', 'Private'),
         ('other', 'Other'),
     ], string='Address Type', default='delivery')
-
+    customer_id = fields.Char(related='partner_id.customer_id')
     quantity_total = fields.Integer('Total Delivery', compute='_compute_all_delivery', store=False)            
     customer_note = fields.Char('Customer Note')
     delivery_note = fields.Char('Delivery Note')
