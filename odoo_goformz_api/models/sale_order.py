@@ -604,6 +604,20 @@ class SaleOrderGF(models.Model):
                             "value": other_quantity,
                             "type": "Number"
                             },
+                            "Order Door": {
+                                "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                "name": "Order Door",
+                                "value": self.door,
+                                "type": "DropDown",
+                                "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                            },
+                            "Order Plug": {
+                                "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                "name": "Order Plug",
+                                "value": self.plug,
+                                "type": "DropDown",
+                                "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                            },
                             "Order Number": {
                             "value": self.name,
                             "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
@@ -613,6 +627,11 @@ class SaleOrderGF(models.Model):
                             "Contact Name": {
                             "value": extracted_number + "-" + str(qty) ,
                             "name": "Contact Name",
+                            "type": "Text"
+                            },
+                           "Delivery Note": {
+                            "value": self.delivery_note ,
+                            "name": "Delivery Note",
                             "type": "Text"
                             },
 
@@ -628,11 +647,21 @@ class SaleOrderGF(models.Model):
                             "name": "Customer Name",
                             "type": "Database"
                             },
-                        # "Customer Note": {
-                        #     "value": str(self.customer_note),
-                        #     "name": "Customer Note",
-                        #     "type": "Text"
-                        # },
+                        "Customer Note": {
+                            "value": str(self.customer_note),
+                            "name": "Customer Note",
+                            "type": "Text"
+                        },
+                        "Site Note": {
+                            "value": str(self.site_note),
+                            "name": "Site Note",
+                            "type": "Text"
+                        },
+                        "Unit Type": {
+                            "value": order_line.product_id.name,
+                            "name": "Unit Type",
+                            "type": "Text"
+                        },
                         # "Delivery Note": {
                         #     "value": str(self.delivery_note),
                         #     "name": "Delivery Note",
