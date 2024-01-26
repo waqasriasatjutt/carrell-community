@@ -199,14 +199,20 @@ class SaleOrderGF(models.Model):
         url = "https://api.goformz.com/v2/formz"
         # Assuming self.order_line is a list of objects with a 'product_id' attribute
 # and 'product_uom_qty' attribute
-
+        type_unit = ""
+        # Define a mapping dictionary for product names
         # Define a mapping dictionary for product names
         name_mapping = {
             "Container Dry": "container_dry",
             "Trailer": "trailer",
             "Reefer Diesel": "reefer_diesel",
             "Reefer Electric": "reefer_electric",
-            "Reefer Container": "container"
+            "Reefer Container": "container",
+            "Office": "office",
+            "Mud Lab": "mudlab",
+            "Generator": "generator",
+            "Truck": "truck",
+            "Other": "other",
         }
 
         # Define a dictionary to store quantities for each product
@@ -215,12 +221,18 @@ class SaleOrderGF(models.Model):
             "trailer": 0,
             "reefer_diesel": 0,
             "reefer_electric": 0,
-            "container": 0
+            "container": 0,
+            "office": 0,
+            "mudlab": 0,
+            "generator": 0,
+            "truck": 0,
+            "other": 0,
         }
 
         # Loop through order lines and update quantities based on product names
         for order_line in self.order_line:
             product_name = order_line.product_id.name
+            type_unit = type_unit + product_name + ", "
             if product_name in name_mapping:
                 product_key = name_mapping[product_name]
                 quantities[product_key] += order_line.product_uom_qty
@@ -232,6 +244,11 @@ class SaleOrderGF(models.Model):
         reefer_diesel_quantity = quantities["reefer_diesel"]
         reefer_electric_quantity = quantities["reefer_electric"]
         container_quantity = quantities["container"]
+        office_quantity = quantities["office"]
+        mudlab_quantity = quantities["mudlab"]
+        generator_quantity = quantities["generator"]
+        truck_quantity = quantities["truck"]
+        other_quantity = quantities["other"]
 
 # Use these quantities as needed in your code
 
@@ -241,7 +258,7 @@ class SaleOrderGF(models.Model):
             quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
             if quant:
                 warehouse = str(quant.location_id.name)
-            qty = 1
+            qty = 0
             form_ids = []
             input_string = self.name
             result = re.search(r'\d+', input_string)
@@ -257,8 +274,8 @@ class SaleOrderGF(models.Model):
 
                 
                 payload = json.dumps({
-                "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty}",
-                "templateId": "6b692700-6734-443b-997f-edc3f90c3b24",
+                "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
+                "templateId": "b570fdfd-030c-467c-b656-f858226c7cfd",
                         "fields": {
                         "Yard": {
                         "value": self.warehouse_id.name,
@@ -266,49 +283,69 @@ class SaleOrderGF(models.Model):
                         "name": "Yard",
                         "type": "DropDown",
                         },
-                            "Number 87": {
-                            "id": "82d62522-c603-4cbb-ada3-98047ad52a6c",
-                            "name": "Number 87",
+                            "Or Qty Dry Con": {
+                            "name": "Or Qty Dry Con",
                             "value": container_dry_quantity,
                             "type": "Number"
                             },
-                            "Number 88": {
-                            "id": "bb65cb29-ba1a-4a9d-861d-ce51d1589e9a",
-                            "name": "Number 88",
+                            " Or Qty Dry Tr": {
+                            "name": " Or Qty Dry Tr",
                             "value": trailer_quantity,
                             "type": "Number"
                             },
-                            "Number 89": {
-                            "id": "59a49773-9e2c-4d3b-b31d-abe86040dc25",
-                            "name": "Number 89",
+                            "Or Qty Ref Dis": {
+                            "name": "Or Qty Ref Dis",
                             "value": reefer_diesel_quantity,
                             "type": "Number"
                             },
-                            "Number 90": {
-                            "id": "8225cf08-a484-4c20-8b05-114f25aa7988",
-                            "name": "Number 90",
+                            "Or Qty Ref Elc Tra": {
+                            "name": "Or Qty Ref Elc Tra",
                             "value": reefer_electric_quantity,
                             "type": "Number"
                             },
-                            "Number 91": {
-                            "id": "b3b59565-4a57-4efd-8a09-a8633e401905",
-                            "name": "Number 91",
+                            "Or Qty Ref Con": {
+                            "name": "Or Qty Ref Con",
                             "value": container_quantity,
                             "type": "Number"
                             },
-
+                            "Or Qty Gen": {
+                            "name": "Or Qty Gen",
+                            "value": generator_quantity,
+                            "type": "Number"
+                            },
+                            "Or  Qty Mud Lab": {
+                            "name": "Or  Qty Mud Lab",
+                            "value": mudlab_quantity,
+                            "type": "Number"
+                            },
+                            "Or Qty Office": {
+                            "name": "Or Qty Office",
+                            "value": office_quantity,
+                            "type": "Number"
+                            },
+                            "Other": {
+                            "name": "Other",
+                            "value": other_quantity,
+                            "type": "Number"
+                            },
                             "Order Number": {
                             "value": self.name,
                             "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
                             "name": "Order Number",
                             "type": "Number"
                             },
-                            "Contract No": {
+                            "Contact Name": {
                             "value": extracted_number + "-" + str(qty) ,
-                            "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                            "name": "Contract Number",
-                            "type": "AutoNumber"
+                            "name": "Contact Name",
+                            "type": "Text"
                             },
+
+                            # "Contract No": {
+                            # "value": extracted_number + "-" + str(qty) ,
+                            # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                            # "name": "Contract Number",
+                            # "type": "AutoNumber"
+                            # },
                             "Customer Name": {
                             "value": self.partner_id.name,
                             "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
@@ -355,25 +392,29 @@ class SaleOrderGF(models.Model):
                             "name": "Contact Name",
                             "type": "TextBox"
                         },
-                        "Phone": {
+                        "Phone Cust": {
                             "text": self.partner_id.phone,
-                            "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
-                            "name": "Phone",
+                            # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
+                            "name": "Phone Cust",
                             "type": "TextBox"
                         },
-                        "Email": {
+                        "Email Cust": {
                             "text": self.partner_id.email,
-                            "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
-                            "name": "Email",
+                            # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
+                            "name": "Email Cust",
                             "type": "TextBox"
                         },
                         "Order Type": {
-                            "value": order_line.product_id.name,
-                            "id": "b55dfa5e-1af0-4abd-9d8a-5c32c087f7d3",
+                            "value": type_unit,
                             "name": "Order Type",
                             "type": "DropDown",
-                            "itemCollectionId": "9387b9c1-f8dc-47e0-89c8-97bb94e7dbf7"
                         },
+                        "Site": {
+                            "text": self.partner_shipping_id.name,
+                            "name": "Site",
+                            "type": "TextBox"
+                        },
+
                         "Site Address": {
                             "text": self.partner_shipping_id.street,
                             "id": "fc631dcf-c180-4453-9891-81f543fa5763",
