@@ -21,6 +21,14 @@ _logger = logging.getLogger(__name__)
 #     _inherit = "stock.picking"
 
 
+class ResCompany(models.Model):
+    _inherit = "res.company"
+
+    template_id = fields.Char("Template ID")
+
+
+
+
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
@@ -196,578 +204,611 @@ class SaleOrderGF(models.Model):
     def action_confirm(self):
         res = super(SaleOrderGF, self).action_confirm()
 
-        url = "https://api.goformz.com/v2/formz"
-        # Assuming self.order_line is a list of objects with a 'product_id' attribute
-# and 'product_uom_qty' attribute
-        type_unit = ""
-        # Define a mapping dictionary for product names
-        # Define a mapping dictionary for product names
-        name_mapping = {
-            "Container Dry": "container_dry",
-            "Trailer": "trailer",
-            "Reefer Diesel": "reefer_diesel",
-            "Reefer Electric": "reefer_electric",
-            "Reefer Container": "container",
-            "Office": "office",
-            "Mud Lab": "mudlab",
-            "Generator": "generator",
-            "Truck": "truck",
-            "Other": "other",
-        }
+        # res = super(SaleOrderGF, self).action_confirm()
+        if self.company_id.template_id:
+            url = "https://api.goformz.com/v2/formz"
+            # Assuming self.order_line is a list of objects with a 'product_id' attribute
+    # and 'product_uom_qty' attribute
+            type_unit = ""
+            # Define a mapping dictionary for product names
+            # Define a mapping dictionary for product names
+            name_mapping = {
+                "Container Dry": "container_dry",
+                "Trailer": "trailer",
+                "Reefer Diesel": "reefer_diesel",
+                "Reefer Electric": "reefer_electric",
+                "Reefer Container": "container",
+                "Office": "office",
+                "Mud Lab": "mudlab",
+                "Generator": "generator",
+                "Truck": "truck",
+                "Other": "other",
+            }
 
-        # Define a dictionary to store quantities for each product
-        quantities = {
-            "container_dry": 0,
-            "trailer": 0,
-            "reefer_diesel": 0,
-            "reefer_electric": 0,
-            "container": 0,
-            "office": 0,
-            "mudlab": 0,
-            "generator": 0,
-            "truck": 0,
-            "other": 0,
-        }
+            # Define a dictionary to store quantities for each product
+            quantities = {
+                "container_dry": 0,
+                "trailer": 0,
+                "reefer_diesel": 0,
+                "reefer_electric": 0,
+                "container": 0,
+                "office": 0,
+                "mudlab": 0,
+                "generator": 0,
+                "truck": 0,
+                "other": 0,
+            }
 
-        # Loop through order lines and update quantities based on product names
-        for order_line in self.order_line:
-            product_name = order_line.product_id.name
-            type_unit = type_unit + product_name + ", "
-            if product_name in name_mapping:
-                product_key = name_mapping[product_name]
-                quantities[product_key] += order_line.product_uom_qty
+            # Loop through order lines and update quantities based on product names
+            for order_line in self.order_line:
+                product_name = order_line.product_id.name
+                type_unit = type_unit + product_name + ", "
+                if product_name in name_mapping:
+                    product_key = name_mapping[product_name]
+                    quantities[product_key] += order_line.product_uom_qty
 
-        # Now 'quantities' dictionary contains the updated quantities for each product
-        # Access the quantities like this:
-        container_dry_quantity = quantities["container_dry"]
-        trailer_quantity = quantities["trailer"]
-        reefer_diesel_quantity = quantities["reefer_diesel"]
-        reefer_electric_quantity = quantities["reefer_electric"]
-        container_quantity = quantities["container"]
-        office_quantity = quantities["office"]
-        mudlab_quantity = quantities["mudlab"]
-        generator_quantity = quantities["generator"]
-        truck_quantity = quantities["truck"]
-        other_quantity = quantities["other"]
+            # Now 'quantities' dictionary contains the updated quantities for each product
+            # Access the quantities like this:
+            container_dry_quantity = quantities["container_dry"]
+            trailer_quantity = quantities["trailer"]
+            reefer_diesel_quantity = quantities["reefer_diesel"]
+            reefer_electric_quantity = quantities["reefer_electric"]
+            container_quantity = quantities["container"]
+            office_quantity = quantities["office"]
+            mudlab_quantity = quantities["mudlab"]
+            generator_quantity = quantities["generator"]
+            truck_quantity = quantities["truck"]
+            other_quantity = quantities["other"]
 
-# Use these quantities as needed in your code
+    # Use these quantities as needed in your code
 
-        for order_line in self.order_line:
+            for order_line in self.order_line:
 
-            warehouse = "Not Assigned"
-            quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
-            if quant:
-                warehouse = str(quant.location_id.name)
-            qty = 0
-            form_ids = []
-            input_string = self.name
-            result = re.search(r'\d+', input_string)
-            extracted_number = ""
-            if result:
-                extracted_number = result.group()
-                print(extracted_number)
-            else:
-                print("No sequence number found.")
+                warehouse = "Not Assigned"
+                quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
+                if quant:
+                    warehouse = str(quant.location_id.name)
+                qty = 0
+                form_ids = []
+                input_string = self.name
+                result = re.search(r'\d+', input_string)
+                extracted_number = ""
+                if result:
+                    extracted_number = result.group()
+                    print(extracted_number)
+                else:
+                    print("No sequence number found.")
 
-            while qty < order_line.product_uom_qty:
-                # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
+                while qty < order_line.product_uom_qty:
+                    # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
 
-                
-                payload = json.dumps({
-                "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
-                "templateId": "b570fdfd-030c-467c-b656-f858226c7cfd",
-                        "fields": {
-                        "Yard": {
-                        "value": self.warehouse_id.name,
-                        "id": "1d165d7f-2f74-43bf-a352-c908c7799da1",
-                        "name": "Yard",
-                        "type": "DropDown",
-                        },
-                            "Or Qty Dry Con": {
-                            "name": "Or Qty Dry Con",
-                            "value": container_dry_quantity,
-                            "type": "Number"
+                    
+                    payload = json.dumps({
+                    "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
+                    "templateId": self.company_id.template_id,
+                            "fields": {
+                            "Yard": {
+                            "value": self.warehouse_id.name,
+                            "id": "1d165d7f-2f74-43bf-a352-c908c7799da1",
+                            "name": "Yard",
+                            "type": "DropDown",
                             },
-                            " Or Qty Dry Tr": {
-                            "name": " Or Qty Dry Tr",
-                            "value": trailer_quantity,
-                            "type": "Number"
+                                "Or Qty Dry Con": {
+                                "name": "Or Qty Dry Con",
+                                "value": container_dry_quantity,
+                                "type": "Number"
+                                },
+                                " Or Qty Dry Tr": {
+                                "name": " Or Qty Dry Tr",
+                                "value": trailer_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Dis": {
+                                "name": "Or Qty Ref Dis",
+                                "value": reefer_diesel_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Elc Tra": {
+                                "name": "Or Qty Ref Elc Tra",
+                                "value": reefer_electric_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Con": {
+                                "name": "Or Qty Ref Con",
+                                "value": container_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Gen": {
+                                "name": "Or Qty Gen",
+                                "value": generator_quantity,
+                                "type": "Number"
+                                },
+                                "Or  Qty Mud Lab": {
+                                "name": "Or  Qty Mud Lab",
+                                "value": mudlab_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Office": {
+                                "name": "Or Qty Office",
+                                "value": office_quantity,
+                                "type": "Number"
+                                },
+                                "Other": {
+                                "name": "Other",
+                                "value": other_quantity,
+                                "type": "Number"
+                                },
+                                "Order Door": {
+                                    "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                    "name": "Order Door",
+                                    "value": self.door,
+                                    "type": "DropDown",
+                                    "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                },
+                                "Order Plug": {
+                                    "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                    "name": "Order Plug",
+                                    "value": self.plug,
+                                    "type": "DropDown",
+                                    "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                },
+                                "Order Number": {
+                                "value": self.name,
+                                "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
+                                "name": "Order Number",
+                                "type": "Number"
+                                },
+                                "Contact Name": {
+                                "value": extracted_number + "-" + str(qty) ,
+                                "name": "Contact Name",
+                                "type": "Text"
+                                },
+                            "Delivery Note": {
+                                "value": self.delivery_note ,
+                                "name": "Delivery Note",
+                                "type": "Text"
+                                },
+
+                                # "Contract No": {
+                                # "value": extracted_number + "-" + str(qty) ,
+                                # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                                # "name": "Contract Number",
+                                # "type": "AutoNumber"
+                                # },
+                                "Customer Name": {
+                                "value": self.partner_id.name,
+                                "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
+                                "name": "Customer Name",
+                                "type": "Database"
+                                },
+                            "Customer Note": {
+                                "value": str(self.customer_note),
+                                "name": "Customer Note",
+                                "type": "Text"
                             },
-                            "Or Qty Ref Dis": {
-                            "name": "Or Qty Ref Dis",
-                            "value": reefer_diesel_quantity,
-                            "type": "Number"
+                            "Site Note": {
+                                "value": str(self.site_note),
+                                "name": "Site Note",
+                                "type": "Text"
                             },
-                            "Or Qty Ref Elc Tra": {
-                            "name": "Or Qty Ref Elc Tra",
-                            "value": reefer_electric_quantity,
-                            "type": "Number"
+                            "Unit Type": {
+                                "value": order_line.product_id.name,
+                                "name": "Unit Type",
+                                "type": "Text"
                             },
-                            "Or Qty Ref Con": {
-                            "name": "Or Qty Ref Con",
-                            "value": container_quantity,
-                            "type": "Number"
+                            # "Delivery Note": {
+                            #     "value": str(self.delivery_note),
+                            #     "name": "Delivery Note",
+                            #     "type": "Text"
+                            # },
+                            # "Min Rental Period": {
+                            #     "value": str(self.initial_term),
+                            #     "name": "Min Rental Period",
+                            #     "type": "Text"
+                            # },
+                            "Order Date": {
+                                "value": str(self.date_order),
+                                "displayValue": str(self.date_order),
+                                "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
+                                "name": "Order Date",
+                                "type": "Date"
                             },
-                            "Or Qty Gen": {
-                            "name": "Or Qty Gen",
-                            "value": generator_quantity,
-                            "type": "Number"
+                            "Address 1": {
+                                "text": self.partner_id.street,
+                                "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
+                                "name": "Address 1",
+                                "type": "TextBox"
                             },
-                            "Or  Qty Mud Lab": {
-                            "name": "Or  Qty Mud Lab",
-                            "value": mudlab_quantity,
-                            "type": "Number"
-                            },
-                            "Or Qty Office": {
-                            "name": "Or Qty Office",
-                            "value": office_quantity,
-                            "type": "Number"
-                            },
-                            "Other": {
-                            "name": "Other",
-                            "value": other_quantity,
-                            "type": "Number"
-                            },
-                            "Order Number": {
-                            "value": self.name,
-                            "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
-                            "name": "Order Number",
-                            "type": "Number"
+                            "City State Zip": {
+                                "text": self.partner_id.city +" "+ self.partner_id.state_id.name +" "+self.partner_id.zip ,
+                                "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
+                                "name": "City State Zip",
+                                "type": "TextBox"
                             },
                             "Contact Name": {
-                            "value": extracted_number + "-" + str(qty) ,
-                            "name": "Contact Name",
-                            "type": "Text"
+                                "text": self.partner_id.name,
+                                "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
+                                "name": "Contact Name",
+                                "type": "TextBox"
+                            },
+                            "Phone Cust": {
+                                "text": self.partner_id.phone,
+                                # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
+                                "name": "Phone Cust",
+                                "type": "TextBox"
+                            },
+                            "Email Cust": {
+                                "text": self.partner_id.email,
+                                # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
+                                "name": "Email Cust",
+                                "type": "TextBox"
+                            },
+                            "Order Type": {
+                                "value": type_unit,
+                                "name": "Order Type",
+                                "type": "DropDown",
+                            },
+                            "Site": {
+                                "text": self.partner_shipping_id.name,
+                                "name": "Site",
+                                "type": "TextBox"
                             },
 
-                            # "Contract No": {
-                            # "value": extracted_number + "-" + str(qty) ,
-                            # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                            # "name": "Contract Number",
-                            # "type": "AutoNumber"
-                            # },
-                            "Customer Name": {
-                            "value": self.partner_id.name,
-                            "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
-                            "name": "Customer Name",
-                            "type": "Database"
+                            "Site Address": {
+                                "text": self.partner_shipping_id.street,
+                                "id": "fc631dcf-c180-4453-9891-81f543fa5763",
+                                "name": "Site Address",
+                                "type": "TextBox"
                             },
-                        # "Customer Note": {
-                        #     "value": str(self.customer_note),
-                        #     "name": "Customer Note",
-                        #     "type": "Text"
-                        # },
-                        # "Delivery Note": {
-                        #     "value": str(self.delivery_note),
-                        #     "name": "Delivery Note",
-                        #     "type": "Text"
-                        # },
-                        # "Min Rental Period": {
-                        #     "value": str(self.initial_term),
-                        #     "name": "Min Rental Period",
-                        #     "type": "Text"
-                        # },
-                        "Order Date": {
-                            "value": str(self.date_order),
-                            "displayValue": str(self.date_order),
-                            "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
-                            "name": "Order Date",
-                            "type": "Date"
-                        },
-                        "Address 1": {
-                            "text": self.partner_id.street,
-                            "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
-                            "name": "Address 1",
-                            "type": "TextBox"
-                        },
-                        "City State Zip": {
-                            "text": self.partner_id.city +" "+ self.partner_id.state_id.name +" "+self.partner_id.zip ,
-                            "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
-                            "name": "City State Zip",
-                            "type": "TextBox"
-                        },
-                        "Contact Name": {
-                            "text": self.partner_id.name,
-                            "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
-                            "name": "Contact Name",
-                            "type": "TextBox"
-                        },
-                        "Phone Cust": {
-                            "text": self.partner_id.phone,
-                            # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
-                            "name": "Phone Cust",
-                            "type": "TextBox"
-                        },
-                        "Email Cust": {
-                            "text": self.partner_id.email,
-                            # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
-                            "name": "Email Cust",
-                            "type": "TextBox"
-                        },
-                        "Order Type": {
-                            "value": type_unit,
-                            "name": "Order Type",
-                            "type": "DropDown",
-                        },
-                        "Site": {
-                            "text": self.partner_shipping_id.name,
-                            "name": "Site",
-                            "type": "TextBox"
-                        },
+                            "Site City State Zip": {
+                                "text": self.partner_shipping_id.city +" "+ self.partner_shipping_id.state_id.name +" "+self.partner_shipping_id.zip ,
+                                "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
+                                "name": "Site City State Zip",
+                                "type": "TextBox"
+                            },
+                            "Site Contact": {
+                                "text": self.partner_shipping_id.name,
+                                "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
+                                "name": "Site Contact",
+                                "type": "TextBox"
+                            },
+                            "Site Contact Phone": {
+                                "text": self.partner_shipping_id.phone,
+                                "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
+                                "name": "Site Contact Phone",
+                                "type": "TextBox"
+                            },
+                            "Site Contact Email": {
+                                "text": self.partner_shipping_id.email,
+                                "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
+                                "name": "Site Contact Email",
+                                "type": "TextBox"
+                            },
+                            },
+                        "assignment": {
+                        "id": "4f90a5f4-0327-402b-a0e7-5fa4976001aa",
+                        "type": "User"
+                    }
+                    })
+                    headers = {
+                    'accept': 'application/json',
+                    'content-type': 'application/json',
+                    'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                    }
+                    qty = qty + 1
+                    response = requests.request("POST", url, headers=headers, data=payload)
+                    logging.info(response.text)
+                    forms_data = response.json()
+                    _logger.error(f" response  {response.text}")
+                    _logger.error(f" tid  {self.company_id.template_id}")
 
-                        "Site Address": {
-                            "text": self.partner_shipping_id.street,
-                            "id": "fc631dcf-c180-4453-9891-81f543fa5763",
-                            "name": "Site Address",
-                            "type": "TextBox"
-                        },
-                        "Site City State Zip": {
-                            "text": self.partner_shipping_id.city +" "+ self.partner_shipping_id.state_id.name +" "+self.partner_shipping_id.zip ,
-                            "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
-                            "name": "Site City State Zip",
-                            "type": "TextBox"
-                        },
-                        "Site Contact": {
-                            "text": self.partner_shipping_id.name,
-                            "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
-                            "name": "Site Contact",
-                            "type": "TextBox"
-                        },
-                        "Site Contact Phone": {
-                            "text": self.partner_shipping_id.phone,
-                            "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
-                            "name": "Site Contact Phone",
-                            "type": "TextBox"
-                        },
-                        "Site Contact Email": {
-                            "text": self.partner_shipping_id.email,
-                            "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
-                            "name": "Site Contact Email",
-                            "type": "TextBox"
-                        },
-                        },
-                    "assignment": {
-                    "id": "4f90a5f4-0327-402b-a0e7-5fa4976001aa",
-                    "type": "User"
-                }
-                })
-                headers = {
-                'accept': 'application/json',
-                'content-type': 'application/json',
-                'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
-                }
-                qty = qty + 1
-                response = requests.request("POST", url, headers=headers, data=payload)
-                logging.info(response.text)
-                forms_data = response.json()
-                _logger.error(f" response  {response.text}")
-
-                form_ids.append(forms_data['id'])
-                print(response.text)
-            order_line.form_id = ','.join(map(str, form_ids))
+                    form_ids.append(forms_data['id'])
+                    print(response.text)
+                order_line.form_id = ','.join(map(str, form_ids))
 
         return res
 
 
     def action_goformz(self):
         # res = super(SaleOrderGF, self).action_confirm()
+        if self.company_id.template_id:
+            url = "https://api.goformz.com/v2/formz"
+            # Assuming self.order_line is a list of objects with a 'product_id' attribute
+    # and 'product_uom_qty' attribute
+            type_unit = ""
+            # Define a mapping dictionary for product names
+            # Define a mapping dictionary for product names
+            name_mapping = {
+                "Container Dry": "container_dry",
+                "Trailer": "trailer",
+                "Reefer Diesel": "reefer_diesel",
+                "Reefer Electric": "reefer_electric",
+                "Reefer Container": "container",
+                "Office": "office",
+                "Mud Lab": "mudlab",
+                "Generator": "generator",
+                "Truck": "truck",
+                "Other": "other",
+            }
 
-        url = "https://api.goformz.com/v2/formz"
-        # Assuming self.order_line is a list of objects with a 'product_id' attribute
-# and 'product_uom_qty' attribute
-        type_unit = ""
-        # Define a mapping dictionary for product names
-        # Define a mapping dictionary for product names
-        name_mapping = {
-            "Container Dry": "container_dry",
-            "Trailer": "trailer",
-            "Reefer Diesel": "reefer_diesel",
-            "Reefer Electric": "reefer_electric",
-            "Reefer Container": "container",
-            "Office": "office",
-            "Mud Lab": "mudlab",
-            "Generator": "generator",
-            "Truck": "truck",
-            "Other": "other",
-        }
+            # Define a dictionary to store quantities for each product
+            quantities = {
+                "container_dry": 0,
+                "trailer": 0,
+                "reefer_diesel": 0,
+                "reefer_electric": 0,
+                "container": 0,
+                "office": 0,
+                "mudlab": 0,
+                "generator": 0,
+                "truck": 0,
+                "other": 0,
+            }
 
-        # Define a dictionary to store quantities for each product
-        quantities = {
-            "container_dry": 0,
-            "trailer": 0,
-            "reefer_diesel": 0,
-            "reefer_electric": 0,
-            "container": 0,
-            "office": 0,
-            "mudlab": 0,
-            "generator": 0,
-            "truck": 0,
-            "other": 0,
-        }
+            # Loop through order lines and update quantities based on product names
+            for order_line in self.order_line:
+                product_name = order_line.product_id.name
+                type_unit = type_unit + product_name + ", "
+                if product_name in name_mapping:
+                    product_key = name_mapping[product_name]
+                    quantities[product_key] += order_line.product_uom_qty
 
-        # Loop through order lines and update quantities based on product names
-        for order_line in self.order_line:
-            product_name = order_line.product_id.name
-            type_unit = type_unit + product_name + ", "
-            if product_name in name_mapping:
-                product_key = name_mapping[product_name]
-                quantities[product_key] += order_line.product_uom_qty
+            # Now 'quantities' dictionary contains the updated quantities for each product
+            # Access the quantities like this:
+            container_dry_quantity = quantities["container_dry"]
+            trailer_quantity = quantities["trailer"]
+            reefer_diesel_quantity = quantities["reefer_diesel"]
+            reefer_electric_quantity = quantities["reefer_electric"]
+            container_quantity = quantities["container"]
+            office_quantity = quantities["office"]
+            mudlab_quantity = quantities["mudlab"]
+            generator_quantity = quantities["generator"]
+            truck_quantity = quantities["truck"]
+            other_quantity = quantities["other"]
 
-        # Now 'quantities' dictionary contains the updated quantities for each product
-        # Access the quantities like this:
-        container_dry_quantity = quantities["container_dry"]
-        trailer_quantity = quantities["trailer"]
-        reefer_diesel_quantity = quantities["reefer_diesel"]
-        reefer_electric_quantity = quantities["reefer_electric"]
-        container_quantity = quantities["container"]
-        office_quantity = quantities["office"]
-        mudlab_quantity = quantities["mudlab"]
-        generator_quantity = quantities["generator"]
-        truck_quantity = quantities["truck"]
-        other_quantity = quantities["other"]
+    # Use these quantities as needed in your code
 
-# Use these quantities as needed in your code
+            for order_line in self.order_line:
 
-        for order_line in self.order_line:
+                warehouse = "Not Assigned"
+                quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
+                if quant:
+                    warehouse = str(quant.location_id.name)
+                qty = 0
+                form_ids = []
+                input_string = self.name
+                result = re.search(r'\d+', input_string)
+                extracted_number = ""
+                if result:
+                    extracted_number = result.group()
+                    print(extracted_number)
+                else:
+                    print("No sequence number found.")
 
-            warehouse = "Not Assigned"
-            quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
-            if quant:
-                warehouse = str(quant.location_id.name)
-            qty = 0
-            form_ids = []
-            input_string = self.name
-            result = re.search(r'\d+', input_string)
-            extracted_number = ""
-            if result:
-                extracted_number = result.group()
-                print(extracted_number)
-            else:
-                print("No sequence number found.")
+                while qty < order_line.product_uom_qty:
+                    # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
 
-            while qty < order_line.product_uom_qty:
-                # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
+                    
+                    payload = json.dumps({
+                    "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
+                    "templateId": self.company_id.template_id,
+                            "fields": {
+                            "Yard": {
+                            "value": self.warehouse_id.name,
+                            "id": "1d165d7f-2f74-43bf-a352-c908c7799da1",
+                            "name": "Yard",
+                            "type": "DropDown",
+                            },
+                                "Or Qty Dry Con": {
+                                "name": "Or Qty Dry Con",
+                                "value": container_dry_quantity,
+                                "type": "Number"
+                                },
+                                " Or Qty Dry Tr": {
+                                "name": " Or Qty Dry Tr",
+                                "value": trailer_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Dis": {
+                                "name": "Or Qty Ref Dis",
+                                "value": reefer_diesel_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Elc Tra": {
+                                "name": "Or Qty Ref Elc Tra",
+                                "value": reefer_electric_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Ref Con": {
+                                "name": "Or Qty Ref Con",
+                                "value": container_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Gen": {
+                                "name": "Or Qty Gen",
+                                "value": generator_quantity,
+                                "type": "Number"
+                                },
+                                "Or  Qty Mud Lab": {
+                                "name": "Or  Qty Mud Lab",
+                                "value": mudlab_quantity,
+                                "type": "Number"
+                                },
+                                "Or Qty Office": {
+                                "name": "Or Qty Office",
+                                "value": office_quantity,
+                                "type": "Number"
+                                },
+                                "Other": {
+                                "name": "Other",
+                                "value": other_quantity,
+                                "type": "Number"
+                                },
+                                "Order Door": {
+                                    "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                    "name": "Order Door",
+                                    "value": self.door,
+                                    "type": "DropDown",
+                                    "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                },
+                                "Order Plug": {
+                                    "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                    "name": "Order Plug",
+                                    "value": self.plug,
+                                    "type": "DropDown",
+                                    "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                },
+                                "Order Number": {
+                                "value": self.name,
+                                "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
+                                "name": "Order Number",
+                                "type": "Number"
+                                },
+                                "Contact Name": {
+                                "value": extracted_number + "-" + str(qty) ,
+                                "name": "Contact Name",
+                                "type": "Text"
+                                },
+                            "Delivery Note": {
+                                "value": self.delivery_note ,
+                                "name": "Delivery Note",
+                                "type": "Text"
+                                },
 
-                
-                payload = json.dumps({
-                "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
-                "templateId": "b570fdfd-030c-467c-b656-f858226c7cfd",
-                        "fields": {
-                        "Yard": {
-                        "value": self.warehouse_id.name,
-                        "id": "1d165d7f-2f74-43bf-a352-c908c7799da1",
-                        "name": "Yard",
-                        "type": "DropDown",
-                        },
-                            "Or Qty Dry Con": {
-                            "name": "Or Qty Dry Con",
-                            "value": container_dry_quantity,
-                            "type": "Number"
+                                # "Contract No": {
+                                # "value": extracted_number + "-" + str(qty) ,
+                                # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                                # "name": "Contract Number",
+                                # "type": "AutoNumber"
+                                # },
+                                "Customer Name": {
+                                "value": self.partner_id.name,
+                                "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
+                                "name": "Customer Name",
+                                "type": "Database"
+                                },
+                            "Customer Note": {
+                                "value": str(self.customer_note),
+                                "name": "Customer Note",
+                                "type": "Text"
                             },
-                            " Or Qty Dry Tr": {
-                            "name": " Or Qty Dry Tr",
-                            "value": trailer_quantity,
-                            "type": "Number"
+                            "Site Note": {
+                                "value": str(self.site_note),
+                                "name": "Site Note",
+                                "type": "Text"
                             },
-                            "Or Qty Ref Dis": {
-                            "name": "Or Qty Ref Dis",
-                            "value": reefer_diesel_quantity,
-                            "type": "Number"
+                            "Unit Type": {
+                                "value": order_line.product_id.name,
+                                "name": "Unit Type",
+                                "type": "Text"
                             },
-                            "Or Qty Ref Elc Tra": {
-                            "name": "Or Qty Ref Elc Tra",
-                            "value": reefer_electric_quantity,
-                            "type": "Number"
+                            # "Delivery Note": {
+                            #     "value": str(self.delivery_note),
+                            #     "name": "Delivery Note",
+                            #     "type": "Text"
+                            # },
+                            # "Min Rental Period": {
+                            #     "value": str(self.initial_term),
+                            #     "name": "Min Rental Period",
+                            #     "type": "Text"
+                            # },
+                            "Order Date": {
+                                "value": str(self.date_order),
+                                "displayValue": str(self.date_order),
+                                "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
+                                "name": "Order Date",
+                                "type": "Date"
                             },
-                            "Or Qty Ref Con": {
-                            "name": "Or Qty Ref Con",
-                            "value": container_quantity,
-                            "type": "Number"
+                            "Address 1": {
+                                "text": self.partner_id.street,
+                                "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
+                                "name": "Address 1",
+                                "type": "TextBox"
                             },
-                            "Or Qty Gen": {
-                            "name": "Or Qty Gen",
-                            "value": generator_quantity,
-                            "type": "Number"
-                            },
-                            "Or  Qty Mud Lab": {
-                            "name": "Or  Qty Mud Lab",
-                            "value": mudlab_quantity,
-                            "type": "Number"
-                            },
-                            "Or Qty Office": {
-                            "name": "Or Qty Office",
-                            "value": office_quantity,
-                            "type": "Number"
-                            },
-                            "Other": {
-                            "name": "Other",
-                            "value": other_quantity,
-                            "type": "Number"
-                            },
-                            "Order Door": {
-                                "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
-                                "name": "Order Door",
-                                "value": self.door,
-                                "type": "DropDown",
-                                "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
-                            },
-                            "Order Plug": {
-                                "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
-                                "name": "Order Plug",
-                                "value": self.plug,
-                                "type": "DropDown",
-                                "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
-                            },
-                            "Order Number": {
-                            "value": self.name,
-                            "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
-                            "name": "Order Number",
-                            "type": "Number"
+                            "City State Zip": {
+                                "text": self.partner_id.city +" "+ self.partner_id.state_id.name +" "+self.partner_id.zip ,
+                                "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
+                                "name": "City State Zip",
+                                "type": "TextBox"
                             },
                             "Contact Name": {
-                            "value": extracted_number + "-" + str(qty) ,
-                            "name": "Contact Name",
-                            "type": "Text"
+                                "text": self.partner_id.name,
+                                "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
+                                "name": "Contact Name",
+                                "type": "TextBox"
                             },
-                           "Delivery Note": {
-                            "value": self.delivery_note ,
-                            "name": "Delivery Note",
-                            "type": "Text"
+                            "Phone Cust": {
+                                "text": self.partner_id.phone,
+                                # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
+                                "name": "Phone Cust",
+                                "type": "TextBox"
+                            },
+                            "Email Cust": {
+                                "text": self.partner_id.email,
+                                # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
+                                "name": "Email Cust",
+                                "type": "TextBox"
+                            },
+                            "Order Type": {
+                                "value": type_unit,
+                                "name": "Order Type",
+                                "type": "DropDown",
+                            },
+                            "Site": {
+                                "text": self.partner_shipping_id.name,
+                                "name": "Site",
+                                "type": "TextBox"
                             },
 
-                            # "Contract No": {
-                            # "value": extracted_number + "-" + str(qty) ,
-                            # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                            # "name": "Contract Number",
-                            # "type": "AutoNumber"
-                            # },
-                            "Customer Name": {
-                            "value": self.partner_id.name,
-                            "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
-                            "name": "Customer Name",
-                            "type": "Database"
+                            "Site Address": {
+                                "text": self.partner_shipping_id.street,
+                                "id": "fc631dcf-c180-4453-9891-81f543fa5763",
+                                "name": "Site Address",
+                                "type": "TextBox"
                             },
-                        "Customer Note": {
-                            "value": str(self.customer_note),
-                            "name": "Customer Note",
-                            "type": "Text"
-                        },
-                        "Site Note": {
-                            "value": str(self.site_note),
-                            "name": "Site Note",
-                            "type": "Text"
-                        },
-                        "Unit Type": {
-                            "value": order_line.product_id.name,
-                            "name": "Unit Type",
-                            "type": "Text"
-                        },
-                        # "Delivery Note": {
-                        #     "value": str(self.delivery_note),
-                        #     "name": "Delivery Note",
-                        #     "type": "Text"
-                        # },
-                        # "Min Rental Period": {
-                        #     "value": str(self.initial_term),
-                        #     "name": "Min Rental Period",
-                        #     "type": "Text"
-                        # },
-                        "Order Date": {
-                            "value": str(self.date_order),
-                            "displayValue": str(self.date_order),
-                            "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
-                            "name": "Order Date",
-                            "type": "Date"
-                        },
-                        "Address 1": {
-                            "text": self.partner_id.street,
-                            "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
-                            "name": "Address 1",
-                            "type": "TextBox"
-                        },
-                        "City State Zip": {
-                            "text": self.partner_id.city +" "+ self.partner_id.state_id.name +" "+self.partner_id.zip ,
-                            "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
-                            "name": "City State Zip",
-                            "type": "TextBox"
-                        },
-                        "Contact Name": {
-                            "text": self.partner_id.name,
-                            "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
-                            "name": "Contact Name",
-                            "type": "TextBox"
-                        },
-                        "Phone Cust": {
-                            "text": self.partner_id.phone,
-                            # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
-                            "name": "Phone Cust",
-                            "type": "TextBox"
-                        },
-                        "Email Cust": {
-                            "text": self.partner_id.email,
-                            # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
-                            "name": "Email Cust",
-                            "type": "TextBox"
-                        },
-                        "Order Type": {
-                            "value": type_unit,
-                            "name": "Order Type",
-                            "type": "DropDown",
-                        },
-                        "Site": {
-                            "text": self.partner_shipping_id.name,
-                            "name": "Site",
-                            "type": "TextBox"
-                        },
+                            "Site City State Zip": {
+                                "text": self.partner_shipping_id.city +" "+ self.partner_shipping_id.state_id.name +" "+self.partner_shipping_id.zip ,
+                                "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
+                                "name": "Site City State Zip",
+                                "type": "TextBox"
+                            },
+                            "Site Contact": {
+                                "text": self.partner_shipping_id.name,
+                                "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
+                                "name": "Site Contact",
+                                "type": "TextBox"
+                            },
+                            "Site Contact Phone": {
+                                "text": self.partner_shipping_id.phone,
+                                "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
+                                "name": "Site Contact Phone",
+                                "type": "TextBox"
+                            },
+                            "Site Contact Email": {
+                                "text": self.partner_shipping_id.email,
+                                "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
+                                "name": "Site Contact Email",
+                                "type": "TextBox"
+                            },
+                            },
+                        "assignment": {
+                        "id": "4f90a5f4-0327-402b-a0e7-5fa4976001aa",
+                        "type": "User"
+                    }
+                    })
+                    headers = {
+                    'accept': 'application/json',
+                    'content-type': 'application/json',
+                    'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                    }
+                    qty = qty + 1
+                    response = requests.request("POST", url, headers=headers, data=payload)
+                    logging.info(response.text)
+                    forms_data = response.json()
+                    _logger.error(f" response  {response.text}")
+                    _logger.error(f" tid  {self.company_id.template_id}")
 
-                        "Site Address": {
-                            "text": self.partner_shipping_id.street,
-                            "id": "fc631dcf-c180-4453-9891-81f543fa5763",
-                            "name": "Site Address",
-                            "type": "TextBox"
-                        },
-                        "Site City State Zip": {
-                            "text": self.partner_shipping_id.city +" "+ self.partner_shipping_id.state_id.name +" "+self.partner_shipping_id.zip ,
-                            "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
-                            "name": "Site City State Zip",
-                            "type": "TextBox"
-                        },
-                        "Site Contact": {
-                            "text": self.partner_shipping_id.name,
-                            "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
-                            "name": "Site Contact",
-                            "type": "TextBox"
-                        },
-                        "Site Contact Phone": {
-                            "text": self.partner_shipping_id.phone,
-                            "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
-                            "name": "Site Contact Phone",
-                            "type": "TextBox"
-                        },
-                        "Site Contact Email": {
-                            "text": self.partner_shipping_id.email,
-                            "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
-                            "name": "Site Contact Email",
-                            "type": "TextBox"
-                        },
-                        },
-                    "assignment": {
-                    "id": "4f90a5f4-0327-402b-a0e7-5fa4976001aa",
-                    "type": "User"
-                }
-                })
-                headers = {
-                'accept': 'application/json',
-                'content-type': 'application/json',
-                'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
-                }
-                qty = qty + 1
-                response = requests.request("POST", url, headers=headers, data=payload)
-                logging.info(response.text)
-                forms_data = response.json()
-                _logger.error(f" response  {response.text}")
-
-                form_ids.append(forms_data['id'])
-                print(response.text)
-            order_line.form_id = ','.join(map(str, form_ids))
+                    form_ids.append(forms_data['id'])
+                    print(response.text)
+                order_line.form_id = ','.join(map(str, form_ids))
 

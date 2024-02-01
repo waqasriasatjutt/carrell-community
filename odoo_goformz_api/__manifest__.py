@@ -13,6 +13,7 @@
     'depends' : ['sale_management','stock'],
     'data': [
         'views/sale_order.xml',
+        'views/company.xml',
     ],
     'qweb' : [
     ],
