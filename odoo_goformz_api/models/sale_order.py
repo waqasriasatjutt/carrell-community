@@ -24,7 +24,7 @@ _logger = logging.getLogger(__name__)
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    # template_id = fields.Char("Template ID")
+    template_id = fields.Char("Template ID")
 
 
 
