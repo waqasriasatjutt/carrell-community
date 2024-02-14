@@ -7,7 +7,7 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="gt_rental_management.view_order_form_inherited"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='action_confirm']" position="after">
+                <xpath expr="//button[@name='action_cancel']" position="before">
                     <!-- Your Custom Button -->
                     <button string="Create GoFormz Contract" type="object" name="action_goformz" class="oe_highlight"/>
                     <button string="Update Contracts From Goformz" type="object" name="action_update_from_goformz" class="oe_highlight"/>
