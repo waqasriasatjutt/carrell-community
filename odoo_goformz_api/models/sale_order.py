@@ -764,9 +764,9 @@ class SaleOrderGF(models.Model):
                                 "type": "DropDown",
                             },
                             "Site": {
-                                "text": self.partner_shipping_id.name,
+                                "value": self.partner_shipping_id.name,
                                 "name": "Site",
-                                "type": "TextBox"
+                                "type": "Database"
                             },
 
                             "Site Address": {
