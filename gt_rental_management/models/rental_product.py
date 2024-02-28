@@ -45,6 +45,12 @@ class ProductTemplate(models.Model):
 class SaleOrder(models.Model):
     _inherit = "sale.order"
     
+
+    goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Delivery Pending'), ('delivered', 'Delivered'), ('ppending', 'Pickup Pending'), ('picked', 'Picked'), ('complete', 'Complete'), ('billed', 'Billed'), ('canceled', 'Canceled'), ('void', 'Void')], required=True, default='ordered')
+    trailer = fields.Integer(string='Trailer')
+    weight = fields.Float(string='Weight')
+    # driver = fields.Many2one('hr.employee',string='Driver')
+
     
     #@api.multi
     def _compute_state_new(self):
@@ -54,6 +60,15 @@ class SaleOrder(models.Model):
     def _compute_all_delivery(self):
         for rec in self.order_line:
             self.quantity_total = self.quantity_total +  rec.product_uom_qty
+
+    contact_email = fields.Char(related='partner_id.email',string='Contact Email')
+    contact_phone = fields.Char(related='partner_id.phone',string='Contact Phone')
+
+    partner_invoice_id_email = fields.Char(related='partner_invoice_id.email',string='Contact Email')
+    partner_invoice_id_phone = fields.Char(related='partner_invoice_id.phone',string='Contact Phone')
+
+    partner_shipping_id_email = fields.Char(related='partner_shipping_id.email',string='Contact Email')
+    partner_shipping_id_phone = fields.Char(related='partner_shipping_id.phone',string='Contact Phone')
 
 
     address_type = fields.Selection([

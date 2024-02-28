@@ -139,21 +139,30 @@
                           <field name="address_type" widget="radio" options="{'horizontal': true}" />
 
                             <field name="partner_id" widget="res_partner_many2one" domain="[('type', '=', address_type)]"  context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
+                        <field name="contact_email"/>
+                        <field name="contact_phone"/>
                           <field name="address_type_invoice" widget="radio" options="{'horizontal': true}" />
 
 			    <field name="partner_invoice_id" widget="res_partner_many2one" domain="[('type', '=', address_type_invoice)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
-                          <field name="address_type_delivery" widget="radio" options="{'horizontal': true}" />
+                            <field name="partner_invoice_id_email"/>
+                            <field name="partner_invoice_id_phone"/>
+                            <field name="address_type_delivery" widget="radio" options="{'horizontal': true}" />
 
                             <field name="partner_shipping_id" widget="res_partner_many2one" domain="[('type', '=', address_type_delivery)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/>
+                            <field name="partner_shipping_id_email"/>
+                            <field name="partner_shipping_id_phone"/>
                             <field name="customer_id" />
-                            <field name="start_date" required="1"/>
-                            <field name="end_date" required="1"/>
+                            <group>
+                            <field name="start_date" string="Del Date" required="1"/>
+                            <field name="end_date" string="By" required="1"/>
+                            </group>
                             <field name="initial_term"/>
                             <field name="payment_term_id" options="{'no_create': True}" string="Rental bill freq"/>
                             <field name="purchase_price"/>
                         </group>
                         <group>
                         	 <field name="date_order"/>
+                            <field  name="goformz_status" string="GOFORMZ Status"/>
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
                             <field name="currency_id" invisible="1"/>
@@ -161,7 +170,9 @@
                             <field name="agreement_received"/>
                             <field name="warehouse_id"/>
                             <field name="pricelist_id"/>
-                            <field name="customer_note"/>
+                            <field name="trailer"/>
+                            <field name="weight"/>
+                            <!-- <field name="driver"/> -->
                             <field name="delivery_note"/>
                             <field name="site_note"/>
                             <field name="door"/>
