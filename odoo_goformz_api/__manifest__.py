@@ -10,7 +10,7 @@
     "currency": "EUR",
     "license" : "Other proprietary",
     'summary': "GOFormz Integration",
-    'depends' : ['sale_management','stock'],
+    'depends' : ['sale_management','stock','gt_rental_management'],
     'data': [
         'views/sale_order.xml',
         'views/company.xml',

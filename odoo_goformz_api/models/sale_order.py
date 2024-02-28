@@ -105,6 +105,8 @@ class SaleOrderGF(models.Model):
     _inherit = "sale.order"
     
 
+
+
     def action_update_from_goformz1(self):
         url = "https://api.goformz.com/v2/formz?name="+self.name
 
@@ -767,6 +769,11 @@ class SaleOrderGF(models.Model):
                                 "value": self.partner_shipping_id.name,
                                 "name": "Site",
                                 "type": "Database"
+                            },
+                            "Del Number ": {
+                                "text": "DEL-"+str(self.id)+"-"+str(qty+1),
+                                "name": "Del Number ",
+                                "type": "TextBox"
                             },
 
                             "Site Address": {
