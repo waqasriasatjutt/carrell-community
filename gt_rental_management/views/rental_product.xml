@@ -160,6 +160,7 @@
                         </group>
                         <group>
                         	 <field name="date_order"/>
+                        <field  name="goformz_status" string="GOFORMZ Status"/>
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
                             <field name="currency_id" invisible="1"/>
