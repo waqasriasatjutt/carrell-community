@@ -7,15 +7,21 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//group/field[@name='validity_date']" position="before">
-                    <!-- Your Custom Button -->
+
+                <xpath expr="//group[@name='order_details']" position="after">
                         <group>
-                            <field  name="goformz_status" string="GOFORMZ Status"/>
                             <field  name="start_date" string="Del Date"/>
                             <field  name="end_date" string="By"/>
+                            <field name="driver" string="Driver" />
+                        </group>
+                </xpath>
+                <xpath expr="//group/field[@name='validity_date']" position="before">
+                    <!-- Your Custom Button -->
+
+                        <group>
+                            <field  name="goformz_status" string="GOFORMZ Status"/>
                             <field name="trailer" string="Trailer"/>
                             <field name="weight" string="Weight"/>
-                            <field name="driver" string="Driver" />
                         </group>
                 </xpath>
 
