@@ -13,6 +13,7 @@
                             <field  name="start_date" string="Del Date"/>
                             <field  name="end_date" string="By"/>
                             <field name="driver" string="Driver" />
+                            <field name="warehouse_id"/>
                         </group>
                 </xpath>
                 <xpath expr="//group/field[@name='validity_date']" position="before">
@@ -21,7 +22,12 @@
                         <group>
                             <field  name="goformz_status" string="GOFORMZ Status"/>
                             <field name="trailer" string="Trailer"/>
+                            <field name="fork_lift" string="Fork Lift" />
+                            <field name="miles" />
+                            <field name="miles_group" />
+                            <field name="mile_rate" />
                             <field name="weight" string="Weight"/>
+                            <field name="tons" string="Tons" />
                         </group>
                 </xpath>
 

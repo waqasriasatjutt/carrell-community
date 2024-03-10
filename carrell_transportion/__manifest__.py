@@ -10,7 +10,7 @@
     "currency": "EUR",
     "license" : "Other proprietary",
     'summary': "Carrel Transportation",
-    'depends' : ['sale_management', 'hr'],
+    'depends' : ['sale_management', 'hr','stock'],
     'data': [
         'views/sale_order.xml',
     ],
