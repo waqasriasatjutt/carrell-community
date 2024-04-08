@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define menu item under Project Configuration -->
+    
+    <record id="view_follower_defaults_form" model="ir.ui.view">
+        <field name="name">Follower Defaults Form</field>
+        <field name="model">mail.message.subtype</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- Fields to display in the form view -->
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="internal"/>
+                        <field name="default"/>
+                        <field name="sequence"/>
+                        <field name="hidden"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Define action for the menu item -->
+    <record id="view_follower_defaults_tree" model="ir.ui.view">
+        <field name="name">Follower Defaults Tree</field>
+        <field name="model">mail.message.subtype</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="internal"/>
+                <field name="default"/>
+                <field name="sequence"/>
+                <field name="hidden"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
