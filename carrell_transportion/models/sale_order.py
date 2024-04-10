@@ -74,7 +74,7 @@ class SaleOrderGF(models.Model):
     ('no', 'No'),
     ], string='Fork Lift', default='yes')
 
-    goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Delivery Pending'), ('delivered', 'Delivered'), ('ppending', 'Pickup Pending'), ('picked', 'Picked'), ('complete', 'Complete'), ('billed', 'Billed'), ('canceled', 'Canceled'), ('void', 'Void')], required=True, default='ordered')
+    order_status = fields.Selection([ ('transfer', 'Transfer'), ('billed', 'Billed'), ('paid', 'Paid')], required=True, default='transfer')
     trailer = fields.Integer(string='Trailer')
     weight = fields.Float(string='Weight')
     start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})

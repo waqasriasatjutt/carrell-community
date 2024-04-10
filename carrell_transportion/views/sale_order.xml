@@ -24,7 +24,7 @@
                                 <field name="pu_at"/>
                                 <field name="del_to"/>
                                 <field name="s_instruction"/>
-                                <field  name="goformz_status" string="GOFORMZ Status"/>
+                                <field  name="order_status" string="Order Status"/>
                                 <field name="trailer" string="Trailer"/>
                                 <field name="fork_lift" string="Fork Lift" />
                                 <field name="miles" />
