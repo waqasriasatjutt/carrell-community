@@ -35,7 +35,11 @@ class SaleOrderGF(models.Model):
 
     pro_number = fields.Char(string='Pro Number A')
     wo_number = fields.Char(string='Wo Number')
-    po_number = fields.Char(string='Po Number')
+    rig = fields.Char(string='RIG')
+    lease = fields.Char(string='Lease')
+    pu_at =  fields.Char(string='PU AT')
+    del_to = fields.Char(string='Del To')
+    s_instruction = fields.Char(string='Special Instruction')
     mp_number = fields.Char(string='MP Web Order Number')
 
     order_status = fields.Selection([

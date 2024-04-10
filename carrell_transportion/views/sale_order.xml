@@ -8,26 +8,31 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//group[@name='order_details']" position="after">
+                <xpath expr="//group[@name='sale_header']" position="after">
                         <group>
-                            <field  name="start_date" string="Del Date"/>
-                            <field  name="end_date" string="By"/>
-                            <field name="driver" string="Driver" />
-                            <field name="warehouse_id"/>
-                        </group>
-                </xpath>
-                <xpath expr="//group/field[@name='validity_date']" position="before">
-                    <!-- Your Custom Button -->
-
-                        <group>
-                            <field  name="goformz_status" string="GOFORMZ Status"/>
-                            <field name="trailer" string="Trailer"/>
-                            <field name="fork_lift" string="Fork Lift" />
-                            <field name="miles" />
-                            <field name="miles_group" />
-                            <field name="mile_rate" />
-                            <field name="weight" string="Weight"/>
-                            <field name="tons" string="Tons" />
+                            <group>
+                                <field  name="start_date" string="Del Date"/>
+                                <field  name="end_date" string="By"/>
+                                <field name="driver" string="Driver" />
+                                <field name="warehouse_id"/>
+                            </group>
+                            <group>
+                                <field  name="pro_number" string="PRO#"/>
+                                <field name="wo_number" string="WO#"/>
+                                <field name="rig" />
+                                <field name="lease"/>
+                                <field name="pu_at"/>
+                                <field name="del_to"/>
+                                <field name="s_instruction"/>
+                                <field  name="goformz_status" string="GOFORMZ Status"/>
+                                <field name="trailer" string="Trailer"/>
+                                <field name="fork_lift" string="Fork Lift" />
+                                <field name="miles" />
+                                <field name="miles_group" />
+                                <field name="mile_rate" />
+                                <field name="weight" string="Weight"/>
+                                <field name="tons" string="Tons" />
+                            </group>
                         </group>
                 </xpath>
 
