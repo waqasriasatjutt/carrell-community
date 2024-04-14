@@ -22,6 +22,22 @@ _logger = logging.getLogger(__name__)
 #     _inherit = "stock.picking"
 
 
+
+def access_token():
+
+    url = "https://accounts.goformz.com/connect/token"
+
+    payload = 'scope=public_api&grant_type=client_credentials&client_id=5e701457-412d-4eda-9dc0-d69537b2cfd6&client_secret=2e525839-f366-49e2-bc68-1bde6fbfcc74'
+    headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    token  = response.get("access_token")
+    return token
+
+
+
 class ResCompany(models.Model):
     _inherit = "res.company"
 
@@ -75,7 +91,7 @@ class StockPicking(models.Model):
                         headers = {
                         'accept': 'application/json',
                         'content-type': 'application/json',
-                        'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                        'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
                         }
 
                         response = requests.request("POST", url, headers=headers, data=payload)
@@ -113,7 +129,7 @@ class SaleOrderGF(models.Model):
         payload = ""
         headers = {
         'accept': 'application/json',
-        'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ==',
+        'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ=',
         'Content-Type': 'text/plain'
         }
 
@@ -134,7 +150,7 @@ class SaleOrderGF(models.Model):
                     payload = {}
                     headers = {
                     'accept': 'application/json',
-                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
                     }
 
                     response = requests.request("GET", url, headers=headers, data=payload)
@@ -155,7 +171,7 @@ class SaleOrderGF(models.Model):
                 payload = {}
                 headers = {
                     'accept': 'application/json',
-                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
                 }
 
                 response = requests.request("GET", url, headers=headers, data=payload)
@@ -170,6 +186,12 @@ class SaleOrderGF(models.Model):
                         serial_ids.append(unit)
                         print(response.text)
                         order_line.serial_no = ','.join(map(str, serial_ids))
+                except:
+                    print('failed')
+                try:
+                    unit = forms_data['fields']['Status']['value']
+                    if unit:
+                        self.goformz_status = unit
                 except:
                     print('failed')
 
@@ -187,7 +209,7 @@ class SaleOrderGF(models.Model):
                         payload = {}
                         headers = {
                             'accept': 'application/json',
-                            'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                            'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
                         }
 
                         response = requests.request("GET", url, headers=headers, data=payload)
@@ -499,7 +521,7 @@ class SaleOrderGF(models.Model):
     #                 headers = {
     #                 'accept': 'application/json',
     #                 'content-type': 'application/json',
-    #                 'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+    #                 'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
     #                 }
     #                 qty = qty + 1
     #                 response = requests.request("POST", url, headers=headers, data=payload)
@@ -815,7 +837,7 @@ class SaleOrderGF(models.Model):
                     headers = {
                     'accept': 'application/json',
                     'content-type': 'application/json',
-                    'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOnRSVUNLNzghIQ=='
+                    'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
                     }
                     qty = qty + 1
                     response = requests.request("POST", url, headers=headers, data=payload)
