@@ -159,21 +159,21 @@
                             <field name="purchase_price"/>
                         </group>
                         <group>
-                        	 <field name="date_order"/>
+                        	 <field name="date_order" string="Order Date"/>
                         <field  name="goformz_status" string="GOFORMZ Status"/>
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
                             <field name="currency_id" invisible="1"/>
             			    <field name="company_id" invisible="1"/>
-                            <field name="agreement_received"/>
-                            <field name="warehouse_id"/>
+                            <field name="agreement_received" string="Agreement Received"/>
+                            <field name="warehouse_id" string="Warehouse"/>
                             <field name="pricelist_id"/>
-                            <field name="customer_note"/>
-                            <field name="delivery_note"/>
-                            <field name="site_note"/>
-                            <field name="door"/>
-                            <field name="plug"/>
-                            <field name="quantity_total"/>
+                            <field name="customer_note" string="Customer Note"/>
+                            <field name="delivery_note" string="Delivery Note"/>
+                            <field name="site_note" string="string="Site Note"/>
+                            <field name="door" string="Door"/>
+                            <field name="plug" string="Plug"/>
+                            <field name="quantity_total" string="Total Quantity"/>
                         </group>
                     </group>
 			<notebook>
