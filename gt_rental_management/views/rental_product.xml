@@ -170,7 +170,7 @@
                             <field name="pricelist_id"/>
                             <field name="customer_note" string="Customer Note"/>
                             <field name="delivery_note" string="Delivery Note"/>
-                            <field name="site_note" string="string="Site Note"/>
+                            <field name="site_note" string="Site Note"/>
                             <field name="door" string="Door"/>
                             <field name="plug" string="Plug"/>
                             <field name="quantity_total" string="Total Quantity"/>
