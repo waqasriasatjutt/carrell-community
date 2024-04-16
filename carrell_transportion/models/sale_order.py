@@ -41,6 +41,24 @@ class SaleOrderGF(models.Model):
     del_to = fields.Char(string='Del To')
     s_instruction = fields.Char(string='Special Instruction')
     mp_number = fields.Char(string='MP Web Order Number')
+    bar_price = fields.Float(string='Bar Price')
+    flat_price = fields.Float(sting='Flat Price')
+    fc = fields.Float(string='FC %')
+
+    partner_contact1 = fields.Many2one(
+        comodel_name='res.partner',
+        string="Contact 1",
+        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+
+    partner_contact2 = fields.Many2one(
+        comodel_name='res.partner',
+        string="Contact 2",
+        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+
+    contact_phone1 = fields.Char(string='Contact1 Phone', related='partner_contact1.phone')
+    contact_email1 = fields.Char(string='Contact1 Email', related='partner_contact1.email')
+    contact_phone2 = fields.Char(string='Contact2 Phone', related='partner_contact2.phone')
+    contact_email2 = fields.Char(string='Contact2 Email', related='partner_contact2.email')
 
     order_status = fields.Selection([
     ('pullfromlist', 'Pull From List'),

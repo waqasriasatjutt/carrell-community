@@ -8,6 +8,17 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
+                <xpath expr="//group[@name='sale_header']" sequence="1" position="before">
+                    <group >
+                        <group >
+                            
+                        </group>
+                        <group >
+                            <field  name="order_status" string="Order Status" sequence="1"/>                    
+                        </group>
+                    </group>
+                </xpath>
+
                 <xpath expr="//group[@name='sale_header']" position="after">
                         <group>
                             <group>
@@ -17,6 +28,12 @@
                                 <field name="warehouse_id"/>
                             </group>
                             <group>
+                                <field name="partner_contact1" />
+                                <field name="contact_phone1" />
+                                <field name="contact_email1" />
+                                <field name="partner_contact2"></field>
+                                <field name="contact_phone2"></field>
+                                <field name="contact_email2"></field>
                                 <field  name="pro_number" string="PRO#"/>
                                 <field name="wo_number" string="WO#"/>
                                 <field name="rig" />
@@ -24,7 +41,6 @@
                                 <field name="pu_at"/>
                                 <field name="del_to"/>
                                 <field name="s_instruction"/>
-                                <field  name="order_status" string="Order Status"/>
                                 <field name="trailer" string="Trailer"/>
                                 <field name="fork_lift" string="Fork Lift" />
                                 <field name="miles" />
