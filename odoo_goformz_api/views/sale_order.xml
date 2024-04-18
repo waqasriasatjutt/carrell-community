@@ -7,10 +7,19 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="gt_rental_management.view_order_form_inherited"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='start_date']" position="replace">
+                    <!-- Your Custom Button -->
+                        <field  name="start_date" string="Del Date"/>
+                </xpath>
+                <xpath expr="//field[@name='end_date']" position="replace">
+                    <!-- Your Custom Button -->
+                        <field  name="end_date" string="By"/>
+                </xpath>
                 <xpath expr="//group[@name='sale_header']" position="after">
-                    <group name="name-1" string="string">
+                    <group name="name-1">
                         <group >
-                            
+                            <field  name="goformz_status" string="GOFORMZ Status"/>
+
                         </group>
                         <group >
                             <field name="customer_note" string="Customer Note"/>
