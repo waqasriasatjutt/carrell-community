@@ -8,24 +8,24 @@
             <field name="inherit_id" ref="gt_rental_management.view_order_form_inherited"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='start_date']" position="replace">
+                                <field  name="start_date" string="Del Date"/>
                     <!-- Your Custom Button -->
                 </xpath>
                 <xpath expr="//field[@name='end_date']" position="replace">
+                                <field  name="end_date" string="By"/>
                     <!-- Your Custom Button -->
                 </xpath>
-                <xpath expr="//group[@name='other_details']" position="inside">
+                <!-- <xpath expr="//group[@name='other_details']" position="inside">
                         <group >
                             
                             <group >
-                                <field  name="start_date" string="Del Date"/>
 
                             </group>
                             <group >
-                                <field  name="end_date" string="By"/>
                             </group >
                         </group>
 
-                </xpath>
+                </xpath> -->
                 <xpath expr="//button[@name='action_cancel']" position="before">
                     <!-- Your Custom Button -->
                     <button string="Create GoFormz Contract" type="object" name="action_goformz" class="oe_highlight"/>
