@@ -15,12 +15,15 @@
                 </xpath>
                 <xpath expr="//group[@name='other_details']" position="inside">
                         <group >
-                        <field  name="start_date" string="Del Date"/>
- 
+                            
+                            <group >
+                                <field  name="start_date" string="Del Date"/>
+
+                            </group>
+                            <group >
+                                <field  name="end_date" string="By"/>
+                            </group >
                         </group>
-                        <group >
-                        <field  name="end_date" string="By"/>
-                        </group >
 
                 </xpath>
                 <xpath expr="//button[@name='action_cancel']" position="before">
