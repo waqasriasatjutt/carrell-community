@@ -25,7 +25,7 @@
                         <field  name="end_date" string="By"/>
                     </group>
                 </xpath>
-                <!-- <xpath expr="//group[@nam3='sale_header']" position="after">
+                <xpath expr="//group[@nam3='sale_header']" position="after">
                     <group name="name-1" string="string">
                         <group >
                             
@@ -40,7 +40,7 @@
                         </group >
 
                     </group>                    
-                </xpath> -->
+                </xpath>
                 <xpath expr="//button[@name='action_cancel']" position="before">
                     <!-- Your Custom Button -->
                     <button string="Create GoFormz Contract" type="object" name="action_goformz" class="oe_highlight"/>
