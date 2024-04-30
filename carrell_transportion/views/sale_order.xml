@@ -8,46 +8,86 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//group[@name='sale_header']" sequence="1" position="before">
-                    <group >
-                        <group >
-                            
+                <xpath expr="//div[@class='oe_title']" position="before">
+<div style="display: flex; width: 100%; justify-content: space-between;">
+    <div style="flex-grow: 1; padding-right: 10px;">
+        <label for="pro_number">PRO#</label>  <!-- Explicit label -->
+        <field name="pro_number" string="PRO#"/>
+    </div>
+    <div style="flex-grow: 1; padding-right: 10px;">
+        <label for="wo_number">WO#</label>  <!-- Explicit label -->
+        <field name="wo_number" string="WO#"/>
+    </div>
+    <div style="flex-grow: 1; padding-right: 10px;">
+        <label for="po_number">PO#</label>  <!-- Explicit label -->
+        <field name="po_number" string="PO#"/>
+    </div>
+    <div style="flex-grow: 1;">
+        <label for="order_status">Order Status</label>  <!-- Explicit label -->
+        <field name="order_status" string="Order Status"/>
+    </div>
+    <div style="flex-grow: 1;">
+        <label for="date_order">Date</label>  <!-- Explicit label -->
+        <field name="date_order" string="Date"/>
+    </div>
+</div>                    <!-- <group name="top_f" colspan="3">
+
+                        <group>
+                                <field  name="pro_number" string="PRO#"/>
                         </group>
-                        <group >
-                            <field  name="order_status" string="Order Status" sequence="1"/>                    
+                        <group>
+                                <field name="wo_number" string="WO#"/>
                         </group>
-                    </group>
+                        <group>
+                            <field  name="order_status" string="Order Status"/>                    
+                        </group>
+                    </group> -->
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
                         <group>
                             <group>
-                                <field  name="start_date" string="Del Date"/>
-                                <field  name="end_date" string="By"/>
-                                <field name="driver" string="Driver" />
-                                <field name="warehouse_id"/>
-                            </group>
-                            <group>
-                                <field name="partner_contact1" />
                                 <field name="contact_phone1" />
                                 <field name="contact_email1" />
-                                <field name="partner_contact2"></field>
-                                <field name="contact_phone2"></field>
-                                <field name="contact_email2"></field>
-                                <field  name="pro_number" string="PRO#"/>
-                                <field name="wo_number" string="WO#"/>
+                                <field  name="start_date" string="Del Date"/>
+                                <field  name="end_date" string="By"/>
                                 <field name="rig" />
                                 <field name="lease"/>
+                                <field name="operator"/>
                                 <field name="pu_at"/>
                                 <field name="del_to"/>
                                 <field name="s_instruction"/>
-                                <field name="trailer" string="Trailer"/>
-                                <field name="fork_lift" string="Fork Lift" />
+                                <field name="product"/>
+                                <field name="driver_pay"/>
+                                <field name="pin"/>
                                 <field name="miles" />
                                 <field name="miles_group" />
                                 <field name="mile_rate" />
+                                <field name="flat_price" />
+                                <field name="bar_price" />
+                                <field name="mile_rate" />
+                                <field name="fuel_s_rate" />
+                                <field name="trucking_cost" />
+                                <field name="fuel_s_cost" />
+                                <field name="bar_cost" />
+                                <field name="other_services" />
+                                <field name="total_amount_carrel" />
+                            </group>
+                            <group>
+                                <field name="delivery_type"/>
+                                <field name="driver" string="Driver" />
+                                <field name="truck"></field>
                                 <field name="weight" string="Weight"/>
                                 <field name="tons" string="Tons" />
+                                <field name="warehouse_id"/>
+                                <field name="partner_contact1" />
+                                <!-- <field name="contact_phone1" />
+                                <field name="contact_email1" /> -->
+                                <field name="partner_contact2"></field>
+                                <field name="contact_phone2"></field>
+                                <field name="contact_email2"></field>
+                                <field name="trailer" string="Trailer"/>
+                                <field name="fork_lift" string="Fork Lift" />
                             </group>
                         </group>
                 </xpath>

@@ -35,14 +35,27 @@ class SaleOrderGF(models.Model):
 
     pro_number = fields.Char(string='Pro Number A')
     wo_number = fields.Char(string='Wo Number')
+    po_number = fields.Char(string='Po Number')
     rig = fields.Char(string='RIG')
     lease = fields.Char(string='Lease')
+    operator = fields.Char(string='Operator')
     pu_at =  fields.Char(string='PU AT')
     del_to = fields.Char(string='Del To')
     s_instruction = fields.Char(string='Special Instruction')
+    product = fields.Many2one(
+        comodel_name='product.product',
+        string="Product")
+    driver_pay = fields.Float(string='Driver Pay')
+    pin = fields.Char(string='PIN')
     mp_number = fields.Char(string='MP Web Order Number')
     bar_price = fields.Float(string='Bar Price')
     flat_price = fields.Float(sting='Flat Price')
+    fuel_s_rate = fields.Float(string='Fuel Sur Rate')
+    trucking_cost = fields.Float(string='Trucking Cost')
+    fuel_s_cost = fields.Float(string='Fuel Sur Cost')
+    bar_cost = fields.Float(string='Bar Cost')
+    other_services = fields.Float(string='Other Services')
+    total_amount_carrel = fields.Float(string='Total Amount')
     fc = fields.Float(string='FC %')
 
     partner_contact1 = fields.Many2one(
@@ -94,6 +107,8 @@ class SaleOrderGF(models.Model):
 
     order_status = fields.Selection([ ('transfer', 'Transfer'), ('billed', 'Billed'), ('paid', 'Paid')], required=True, default='transfer')
     trailer = fields.Integer(string='Trailer')
+    truck = fields.Char('Truck')
+    notes = fields.Char('Notes')
     weight = fields.Float(string='Weight')
     start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
