@@ -838,8 +838,8 @@ class SaleOrderGF(models.Model):
                     }
                     })
                     company = self.env.user.company_id
-                    username = company.username_field
-                    password = company.password_field
+                    username = company.goform_username
+                    password = company.goform_password
 
                     credentials = f'{username}:{password}'
                     encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
