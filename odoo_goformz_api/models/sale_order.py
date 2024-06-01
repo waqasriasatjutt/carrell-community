@@ -6,6 +6,7 @@ from odoo.tools.misc import formatLang
 from odoo.osv import expression
 from odoo.tools import float_is_zero, float_compare
 from datetime import datetime
+import base64
 
 
 from odoo.addons import decimal_precision as dp
@@ -42,6 +43,8 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     template_id = fields.Char("Template ID")
+    goform_username = fields.Char("GOFORM Username")
+    goform_password = fields.Char("GOFORM Password")
 
 
 
@@ -834,10 +837,21 @@ class SaleOrderGF(models.Model):
                         "type": "User"
                     }
                     })
+                    company = self.env.user.company_id
+                    username = company.username_field
+                    password = company.password_field
+
+                    credentials = f'{username}:{password}'
+                    encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                    
+                    # Prepare the authorization header
+                    # headers = {
+                    #     'Authorization': f'Basic {encoded_credentials}'
+                    # }
                     headers = {
                     'accept': 'application/json',
                     'content-type': 'application/json',
-                    'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
+                    'Authorization': f'Basic {encoded_credentials}'
                     }
                     qty = qty + 1
                     response = requests.request("POST", url, headers=headers, data=payload)
