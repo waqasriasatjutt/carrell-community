@@ -91,10 +91,21 @@ class StockPicking(models.Model):
                             "type": "User"
                         }
                         })
+                        company = self.env.user.company_id
+                        username = company.goform_username
+                        password = company.goform_password
+
+                        credentials = f'{username}:{password}'
+                        encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                        
+                        # Prepare the authorization header
+                        # headers = {
+                        #     'Authorization': f'Basic {encoded_credentials}'
+                        # }
                         headers = {
                         'accept': 'application/json',
                         'content-type': 'application/json',
-                        'Authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
+                        'Authorization': f'Basic {encoded_credentials}'
                         }
 
                         response = requests.request("POST", url, headers=headers, data=payload)
@@ -130,9 +141,16 @@ class SaleOrderGF(models.Model):
         url = "https://api.goformz.com/v2/formz?name="+self.name
 
         payload = ""
+        company = self.env.user.company_id
+        username = company.goform_username
+        password = company.goform_password
+
+        credentials = f'{username}:{password}'
+        encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                        
         headers = {
         'accept': 'application/json',
-        'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ=',
+        'Authorization': f'Basic {encoded_credentials}',
         'Content-Type': 'text/plain'
         }
 
@@ -151,9 +169,16 @@ class SaleOrderGF(models.Model):
                     url = "https://api.goformz.com/v2/formz/"+form_id
 
                     payload = {}
+                    company = self.env.user.company_id
+                    username = company.goform_username
+                    password = company.goform_password
+
+                    credentials = f'{username}:{password}'
+                    encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                                    
                     headers = {
                     'accept': 'application/json',
-                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
+                    'Authorization': f'Basic {encoded_credentials}',
                     }
 
                     response = requests.request("GET", url, headers=headers, data=payload)
@@ -172,9 +197,17 @@ class SaleOrderGF(models.Model):
                 url = f"https://api.goformz.com/v2/formz/{form_id}"
 
                 payload = {}
+                company = self.env.user.company_id
+                username = company.goform_username
+                password = company.goform_password
+
+                credentials = f'{username}:{password}'
+                encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                                
                 headers = {
-                    'accept': 'application/json',
-                    'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
+                'accept': 'application/json',
+                'Authorization': f'Basic {encoded_credentials}',
+                'Content-Type': 'text/plain'
                 }
 
                 response = requests.request("GET", url, headers=headers, data=payload)
@@ -210,9 +243,17 @@ class SaleOrderGF(models.Model):
                         url = f"https://api.goformz.com/v2/formz/{serial.form_id}"
 
                         payload = {}
+                        company = self.env.user.company_id
+                        username = company.goform_username
+                        password = company.goform_password
+
+                        credentials = f'{username}:{password}'
+                        encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                                        
                         headers = {
-                            'accept': 'application/json',
-                            'authorization': 'Basic cmlja0BjYXJyZWxsdHJ1Y2tpbmcuY29tOlRydWNrNzgxMSQ='
+                        'accept': 'application/json',
+                        'Authorization': f'Basic {encoded_credentials}',
+                        'Content-Type': 'text/plain'
                         }
 
                         response = requests.request("GET", url, headers=headers, data=payload)
