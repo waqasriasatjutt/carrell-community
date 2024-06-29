@@ -58,6 +58,7 @@ class SaleOrder(models.Model):
             rec.state_new = rec.state 
             
     def _compute_all_delivery(self):
+        self.quantity_total = 0
         for rec in self.order_line:
             self.quantity_total = self.quantity_total +  rec.product_uom_qty
 
