@@ -803,7 +803,7 @@ class SaleOrderGF(models.Model):
                                 "type": "TextBox"
                             },
                             "City State Zip": {
-                                "text": self.partner_id.city +" "+ self.partner_id.state_id.name +" "+self.partner_id.zip ,
+                                "text": str(self.partner_id.city) +" "+ str(self.partner_id.state_id.name) +" "+str(self.partner_id.zip) ,
                                 "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
                                 "name": "City State Zip",
                                 "type": "TextBox"
