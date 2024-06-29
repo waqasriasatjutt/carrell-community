@@ -120,7 +120,7 @@
                                                 <field name="contact3_phone" widget="phone"/>
                                             </group>
                                             <group>
-                                                <field name="site" />
+                                                <field name="notes" />
                                                 <field name="plug" />
                                             </group>
                                         </group>
