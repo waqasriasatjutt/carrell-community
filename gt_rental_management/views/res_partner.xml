@@ -9,7 +9,7 @@
                 <!-- Your new field definition goes here -->
                 <field name="customer_id" string="Customer ID"/>
             </xpath>
-            <xpath expr="//form[@string='string="Contact / Address"']" position="replace">
+            <xpath expr="//form[@string='Contact / Address']" position="replace">
                 <!-- Your new field definition goes here -->
                                 <form string="Contact / Address">
                                     <sheet>
