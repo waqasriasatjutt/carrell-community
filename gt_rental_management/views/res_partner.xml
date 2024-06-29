@@ -109,17 +109,17 @@
                                                 <field name="mobile" widget="phone"/>
                                                 <field name="company_id" invisible="1"/>
                                             </group>
-                                            <group>
+                                            <group attrs="{'invisible': [('type','!=', 'delivery')]}">
                                                 <field name="contact2_name"/>
                                                 <field name="contact2_email" widget="email"/>
                                                 <field name="contact2_phone" widget="phone"/>
                                             </group>
-                                            <group>
+                                            <group attrs="{'invisible': [('type','!=', 'delivery')]}">
                                                 <field name="contact3_name"/>
                                                 <field name="contact3_email" widget="email"/>
                                                 <field name="contact3_phone" widget="phone"/>
                                             </group>
-                                            <group>
+                                            <group attrs="{'invisible': [('type','!=', 'delivery')]}">
                                                 <field name="notes" />
                                                 <field name="plug" />
                                             </group>
