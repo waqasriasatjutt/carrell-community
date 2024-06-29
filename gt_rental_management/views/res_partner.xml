@@ -119,6 +119,10 @@
                                                 <field name="contact3_email" widget="email"/>
                                                 <field name="contact3_phone" widget="phone"/>
                                             </group>
+                                            <group>
+                                                <field name="site" />
+                                                <field name="plug" />
+                                            </group>
                                         </group>
                                         <group>
                                             <field name="comment" placeholder="Internal notes..." nolabel="1" colspan="2"/>
