@@ -849,7 +849,7 @@ class SaleOrderGF(models.Model):
                                 "type": "TextBox"
                             },
                             "Site City State Zip": {
-                                "text": self.partner_shipping_id.city +" "+ self.partner_shipping_id.state_id.name +" "+self.partner_shipping_id.zip ,
+                                "text": str(self.partner_shipping_id.city) +" "+ str(self.partner_shipping_id.state_id.name) +" "+str(self.partner_shipping_id.zip) ,
                                 "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
                                 "name": "Site City State Zip",
                                 "type": "TextBox"
