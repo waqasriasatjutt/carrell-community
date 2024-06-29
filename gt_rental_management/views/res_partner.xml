@@ -102,7 +102,7 @@
                                                     </div>
                                                 </div>
                                             </group>
-                                            <group>
+                                            <!-- <group>
                                                 <field name="email" widget="email"/>
                                                 <field name="site_email" widget="email"/>
                                                 <field name="phone" widget="phone"/>
@@ -118,7 +118,7 @@
                                                 <field name="contact3_name"/>
                                                 <field name="contact3_email" widget="email"/>
                                                 <field name="contact3_phone" widget="phone"/>
-                                            </group>
+                                            </group> -->
                                         </group>
                                         <group>
                                             <field name="comment" placeholder="Internal notes..." nolabel="1" colspan="2"/>
