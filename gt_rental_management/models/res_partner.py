@@ -21,16 +21,16 @@ class PartnerTemplate(models.Model):
     _inherit = "res.partner"
     
     customer_id = fields.Char('Customer ID')
-    site_email = fields.Char('Site Email')
-    contact2_name = fields.Char('Contact 2 Name')
-    contact2_phone = fields.Char('Contact 2 Phone')
-    contact2_email = fields.Char('Contact 2 Email')
+    # site_email = fields.Char('Site Email')
+    # contact2_name = fields.Char('Contact 2 Name')
+    # contact2_phone = fields.Char('Contact 2 Phone')
+    # contact2_email = fields.Char('Contact 2 Email')
 
-    contact3_name = fields.Char("Contact 3 Name")
-    contact3_phone = fields.Char("Contact 3 Phone")
-    contact3_email = fields.Char('Contact 3 Email')
+    # contact3_name = fields.Char("Contact 3 Name")
+    # contact3_phone = fields.Char("Contact 3 Phone")
+    # contact3_email = fields.Char('Contact 3 Email')
 
-    notes = fields.Char('Notes')
-    plug = fields.Char('Plug')
+    # notes = fields.Char('Notes')
+    # plug = fields.Char('Plug')
 
 
