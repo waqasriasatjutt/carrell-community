@@ -122,6 +122,7 @@
                                             <group attrs="{'invisible': [('type','!=', 'delivery')]}">
                                                 <field name="notes" />
                                                 <field name="plug" />
+                                                <field name="number_of_pics"/>
                                             </group>
                                         </group>
                                         <group>

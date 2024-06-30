@@ -866,6 +866,11 @@ class SaleOrderGF(models.Model):
                                 "name": "Site Contact Phone",
                                 "type": "TextBox"
                             },
+                            "Pics": {
+                            "value": self.partner_shipping_id.number_of_pics,
+                            "name": "Pics",
+                            "type": "Number"
+                            },
                             "Order Plug": {
                                 "value": self.partner_shipping_id.plug,
                                 "name": "Order Plug",
