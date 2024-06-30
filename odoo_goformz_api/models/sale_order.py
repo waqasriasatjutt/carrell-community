@@ -866,8 +866,13 @@ class SaleOrderGF(models.Model):
                                 "name": "Site Contact Phone",
                                 "type": "TextBox"
                             },
+                            "Order Plug": {
+                                "value": self.partner_shipping_id.plug,
+                                "name": "Order Plug",
+                                "type": "Drop Down"
+                            },
                             "Site Contact Email": {
-                                "text": self.partner_shipping_id.email,
+                                "text": self.partner_shipping_id.site_email,
                                 "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
                                 "name": "Site Contact Email",
                                 "type": "TextBox"

@@ -32,5 +32,6 @@ class PartnerTemplate(models.Model):
 
     notes = fields.Char('Notes')
     plug = fields.Char('Plug')
+    number_of_pics = fields.Integer("Pics")
 
 
