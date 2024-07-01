@@ -831,6 +831,36 @@ class SaleOrderGF(models.Model):
                                 "name": "Order Type",
                                 "type": "DropDown",
                             },
+                            "Contact 2 Name": {
+                                "value": self.partner_shipping_id.contact2_name,
+                                "name": "Contact 2 Name",
+                                "type": "Text"
+                            },
+                            "Contact 3": {
+                                "value": self.partner_shipping_id.contact3_name,
+                                "name": "Contact 3 ",
+                                "type": "Text"
+                            },
+                            "Contact 2 ph": {
+                                "value": self.partner_shipping_id.contact3_name,
+                                "name": "Contact 2 ph",
+                                "type": "Text"
+                            },
+                            "Contact 3 ph": {
+                                "value": self.partner_shipping_id.contact3_name,
+                                "name": "Contact 3 ph",
+                                "type": "Text"
+                            },
+                            "Contact 2 email": {
+                                "value": self.partner_shipping_id.contact2_email,
+                                "name": "Contact 2 email",
+                                "type": "Text"
+                            },
+                            "Contact 3 email": {
+                                "value": self.partner_shipping_id.contact3_email,
+                                "name": "Contact 2 email",
+                                "type": "Text"
+                            },
                             "Site": {
                                 "value": self.partner_shipping_id.name,
                                 "name": "Site",
