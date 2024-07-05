@@ -818,54 +818,54 @@ class SaleOrderGF(models.Model):
                                 "type": "TextBox"
                             },
                             "Phone Cust": {
-                                "text": self.partner_id.phone,
+                                "text": self.partner_id.phone if self.partner_id.phone else "",
                                 # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
                                 "name": "Phone Cust",
                                 "type": "TextBox"
                             },
                             "Email Cust": {
-                                "text": self.partner_id.email,
+                                "text": self.partner_id.email if self.partner_id.email else "",
                                 # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
                                 "name": "Email Cust",
                                 "type": "TextBox"
                             },
                             "Order Type": {
-                                "value": type_unit,
+                                "value": type_unit if type_unit else "",
                                 "name": "Order Type",
                                 "type": "DropDown",
                             },
                             "Contact 2 Name": {
-                                "value": self.partner_shipping_id.contact2_name,
+                                "value": self.partner_shipping_id.contact2_name if self.partner_shipping_id.contact2_name else "",
                                 "name": "Contact 2 Name",
                                 "type": "Text"
                             },
                             "Contact 3": {
-                                "value": self.partner_shipping_id.contact3_name,
+                                "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "",
                                 "name": "Contact 3 ",
                                 "type": "Text"
                             },
                             "Contact 2 ph": {
-                                "value": self.partner_shipping_id.contact3_name,
+                                "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
                                 "name": "Contact 2 ph",
                                 "type": "Text"
                             },
                             "Contact 3 ph": {
-                                "value": self.partner_shipping_id.contact3_name,
+                                "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
                                 "name": "Contact 3 ph",
                                 "type": "Text"
                             },
                             "Contact 2 email": {
-                                "value": self.partner_shipping_id.contact2_email,
+                                "value": self.partner_shipping_id.contact2_email if self.partner_shipping_id.contact2_email else "N/A",
                                 "name": "Contact 2 email",
                                 "type": "Text"
                             },
                             "Contact 3 email": {
-                                "value": self.partner_shipping_id.contact3_email,
+                                "value": self.partner_shipping_id.contact3_email if self.partner_shipping_id.contact3_email else "N/A",
                                 "name": "Contact 2 email",
                                 "type": "Text"
                             },
                             "Site": {
-                                "value": self.partner_shipping_id.name,
+                                "value": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
                                 "name": "Site",
                                 "type": "Database"
                             },
@@ -876,41 +876,41 @@ class SaleOrderGF(models.Model):
                             },
 
                             "Site Address": {
-                                "text": self.partner_shipping_id.street,
+                                "text": self.partner_shipping_id.street if self.partner_shipping_id.street else "",
                                 "id": "fc631dcf-c180-4453-9891-81f543fa5763",
                                 "name": "Site Address",
                                 "type": "TextBox"
                             },
                             "Site City State Zip": {
-                                "text": str(self.partner_shipping_id.city) +" "+ str(self.partner_shipping_id.state_id.name) +" "+str(self.partner_shipping_id.zip) ,
+                                "text": str(self.partner_shipping_id.city) if self.partner_shipping_id.city else "" +" "+ str(self.partner_shipping_id.state_id.name) if self.partner_shipping_id.state_id.name else "" +" "+str(self.partner_shipping_id.zip) if self.partner_shipping_id.zip else "" ,
                                 "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
                                 "name": "Site City State Zip",
                                 "type": "TextBox"
                             },
                             "Site Contact": {
-                                "text": self.partner_shipping_id.name,
+                                "text": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
                                 "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
                                 "name": "Site Contact",
                                 "type": "TextBox"
                             },
                             "Site Contact Phone": {
-                                "text": self.partner_shipping_id.phone,
+                                "text": self.partner_shipping_id.phone if self.partner_shipping_id.phone else "",
                                 "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
                                 "name": "Site Contact Phone",
                                 "type": "TextBox"
                             },
                             "Pics": {
-                            "value": self.partner_shipping_id.number_of_pics,
+                            "value": self.partner_shipping_id.number_of_pics if self.partner_shipping_id.number_of_pics else "",
                             "name": "Pics",
                             "type": "Number"
                             },
                             "Order Plug": {
-                                "value": self.partner_shipping_id.plug,
+                                "value": self.partner_shipping_id.plug if self.partner_shipping_id.plug else "",
                                 "name": "Order Plug",
                                 "type": "Drop Down"
                             },
                             "Site Contact Email": {
-                                "text": self.partner_shipping_id.site_email,
+                                "text": self.partner_shipping_id.site_email if self.partner_shipping_id.site_email else "",
                                 "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
                                 "name": "Site Contact Email",
                                 "type": "TextBox"
