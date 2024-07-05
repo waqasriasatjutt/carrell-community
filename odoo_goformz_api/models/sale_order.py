@@ -666,13 +666,16 @@ class SaleOrderGF(models.Model):
                 while qty < order_line.product_uom_qty:
                     # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
 
-                    
+                    partner_name = self.partner_id.name if self.partner_id.name else ""
+                    partner_shipping_id_street = self.partner_shipping_id.street if self.partner_shipping_id.street else ""
+                    partner_shipping_id_city = self.partner_shipping_id.city if self.partner_shipping_id.city else ""
+                    partner_shipping_id_state = self.partner_shipping_id.state_id.name if self.partner_shipping_id.state_id.name else ""
                     payload = json.dumps({
-                    "name": f"{self.name} {self.partner_id.name} {self.partner_shipping_id.street} {self.partner_shipping_id.city} {self.partner_shipping_id.state_id.name} {self.date_order} Unit -- {qty+1}",
+                    "name": f"{self.name} {partner_name} {partner_shipping_id_street} {partner_shipping_id_city} {partner_shipping_id_state} {self.date_order} Unit -- {qty+1}",
                     "templateId": self.company_id.template_id,
                             "fields": {
                             "Yard": {
-                            "value": self.warehouse_id.name,
+                            "value": self.warehouse_id.name if self.warehouse_id.name else "",
                             "id": "1d165d7f-2f74-43bf-a352-c908c7799da1",
                             "name": "Yard",
                             "type": "DropDown",
@@ -725,19 +728,19 @@ class SaleOrderGF(models.Model):
                                 "Order Door": {
                                     "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
                                     "name": "Order Door",
-                                    "value": self.door,
+                                    "value": self.door if self.door else "",
                                     "type": "DropDown",
                                     "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
                                 },
                                 "Order Plug": {
                                     "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
                                     "name": "Order Plug",
-                                    "value": self.plug,
+                                    "value": self.plug if self.plug else "",
                                     "type": "DropDown",
                                     "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
                                 },
                                 "Order Number": {
-                                "value": self.name,
+                                "value": self.name if self.name else "",
                                 "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
                                 "name": "Order Number",
                                 "type": "Number"
@@ -748,7 +751,7 @@ class SaleOrderGF(models.Model):
                                 "type": "Text"
                                 },
                             "Delivery Note": {
-                                "value": self.delivery_note ,
+                                "value": self.delivery_note if self.delivery_note else "",
                                 "name": "Delivery Note",
                                 "type": "Text"
                                 },
@@ -760,23 +763,23 @@ class SaleOrderGF(models.Model):
                                 # "type": "AutoNumber"
                                 # },
                                 "Customer Name": {
-                                "value": self.partner_id.name,
+                                "value": self.partner_id.name if self.partner_id.name else "",
                                 "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
                                 "name": "Customer Name",
                                 "type": "Database"
                                 },
                             "Customer Note": {
-                                "value": str(self.customer_note),
+                                "value": str(self.customer_note) if self.customer_note else "",
                                 "name": "Customer Note",
                                 "type": "Text"
                             },
                             "Site Note": {
-                                "value": str(self.site_note),
+                                "value": str(self.site_note) if self.site_note else "",
                                 "name": "Site Note",
                                 "type": "Text"
                             },
                             "Unit Type": {
-                                "value": order_line.product_id.name,
+                                "value": order_line.product_id.name if order_line.product_id.name else "",
                                 "name": "Unit Type",
                                 "type": "Text"
                             },
@@ -797,19 +800,19 @@ class SaleOrderGF(models.Model):
                                 "type": "Date"
                             },
                             "Address 1": {
-                                "text": self.partner_id.street,
+                                "text": self.partner_id.street if self.partner_id.street else "",
                                 "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
                                 "name": "Address 1",
                                 "type": "TextBox"
                             },
                             "City State Zip": {
-                                "text": str(self.partner_id.city) +" "+ str(self.partner_id.state_id.name) +" "+str(self.partner_id.zip) ,
+                                "text": str(partner_shipping_id_city) +" "+ str(partner_shipping_id_state) +" "+str(self.partner_id.zip) if self.partner_id.zip else "" ,
                                 "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
                                 "name": "City State Zip",
                                 "type": "TextBox"
                             },
                             "Contact Name": {
-                                "text": self.partner_id.name,
+                                "text": self.partner_id.name if self.partner_id.name else "",
                                 "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
                                 "name": "Contact Name",
                                 "type": "TextBox"
