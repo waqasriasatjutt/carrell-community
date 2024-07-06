@@ -175,7 +175,7 @@
                             <field name="door" string="Door"/>
                             <field name="plug" string="Plug"/>
                             <field name="quantity_total" string="Total Quantity"/>
-                            <field colspan="2" name="invoice_notes" nolabel="1" placeholder="Invoice Notes..."/>
+                            <field colspan="2" name="invoice_notes" placeholder="Invoice Notes..."/>
 
                         </group>
                     </group>
