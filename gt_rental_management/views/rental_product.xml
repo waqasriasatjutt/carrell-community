@@ -160,6 +160,7 @@
                         </group>
                         <group name="other_details">
                         	 <field name="date_order" string="Order Date"/>
+                             <field name="po_number" />
                         <field  name="goformz_status" string="GOFORMZ Status"/>
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
@@ -174,6 +175,8 @@
                             <field name="door" string="Door"/>
                             <field name="plug" string="Plug"/>
                             <field name="quantity_total" string="Total Quantity"/>
+                            <field colspan="2" name="invoice_notes" nolabel="1" placeholder="Invoice Notes..."/>
+
                         </group>
                     </group>
 			<notebook>
