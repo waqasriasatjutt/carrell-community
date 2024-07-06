@@ -49,6 +49,8 @@ class SaleOrder(models.Model):
     goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Delivery Pending'), ('delivered', 'Delivered'), ('ppending', 'Pickup Pending'), ('picked', 'Picked'), ('complete', 'Complete'), ('billed', 'Billed'), ('canceled', 'Canceled'), ('void', 'Void')], required=True, default='ordered')
     trailer = fields.Integer(string='Trailer')
     weight = fields.Float(string='Weight')
+    invoice_notes = fields.Char("Invoice Notes")
+    po_number = fields.Char("PO Number")
     # driver = fields.Many2one('hr.employee',string='Driver')
 
     
