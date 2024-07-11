@@ -274,6 +274,7 @@
 
 <!--                                     <field name="sequence" widget="handle" /> -->
                                     <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
+                                    <field name="sequence" widget="handle"/>
                                     <field name="display_name" invisible="1"/>
 
                                     <field name="product_updatable" invisible="1"/>
