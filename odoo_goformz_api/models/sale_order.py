@@ -136,6 +136,8 @@ class SaleOrderGF(models.Model):
     
 
 
+    
+
 
     def action_update_from_goformz1(self):
         url = "https://api.goformz.com/v2/formz?name="+self.name
