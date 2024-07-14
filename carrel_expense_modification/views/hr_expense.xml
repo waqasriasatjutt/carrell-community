@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_expense_carrel" model="ir.ui.view">
+            <field name="name">hr.expense.carrel.form</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Adding the template_id field after the street field -->
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="vendor"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
