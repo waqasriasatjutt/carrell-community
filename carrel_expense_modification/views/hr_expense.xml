@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <!-- Adding the template_id field after the street field -->
                 <xpath expr="//field[@name='date']" position="after">
+                    <field name="company_carrel"></field>
                     <field name="expense_code"></field>
                     <field name="vendor"/>
                 </xpath>
