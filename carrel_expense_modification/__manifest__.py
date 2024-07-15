@@ -12,6 +12,7 @@
     'summary': "Carrel Expense Modification",
     'depends' : ['hr_expense', 'hr','stock'],
     'data': [
+        'data/ir_sequence_data.xml',
         'views/hr_expense.xml',
     ],
     'qweb' : [
