@@ -18,8 +18,8 @@
                     <field name="pay_type"></field>
                     <!-- <field name="expense_code"></field> -->
                     <!-- <field name="vendor"/> -->
-                    <field name="order_for_who"></field>
-                    <field name="paid_date"></field>
+                    <field name="order_for_who" string="Order For Who"></field>
+                    <field name="paid_date" string="Paid Date"></field>
                 </xpath>
             </field>
         </record>
