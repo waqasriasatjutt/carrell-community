@@ -22,6 +22,7 @@
                     <!-- <field name="vendor"/> -->
                     <!-- <field name="order_for_who" string="Order For Who"></field>
                     <field name="paid_date" string="Paid Date"></field> -->
+                    <field name="part_type" widget="radio"></field>
                 </xpath>
             </field>
         </record>

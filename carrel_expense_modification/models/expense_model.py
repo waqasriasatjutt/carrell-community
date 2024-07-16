@@ -19,10 +19,21 @@ import re
 _logger = logging.getLogger(__name__)
 
 
+class HrExpenseLine(models.Model):
+    _name = "hr.expense.line"
+
+    
+
+
 
 class HrExpense(models.Model):
     _inherit = "hr.expense"
 
+
+    part_type = fields.Selection([
+        ('inventory', 'Inventory'),
+        ('non_inv', 'Non Inventory')
+    ])
     company_carrel = fields.Selection([
     ('ati', 'ATI'),
     ('cti', 'CTI'),
