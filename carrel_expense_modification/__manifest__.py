@@ -13,7 +13,7 @@
     'depends' : ['hr_expense', 'hr','stock'],
     'data': [
         'data/ir_sequence_data.xml',
-        'data/ir.model.access.csv'
+        'data/ir.model.access.csv',
         'views/hr_expense.xml',
     ],
     'qweb' : [
