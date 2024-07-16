@@ -10,14 +10,20 @@ class HrExpenseLine(models.Model):
     type = fields.Selection(related='product_id.type')
     description = fields.Char(string="Description")
     quantity = fields.Float(string="Quantity", default=1.0)
-    unit_price = fields.Float(string="Unit Price")
-    subtotal = fields.Float(string="Subtotal", compute="_compute_subtotal", store=True)
+    unit_price = fields.Float(string="Cost")
+    subtotal = fields.Float(string="Todatl Cost", compute="_compute_subtotal", store=True)
+    received_by = fields.Many2one('res.users', string="Received By")
+    order_for_who = fields.Many2one('res.users', string="Order For Who")
+
+    warrinity = fields.Boolean("Warrinity")
+    core = fields.Boolean("Core")
+    is_return =  fields.Boolean("Return")
 
     @api.depends('quantity', 'unit_price')
     def _compute_subtotal(self):
         for line in self:
             line.subtotal = line.quantity * line.unit_price
-            
+
     @api.onchange('part_type')
     def _onchange_part_type(self):
         if self.part_type == 'inventory':

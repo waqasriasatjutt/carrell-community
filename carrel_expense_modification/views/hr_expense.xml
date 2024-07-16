@@ -35,6 +35,11 @@
                                     <field name="quantity"/>
                                     <field name="unit_price"/>
                                     <field name="subtotal" readonly="1"/>
+                                    <field name="warrinity"></field>
+                                    <field name="core"></field>
+                                    <field name="is_return"></field>
+                                    <field name="received_by"></field>
+                                    <field name="order_for_who"></field>
                                 </tree>
                             </field>
                         </page>
