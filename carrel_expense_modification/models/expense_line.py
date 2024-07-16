@@ -7,6 +7,7 @@ class HrExpenseLine(models.Model):
     expense_id = fields.Many2one('hr.expense', string="Expense", required=True, ondelete='cascade')
     part_type = fields.Selection(related='expense_id.part_type', string="Part Type", store=True, readonly=True)
     product_id = fields.Many2one('product.product', string="Product", required=True)
+    type = fields.Selection(related='product_id.type')
     description = fields.Char(string="Description")
     quantity = fields.Float(string="Quantity", default=1.0)
     unit_price = fields.Float(string="Unit Price")
