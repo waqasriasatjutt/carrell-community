@@ -20,12 +20,12 @@
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
                 <xpath expr="//field[@name='payment_mode']" position="before">
                     <field name="pay_type"/>
-                    <field name="part_type" widget="radio"/>
                 </xpath>
                 <!-- Adding a notebook with a new tab for expense lines -->
                 <xpath expr="//sheet" position="inside">
                     <notebook>
                         <page string="Expense Lines">
+                            <field name="part_type" widget="radio"/>
                             <field name="expense_line_ids">
                                 <tree editable="bottom">
                                     <field name="type" invisible="1"/>
