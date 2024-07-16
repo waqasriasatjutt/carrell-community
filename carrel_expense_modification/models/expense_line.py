@@ -17,3 +17,10 @@ class HrExpenseLine(models.Model):
     def _compute_subtotal(self):
         for line in self:
             line.subtotal = line.quantity * line.unit_price
+            
+    @api.onchange('part_type')
+    def _onchange_part_type(self):
+        if self.part_type == 'inventory':
+            return {'domain': {'product_id': [('type', '=', 'product')]}}
+        elif self.part_type == 'non_inv':
+            return {'domain': {'product_id': [('type', '=', 'service')]}}
