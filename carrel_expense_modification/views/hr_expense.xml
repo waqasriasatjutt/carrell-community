@@ -11,6 +11,15 @@
                     <field name="company_carrel"></field>
                     <field name="expense_code"></field>
                     <field name="vendor"/>
+                    <field name="received_status"></field>
+                    <field name="received_by"></field>
+                </xpath>
+                <xpath expr="//field[@name='payment_mode']" position="before">
+                    <field name="pay_type"></field>
+                    <field name="expense_code"></field>
+                    <!-- <field name="vendor"/> -->
+                    <field name="order_for_who"></field>
+                    <field name="paid_date"></field>
                 </xpath>
             </field>
         </record>
