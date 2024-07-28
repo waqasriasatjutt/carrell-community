@@ -872,7 +872,7 @@ class SaleOrderGF(models.Model):
                                     "name": "Site",
                                     "type": "Database"
                                 },
-                                "Del Number ": {
+                                "Del Number": {
                                     "text": "DEL-"+str(self.id)+"-"+str(qty+1),
                                     "name": "Del Number ",
                                     "type": "TextBox"
