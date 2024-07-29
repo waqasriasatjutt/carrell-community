@@ -624,8 +624,6 @@ class SaleOrderGF(models.Model):
                 "truck": 0,
                 "other": 0,
             }
-            all_del_numbers = ""
-            del_number_list = []
             match = re.match(r'RENTAL(\d+)', self.name)
             if match:
                 order_number = match.group(1)
@@ -642,8 +640,7 @@ class SaleOrderGF(models.Model):
                     quantities[product_key] += order_line.product_uom_qty
                 qty = qty + order_line.product_uom_qty
 
-            if del_number_list:
-                all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
+            all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
 
             # Now 'quantities' dictionary contains the updated quantities for each product
             # Access the quantities like this:
