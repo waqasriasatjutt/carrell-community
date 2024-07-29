@@ -638,6 +638,8 @@ class SaleOrderGF(models.Model):
                 if product_name in name_mapping:
                     product_key = name_mapping[product_name]
                     quantities[product_key] += order_line.product_uom_qty
+                for q in order_line.product_uom_qty:
+
                 qty = qty + order_line.product_uom_qty
 
             all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
@@ -656,7 +658,7 @@ class SaleOrderGF(models.Model):
             other_quantity = quantities["other"]
 
     # Use these quantities as needed in your code
-
+            qty_form_number = 1
             for order_line in self.order_line:
                 if order_line.product_id.detailed_type == 'product':
 
@@ -883,7 +885,7 @@ class SaleOrderGF(models.Model):
                                     "type": "Database"
                                 },
                                 "Del Number": {
-                                    "text": "DEL-"+str(order_number)+"-"+str(qty+1),
+                                    "text": "DEL-"+str(order_number)+"-"+str(qty_form_number),
                                     "name": "Del Number",
                                     "type": "TextBox"
                                 },
@@ -956,6 +958,7 @@ class SaleOrderGF(models.Model):
                         'Authorization': f'Basic {encoded_credentials}'
                         }
                         qty = qty + 1
+                        qty_form_number = qty_form_number + 1
                         response = requests.request("POST", url, headers=headers, data=payload)
                         logging.info('response.text-------------------------------')
                         logging.info(response.text)
