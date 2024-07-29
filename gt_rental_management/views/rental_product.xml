@@ -181,6 +181,8 @@
                     </group>
 			<notebook>
                         <page string="Order Lines" name="order_lines">
+                            <field name="part_type" widget="radio"/>
+
 				<field
                                 name="order_line"
                                 widget="section_and_note_one2many"

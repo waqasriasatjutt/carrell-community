@@ -45,6 +45,10 @@ class ProductTemplate(models.Model):
 class SaleOrder(models.Model):
     _inherit = "sale.order"
     
+    part_type = fields.Selection([
+        ('inventory', 'Inventory'),
+        ('non_inv', 'Non Inventory')
+    ], string="Part Type", default="inventory")
 
     goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Delivery Pending'), ('delivered', 'Delivered'), ('ppending', 'Pickup Pending'), ('picked', 'Picked'), ('complete', 'Complete'), ('billed', 'Billed'), ('canceled', 'Canceled'), ('void', 'Void')], required=True, default='ordered')
     trailer = fields.Integer(string='Trailer')
@@ -432,10 +436,18 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     
+    part_type = fields.Selection(related='order_id.part_type', string="Part Type", store=True, readonly=True)
     serial_no = fields.Char('Serial Number')
     rental_wizard_id = fields.Many2one('rental.wizard', string='Rental Wizard')
     monthly_rent = fields.Float('Monthly Rent', default=0.0)
     replace = fields.Boolean('Replace')
+
+    @api.onchange('part_type')
+    def _onchange_part_type(self):
+        if self.part_type == 'inventory':
+            return {'domain': {'product_id': [('type', '=', 'product')]}}
+        elif self.part_type == 'non_inv':
+            return {'domain': {'product_id': [('type', '=', 'service')]}}
 
     @api.model_create_multi
     def create(self, vals_list):
