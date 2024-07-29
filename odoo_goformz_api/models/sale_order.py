@@ -624,14 +624,25 @@ class SaleOrderGF(models.Model):
                 "truck": 0,
                 "other": 0,
             }
+            all_del_numbers = ""
+            del_number_list = []
+            match = re.match(r'RENTAL(\d+)', self.name)
+            if match:
+                order_number = match.group(1)
 
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
+                qty = 0
+                del_number = f"{order_number}-{str(qty+1)}"
+                del_number_list.append(del_number)
                 product_name = order_line.product_id.name
                 type_unit = type_unit + product_name + ", "
                 if product_name in name_mapping:
                     product_key = name_mapping[product_name]
                     quantities[product_key] += order_line.product_uom_qty
+                qty = qty + 1
+
+            all_del_number = ", ".join(del_number_list)
 
             # Now 'quantities' dictionary contains the updated quantities for each product
             # Access the quantities like this:
@@ -665,6 +676,7 @@ class SaleOrderGF(models.Model):
                         print(extracted_number)
                     else:
                         print("No sequence number found.")
+
 
                     while qty < order_line.product_uom_qty:
                         # pickings = self.env['stock.picking'].sudo().search([('sale_id','=', rec.id)])
@@ -873,8 +885,13 @@ class SaleOrderGF(models.Model):
                                     "type": "Database"
                                 },
                                 "Del Number": {
-                                    "text": "DEL-"+str(self.id)+"-"+str(qty+1),
-                                    "name": "Del Number ",
+                                    "text": "DEL-"+str(order_number)+"-"+str(qty+1),
+                                    "name": "Del Number",
+                                    "type": "TextBox"
+                                },
+                                "Del All": {
+                                    "text": all_del_number,
+                                    "name": "Del All",
                                     "type": "TextBox"
                                 },
 
