@@ -638,7 +638,6 @@ class SaleOrderGF(models.Model):
                 if product_name in name_mapping:
                     product_key = name_mapping[product_name]
                     quantities[product_key] += order_line.product_uom_qty
-                for q in order_line.product_uom_qty:
 
                 qty = qty + order_line.product_uom_qty
 
