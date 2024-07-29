@@ -640,7 +640,7 @@ class SaleOrderGF(models.Model):
                     quantities[product_key] += order_line.product_uom_qty
 
                 qty = qty + order_line.product_uom_qty
-
+            qty = int(qty)
             all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
 
             # Now 'quantities' dictionary contains the updated quantities for each product
