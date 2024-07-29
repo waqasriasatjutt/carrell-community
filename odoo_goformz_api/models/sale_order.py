@@ -633,17 +633,17 @@ class SaleOrderGF(models.Model):
             qty = 0
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
-                del_number = f"DEL{order_number}-{str(qty+1)}"
-                del_number_list.append(del_number)
+                del_number = f"DEL{order_number}"
+                # del_number_list.append(del_number)
                 product_name = order_line.product_id.name
                 type_unit = type_unit + product_name + ", "
                 if product_name in name_mapping:
                     product_key = name_mapping[product_name]
                     quantities[product_key] += order_line.product_uom_qty
-                qty = qty + 1
+                qty = qty + order_line.product_uom_qty
 
             if del_number_list:
-                all_del_number = f"{del_number_list[0]} TO {del_number_list[-1]}"
+                all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
 
             # Now 'quantities' dictionary contains the updated quantities for each product
             # Access the quantities like this:
@@ -659,7 +659,6 @@ class SaleOrderGF(models.Model):
             other_quantity = quantities["other"]
 
     # Use these quantities as needed in your code
-            qty = 0
 
             for order_line in self.order_line:
                 if order_line.product_id.detailed_type == 'product':
@@ -669,6 +668,7 @@ class SaleOrderGF(models.Model):
                     if quant:
                         warehouse = str(quant.location_id.name)
                     form_ids = []
+                    qty = 0
                     input_string = self.name
                     result = re.search(r'\d+', input_string)
                     extracted_number = ""
