@@ -633,7 +633,7 @@ class SaleOrderGF(models.Model):
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
                 qty = 0
-                del_number = f"{order_number}-{str(qty+1)}"
+                del_number = f"DEL{order_number}-{str(qty+1)}"
                 del_number_list.append(del_number)
                 product_name = order_line.product_id.name
                 type_unit = type_unit + product_name + ", "
@@ -642,7 +642,8 @@ class SaleOrderGF(models.Model):
                     quantities[product_key] += order_line.product_uom_qty
                 qty = qty + 1
 
-            all_del_number = ", ".join(del_number_list)
+            if del_number_list:
+                all_del_number = f"{del_number_list[0]} TO {del_number_list[-1]}"
 
             # Now 'quantities' dictionary contains the updated quantities for each product
             # Access the quantities like this:
