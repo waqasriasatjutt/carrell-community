@@ -630,9 +630,9 @@ class SaleOrderGF(models.Model):
             if match:
                 order_number = match.group(1)
 
+            qty = 0
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
-                qty = 0
                 del_number = f"DEL{order_number}-{str(qty+1)}"
                 del_number_list.append(del_number)
                 product_name = order_line.product_id.name
@@ -659,6 +659,7 @@ class SaleOrderGF(models.Model):
             other_quantity = quantities["other"]
 
     # Use these quantities as needed in your code
+            qty = 0
 
             for order_line in self.order_line:
                 if order_line.product_id.detailed_type == 'product':
@@ -667,7 +668,6 @@ class SaleOrderGF(models.Model):
                     quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
                     if quant:
                         warehouse = str(quant.location_id.name)
-                    qty = 0
                     form_ids = []
                     input_string = self.name
                     result = re.search(r'\d+', input_string)
