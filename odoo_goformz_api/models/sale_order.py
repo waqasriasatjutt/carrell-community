@@ -655,6 +655,47 @@ class SaleOrderGF(models.Model):
             generator_quantity = quantities["generator"]
             truck_quantity = quantities["truck"]
             other_quantity = quantities["other"]
+            
+            
+            container_dry_flag = ""
+            trailer_flag = ""
+            reefer_electric_flag = ""
+            reefer_diesel_flag = ""
+            reefer_container_flag = ""
+            office_flag = ""
+            mudlab_flag = ""
+            generator_flag = ""
+            truck_flag = ""
+            other_flag = ""
+            if name_mapping[product_name] == "Container Dry":
+                container_dry_flag = 1
+            if name_mapping[product_name] == "Trailer":
+                trailer_flag = 1
+            if name_mapping[product_name] == "Reefer Diesel":
+                reefer_diesel_flag = 1
+            if name_mapping[product_name] == "Reefer Electric":
+                reefer_electric_flag = 1
+            if name_mapping[product_name] == "Reefer Container":
+                reefer_container_flag = 1
+            if name_mapping[product_name] == "Office":
+                office_flag = 1
+            if name_mapping[product_name] == "Mud Lab":
+                mudlab_flag = 1
+            if name_mapping[product_name] == "Generator":
+                generator_flag = 1
+            if name_mapping[product_name] == "Truck":
+                truck_flag = 1
+            if name_mapping[product_name] == "Other":
+                other_flag = 1
+            trailer_quantity = quantities["trailer"]
+            reefer_diesel_quantity = quantities["reefer_diesel"]
+            reefer_electric_quantity = quantities["reefer_electric"]
+            container_quantity = quantities["container"]
+            office_quantity = quantities["office"]
+            mudlab_quantity = quantities["mudlab"]
+            generator_quantity = quantities["generator"]
+            truck_quantity = quantities["truck"]
+            other_quantity = quantities["other"]
 
     # Use these quantities as needed in your code
             qty_form_number = 1
@@ -696,47 +737,47 @@ class SaleOrderGF(models.Model):
                                 },
                                     "Or Qty Dry Con": {
                                     "name": "Or Qty Dry Con",
-                                    "value": container_dry_quantity,
+                                    "value": container_dry_flag,
                                     "type": "Number"
                                     },
                                     " Or Qty Dry Tr": {
                                     "name": " Or Qty Dry Tr",
-                                    "value": trailer_quantity,
+                                    "value": trailer_flag,
                                     "type": "Number"
                                     },
                                     "Or Qty Ref Dis": {
                                     "name": "Or Qty Ref Dis",
-                                    "value": reefer_diesel_quantity,
+                                    "value": reefer_diesel_flag,
                                     "type": "Number"
                                     },
                                     "Or Qty Ref Elc Tra": {
                                     "name": "Or Qty Ref Elc Tra",
-                                    "value": reefer_electric_quantity,
+                                    "value": reefer_electric_flag,
                                     "type": "Number"
                                     },
                                     "Or Qty Ref Con": {
                                     "name": "Or Qty Ref Con",
-                                    "value": container_quantity,
+                                    "value": reefer_container_flag,
                                     "type": "Number"
                                     },
                                     "Or Qty Gen": {
                                     "name": "Or Qty Gen",
-                                    "value": generator_quantity,
+                                    "value": generator_flag,
                                     "type": "Number"
                                     },
                                     "Or  Qty Mud Lab": {
                                     "name": "Or  Qty Mud Lab",
-                                    "value": mudlab_quantity,
+                                    "value": mudlab_flag,
                                     "type": "Number"
                                     },
                                     "Or Qty Office": {
                                     "name": "Or Qty Office",
-                                    "value": office_quantity,
+                                    "value": office_flag,
                                     "type": "Number"
                                     },
                                     "Other": {
                                     "name": "Other",
-                                    "value": other_quantity,
+                                    "value": other_flag,
                                     "type": "Number"
                                     },
                                     "Order Door": {
