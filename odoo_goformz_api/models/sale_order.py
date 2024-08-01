@@ -657,36 +657,6 @@ class SaleOrderGF(models.Model):
             other_quantity = quantities["other"]
             
             
-            container_dry_flag = ""
-            trailer_flag = ""
-            reefer_electric_flag = ""
-            reefer_diesel_flag = ""
-            reefer_container_flag = ""
-            office_flag = ""
-            mudlab_flag = ""
-            generator_flag = ""
-            truck_flag = ""
-            other_flag = ""
-            if name_mapping[product_name] == "Container Dry":
-                container_dry_flag = 1
-            if name_mapping[product_name] == "Trailer":
-                trailer_flag = 1
-            if name_mapping[product_name] == "Reefer Diesel":
-                reefer_diesel_flag = 1
-            if name_mapping[product_name] == "Reefer Electric":
-                reefer_electric_flag = 1
-            if name_mapping[product_name] == "Reefer Container":
-                reefer_container_flag = 1
-            if name_mapping[product_name] == "Office":
-                office_flag = 1
-            if name_mapping[product_name] == "Mud Lab":
-                mudlab_flag = 1
-            if name_mapping[product_name] == "Generator":
-                generator_flag = 1
-            if name_mapping[product_name] == "Truck":
-                truck_flag = 1
-            if name_mapping[product_name] == "Other":
-                other_flag = 1
             trailer_quantity = quantities["trailer"]
             reefer_diesel_quantity = quantities["reefer_diesel"]
             reefer_electric_quantity = quantities["reefer_electric"]
@@ -701,6 +671,37 @@ class SaleOrderGF(models.Model):
             qty_form_number = 1
             for order_line in self.order_line:
                 if order_line.product_id.detailed_type == 'product':
+                    container_dry_flag = ""
+                    trailer_flag = ""
+                    reefer_electric_flag = ""
+                    reefer_diesel_flag = ""
+                    reefer_container_flag = ""
+                    office_flag = ""
+                    mudlab_flag = ""
+                    generator_flag = ""
+                    truck_flag = ""
+                    other_flag = ""
+                    if order_line.product_id.name == "Container Dry":
+                        container_dry_flag = 1
+                    if order_line.product_id.name == "Trailer":
+                        trailer_flag = 1
+                    if order_line.product_id.name == "Reefer Diesel":
+                        reefer_diesel_flag = 1
+                    if order_line.product_id.name == "Reefer Electric":
+                        reefer_electric_flag = 1
+                    if order_line.product_id.name == "Reefer Container":
+                        reefer_container_flag = 1
+                    if order_line.product_id.name == "Office":
+                        office_flag = 1
+                    if order_line.product_id.name == "Mud Lab":
+                        mudlab_flag = 1
+                    if order_line.product_id.name == "Generator":
+                        generator_flag = 1
+                    if order_line.product_id.name == "Truck":
+                        truck_flag = 1
+                    if order_line.product_id.name == "Other":
+                        other_flag = 1
+
 
                     warehouse = "Not Assigned"
                     quant = self.env['stock.quant'].sudo().search([('product_id','=', order_line.product_id.id)], limit=1)
