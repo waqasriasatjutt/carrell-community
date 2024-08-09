@@ -180,7 +180,7 @@
                         </group>
                     </group>
                 <group>
-                    <field name="order_line_sequence" widget="text" readonly="1"/>
+                    <!-- <field name="order_line_sequence" widget="text" readonly="1"/> -->
                 </group>
 			<notebook>
                         <page string="Order Lines" name="order_lines">
