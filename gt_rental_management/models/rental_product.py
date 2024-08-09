@@ -62,6 +62,23 @@ class SaleOrder(models.Model):
     #@api.multi
 
     order_line_sequence = fields.Text(string="Order Line Sequence", compute="_compute_order_line_sequence")
+    order_line_quantities = fields.Text(string="Order Line Quantities", compute="_compute_order_line_quantities")
+
+
+    @api.depends('order_line')
+    def _compute_order_line_quantities(self):
+        for order in self:
+            quantities = []
+            product_quantities = {}
+            for line in order.order_line:
+                if line.product_id.detailed_type == 'product':
+                    product_name = line.product_id.name
+                    product_quantities[product_name] = product_quantities.get(product_name, 0) + line.product_uom_qty
+            
+            for product, qty in product_quantities.items():
+                quantities.append(f"{int(qty)} {product}")
+            
+            order.order_line_quantities = "\n".join(quantities)
 
     @api.depends('order_line')
     def _compute_order_line_sequence(self):
