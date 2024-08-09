@@ -70,9 +70,10 @@ class SaleOrder(models.Model):
             base_sequence = order.name.replace('RENTAL', '')  # Assuming 'SO' is the prefix in order name
             sequence_number = 1
             for line in order.order_line:
-                line_name = f"{base_sequence}-{sequence_number:02d} {line.product_id.name}"
-                sequences.append(line_name)
-                sequence_number += 1
+                if line.product_id.detailed_type == 'product':
+                    line_name = f"{base_sequence}-{sequence_number:02d} {line.product_id.name}"
+                    sequences.append(line_name)
+                    sequence_number += 1
             order.order_line_sequence = "\n".join(sequences)
 
     def _compute_del_numbers(self):
