@@ -179,10 +179,10 @@
                             <field colspan="2" name="invoice_notes" placeholder="Invoice Notes..."/>
 
                         </group>
-                    </group>
                 <group>
                     <field name="order_line_sequence" widget="text" readonly="1"/>
                 </group>
+                    </group>
 			<notebook>
                         <page string="Order Lines" name="order_lines">
                             <field name="part_type" widget="radio"/>
