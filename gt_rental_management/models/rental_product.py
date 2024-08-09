@@ -78,6 +78,7 @@ class SaleOrder(models.Model):
     def _compute_del_numbers(self):
         for rec in self:
             qty = 0
+            order_number = ""
             match = re.match(r'RENTAL(\d+)', rec.name)
             if match:
                 order_number = match.group(1)
