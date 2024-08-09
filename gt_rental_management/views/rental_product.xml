@@ -161,6 +161,7 @@
                         <group name="other_details">
                         	 <field name="date_order" string="Order Date"/>
                              <field name="po_number" />
+                             <field name="del_numbers"/>
                         <field  name="goformz_status" string="GOFORMZ Status"/>
 <!--                            <field name="confirmation_date" attrs="{'invisible': [('state_new', 'in', ['draft', 'sent', 'cancel'])]}"/>-->
                             <field name="pricelist_id" groups="product.group_sale_pricelist"/>
@@ -180,7 +181,7 @@
                         </group>
                     </group>
                 <group>
-                    <!-- <field name="order_line_sequence" widget="text" readonly="1"/> -->
+                    <field name="order_line_sequence" widget="text" readonly="1"/>
                 </group>
 			<notebook>
                         <page string="Order Lines" name="order_lines">
