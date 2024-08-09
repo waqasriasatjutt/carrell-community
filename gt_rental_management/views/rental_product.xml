@@ -153,7 +153,7 @@
                             <field name="partner_shipping_id_phone"/>
                             <field name="customer_id" />
                             <field name="start_date" required="1"/>
-                            <field name="end_date" required="1"/>
+                            <field name="end_date" string="Pu Date" required="1"/>
                             <field name="initial_term"/>
                             <field name="payment_term_id" options="{'no_create': True}" string="Rental bill freq"/>
                             <field name="purchase_price"/>
@@ -179,6 +179,9 @@
 
                         </group>
                     </group>
+                <group>
+                    <field name="order_line_sequence" widget="text" readonly="1"/>
+                </group>
 			<notebook>
                         <page string="Order Lines" name="order_lines">
                             <field name="part_type" widget="radio"/>

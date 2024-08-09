@@ -23,6 +23,7 @@ from datetime import date
 from functools import partial
 from itertools import groupby
 from odoo.fields import Command
+import re
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
@@ -59,6 +60,23 @@ class SaleOrder(models.Model):
 
     
     #@api.multi
+
+    def _compute_del_numbers(self):
+        for rec in self:
+            qty = 0
+            match = re.match(r'RENTAL(\d+)', rec.name)
+            if match:
+                order_number = match.group(1)
+            # Loop through order lines and update quantities based on product names
+            for order_line in rec.order_line:
+                del_number = f"DEL{self.order_number}"
+                # del_number_list.append(del_number)
+
+                qty = qty + order_line.product_uom_qty
+            qty = int(qty)
+            all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
+            rec.del_numbers = all_del_number
+
     def _compute_state_new(self):
         for rec in self:
             rec.state_new = rec.state 
@@ -127,6 +145,7 @@ class SaleOrder(models.Model):
     agreement_received = fields.Boolean('Agreement Received?')
     initial_term = fields.Integer('Initial Terms (Months)')
     purchase_price = fields.Float('Purchase Price')
+    del_numbers = fields.Char("Del Numbers", compute='_compute_del_numbers', store= False)
     # l10n_in_journal_id = fields.Many2one('account.journal', string="Journal", store=True, readonly=True)
 
     state_new = fields.Selection([
