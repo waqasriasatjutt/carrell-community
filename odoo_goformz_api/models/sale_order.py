@@ -829,6 +829,11 @@ class SaleOrderGF(models.Model):
                                     "name": "Customer Note",
                                     "type": "Text"
                                 },
+                                "PO Number": {
+                                    "value": str(self.po_number) if self.po_number else "",
+                                    "name": "PO Number",
+                                    "type": "Text"
+                                },
                                 "Site Note": {
                                     "value": str(self.site_note) if self.site_note else "",
                                     "name": "Site Note",

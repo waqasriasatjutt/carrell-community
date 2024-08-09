@@ -175,7 +175,7 @@ class SaleOrder(models.Model):
     delivery_note = fields.Char('Delivery Note')
     site_note = fields.Char('Site Note')
     start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
-    end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
+    end_date = fields.Date(string='Pu Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     agreement_received = fields.Boolean('Agreement Received?')
     initial_term = fields.Integer('Initial Terms (Months)')
     purchase_price = fields.Float('Purchase Price')
