@@ -935,11 +935,11 @@ class SaleOrderGF(models.Model):
                                     "name": "Del Number",
                                     "type": "TextBox"
                                 },
-                                # "Del Numbers": {
-                                #     "text": "DEL-"+str(order_number)+"-"+str(qty_form_number),
-                                #     "name": "Del Numbers",
-                                #     "type": "TextBox"
-                                # },
+                                "Del Numbers": {
+                                    "text": "DEL-"+str(order_number)+"-"+str(qty_form_number),
+                                    "name": "Del Numbers",
+                                    "type": "TextBox"
+                                },
                                 "Del All": {
                                     "text": all_del_number,
                                     "name": "Del All",
