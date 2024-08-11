@@ -936,7 +936,7 @@ class SaleOrderGF(models.Model):
                                     "type": "TextBox"
                                 },
                                 "Del numbers": {
-                                    "text": "DEL-"+str(order_number)+"-"+str(qty_form_number),
+                                    "text": all_del_number,
                                     "name": "Del numbers",
                                     "type": "TextBox"
                                 },
