@@ -941,9 +941,9 @@ class SaleOrderGF(models.Model):
                                     "name": "Del numbers",
                                     "type": "TextBox"
                                 },
-                                "Unit Types": {
+                                "Unit Types del ": {
                                     "text": self.order_line_quantities,
-                                    "name": "Unit Types",
+                                    "name": "Unit Types del ",
                                     "type": "TextBox"
                                 },
                                 "Del All": {
