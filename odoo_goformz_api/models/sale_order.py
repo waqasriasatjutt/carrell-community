@@ -898,7 +898,7 @@ class SaleOrderGF(models.Model):
                                     "type": "TextBox"
                                 },
                                 "Order Type": {
-                                    "value": type_unit if type_unit else "",
+                                    "value": order_line.product_id.name if order_line.product_id.name else "",
                                     "name": "Order Type",
                                     "type": "DropDown",
                                 },
