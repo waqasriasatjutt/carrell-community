@@ -103,10 +103,11 @@ class SaleOrder(models.Model):
                 order_number = match.group(1)
             # Loop through order lines and update quantities based on product names
             for order_line in rec.order_line:
-                del_number = f"DEL{order_number}"
-                # del_number_list.append(del_number)
+                if order_line.product_id.detailed_type == 'product':
+                    del_number = f"DEL{order_number}"
+                    # del_number_list.append(del_number)
 
-                qty = qty + order_line.product_uom_qty
+                    qty = qty + order_line.product_uom_qty
             qty = int(qty)
             all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
             rec.del_numbers = all_del_number
