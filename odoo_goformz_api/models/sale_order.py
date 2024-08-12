@@ -727,8 +727,9 @@ class SaleOrderGF(models.Model):
                         partner_shipping_id_street = self.partner_shipping_id.street if self.partner_shipping_id.street else ""
                         partner_shipping_id_city = self.partner_shipping_id.city if self.partner_shipping_id.city else ""
                         partner_shipping_id_state = self.partner_shipping_id.state_id.name if self.partner_shipping_id.state_id.name else ""
+                        partner_shipping_id_zip = self.partner_shipping_id.zip if self.partner_shipping_id.zip else ""
                         payload = json.dumps({
-                        "name": f"{self.name} {partner_name} {partner_shipping_id_street} {partner_shipping_id_city} {partner_shipping_id_state} {self.date_order} Unit -- {qty+1}",
+                        "name": f"DEL{str(order_number)}-{str(qty_form_number)}  {self.name}  {partner_name}  {partner_shipping_id_street}  {partner_shipping_id_city}  {partner_shipping_id_state}  {partner_shipping_id_zip}  {str(self.goformz_status)}  {self.date_order}",
                         "templateId": self.company_id.template_id,
                                 "fields": {
                                 "Yard": {
@@ -737,6 +738,11 @@ class SaleOrderGF(models.Model):
                                 "name": "Yard",
                                 "type": "DropDown",
                                 },
+                                    "Status": {
+                                    "name": "Status",
+                                    "value": str(self.goformz_status),
+                                    "type": "DropDown"
+                                    },
                                     "Or Qty Dry Con": {
                                     "name": "Or Qty Dry Con",
                                     "value": container_dry_flag,
