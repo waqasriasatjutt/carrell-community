@@ -631,15 +631,16 @@ class SaleOrderGF(models.Model):
             qty = 0
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
-                del_number = f"DEL{order_number}"
-                # del_number_list.append(del_number)
-                product_name = order_line.product_id.name
-                type_unit = type_unit + product_name + ", "
-                if product_name in name_mapping:
-                    product_key = name_mapping[product_name]
-                    quantities[product_key] += order_line.product_uom_qty
+                if order_line.product_id.detailed_type == 'product':
+                    del_number = f"DEL{order_number}"
+                    # del_number_list.append(del_number)
+                    product_name = order_line.product_id.name
+                    type_unit = type_unit + product_name + ", "
+                    if product_name in name_mapping:
+                        product_key = name_mapping[product_name]
+                        quantities[product_key] += order_line.product_uom_qty
 
-                qty = qty + order_line.product_uom_qty
+                    qty = qty + order_line.product_uom_qty
             qty = int(qty)
             all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
 
@@ -938,6 +939,11 @@ class SaleOrderGF(models.Model):
                                 "Del numbers": {
                                     "text": all_del_number,
                                     "name": "Del numbers",
+                                    "type": "TextBox"
+                                },
+                                "Unit Types": {
+                                    "text": self.order_line_quantities,
+                                    "name": "Unit Types",
                                     "type": "TextBox"
                                 },
                                 "Del All": {
