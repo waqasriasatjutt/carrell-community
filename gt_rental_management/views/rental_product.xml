@@ -132,6 +132,8 @@
                         <h1>
                         	<label for="name" string="Rental Agreement"/>
                             <field name="name" readonly="0"/>
+                        	<label for="goformz_order_number" string="Manual Order Number"/>
+                            <field name="goformz_order_number" />
                         </h1>
                     </div>
 		<group name="sale_header">
