@@ -163,6 +163,8 @@ class SaleOrder(models.Model):
         ('other', 'Other'),
     ], string='Address Type', default='invoice')
 
+    goformz_order_number = fields.Char("Manual Order Number")
+
     address_type_delivery = fields.Selection([
         ('contact', 'Contact'),
         ('invoice', 'Bill To'),
