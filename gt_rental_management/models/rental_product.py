@@ -163,7 +163,7 @@ class SaleOrder(models.Model):
         ('other', 'Other'),
     ], string='Address Type', default='invoice')
 
-    manual_order_number = fields.Char("SET TO AUTO")
+    manual_order_number = fields.Char(default="SET TO AUTO")
 
     address_type_delivery = fields.Selection([
         ('contact', 'Contact'),

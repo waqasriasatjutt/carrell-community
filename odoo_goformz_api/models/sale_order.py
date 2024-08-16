@@ -629,6 +629,8 @@ class SaleOrderGF(models.Model):
                 order_number = match.group(1)
 
             qty = 0
+            if self.manual_order_number != 'SET TO AUTO':
+                order_number = self.manual_order_number
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
                 if order_line.product_id.detailed_type == 'product':
