@@ -101,16 +101,28 @@ class SaleOrder(models.Model):
             match = re.match(r'RENTAL(\d+)', rec.name)
             if match:
                 order_number = match.group(1)
-            # Loop through order lines and update quantities based on product names
-            for order_line in rec.order_line:
-                if order_line.product_id.detailed_type == 'product':
-                    del_number = f"DEL{order_number}"
-                    # del_number_list.append(del_number)
+                for order_line in rec.order_line:
+                    if order_line.product_id.detailed_type == 'product':
+                        del_number = f"DEL{order_number}"
+                        # del_number_list.append(del_number)
 
-                    qty = qty + order_line.product_uom_qty
-            qty = int(qty)
-            all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
-            rec.del_numbers = all_del_number
+                        qty = qty + order_line.product_uom_qty
+                qty = int(qty)
+                all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
+                rec.del_numbers = all_del_number
+
+            else:
+                order_number = ""
+            # Loop through order lines and update quantities based on product names
+            # for order_line in rec.order_line:
+            #     if order_line.product_id.detailed_type == 'product':
+            #         del_number = f"DEL{order_number}"
+            #         # del_number_list.append(del_number)
+
+            #         qty = qty + order_line.product_uom_qty
+            # qty = int(qty)
+            # all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
+            # rec.del_numbers = all_del_number
 
     def _compute_state_new(self):
         for rec in self:
