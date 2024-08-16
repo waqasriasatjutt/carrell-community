@@ -99,6 +99,7 @@ class SaleOrder(models.Model):
             qty = 0
             order_number = ""
             match = re.match(r'RENTAL(\d+)', rec.name)
+            del_number = None
             if match:
                 order_number = match.group(1)
                 for order_line in rec.order_line:
