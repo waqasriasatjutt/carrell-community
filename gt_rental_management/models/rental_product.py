@@ -163,7 +163,7 @@ class SaleOrder(models.Model):
         ('other', 'Other'),
     ], string='Address Type', default='invoice')
 
-    goformz_order_number = fields.Char("Manual Order Number" default="RENTAL")
+    manual_order_number = fields.Char("SET TO AUTO")
 
     address_type_delivery = fields.Selection([
         ('contact', 'Contact'),
