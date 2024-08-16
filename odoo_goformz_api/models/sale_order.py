@@ -630,6 +630,7 @@ class SaleOrderGF(models.Model):
 
             qty = 0
             if self.manual_order_number != 'SET TO AUTO':
+                self.name = 'RENTAL' + self.manual_order_number
                 order_number = self.manual_order_number
             # Loop through order lines and update quantities based on product names
             for order_line in self.order_line:
