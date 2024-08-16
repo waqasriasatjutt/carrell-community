@@ -108,8 +108,11 @@ class SaleOrder(models.Model):
 
                         qty = qty + order_line.product_uom_qty
                 qty = int(qty)
-                all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
-                rec.del_numbers = all_del_number
+                if del_number:
+                    all_del_number = f"{del_number}-1 TO {del_number}-{qty}"
+                    rec.del_numbers = all_del_number
+                else:
+                    rec.del_numbers = ""
 
             else:
                 order_number = ""
