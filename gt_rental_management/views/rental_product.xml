@@ -156,6 +156,7 @@
                             <field name="partner_shipping_id_email"/>
                             <field name="partner_shipping_id_phone"/>
                             <field name="customer_id" />
+                            <field name="min_rental_period" />
                             <field name="start_date" required="1"/>
                             <field name="end_date" string="Pu Date" required="1"/>
                             <field name="initial_term"/>

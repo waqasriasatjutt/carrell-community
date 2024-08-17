@@ -190,6 +190,7 @@ class SaleOrder(models.Model):
     ], string='Address Type', default='delivery')
     sage_inv = fields.Char("Sage Invoice Number")
     bill_amount = fields.Float("Bill")
+    min_rental_period = fields.Integer("Minimum Rental Period (MONTH)")
     date_paid = fields.Date(string='Date Paid', copy=False)
     miles = fields.Float(string='Miles')
     fuel = fields.Float(string='Fuel')
