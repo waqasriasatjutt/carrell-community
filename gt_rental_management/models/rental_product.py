@@ -188,6 +188,18 @@ class SaleOrder(models.Model):
         ('private', 'Private'),
         ('other', 'Other'),
     ], string='Address Type', default='delivery')
+    sage_inv = fields.Char("Sage Invoice Number")
+    bill_amount = fields.Float("Bill")
+    date_paid = fields.Date(string='Date Paid', copy=False)
+    miles = fields.Float(string='Miles')
+    fuel = fields.Float(string='Fuel')
+    driver_pay = fields.Float(string='Driver Pay')
+    expenses = fields.Float(string='Expenses')
+    net = fields.Float(string='Net')
+    fuel_cost = fields.Float(string='Fuel Cost')
+    fuel_surcharge = fields.Float(string='Fuel Surcharge')
+    fuel_sc_amount = fields.Float(string='Fuel SC Amount')
+
     customer_id = fields.Char(related='partner_id.customer_id')
     quantity_total = fields.Integer('Total Delivery', compute='_compute_all_delivery', store=False)            
     customer_note = fields.Char('Customer Note')

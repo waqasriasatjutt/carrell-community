@@ -181,6 +181,18 @@
                             <field name="plug" string="Plug"/>
                             <field name="quantity_total" string="Total Quantity"/>
                             <field colspan="2" name="invoice_notes" placeholder="Invoice Notes..."/>
+                            <field name="date_paid" />
+                            <field name="miles" />
+                            <field name="fuel" />
+                            <field name="driver_pay" />
+                            <field name="expenses" />
+                            <field name="net" />
+                            <field name="fuel_cost" />
+                            <field name="fuel_surcharge"/>
+                            <field name="fuel_sc_amount"/>
+                            <field name="sage_inv" />
+
+
 
                         </group>
                 <group>
