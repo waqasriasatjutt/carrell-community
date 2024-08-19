@@ -138,6 +138,23 @@
                             <field name="manual_order_number" />
                         </h1>
                     </div>
+
+                    <group>
+                            <group>
+                                
+                                <field name="start_date" required="1"/>
+                                <field name="end_date" string="Cust Req Del Date" required="1"/>
+                            </group>
+                            <group>
+                                <field name="del_date" />
+                                <field name="pu_date" />
+                            </group>
+                            <group>
+                                <field name="bill_start_date" />
+                                <field name="bill_end_date" />
+                            </group>
+
+                    </group>
 		<group name="sale_header">
                         <group name="partner_details">
                           <field name="address_type" widget="radio" options="{'horizontal': true}" />
@@ -157,15 +174,6 @@
                             <field name="partner_shipping_id_phone"/>
                             <field name="customer_id" />
                             <field name="min_rental_period" />
-                            <group>
-                                
-                            <field name="start_date" required="1"/>
-                            <field name="end_date" string="Cust Req Del Date" required="1"/>
-                            <field name="del_date" />
-                            <field name="pu_date" />
-                            <field name="bill_start_date" />
-                            <field name="bill_end_date" />
-                            </group>
                             <field name="initial_term"/>
                             <field name="payment_term_id" options="{'no_create': True}" string="Rental bill freq"/>
                             <field name="purchase_price"/>
