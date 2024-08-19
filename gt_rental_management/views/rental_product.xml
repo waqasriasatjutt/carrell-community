@@ -139,7 +139,7 @@
                         </h1>
                     </div>
 
-                    <group row="3">
+                    <group col="3">
                             <group>
                                 
                                 <field name="start_date" required="1"/>
