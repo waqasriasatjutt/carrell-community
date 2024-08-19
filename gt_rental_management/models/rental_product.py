@@ -51,7 +51,7 @@ class SaleOrder(models.Model):
         ('non_inv', 'Non Inventory')
     ], string="Part Type", default="inventory")
 
-    goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Delivery Pending'), ('delivered', 'Delivered'), ('ppending', 'Pickup Pending'), ('picked', 'Picked Up'), ('complete', 'Complete'), ('billed', 'Billed'), ('canceled', 'Canceled'), ('void', 'Void'), ('sold', 'Sold'), ('move', 'Move'), ('purchased', 'Purchased')], required=True, default='ordered')
+    goformz_status = fields.Selection([('ordered', 'Ordered'), ('dpending', 'Pending Delivery'), ('delivered', 'Delivered'), ('rented', 'Rented'), ('ppending', 'Pending Pick Up'), ('picked', 'Picked Up'),('available', 'Available'),('nrtp', 'Need Repair The Available'), ('recpaperwork', 'Rec Paperwork'), ('billed', 'Billed'),('issues', 'Issues'), ('move', 'Move'), ('sold', 'Sold'),('purchase', 'Purchase'), ('paid', 'Paid'), ('canceled', 'Canceled'),('archived', 'Archived'),], required=True, default='ordered')
     trailer = fields.Integer(string='Trailer')
     weight = fields.Float(string='Weight')
     invoice_notes = fields.Char("Invoice Notes")
