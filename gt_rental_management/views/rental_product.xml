@@ -157,8 +157,15 @@
                             <field name="partner_shipping_id_phone"/>
                             <field name="customer_id" />
                             <field name="min_rental_period" />
+                            <group>
+                                
                             <field name="start_date" required="1"/>
                             <field name="end_date" string="Cust Req Del Date" required="1"/>
+                            <field name="del_date" />
+                            <field name="pu_date" />
+                            <field name="bill_start_date" />
+                            <field name="bill_end_date" />
+                            </group>
                             <field name="initial_term"/>
                             <field name="payment_term_id" options="{'no_create': True}" string="Rental bill freq"/>
                             <field name="purchase_price"/>
