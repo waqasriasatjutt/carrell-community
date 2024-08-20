@@ -98,9 +98,9 @@
                             string="Void Transaction"
                             confirm="Are you sure you want to void the authorized transaction? This action can't be undone."
                             attrs="{'invisible': [('authorized_transaction_ids', '=', [])]}"/>
-                    <button name="action_confirm"
+                    <!-- <button name="action_confirm"
                         string="Confirm" type="object" class="oe_highlight"
-                        attrs="{'invisible': [('state_new', 'not in', ['draft'])]}"/>
+                        attrs="{'invisible': [('state_new', 'not in', ['draft'])]}"/> -->
                     <button name="action_cancel" states="sale" type="object" class="oe_highlight" string="Closed Rental"/>
                     <button name="action_product_replace" class="oe_highlight"
                         string="Replace Product" type="object"
