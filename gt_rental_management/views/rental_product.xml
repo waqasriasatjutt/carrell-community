@@ -758,6 +758,7 @@
 	<menuitem id='main_menu_rental' name='Rental' parent='sale.sale_menu_root'/>
 	<menuitem id='menu_rental_product' name='Rental Product' parent='main_menu_rental' action='action_rental_manage'/>
 	<menuitem id='menu_rental_order' name='Rental Orders' parent='main_menu_rental' action='action_rental_order'/>
+	<menuitem id='menu_rental_order' name='Rental Orders'  action='action_rental_order'/>
 
 
 
