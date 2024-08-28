@@ -56,6 +56,7 @@ class SaleOrder(models.Model):
     weight = fields.Float(string='Weight')
     invoice_notes = fields.Char("Invoice Notes")
     po_number = fields.Char("PO Number")
+    # po_number = fields.Char("PO Number")
     # driver = fields.Many2one('hr.employee',string='Driver')
 
     
