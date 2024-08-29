@@ -313,34 +313,18 @@
                                     <td style="text-align: center; width: 10%">
                                         <span t-field="o.fuel_surcharge"/>
                                     </td>
-                                    <!--
-            <td style="text-align: center; width: 15%; background-color: lightgrey;">-->
-                                    <!--                                        Customer ID-->
-                                    <!--                                    </td>-->
-                                    <!--                                    <td style="text-align: left; width: 10%">-->
-                                    <!--                                        <span t-field="o.customer_id"/>-->
-                                    <!--                                    </td>-->
                                 </tr>
                             </table>
                         </div>
                         <div class="row" style="font-size: 12px;  margin: 0">
                             <table class="table table-bordered" style="padding: 2px; margin: 0">
                                 <tr>
-
                                     <td style="text-align: center; width: 15%; background-color: lightgrey;">
                                         Total Quantity
                                     </td>
                                     <td style="text-align: center; width: 10%">
                                         <span t-field="o.quantity_total"/>
                                     </td>
-                                    <!--
-            <td style="text-align: center; width: 15%; background-color: lightgrey;">-->
-                                    <!--                                        Invoice Notes-->
-                                    <!--                                    </td>-->
-                                    <!--                                    <td style="text-align: center; width: 10%">-->
-                                    <!--                                        <span t-field="o.invoice_notes"/>-->
-                                    <!--                                    </td>-->
-
                                     <td style="text-align: center; width: 15%; background-color: lightgrey;">
                                         Date Paid
                                     </td>
@@ -354,8 +338,6 @@
                                     <td style="text-align: center; width: 10%">
                                         <span t-field="o.miles"/>
                                     </td>
-
-
                                     <td style="text-align: center; width: 15%; background-color: lightgrey;">
                                         Fuel SC Amount
                                     </td>
@@ -530,4 +512,16 @@
             </t>
         </t>
     </template>
+    <!--    <data>-->
+    <!--        <report-->
+    <!--                id="action_report_rental_order"-->
+    <!--                string="Order"-->
+    <!--                model="sale.order"-->
+    <!--                report_type="qweb-pdf"-->
+    <!--                file="gt_rental_management.sale_contract_qweb_report_rental"-->
+    <!--                name="gt_rental_management.sale_contract_qweb_report_rental"-->
+    <!--                print_report_name="(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)"-->
+    <!--        />-->
+    <!--    </data>-->
+
 </odoo>

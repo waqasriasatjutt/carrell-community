@@ -7,8 +7,45 @@
         <field name="inherit_id" ref="sale.view_order_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="site_note" optional="show" string="Site"/>
+                <field name="custom_city" optional="show"/>
+                <field name="custom_state" optional="show"/>
                 <field name="warehouse_id" optional="show"/>
+                <field name="dry_container" optional="show"/>
+                <field name="refeer_container" optional="show"/>
+                <field name="dry_electric" optional="show"/>
+                <field name="dry_trailer" optional="show"/>
             </xpath>
+            <!--            <xpath expr="//field[@name='amount_total']" position="after">-->
+            <!--                <field name="del_date" optional="show"/>-->
+            <!--                <field name="pu_date" optional="show"/>-->
+            <!--                <field name="sage_inv" optional="show"/>-->
+            <!--                <field name="po_number" optional="show"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery_status']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery_status']" position="after">
+                <field name="del_date" optional="show"/>
+                <field name="pu_date" optional="show"/>
+                <field name="sage_inv" optional="show"/>
+                <field name="po_number" optional="show"/>
+                <field name="dry_delivery" optional="show"/>
+                <field name="dry_pickup" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+
         </field>
     </record>
 
@@ -120,9 +157,9 @@
                         attrs="{'invisible': [('state_new', 'not in', ['draft'])]}"/> -->
                     <button name="action_cancel" states="sale" type="object" class="oe_highlight"
                             string="Closed Rental"/>
-                    <button name="action_product_replace" class="oe_highlight"
-                            string="Replace Product" type="object"
-                            attrs="{'invisible': [('state_new', 'in', ['draft', 'cancel'])]}"/>
+                    <!--                    <button name="action_product_replace" class="oe_highlight"-->
+                    <!--                            string="Replace Product" type="object"-->
+                    <!--                            attrs="{'invisible': [('state_new', 'in', ['draft', 'cancel'])]}"/>-->
                     <button name="%(action_renew_rental_wizard)d" class="oe_highlight"
                             string="Extend/Renew Rental" type="action"
                             attrs="{'invisible': [('state_new', 'in', ['draft', 'cancel'])]}"/>
@@ -170,6 +207,7 @@
                         <group>
                             <field name="bill_start_date"/>
                             <field name="bill_end_date"/>
+
                         </group>
 
                     </group>
