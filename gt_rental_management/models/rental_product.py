@@ -254,7 +254,7 @@ class SaleOrder(models.Model):
             # rec.dry_container = len(dry_container_count)
             print("Refeer Container Count ------- ", rec.refeer_container)
 
-    dry_container = fields.Float('Dry Con', compute='_compute_calculation', store=True)
+    dry_container = fields.Float('Dry Con', compute='_compute_calculation', store=False)
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation(self):
         for rec in self:
@@ -264,7 +264,7 @@ class SaleOrder(models.Model):
             # rec.dry_container = len(dry_container_count)
             print("Dry Container Count ------- ", rec.dry_container)
 
-    dry_trailer = fields.Float('Dry Trl', compute='_compute_calculation_trailer', store=True)
+    dry_trailer = fields.Float('Dry Trl', compute='_compute_calculation_trailer', store=False)
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_trailer(self):
         for rec in self:
@@ -275,7 +275,7 @@ class SaleOrder(models.Model):
             print("Dry trailer Count ------- ", rec.dry_trailer)
 
 
-    dry_electric = fields.Float('Elec Ref', compute='_compute_calculation_electric', store=True)
+    dry_electric = fields.Float('Elec Ref', compute='_compute_calculation_electric', store=False)
 
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_electric(self):
@@ -286,7 +286,7 @@ class SaleOrder(models.Model):
             # rec.dry_container = len(dry_container_count)
             print("Dry Trailer Count ------- ", rec.dry_electric)
 
-    dry_delivery = fields.Float('Del Total', compute='_compute_calculation_delivery', store=True)
+    dry_delivery = fields.Float('Del Total', compute='_compute_calculation_delivery', store=False)
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_delivery(self):
         for rec in self:
@@ -296,7 +296,7 @@ class SaleOrder(models.Model):
             # rec.dry_container = len(dry_container_count)
             print("Dry Delivery Count ------- ", rec.dry_delivery)
 
-    dry_pickup = fields.Float('PU Total', compute='_compute_calculation_pickup', store=True)
+    dry_pickup = fields.Float('PU Total', compute='_compute_calculation_pickup', store=False)
 
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_pickup(self):
