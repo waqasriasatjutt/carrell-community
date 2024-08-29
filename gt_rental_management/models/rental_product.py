@@ -248,7 +248,7 @@ class SaleOrder(models.Model):
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_refeer(self):
         for rec in self:
-            refeer_container_count = rec.order_line.filtered(lambda x: 'Refeer Container' in x.product_id.name)
+            refeer_container_count = rec.order_line.filtered(lambda x: 'Reefer Container' in x.product_id.name)
             rec.refeer_container = sum(refeer_container_count.mapped('product_uom_qty'))
             # rec.dry_container = sum(dry_container_count.mapped('price_subtotal'))
             # rec.dry_container = len(dry_container_count)
@@ -258,7 +258,7 @@ class SaleOrder(models.Model):
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation(self):
         for rec in self:
-            dry_container_count = rec.order_line.filtered(lambda x: 'Dry Container' in x.product_id.name)
+            dry_container_count = rec.order_line.filtered(lambda x: 'Container Dry' in x.product_id.name)
             rec.dry_container = sum(dry_container_count.mapped('product_uom_qty'))
             # rec.dry_container = sum(dry_container_count.mapped('price_subtotal'))
             # rec.dry_container = len(dry_container_count)
