@@ -244,7 +244,7 @@ class SaleOrder(models.Model):
             else:
                 order.partner_invoice_id = False
 
-    refeer_container = fields.Float('Ref Cont', compute='_compute_calculation_refeer', store=True)
+    refeer_container = fields.Float('Ref Cont', compute='_compute_calculation_refeer', store=False)
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_refeer(self):
         for rec in self:
