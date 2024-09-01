@@ -1,6 +1,7 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
+
 class HrExpense(models.Model):
     _inherit = "hr.expense"
 
@@ -44,6 +45,19 @@ class HrExpense(models.Model):
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
     expense_line_ids = fields.One2many('hr.expense.line', 'expense_id', string="Expense Lines")
+    # company_select = fields.Many2one('res.company', string='Company', required=True, default=lambda self: self.env.company)
+    company_select = fields.Many2one(
+        'res.company',
+        string='Company',
+        required=True,
+        default=lambda self: self.env.company,
+        ondelete='restrict',
+        context={'create': True}
+    )
+
+    asset_id = fields.Many2one('hr.asset', string="Asset",  ondelete='restrict')
+
+
 
     def _generate_expense_code(self, company):
         sequence_code = 'hr.expense.' + company.lower()
@@ -57,4 +71,23 @@ class HrExpense(models.Model):
                 vals['expense_code'] = self._generate_expense_code(company)
             else:
                 raise UserError(_('Please select a company before saving the record.'))
+        return super(HrExpense, self).create(vals)
+
+    order_total = fields.Float('Total', compute='_compute_calculation_pickup', store=True)
+
+    @api.depends('expense_line_ids.product_id', 'expense_line_ids.subtotal')
+    def _compute_calculation_pickup(self):
+        for rec in self:
+            # Summing up the 'price_subtotal' for all order lines
+            rec.order_total = sum(rec.expense_line_ids.mapped('subtotal'))
+            print("Total Order Line Value ------- ", rec.order_total)
+
+
+    sequence = fields.Char(string='Expense Reference', required=True, copy=False, readonly=True, default=lambda self: 'New')
+
+    @api.model
+    def create(self, vals):
+        if vals.get('sequence', 'New') == 'New':
+            # Get the next sequence number
+            vals['sequence'] = self.env['ir.sequence'].next_by_code('hr.expense') or 'New'
         return super(HrExpense, self).create(vals)

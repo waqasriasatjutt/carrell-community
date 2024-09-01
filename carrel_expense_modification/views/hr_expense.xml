@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+        <record id="view_expense_tree_inherited" model="ir.ui.view">
+            <field name="name">hr.expense.tree.inherit</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_my_expenses_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date']" position="before">
+                    <field name="sequence" optional="show" string="Expense"/>
+                </xpath>
+            </field>
+        </record>
+
         <!-- Form view update -->
         <record id="view_hr_expense_carrel" model="ir.ui.view">
             <field name="name">hr.expense.carrel.form</field>
             <field name="model">hr.expense</field>
             <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
             <field name="arch" type="xml">
+                <div class="oe_title">
+                    <h1>
+                        <label for="sequence" string="Expense Reference"/>
+                        <field name="sequence" readonly="1"/>
+                    </h1>
+                </div>
                 <!-- Adding fields after the date field -->
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="company_carrel"/>
+                    <field name="asset_id"/>
+                    <field name="company_select"/>
                     <field name="expense_code"/>
+                    <field name="order_total"/>
                     <field name="vendor"/>
                     <field name="received_status"/>
                     <field name="order_for_who" string="Order For Who"/>
@@ -28,18 +49,18 @@
                             <field name="part_type" widget="radio"/>
                             <field name="expense_line_ids">
                                 <tree editable="bottom">
-                                    <field name="type" invisible="1"/>
+                                    <field name="type" invisible="0"/>
                                     <field name="part_type" invisible="1"/>
                                     <field name="product_id"/>
                                     <field name="description"/>
                                     <field name="quantity"/>
                                     <field name="unit_price"/>
                                     <field name="subtotal" readonly="1"/>
-                                    <field name="warrinity"></field>
-                                    <field name="core"></field>
-                                    <field name="is_return"></field>
-                                    <field name="received_by"></field>
-                                    <field name="order_for_who"></field>
+                                    <field name="warrinity"/>
+                                    <field name="core"/>
+                                    <field name="is_return"/>
+                                    <field name="received_by"/>
+                                    <field name="order_for_who"/>
                                 </tree>
                             </field>
                         </page>
