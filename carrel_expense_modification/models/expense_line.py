@@ -32,13 +32,12 @@ class HrExpenseLine(models.Model):
         elif self.part_type == 'non_inv':
             return {'domain': {'product_id': [('type', '=', 'service')]}}
 
-
     @api.depends('product_id')
     def _compute_type(self):
         for line in self:
             if line.product_id.type == 'product':
-                line.type = 'True'  # Storable product
-            elif line.product_id.type == 'service':
-                line.type = 'False'  # Consumable product
+                line.type = 'Yes'  # Storable product
+            elif line.product_id.type in ['service', 'consumable']:
+                line.type = 'No'  # Consumable product
             else:
                 line.type = ''  # Default empty string if type doesn't match
