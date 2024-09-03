@@ -7,7 +7,8 @@ class HrExpenseLine(models.Model):
     expense_id = fields.Many2one('hr.expense', string="Expense", required=True, ondelete='cascade')
     part_type = fields.Selection(related='expense_id.part_type', string="Part Type", store=True, readonly=True)
     product_id = fields.Many2one('product.product', string="Product", required=True)
-    type = fields.Selection(related='product_id.type')
+    # type = fields.Selection(related='product_id.type')
+    type = fields.Char(string="Type", compute="_compute_type", store=True)  # Updated type field to Char
     description = fields.Char(string="Description")
     quantity = fields.Float(string="Quantity", default=1.0)
     unit_price = fields.Float(string="Cost")
@@ -30,3 +31,14 @@ class HrExpenseLine(models.Model):
             return {'domain': {'product_id': [('type', '=', 'product')]}}
         elif self.part_type == 'non_inv':
             return {'domain': {'product_id': [('type', '=', 'service')]}}
+
+
+    @api.depends('product_id')
+    def _compute_type(self):
+        for line in self:
+            if line.product_id.type == 'product':
+                line.type = 'True'  # Storable product
+            elif line.product_id.type == 'service':
+                line.type = 'False'  # Consumable product
+            else:
+                line.type = ''  # Default empty string if type doesn't match
