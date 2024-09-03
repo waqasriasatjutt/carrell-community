@@ -37,7 +37,7 @@ class HrExpenseLine(models.Model):
         for line in self:
             if line.product_id.type == 'product':
                 line.type = 'Yes'  # Storable product
-            elif line.product_id.type in ['service', 'consumable']:
+            elif line.product_id.type in ['service', 'consu']:
                 line.type = 'No'  # Consumable product
             else:
                 line.type = ''  # Default empty string if type doesn't match
