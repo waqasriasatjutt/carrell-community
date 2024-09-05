@@ -40,7 +40,40 @@ class HrExpense(models.Model):
         ('overnight', 'Over Night'),
     ], string='Received Status')
 
-    received_by = fields.Many2one('res.users', string="Received By")
+    received_by = fields.Many2one('res.users', string="Received By", tracking=True)
+    date_received = fields.Datetime(string="Time Received", readonly=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('received_by'):
+            vals['date_received'] = datetime.now()
+        return super(HrExpense, self).create(vals)
+
+    def write(self, vals):
+        if 'received_by' in vals:
+            vals['date_received'] = datetime.now()
+        return super(HrExpense, self).write(vals)
+
+    @api.depends('received_by', 'date_received')
+    def _compute_received_by_with_date(self):
+        for record in self:
+            if record.received_by and record.date_received:
+                # Update the string of the field to include the date and time
+                record.received_by_with_date = "{} (Date received: {})".format(
+                    record.received_by.name,
+                    fields.Datetime.to_string(record.date_received)
+                )
+            else:
+                record.received_by_with_date = ""
+
+    received_by_with_date = fields.Char(
+        string="Received By (Date)",
+        compute="_compute_received_by_with_date",
+        store=True
+    )
+
+
+
     order_for_who = fields.Many2one('res.users', string="Order For Who")
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')

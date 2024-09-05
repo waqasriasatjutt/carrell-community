@@ -37,6 +37,7 @@
                     <field name="order_for_who" string="Order For Who"/>
                     <field name="paid_date" string="Paid Date"/>
                     <field name="received_by"/>
+                    <field name="date_received"/>
                 </xpath>
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
                 <xpath expr="//field[@name='payment_mode']" position="before">
