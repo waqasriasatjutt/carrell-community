@@ -73,9 +73,30 @@ class HrExpense(models.Model):
         store=True
     )
 
+    asset_id = fields.Many2one('hr.asset', string="Asset", ondelete='restrict')
+    # warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", ondelete='restrict')
+    warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", ondelete='restrict')
+
+    # Override the create method to ensure that when an expense is created, the default warehouse_id is propagated
+    @api.model
+    def create(self, vals):
+        expense = super(HrExpense, self).create(vals)
+        # Propagate warehouse_id to the expense lines if they exist
+        if expense.warehouse_id and expense.expense_line_ids:
+            for line in expense.expense_line_ids:
+                line.warehouse_id = expense.warehouse_id.id
+        return expense
+
+    def write(self, vals):
+        res = super(HrExpense, self).write(vals)
+        # Propagate warehouse_id to the expense lines if updated
+        if 'warehouse_id' in vals:
+            for line in self.expense_line_ids:
+                line.warehouse_id = vals.get('warehouse_id')
+        return res
 
 
-    order_for_who = fields.Many2one('res.users', string="Order For Who")
+order_for_who = fields.Many2one('res.users', string="Order For Who")
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
     expense_line_ids = fields.One2many('hr.expense.line', 'expense_id', string="Expense Lines")

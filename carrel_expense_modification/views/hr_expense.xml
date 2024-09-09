@@ -29,6 +29,7 @@
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="company_carrel"/>
                     <field name="asset_id"/>
+                    <field name="warehouse_id"/>
                     <field name="company_select"/>
                     <field name="expense_code"/>
                     <field name="order_total"/>
@@ -57,11 +58,14 @@
                                     <field name="quantity"/>
                                     <field name="unit_price"/>
                                     <field name="subtotal" readonly="1"/>
+                                    <field name="asset_id"/>
+                                    <field name="warehouse_id"/>
                                     <field name="warrinity"/>
                                     <field name="core"/>
                                     <field name="is_return"/>
                                     <field name="received_by"/>
                                     <field name="order_for_who"/>
+                                    <field name="mp_web"/>
                                 </tree>
                             </field>
                         </page>
