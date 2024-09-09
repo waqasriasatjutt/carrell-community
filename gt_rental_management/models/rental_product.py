@@ -143,8 +143,8 @@ class SaleOrder(models.Model):
             self.quantity_total = self.quantity_total + rec.product_uom_qty
 
     contact_email = fields.Char(related='partner_id.email', string='Contact Email')
-    custom_city = fields.Char(related='partner_id.city', string='City')
-    custom_state = fields.Char(related='partner_id.state_id.name', string='State')
+    custom_city = fields.Char(related='partner_id.city', string='Bill City')
+    custom_state = fields.Char(related='partner_id.state_id.name', string='Bill St')
     contact_phone = fields.Char(related='partner_id.phone', string='Contact Phone')
 
     site_city = fields.Char(related='partner_shipping_id.city', string='Site City')
