@@ -147,6 +147,9 @@ class SaleOrder(models.Model):
     custom_state = fields.Char(related='partner_id.state_id.name', string='State')
     contact_phone = fields.Char(related='partner_id.phone', string='Contact Phone')
 
+    site_city = fields.Char(related='partner_shipping_id.city', string='Site City')
+    site_state = fields.Char(related='partner_shipping_id.state_id.name', string='Site St')
+
     partner_invoice_id_email = fields.Char(related='partner_invoice_id.email', string='Contact Email')
     partner_invoice_id_phone = fields.Char(related='partner_invoice_id.phone', string='Contact Phone')
 
