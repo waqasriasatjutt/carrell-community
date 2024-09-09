@@ -96,7 +96,7 @@ class HrExpense(models.Model):
         return res
 
 
-order_for_who = fields.Many2one('res.users', string="Order For Who")
+    order_for_who = fields.Many2one('res.users', string="Order For Who")
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
     expense_line_ids = fields.One2many('hr.expense.line', 'expense_id', string="Expense Lines")
