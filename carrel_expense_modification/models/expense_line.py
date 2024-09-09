@@ -18,10 +18,9 @@ class HrExpenseLine(models.Model):
 
     warrinity = fields.Boolean("Warrinity")
     core = fields.Boolean("Core")
-    is_return =  fields.Boolean("Return"))
+    is_return =  fields.Boolean("Return")
     mp_web = fields.Boolean("MP Web")
     asset_id = fields.Many2one('hr.asset', string="Asset", ondelete='restrict')
-
     # Editable field, set default from the parent expense's warehouse_id
     warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", ondelete='restrict')
 
