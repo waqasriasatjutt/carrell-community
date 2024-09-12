@@ -12,16 +12,17 @@ class HrExpense(models.Model):
     ], string="Part Type", default="inventory")
 
     company_carrel = fields.Selection([
-        ('ati', 'ATI'),
-        ('cti', 'CTI'),
-        ('cts', 'CTS'),
-        ('rjb', 'RJB'),
-        ('rc', 'RC'),
-        ('cr', 'CR'),
-        ('cl', 'CL'),
-        ('adw', 'ADW'),
-        ('race', 'RACE'),
+        ('ati', 'Ardmore Trailer Inc'),
+        ('cti', 'Carrell Trucking Inc'),
+        ('cts', 'Carrell Transportation Inc'),
+        ('rjb', 'RBJ Trucking Inc'),
+        ('rc', 'Rick Carrell Personal'),
+        ('cr', 'Carrell Rentals LLC'),
+        ('cl', 'Carrell Leasing LLC'),
+        ('adw', 'Ardmore Dragway LLC'),
+        ('race', 'Ardmore Dragway Motor Sports LLC'),
         ('customer', 'Customer'),
+        ('other', 'Other'),
     ], string='Company')
 
     pay_type = fields.Selection([
