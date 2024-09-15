@@ -9,6 +9,24 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date']" position="before">
                     <field name="sequence" optional="show" string="Expense"/>
+                    <field name="vendor" optional="show" string="Vendor"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_mode']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_mode']" position="after">
+                    <field name="company_select" optional="show" string="Company"/>
+                    <field name="warehouse_id" optional="show" string="Warehouse"/>
+                    <field name="order_by" optional="show" string="Order By"/>
+                    <field name="received_by" optional="show" string="Received By"/>
+                    <field name="date_received" optional="show" string="Date Received"/>
+                    <field name="paid_date" optional="show" string="Paid Date"/>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="sub_category" optional="show" string="Sub Cat"/>
                 </xpath>
             </field>
         </record>
@@ -23,11 +41,26 @@
                     <h1>
                         <label for="sequence" string="Expense Reference"/>
                         <field name="sequence" readonly="1"/>
+                        <label for="po_number" string="PO Number"/>
+                        <field name="po_number"/>
+                        <label for="po_des" string="PO Description"/>
+                        <field name="po_des"/>
                     </h1>
                 </div>
                 <!-- Adding fields after the date field -->
+                <!--                <xpath expr="//field[@name='product_id']" position="after">-->
+                <!--                    <field name="sub_category" string="Sub Category"/>-->
+                <!--                </xpath>-->
+<!--                <xpath expr="//field[@name='payment_mode']" position="after">-->
+<!--                    <field name="po_number"/>-->
+<!--                    <field name="po_des"/>-->
+<!--                </xpath>-->
+                <xpath expr="//field[@name='date']" position="before">
+                    <field name="sub_category" string="Sub Category"/>
+                </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="company_carrel"/>
+                    <!--                    <field name="sub_category" string="Sub Category"/>-->
                     <field name="asset_id"/>
                     <field name="warehouse_id"/>
                     <field name="company_select"/>
@@ -36,9 +69,11 @@
                     <field name="vendor"/>
                     <field name="received_status"/>
                     <field name="order_for_who" string="Order For Who"/>
+                    <field name="order_by" string="Order By"/>
                     <field name="paid_date" string="Paid Date"/>
                     <field name="received_by"/>
                     <field name="date_received"/>
+                    <!--                    <field name="received_by_with_date"/>-->
                 </xpath>
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
                 <xpath expr="//field[@name='payment_mode']" position="before">

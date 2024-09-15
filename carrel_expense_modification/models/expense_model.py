@@ -42,40 +42,81 @@ class HrExpense(models.Model):
         ('overnight', 'Over Night'),
     ], string='Received Status')
 
-    received_by = fields.Many2one('res.users', string="Received By", tracking=True)
+    # received_by = fields.Many2one('res.users', string="Received By", tracking=True)
+    sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
+    order_by = fields.Many2one('res.users', string="Order By", tracking=True)
+
     date_received = fields.Datetime(string="Time Received", readonly=True)
-
-    @api.model
-    def create(self, vals):
-        if vals.get('received_by'):
-            vals['date_received'] = datetime.now()
-        return super(HrExpense, self).create(vals)
-
-    def write(self, vals):
-        if 'received_by' in vals:
-            vals['date_received'] = datetime.now()
-        return super(HrExpense, self).write(vals)
-
-    @api.depends('received_by', 'date_received')
-    def _compute_received_by_with_date(self):
-        for record in self:
-            if record.received_by and record.date_received:
-                # Update the string of the field to include the date and time
-                record.received_by_with_date = "{} (Date received: {})".format(
-                    record.received_by.name,
-                    fields.Datetime.to_string(record.date_received)
-                )
-            else:
-                record.received_by_with_date = ""
-
+    received_by = fields.Many2one('res.users', string="Received By")
     received_by_with_date = fields.Char(
         string="Received By (Date)",
         compute="_compute_received_by_with_date",
         store=True
     )
 
+    @api.model
+    def create(self, vals):
+        # Use Odoo's fields.Datetime.now() instead of datetime.now()
+        if vals.get('received_by'):
+            print(123)
+            vals['date_received'] = fields.Datetime.now()
+        return super(HrExpense, self).create(vals)
+
+    def write(self, vals):
+        # Use Odoo's fields.Datetime.now() instead of datetime.now()
+        print("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
+        if 'received_by' in vals:
+            print("=============received_by============")
+            vals['date_received'] = fields.Datetime.now()
+        return super(HrExpense, self).write(vals)
+
+    @api.depends('received_by', 'date_received')
+    def _compute_received_by_with_date(self):
+        for record in self:
+            if record.received_by and record.date_received:
+                # Ensure that received_by is a Many2one field and its name is accessible
+                record.received_by_with_date = "{} (Date received: {})".format(
+                    record.received_by.name,  # Assuming it's a res.users record
+                    fields.Datetime.to_string(record.date_received)
+                )
+            else:
+                record.received_by_with_date = ""
+
+            if record.received_by:
+                record.date_received = fields.Datetime.now()
+
+    # date_received = fields.Datetime(string="Time Received", readonly=True)
+    #
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get('received_by'):
+    #         vals['date_received'] = datetime.now()
+    #     return super(HrExpense, self).create(vals)
+    #
+    # def write(self, vals):
+    #     if 'received_by' in vals:
+    #         vals['date_received'] = datetime.now()
+    #     return super(HrExpense, self).write(vals)
+    #
+    # @api.depends('received_by', 'date_received')
+    # def _compute_received_by_with_date(self):
+    #     for record in self:
+    #         if record.received_by and record.date_received:
+    #             # Update the string of the field to include the date and time
+    #             record.received_by_with_date = "{} (Date received: {})".format(
+    #                 record.received_by.name,
+    #                 fields.Datetime.to_string(record.date_received)
+    #             )
+    #         else:
+    #             record.received_by_with_date = ""
+    #
+    # received_by_with_date = fields.Char(
+    #     string="Received By (Date)",
+    #     compute="_compute_received_by_with_date",
+    #     store=True
+    # )
+
     asset_id = fields.Many2one('hr.asset', string="Asset", ondelete='restrict')
-    # warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", ondelete='restrict')
     warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", ondelete='restrict')
 
     # Override the create method to ensure that when an expense is created, the default warehouse_id is propagated
@@ -96,10 +137,11 @@ class HrExpense(models.Model):
                 line.warehouse_id = vals.get('warehouse_id')
         return res
 
-
     order_for_who = fields.Many2one('res.users', string="Order For Who")
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
+    po_number = fields.Char(string="PO Number",)
+    po_des = fields.Char(string="PO Description",)
     expense_line_ids = fields.One2many('hr.expense.line', 'expense_id', string="Expense Lines")
     # company_select = fields.Many2one('res.company', string='Company', required=True, default=lambda self: self.env.company)
     company_select = fields.Many2one(
@@ -111,9 +153,7 @@ class HrExpense(models.Model):
         context={'create': True}
     )
 
-    asset_id = fields.Many2one('hr.asset', string="Asset",  ondelete='restrict')
-
-
+    # asset_id = fields.Many2one('hr.asset', string="Asset", ondelete='restrict')
 
     def _generate_expense_code(self, company):
         sequence_code = 'hr.expense.' + company.lower()
@@ -138,8 +178,8 @@ class HrExpense(models.Model):
             rec.order_total = sum(rec.expense_line_ids.mapped('subtotal'))
             print("Total Order Line Value ------- ", rec.order_total)
 
-
-    sequence = fields.Char(string='Expense Reference', required=True, copy=False, readonly=True, default=lambda self: 'New')
+    sequence = fields.Char(string='Expense Reference', required=True, copy=False, readonly=True,
+                           default=lambda self: 'New')
 
     @api.model
     def create(self, vals):
