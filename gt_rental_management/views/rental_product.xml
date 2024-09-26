@@ -19,12 +19,7 @@
                 <field name="dry_electric" optional="show"/>
                 <field name="dry_trailer" optional="show"/>
             </xpath>
-            <!--            <xpath expr="//field[@name='amount_total']" position="after">-->
-            <!--                <field name="del_date" optional="show"/>-->
-            <!--                <field name="pu_date" optional="show"/>-->
-            <!--                <field name="sage_inv" optional="show"/>-->
-            <!--                <field name="po_number" optional="show"/>-->
-            <!--            </xpath>-->
+
             <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="optional">hide</attribute>
             </xpath>
@@ -51,6 +46,36 @@
 
         </field>
     </record>
+    
+
+            <xpath expr="//search/field[@name='name']" position="after">
+                <field name="site_city" string="City"/>
+                <field name="tag_ids" string="Tags"/>
+                <field name="dry_pickup" string="Dry Pickup"/>
+                <field name="dry_delivery" string="Dry Delivery"/>
+                <field name="po_number" string="PO Number"/>
+                <field name="sage_inv" string="Sage"/>
+                <field name="pu_date" string="PU Date"/>
+                <field name="company_id" string="Company"/>
+                <field name="delivery_status" string="Delivery Status"/>
+                <field name="invoice_status" string="Invoice Status"/>
+                <field name="activity_ids" string="Activity Ids"/>
+                <field name="dry_trailer" string="Dry Trailer"/>
+                <field name="user_id" string="User Id"/>
+                <field name="site_city" string="Site City"/>
+                <field name="site_state" string="Site State"/>
+                <field name="custom_city" string="Customer City"/>
+                <field name="custom_state" string="Customer State"/>
+                <field name="warehouse_id" string="Warehouse"/>
+                <field name="dry_container" string="Dry Container"/>
+                <field name="refeer_container" string="Refeer Container"/>
+                <field name="dry_electric" string="Dry Electric"/>
+                <field name="partner_id" string="Customer Name"/>
+                <field name="name" string="Rental ID"/>
+                <field name="date_order" string="Order Date"/>
+                <field name="warehouse_id" string="Warehouse"/>
+                <field name="amount_total" string="Total Amount"/>
+            </xpath>
 
 
     <record id="product_template_form_inherited_view" model="ir.ui.view">
