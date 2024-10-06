@@ -105,91 +105,91 @@
                                     </p>
                                 </div>
                                 <hr/>
+                                <!--                                <group>-->
                                 <group>
-                                    <group>
-                                        <field name="name" string="Contact Name"
-                                               attrs="{'required' : [('type', '=', 'contact')]}"/>
-                                        <field name="title" options="{'no_open': True}" placeholder="e.g. Mr."
-                                               attrs="{'invisible': [('type','!=', 'contact')]}"/>
-                                        <field name="function" placeholder="e.g. Sales Director"
-                                               attrs="{'invisible': [('type','!=', 'contact')]}"/>
-                                        <label for="street" string="Address"
-                                               attrs="{'invisible': [('type','=', 'contact')]}"/>
-                                        <div attrs="{'invisible': [('type','=', 'contact')]}">
-                                            <div class="o_address_format" name="div_address">
-                                                <field name="street" placeholder="Street.777.."
-                                                       class="o_address_street"/>
-                                                <field name="street2" placeholder="Street 2.9999.."
-                                                       class="o_address_street"/>
-                                                <field name="city" placeholder="City" class="o_address_city"/>
-                                                <field name="state_id" class="o_address_state" placeholder="State"
-                                                       options="{'no_open': True, 'no_quick_create': True}"
-                                                       context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
-                                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
-                                                <field name="country_id" placeholder="Country" class="o_address_country"
-                                                       options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
-                                            </div>
+                                    <field name="name" string="Contact Name"
+                                           attrs="{'required' : [('type', '=', 'contact')]}"/>
+                                    <field name="title" options="{'no_open': True}" placeholder="e.g. Mr."
+                                           attrs="{'invisible': [('type','!=', 'contact')]}"/>
+                                    <field name="function" placeholder="e.g. Sales Director"
+                                           attrs="{'invisible': [('type','!=', 'contact')]}"/>
+                                    <label for="street" string="Address"
+                                           attrs="{'invisible': [('type','=', 'contact')]}"/>
+                                    <div attrs="{'invisible': [('type','=', 'contact')]}">
+                                        <div class="o_address_format" name="div_address">
+                                            <field name="street" placeholder="Street.777.."
+                                                   class="o_address_street"/>
+                                            <field name="street2" placeholder="Street 2.9999.."
+                                                   class="o_address_street"/>
+                                            <field name="city" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State"
+                                                   options="{'no_open': True, 'no_quick_create': True}"
+                                                   context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                                   options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                                         </div>
-                                    </group>
-                                    <group>
-                                        <field name="email" widget="email"/>
-                                        <!-- <field name="site_email" widget="email"/> -->
-                                        <field name="phone" widget="phone"/>
-                                        <field name="mobile" widget="phone"/>
-                                        <field name="company_id" invisible="1"/>
-                                    </group>
-                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">
-                                        <field name="contact1_name"/>
-                                        <field name="contact1_email" widget="email"/>
-                                        <field name="contact1_phone" widget="phone"/>
-                                        <!--                                    </group>-->
-                                        <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
-                                        <field name="contact2_name"/>
-                                        <field name="contact2_email" widget="email"/>
-                                        <field name="contact2_phone" widget="phone"/>
-                                        <!--                                    </group>-->
-                                        <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
-                                        <field name="contact3_name"/>
-                                        <field name="contact3_email" widget="email"/>
-                                        <field name="contact3_phone" widget="phone"/>
-                                    </group>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="email" widget="email"/>
+                                    <!-- <field name="site_email" widget="email"/> -->
+                                    <field name="phone" widget="phone"/>
+                                    <field name="mobile" widget="phone"/>
+                                    <field name="company_id" invisible="1"/>
+                                </group>
+                                <group attrs="{'invisible': [('type','!=', 'delivery')]}">
+                                    <field name="contact1_name"/>
+                                    <field name="contact1_email" widget="email"/>
+                                    <field name="contact1_phone" widget="phone"/>
+                                    <!--                                    </group>-->
                                     <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
-                                    <!--                                        <field name="notes"/>-->
+                                    <!--                                        <field name="contact2_name"/>-->
+                                    <!--                                        <field name="contact2_email" widget="email"/>-->
+                                    <!--                                        <field name="contact2_phone" widget="phone"/>-->
+                                    <!--                                        &lt;!&ndash;                                    </group>&ndash;&gt;-->
+                                    <!--                                        &lt;!&ndash;                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">&ndash;&gt;-->
+                                    <!--                                        <field name="contact3_name"/>-->
+                                    <!--                                        <field name="contact3_email" widget="email"/>-->
+                                    <!--                                        <field name="contact3_phone" widget="phone"/>-->
+                                    <!--                                    </group>-->
+                                    <!--                                    &lt;!&ndash;                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">&ndash;&gt;-->
+                                    <!--                                    &lt;!&ndash;                                        <field name="notes"/>&ndash;&gt;-->
+                                    <!--                                    &lt;!&ndash;                                        <field name="plug"/>&ndash;&gt;-->
+                                    <!--                                    &lt;!&ndash;                                        <field name="number_of_pics"/>&ndash;&gt;-->
+                                    <!--                                    &lt;!&ndash;                                    </group>&ndash;&gt;-->
+                                    <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
+                                    <!--                                        <field name="dry_cont"/>-->
+                                    <!--                                        <field name="dry_trl"/>-->
+                                    <!--                                        <field name="reefer_ct"/>-->
+                                    <!--                                        <field name="doors_dry"/>-->
+                                    <!--                                        <field name="doors_ref"/>-->
+                                    <!--                                        <field name="reefer_type"/>-->
                                     <!--                                        <field name="plug"/>-->
+                                    <!--                                        <field name="cord"/>-->
                                     <!--                                        <field name="number_of_pics"/>-->
                                     <!--                                    </group>-->
-                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">
-                                        <field name="dry_cont"/>
-                                        <field name="dry_trl"/>
-                                        <field name="reefer_ct"/>
-                                        <field name="doors_dry"/>
-                                        <field name="doors_ref"/>
-                                        <field name="reefer_type"/>
-                                        <field name="plug"/>
-                                        <field name="cord"/>
-                                        <field name="number_of_pics"/>
-                                    </group>
 
-                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">
-                                        <field name="miles"/>
-                                        <field name="gallons"/>
-                                        <field name="fuel"/>
-                                        <field name="driver"/>
-                                        <field name="expense"/>
-                                        <field name="net"/>
-                                        <field name="fuel_cost"/>
-                                    </group>
+                                    <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
+                                    <!--                                        <field name="miles"/>-->
+                                    <!--                                        <field name="gallons"/>-->
+                                    <!--                                        <field name="fuel"/>-->
+                                    <!--                                        <field name="driver"/>-->
+                                    <!--                                        <field name="expense"/>-->
+                                    <!--                                        <field name="net"/>-->
+                                    <!--                                        <field name="fuel_cost"/>-->
+                                    <!--                                    </group>-->
 
-                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">
-                                        <field name="dry_con_rent"/>
-                                        <field name="dry_trl_rent"/>
-                                        <field name="reefer_rent"/>
-                                        <field name="del_fee"/>
-                                        <field name="pickup_fee"/>
-                                        <field name="fuel_sur"/>
-                                        <field name="fuel_sc"/>
-                                        <field name="fuel_amount"/>
-                                    </group>
+                                    <!--                                    <group attrs="{'invisible': [('type','!=', 'delivery')]}">-->
+                                    <!--                                        <field name="dry_con_rent"/>-->
+                                    <!--                                        <field name="dry_trl_rent"/>-->
+                                    <!--                                        <field name="reefer_rent"/>-->
+                                    <!--                                        <field name="del_fee"/>-->
+                                    <!--                                        <field name="pickup_fee"/>-->
+                                    <!--                                        <field name="fuel_sur"/>-->
+                                    <!--                                        <field name="fuel_sc"/>-->
+                                    <!--                                        <field name="fuel_amount"/>-->
+                                    <!--                                    </group>-->
                                 </group>
                                 <group>
                                     <field name="comment" placeholder="Internal notes..." nolabel="1" colspan="2"/>

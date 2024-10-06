@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_order_tree_inherited" model="ir.ui.view">
-        <field name="name">sale.order.tree.inherit</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <!--                <field name="partner_shipping_id" optional="show" string="Site"/>-->
-                <!--                <field name="site_note" optional="show" string="Site"/>-->
-                <field name="site_city" optional="show"/>
-                <field name="site_state" optional="show"/>
-                <field name="custom_city" optional="show"/>
-                <field name="custom_state" optional="show"/>
-                <field name="warehouse_id" optional="show"/>
-                <field name="dry_container" optional="show"/>
-                <field name="refeer_container" optional="show"/>
-                <field name="dry_electric" optional="show"/>
-                <field name="dry_trailer" optional="show"/>
-            </xpath>
+<!--    <record id="view_order_tree_inherited" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.tree.inherit</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='partner_id']" position="after">-->
+<!--                &lt;!&ndash;                <field name="partner_shipping_id" optional="show" string="Site"/>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <field name="site_note" optional="show" string="Site"/>&ndash;&gt;-->
+<!--                <field name="site_city" optional="show"/>-->
+<!--                <field name="site_state" optional="show"/>-->
+<!--                <field name="custom_city" optional="show"/>-->
+<!--                <field name="custom_state" optional="show"/>-->
+<!--                <field name="warehouse_id" optional="show"/>-->
+<!--                <field name="dry_container" optional="show"/>-->
+<!--                <field name="refeer_container" optional="show"/>-->
+<!--                <field name="dry_electric" optional="show"/>-->
+<!--                <field name="dry_trailer" optional="show"/>-->
+<!--            </xpath>-->
 
-            <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="optional">hide</attribute>
-            </xpath>
-            <xpath expr="//field[@name='activity_ids']" position="attributes">
-                <attribute name="optional">hide</attribute>
-            </xpath>
-            <xpath expr="//field[@name='company_id']" position="attributes">
-                <attribute name="optional">hide</attribute>
-            </xpath>
-            <xpath expr="//field[@name='delivery_status']" position="attributes">
-                <attribute name="optional">show</attribute>
-            </xpath>
-            <xpath expr="//field[@name='delivery_status']" position="after">
-                <field name="del_date" optional="show"/>
-                <field name="pu_date" optional="show"/>
-                <field name="sage_inv" optional="show"/>
-                <field name="po_number" optional="show"/>
-                <field name="dry_delivery" optional="show"/>
-                <field name="dry_pickup" optional="show"/>
-            </xpath>
-            <xpath expr="//field[@name='tag_ids']" position="attributes">
-                <attribute name="optional">show</attribute>
-            </xpath>
+<!--            <xpath expr="//field[@name='user_id']" position="attributes">-->
+<!--                <attribute name="optional">hide</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='activity_ids']" position="attributes">-->
+<!--                <attribute name="optional">hide</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='company_id']" position="attributes">-->
+<!--                <attribute name="optional">hide</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='delivery_status']" position="attributes">-->
+<!--                <attribute name="optional">show</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='delivery_status']" position="after">-->
+<!--                <field name="del_date" optional="show"/>-->
+<!--                <field name="pu_date" optional="show"/>-->
+<!--                <field name="sage_inv" optional="show"/>-->
+<!--                <field name="po_number" optional="show"/>-->
+<!--                <field name="dry_delivery" optional="show"/>-->
+<!--                <field name="dry_pickup" optional="show"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='tag_ids']" position="attributes">-->
+<!--                <attribute name="optional">show</attribute>-->
+<!--            </xpath>-->
 
-        </field>
-    </record>
+<!--        </field>-->
+<!--    </record>-->
 
 
     <!--            <xpath expr="//search/field[@name='name']" position="after">-->
