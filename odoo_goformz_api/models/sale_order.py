@@ -742,266 +742,266 @@ class SaleOrderGF(models.Model):
                                 "name": "Yard",
                                 "type": "DropDown",
                                 },
-                                    "Status": {
-                                    "name": "Status",
-                                    "value": str(self.goformz_status),
-                                    "type": "DropDown"
-                                    },
-                                    "Or Qty Dry Con": {
-                                    "name": "Or Qty Dry Con",
-                                    "value": container_dry_flag,
-                                    "type": "Number"
-                                    },
-                                    " Or Qty Dry Tr": {
-                                    "name": " Or Qty Dry Tr",
-                                    "value": trailer_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or Qty Ref Dis": {
-                                    "name": "Or Qty Ref Dis",
-                                    "value": reefer_diesel_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or Qty Ref Elc Tra": {
-                                    "name": "Or Qty Ref Elc Tra",
-                                    "value": reefer_electric_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or Qty Ref Con": {
-                                    "name": "Or Qty Ref Con",
-                                    "value": reefer_container_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or Qty Gen": {
-                                    "name": "Or Qty Gen",
-                                    "value": generator_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or  Qty Mud Lab": {
-                                    "name": "Or  Qty Mud Lab",
-                                    "value": mudlab_flag,
-                                    "type": "Number"
-                                    },
-                                    "Or Qty Office": {
-                                    "name": "Or Qty Office",
-                                    "value": office_flag,
-                                    "type": "Number"
-                                    },
-                                    "Other": {
-                                    "name": "Other",
-                                    "value": other_flag,
-                                    "type": "Number"
-                                    },
-                                    "Order Door": {
-                                        "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
-                                        "name": "Order Door",
-                                        "value": self.door if self.door else "",
-                                        "type": "DropDown",
-                                        "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
-                                    },
-                                    "Order Plug": {
-                                        "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
-                                        "name": "Order Plug",
-                                        "value": self.plug if self.plug else "",
-                                        "type": "DropDown",
-                                        "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
-                                    },
-                                    "Order Number": {
-                                    "value": self.name if self.name else "",
-                                    "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
-                                    "name": "Order Number",
-                                    "type": "Number"
-                                    },
-                                    "Contact Name": {
-                                    "value": extracted_number + "-" + str(qty) ,
-                                    "name": "Contact Name",
-                                    "type": "Text"
-                                    },
-                                "Delivery Note": {
-                                    "value": self.delivery_note if self.delivery_note else "",
-                                    "name": "Delivery Note",
-                                    "type": "Text"
-                                    },
-
-                                    # "Contract No": {
-                                    # "value": extracted_number + "-" + str(qty) ,
-                                    # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                                    # "name": "Contract Number",
-                                    # "type": "AutoNumber"
-                                    # },
-                                    "Customer Name": {
-                                    "value": self.partner_id.name if self.partner_id.name else "",
-                                    "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
-                                    "name": "Customer Name",
-                                    "type": "Database"
-                                    },
-                                "Customer Note": {
-                                    "value": str(self.customer_note) if self.customer_note else "",
-                                    "name": "Customer Note",
-                                    "type": "Text"
-                                },
-                                "PO Number": {
-                                    "value": str(self.po_number) if self.po_number else "",
-                                    "name": "PO Number",
-                                    "type": "Text"
-                                },
-                                "Site Note": {
-                                    "value": str(self.site_note) if self.site_note else "",
-                                    "name": "Site Note",
-                                    "type": "Text"
-                                },
-                                "Unit Type": {
-                                    "value": order_line.product_id.name if order_line.product_id.name else "",
-                                    "name": "Unit Type",
-                                    "type": "Text"
-                                },
+                                #     "Status": {
+                                #     "name": "Status",
+                                #     "value": str(self.goformz_status),
+                                #     "type": "DropDown"
+                                #     },
+                                #     "Or Qty Dry Con": {
+                                #     "name": "Or Qty Dry Con",
+                                #     "value": container_dry_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     " Or Qty Dry Tr": {
+                                #     "name": " Or Qty Dry Tr",
+                                #     "value": trailer_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or Qty Ref Dis": {
+                                #     "name": "Or Qty Ref Dis",
+                                #     "value": reefer_diesel_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or Qty Ref Elc Tra": {
+                                #     "name": "Or Qty Ref Elc Tra",
+                                #     "value": reefer_electric_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or Qty Ref Con": {
+                                #     "name": "Or Qty Ref Con",
+                                #     "value": reefer_container_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or Qty Gen": {
+                                #     "name": "Or Qty Gen",
+                                #     "value": generator_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or  Qty Mud Lab": {
+                                #     "name": "Or  Qty Mud Lab",
+                                #     "value": mudlab_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Or Qty Office": {
+                                #     "name": "Or Qty Office",
+                                #     "value": office_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Other": {
+                                #     "name": "Other",
+                                #     "value": other_flag,
+                                #     "type": "Number"
+                                #     },
+                                #     "Order Door": {
+                                #         "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                #         "name": "Order Door",
+                                #         "value": self.door if self.door else "",
+                                #         "type": "DropDown",
+                                #         "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                #     },
+                                #     "Order Plug": {
+                                #         "id": "0505aafe-d92d-4a1a-a94b-c448c714104d",
+                                #         "name": "Order Plug",
+                                #         "value": self.plug if self.plug else "",
+                                #         "type": "DropDown",
+                                #         "itemCollectionId": "0b450e90-a7d5-45cd-b84e-0e9e08506ee8"
+                                #     },
+                                #     "Order Number": {
+                                #     "value": self.name if self.name else "",
+                                #     "id": "d20e57e8-c6e2-4e7c-af5c-b943aba5126c",
+                                #     "name": "Order Number",
+                                #     "type": "Number"
+                                #     },
+                                #     "Contact Name": {
+                                #     "value": extracted_number + "-" + str(qty) ,
+                                #     "name": "Contact Name",
+                                #     "type": "Text"
+                                #     },
                                 # "Delivery Note": {
-                                #     "value": str(self.delivery_note),
+                                #     "value": self.delivery_note if self.delivery_note else "",
                                 #     "name": "Delivery Note",
                                 #     "type": "Text"
-                                # },
-                                # "Min Rental Period": {
-                                #     "value": str(self.initial_term),
-                                #     "name": "Min Rental Period",
+                                #     },
+                                # 
+                                #     # "Contract No": {
+                                #     # "value": extracted_number + "-" + str(qty) ,
+                                #     # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                                #     # "name": "Contract Number",
+                                #     # "type": "AutoNumber"
+                                #     # },
+                                #     "Customer Name": {
+                                #     "value": self.partner_id.name if self.partner_id.name else "",
+                                #     "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
+                                #     "name": "Customer Name",
+                                #     "type": "Database"
+                                #     },
+                                # "Customer Note": {
+                                #     "value": str(self.customer_note) if self.customer_note else "",
+                                #     "name": "Customer Note",
                                 #     "type": "Text"
                                 # },
-                                "Order Date": {
-                                    "value": str(formatted_date_string),
-                                    "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
-                                    "name": "Order Date",
-                                    "type": "Date"
-                                },
-                                "Address 1": {
-                                    "text": self.partner_id.street if self.partner_id.street else "",
-                                    "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
-                                    "name": "Address 1",
-                                    "type": "TextBox"
-                                },
-                                "City State Zip": {
-                                    "text": str(partner_shipping_id_city) +" "+ str(partner_shipping_id_state) +" "+str(self.partner_id.zip) if self.partner_id.zip else "" ,
-                                    "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
-                                    "name": "City State Zip",
-                                    "type": "TextBox"
-                                },
-                                "Contact Name": {
-                                    "text": self.partner_id.name if self.partner_id.name else "",
-                                    "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
-                                    "name": "Contact Name",
-                                    "type": "TextBox"
-                                },
-                                "Phone Cust": {
-                                    "text": self.partner_id.phone if self.partner_id.phone else "",
-                                    # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
-                                    "name": "Phone Cust",
-                                    "type": "TextBox"
-                                },
-                                "Email Cust": {
-                                    "text": self.partner_id.email if self.partner_id.email else "",
-                                    # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
-                                    "name": "Email Cust",
-                                    "type": "TextBox"
-                                },
-                                "Order Type": {
-                                    "value": order_line.product_id.name if order_line.product_id.name else "",
-                                    "name": "Order Type",
-                                    "type": "DropDown",
-                                },
-                                "Contact 2 Name": {
-                                    "value": self.partner_shipping_id.contact2_name if self.partner_shipping_id.contact2_name else "",
-                                    "name": "Contact 2 Name",
-                                    "type": "Text"
-                                },
-                                "Contact 3": {
-                                    "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "",
-                                    "name": "Contact 3 ",
-                                    "type": "Text"
-                                },
-                                "Contact 2 ph": {
-                                    "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
-                                    "name": "Contact 2 ph",
-                                    "type": "Text"
-                                },
-                                "Contact 3 ph": {
-                                    "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
-                                    "name": "Contact 3 ph",
-                                    "type": "Text"
-                                },
-                                "Contact 2 email": {
-                                    "value": self.partner_shipping_id.contact2_email if self.partner_shipping_id.contact2_email else "N/A",
-                                    "name": "Contact 2 email",
-                                    "type": "Text"
-                                },
-                                "Contact 3 email": {
-                                    "value": self.partner_shipping_id.contact3_email if self.partner_shipping_id.contact3_email else "N/A",
-                                    "name": "Contact 2 email",
-                                    "type": "Text"
-                                },
-                                "Site": {
-                                    "value": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
-                                    "name": "Site",
-                                    "type": "Database"
-                                },
-                                "Del Number": {
-                                    "text": "DEL"+str(order_number)+"-"+str(formatted_qty_form_number),
-                                    "name": "Del Number",
-                                    "type": "TextBox"
-                                },
-                                "Del numbers": {
-                                    "text": all_del_number,
-                                    "name": "Del numbers",
-                                    "type": "TextBox"
-                                },
-                                "Unit Types del ": {
-                                    "text": self.order_line_quantities,
-                                    "name": "Unit Types del ",
-                                    "type": "TextBox"
-                                },
-                                "Del All": {
-                                    "text": all_del_number,
-                                    "name": "Del All",
-                                    "type": "TextBox"
-                                },
-
-                                "Site Address": {
-                                    "text": self.partner_shipping_id.street if self.partner_shipping_id.street else "",
-                                    "id": "fc631dcf-c180-4453-9891-81f543fa5763",
-                                    "name": "Site Address",
-                                    "type": "TextBox"
-                                },
-                                "Site City State Zip": {
-                                    "text": str(self.partner_shipping_id.city) if self.partner_shipping_id.city else "" +" "+ str(self.partner_shipping_id.state_id.name) if self.partner_shipping_id.state_id.name else "" +" "+str(self.partner_shipping_id.zip) if self.partner_shipping_id.zip else "" ,
-                                    "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
-                                    "name": "Site City State Zip",
-                                    "type": "TextBox"
-                                },
-                                "Site Contact": {
-                                    "text": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
-                                    "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
-                                    "name": "Site Contact",
-                                    "type": "TextBox"
-                                },
-                                "Site Contact Phone": {
-                                    "text": self.partner_shipping_id.phone if self.partner_shipping_id.phone else "",
-                                    "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
-                                    "name": "Site Contact Phone",
-                                    "type": "TextBox"
-                                },
-                                "Pics": {
-                                "value": self.partner_shipping_id.number_of_pics if self.partner_shipping_id.number_of_pics else "",
-                                "name": "Pics",
-                                "type": "Number"
-                                },
-                                "Order Plug": {
-                                    "value": self.partner_shipping_id.plug if self.partner_shipping_id.plug else "",
-                                    "name": "Order Plug",
-                                    "type": "Drop Down"
-                                },
-                                "Site Contact Email": {
-                                    "text": self.partner_shipping_id.site_email if self.partner_shipping_id.site_email else "",
-                                    "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
-                                    "name": "Site Contact Email",
-                                    "type": "TextBox"
-                                },
+                                # "PO Number": {
+                                #     "value": str(self.po_number) if self.po_number else "",
+                                #     "name": "PO Number",
+                                #     "type": "Text"
+                                # },
+                                # "Site Note": {
+                                #     "value": str(self.site_note) if self.site_note else "",
+                                #     "name": "Site Note",
+                                #     "type": "Text"
+                                # },
+                                # "Unit Type": {
+                                #     "value": order_line.product_id.name if order_line.product_id.name else "",
+                                #     "name": "Unit Type",
+                                #     "type": "Text"
+                                # },
+                                # # "Delivery Note": {
+                                # #     "value": str(self.delivery_note),
+                                # #     "name": "Delivery Note",
+                                # #     "type": "Text"
+                                # # },
+                                # # "Min Rental Period": {
+                                # #     "value": str(self.initial_term),
+                                # #     "name": "Min Rental Period",
+                                # #     "type": "Text"
+                                # # },
+                                # "Order Date": {
+                                #     "value": str(formatted_date_string),
+                                #     "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
+                                #     "name": "Order Date",
+                                #     "type": "Date"
+                                # },
+                                # "Address 1": {
+                                #     "text": self.partner_id.street if self.partner_id.street else "",
+                                #     "id": "7e161cdc-5319-4fdd-988b-df57bcac0e18",
+                                #     "name": "Address 1",
+                                #     "type": "TextBox"
+                                # },
+                                # "City State Zip": {
+                                #     "text": str(partner_shipping_id_city) +" "+ str(partner_shipping_id_state) +" "+str(self.partner_id.zip) if self.partner_id.zip else "" ,
+                                #     "id": "25c9c51d-3944-49fd-beb0-91af2296c633",
+                                #     "name": "City State Zip",
+                                #     "type": "TextBox"
+                                # },
+                                # "Contact Name": {
+                                #     "text": self.partner_id.name if self.partner_id.name else "",
+                                #     "id": "0a943238-3cd5-4579-a4fe-2dff34faa952",
+                                #     "name": "Contact Name",
+                                #     "type": "TextBox"
+                                # },
+                                # "Phone Cust": {
+                                #     "text": self.partner_id.phone if self.partner_id.phone else "",
+                                #     # "id": "e1e41e18-071f-40e2-91ee-cdd2180350b8",
+                                #     "name": "Phone Cust",
+                                #     "type": "TextBox"
+                                # },
+                                # "Email Cust": {
+                                #     "text": self.partner_id.email if self.partner_id.email else "",
+                                #     # "id": "99e10f42-bf19-458e-a0d2-d0b4ddec81c4",
+                                #     "name": "Email Cust",
+                                #     "type": "TextBox"
+                                # },
+                                # "Order Type": {
+                                #     "value": order_line.product_id.name if order_line.product_id.name else "",
+                                #     "name": "Order Type",
+                                #     "type": "DropDown",
+                                # },
+                                # "Contact 2 Name": {
+                                #     "value": self.partner_shipping_id.contact2_name if self.partner_shipping_id.contact2_name else "",
+                                #     "name": "Contact 2 Name",
+                                #     "type": "Text"
+                                # },
+                                # "Contact 3": {
+                                #     "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "",
+                                #     "name": "Contact 3 ",
+                                #     "type": "Text"
+                                # },
+                                # "Contact 2 ph": {
+                                #     "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
+                                #     "name": "Contact 2 ph",
+                                #     "type": "Text"
+                                # },
+                                # "Contact 3 ph": {
+                                #     "value": self.partner_shipping_id.contact3_name if self.partner_shipping_id.contact3_name else "N/A",
+                                #     "name": "Contact 3 ph",
+                                #     "type": "Text"
+                                # },
+                                # "Contact 2 email": {
+                                #     "value": self.partner_shipping_id.contact2_email if self.partner_shipping_id.contact2_email else "N/A",
+                                #     "name": "Contact 2 email",
+                                #     "type": "Text"
+                                # },
+                                # "Contact 3 email": {
+                                #     "value": self.partner_shipping_id.contact3_email if self.partner_shipping_id.contact3_email else "N/A",
+                                #     "name": "Contact 2 email",
+                                #     "type": "Text"
+                                # },
+                                # "Site": {
+                                #     "value": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
+                                #     "name": "Site",
+                                #     "type": "Database"
+                                # },
+                                # "Del Number": {
+                                #     "text": "DEL"+str(order_number)+"-"+str(formatted_qty_form_number),
+                                #     "name": "Del Number",
+                                #     "type": "TextBox"
+                                # },
+                                # "Del numbers": {
+                                #     "text": all_del_number,
+                                #     "name": "Del numbers",
+                                #     "type": "TextBox"
+                                # },
+                                # "Unit Types del ": {
+                                #     "text": self.order_line_quantities,
+                                #     "name": "Unit Types del ",
+                                #     "type": "TextBox"
+                                # },
+                                # "Del All": {
+                                #     "text": all_del_number,
+                                #     "name": "Del All",
+                                #     "type": "TextBox"
+                                # },
+                                # 
+                                # "Site Address": {
+                                #     "text": self.partner_shipping_id.street if self.partner_shipping_id.street else "",
+                                #     "id": "fc631dcf-c180-4453-9891-81f543fa5763",
+                                #     "name": "Site Address",
+                                #     "type": "TextBox"
+                                # },
+                                # "Site City State Zip": {
+                                #     "text": str(self.partner_shipping_id.city) if self.partner_shipping_id.city else "" +" "+ str(self.partner_shipping_id.state_id.name) if self.partner_shipping_id.state_id.name else "" +" "+str(self.partner_shipping_id.zip) if self.partner_shipping_id.zip else "" ,
+                                #     "id": "b88bb464-6acc-43fa-8111-17be737b5f57",
+                                #     "name": "Site City State Zip",
+                                #     "type": "TextBox"
+                                # },
+                                # "Site Contact": {
+                                #     "text": self.partner_shipping_id.name if self.partner_shipping_id.name else "",
+                                #     "id": "772b76b8-003f-4b32-9871-81f4274bd8b7",
+                                #     "name": "Site Contact",
+                                #     "type": "TextBox"
+                                # },
+                                # "Site Contact Phone": {
+                                #     "text": self.partner_shipping_id.phone if self.partner_shipping_id.phone else "",
+                                #     "id": "dffae6d2-1715-43b4-9b0a-bb834368a116",
+                                #     "name": "Site Contact Phone",
+                                #     "type": "TextBox"
+                                # },
+                                # "Pics": {
+                                # "value": self.partner_shipping_id.number_of_pics if self.partner_shipping_id.number_of_pics else "",
+                                # "name": "Pics",
+                                # "type": "Number"
+                                # },
+                                # "Order Plug": {
+                                #     "value": self.partner_shipping_id.plug if self.partner_shipping_id.plug else "",
+                                #     "name": "Order Plug",
+                                #     "type": "Drop Down"
+                                # },
+                                # "Site Contact Email": {
+                                #     "text": self.partner_shipping_id.site_email if self.partner_shipping_id.site_email else "",
+                                #     "id": "86eb89d7-3534-4ca1-9a87-1d59afbb8af2",
+                                #     "name": "Site Contact Email",
+                                #     "type": "TextBox"
+                                # },
                                 },
                             "assignment": {
                             "id": "4f90a5f4-0327-402b-a0e7-5fa4976001aa",
