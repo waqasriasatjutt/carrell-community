@@ -67,7 +67,7 @@ management rental
         'report/sale_rental_report.xml',
         'views/rental_product.xml',
         'views/res_config.xml',
-        'views/res_partner.xml',
+        # 'views/res_partner.xml',
     ],
     'qweb' : [
     ],
