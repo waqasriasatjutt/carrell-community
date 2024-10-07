@@ -11,15 +11,15 @@ from odoo.tools.misc import formatLang
 from odoo.osv import expression
 from odoo.tools import float_is_zero, float_compare
 
-
 from odoo.addons import decimal_precision as dp
 
 from werkzeug.urls import url_encode
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
+
 class PartnerTemplate(models.Model):
     _inherit = "res.partner"
-    
+
     customer_id = fields.Char('Customer ID')
     site_email = fields.Char('Site Email')
     contact1_name = fields.Char('Contact 1 Name')

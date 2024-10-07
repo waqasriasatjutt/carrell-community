@@ -7,8 +7,8 @@
         <field name="inherit_id" ref="sale.view_order_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-<!--                <field name="partner_shipping_id" optional="show" string="Site"/>-->
-<!--                <field name="site_note" optional="show" string="Site"/>-->
+                <!--                <field name="partner_shipping_id" optional="show" string="Site"/>-->
+                <!--                <field name="site_note" optional="show" string="Site"/>-->
                 <field name="site_city" optional="show"/>
                 <field name="site_state" optional="show"/>
                 <field name="custom_city" optional="show"/>
@@ -19,7 +19,6 @@
                 <field name="dry_electric" optional="show"/>
                 <field name="dry_trailer" optional="show"/>
             </xpath>
-
             <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="optional">hide</attribute>
             </xpath>
@@ -47,6 +46,12 @@
         </field>
     </record>
 
+
+    <record id="sale_order_view_search_inherit_quotation_inherit" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.quotation.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
 
             <xpath expr="//search/field[@name='name']" position="after">
                 <field name="site_city" string="City"/>
@@ -76,6 +81,10 @@
                 <field name="warehouse_id" string="Warehouse"/>
                 <field name="amount_total" string="Total Amount"/>
             </xpath>
+
+        </field>
+    </record>
+
 
 
     <record id="product_template_form_inherited_view" model="ir.ui.view">
@@ -870,6 +879,8 @@
 			]]>
         </field>
     </record>
+
+
 
     <record forcecreate="True" id="rental_recur_id" model="ir.cron">
         <field name="name">Recurring invoice</field>

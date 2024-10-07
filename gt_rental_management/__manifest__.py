@@ -57,7 +57,8 @@ management rental
     "currency": "EUR",
     "license" : "Other proprietary",
     'summary': "This app will help for rent the products like car, electronic accessories, machineary etc.. its generic so can be used for any rental business Rental product rental service rent product rent car rent machine rental machine rent Hire machinery Equipment Rental management machine rental real estate rental sales service Equipment rental property rent service rental Equipment Machinery rental service machine repair workshop product repair management equipment repair service Repair Machine Diagnosis  repair workorder Operation Maintenance Repair order machine Maintenance and repair computer Repair spare parts repair management material repair management Property Sale & Rental Management",
-    'depends' : ['sale_management','stock'],
+    'depends' : ['sale_management','stock','contacts'],
+
     'data': [
         'security/ir.model.access.csv',
         'views/ir_sequence_data.xml',
