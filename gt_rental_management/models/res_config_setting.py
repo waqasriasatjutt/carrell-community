@@ -39,3 +39,26 @@ class ResCompany(models.Model):
     _inherit = "res.company"
     
     reminder_days = fields.Integer('Reminder Days For Rental Expiration Mail')
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
