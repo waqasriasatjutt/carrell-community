@@ -21,4 +21,4 @@
 
 from . import rental_product
 from . import res_config_setting
-from . import res_partner
+# from . import res_partner
