@@ -46,7 +46,7 @@
 
         </field>
     </record>
-
+    
 
             <xpath expr="//search/field[@name='name']" position="after">
                 <field name="site_city" string="City"/>
