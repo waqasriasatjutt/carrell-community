@@ -731,9 +731,8 @@ class SaleOrderGF(models.Model):
                         partner_shipping_id_city = self.partner_shipping_id.city if self.partner_shipping_id.city else ""
                         partner_shipping_id_state = self.partner_shipping_id.state_id.name if self.partner_shipping_id.state_id.name else ""
                         partner_shipping_id_zip = self.partner_shipping_id.zip if self.partner_shipping_id.zip else ""
-                        formatted_qty_form_number = "{:02}".format(qty_form_number)
                         payload = json.dumps({
-                        "name": f"DEL{str(order_number)}-{str(formatted_qty_form_number)}  {self.name} {partner_name}  {partner_shipping_id_street}  {partner_shipping_id_city}  {partner_shipping_id_state}  {str(self.goformz_status)} {order_line.product_id.name} {self.date_order}",
+                        "name": f"DEL{str(order_number)}-{str(qty_form_number)}  {self.name} {partner_name}  {partner_shipping_id_street}  {partner_shipping_id_city}  {partner_shipping_id_state}  {str(self.goformz_status)} {order_line.product_id.name} {self.date_order}",
                         "templateId": self.company_id.template_id,
                                 "fields": {
                                 "Yard": {
@@ -942,7 +941,7 @@ class SaleOrderGF(models.Model):
                                     "type": "Database"
                                 },
                                 "Del Number": {
-                                    "text": "DEL"+str(order_number)+"-"+str(formatted_qty_form_number),
+                                    "text": "DEL"+str(order_number)+"-"+str(qty_form_number),
                                     "name": "Del Number",
                                     "type": "TextBox"
                                 },
