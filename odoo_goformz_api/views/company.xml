@@ -9,6 +9,8 @@
                 <!-- Adding the template_id field after the street field -->
                 <xpath expr="//div[@class='o_address_format']" position="after">
                     <field name="template_id"/>
+                    <field name="goform_username"></field>
+                    <field name="goform_password"></field>
                 </xpath>
             </field>
         </record>
