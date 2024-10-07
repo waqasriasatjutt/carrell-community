@@ -300,8 +300,9 @@
                             <field name="fuel_surcharge"/>
                             <field name="fuel_sc_amount"/>
                             <field name="sage_inv"/>
-                        </group>
 
+
+                        </group>
                         <group>
                             <field name="order_line_sequence" widget="text" readonly="1"/>
                             <field name="order_line_quantities" widget="text" readonly="1"/>

@@ -60,13 +60,13 @@ management rental
     'depends' : ['sale_management','stock'],
     'data': [
         'security/ir.model.access.csv',
-        'views/ir_sequence_data.xml',
-        'wizard/rental_wizard.xml',
+        # 'views/ir_sequence_data.xml',
+        # 'wizard/rental_wizard.xml',
         # 'report/rental.xml',
         # 'report/reports.xml',
         # 'report/sale_rental_report.xml',
-        'views/rental_product.xml',
-        'views/res_config.xml',
+        # 'views/rental_product.xml',
+        # 'views/res_config.xml',
         # 'views/res_partner.xml',
     ],
     'qweb' : [
