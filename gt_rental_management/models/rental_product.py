@@ -248,6 +248,7 @@ class SaleOrder(models.Model):
                 order.partner_invoice_id = False
 
     refeer_container = fields.Float('Ref Cont', compute='_compute_calculation_refeer', store=False)
+
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_refeer(self):
         for rec in self:
@@ -258,6 +259,7 @@ class SaleOrder(models.Model):
             print("Refeer Container Count ------- ", rec.refeer_container)
 
     dry_container = fields.Float('Dry Con', compute='_compute_calculation', store=False)
+
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation(self):
         for rec in self:
@@ -268,6 +270,7 @@ class SaleOrder(models.Model):
             print("Dry Container Count ------- ", rec.dry_container)
 
     dry_trailer = fields.Float('Dry Trl', compute='_compute_calculation_trailer', store=False)
+
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_trailer(self):
         for rec in self:
@@ -276,7 +279,6 @@ class SaleOrder(models.Model):
             # rec.dry_container = sum(dry_container_count.mapped('price_subtotal'))
             # rec.dry_container = len(dry_container_count)
             print("Dry trailer Count ------- ", rec.dry_trailer)
-
 
     dry_electric = fields.Float('Elec Ref', compute='_compute_calculation_electric', store=False)
 
@@ -290,6 +292,7 @@ class SaleOrder(models.Model):
             print("Dry Trailer Count ------- ", rec.dry_electric)
 
     dry_delivery = fields.Float('Del Total', compute='_compute_calculation_delivery', store=False)
+
     @api.depends('order_line.product_uom_qty', 'order_line.price_subtotal')
     def _compute_calculation_delivery(self):
         for rec in self:
@@ -322,7 +325,6 @@ class SaleOrder(models.Model):
             else:
                 order.partner_shipping_id = False
 
-
     @api.model
     def cron_product_rental(self):
         sale_obj = self.search([('agreement_received', '=', True)])
@@ -339,7 +341,6 @@ class SaleOrder(models.Model):
                     mail_id = template.send_mail(sale.id)
                     mail_now = self.env['mail.mail'].browse(mail_id)
                     mail_now.send()
-
 
     # @api.multi
     def action_confirm(self):
@@ -387,7 +388,6 @@ class SaleOrder(models.Model):
             invoice_vals_list.append(invoice_vals)
             moves = self.env['account.move'].sudo().with_context(move_type='out_invoice').create(invoice_vals_list)
         return True
-
 
     #     def _prepare_invoice(self):
     #         """
@@ -461,7 +461,6 @@ class SaleOrder(models.Model):
             'invoice_line_ids': [],
         }
 
-
     def _prepare_invoice_line_single(self, invline):
         """
         Prepare the dict of values to create the new invoice line for a sales order line.
@@ -486,7 +485,6 @@ class SaleOrder(models.Model):
         # if self.display_type:
         # res['account_id'] = False
         return res
-
 
     def create_invoice(self):
         ids = []
@@ -549,10 +547,9 @@ class SaleOrder(models.Model):
             invoice.invoice_line_ids = ids
             record = invoice.compute_taxes()
             res = invoice.message_post_with_view('mail.message_origin_link',
-                                                values={'self': invoice, 'origin': order},
-                                                subtype_id=self.env.ref('mail.mt_note').id)
+                                                 values={'self': invoice, 'origin': order},
+                                                 subtype_id=self.env.ref('mail.mt_note').id)
         return invoice
-
 
     # @api.multi
     def action_product_replace(self):
@@ -576,13 +573,11 @@ class SaleOrder(models.Model):
             'target': 'new',
         }
 
-
     #
 
     # @api.multi
     def action_renew_rental(self):
         print("=============renew_rental============", self)
-
 
     @api.model
     def create(self, vals):
@@ -591,7 +586,6 @@ class SaleOrder(models.Model):
             name = self.env['ir.sequence'].next_by_code('RENTAL') or '/'
             res.update({'name': name})
         return res
-
 
     # @api.multi
     def action_view_delivery(self):
@@ -605,7 +599,6 @@ class SaleOrder(models.Model):
             action['res_id'] = pickings.id
         return action
 
-
     @api.onchange('start_date', 'end_date', 'initial_term')
     def calculate_date(self):
         if self.start_date and self.end_date:
@@ -613,7 +606,6 @@ class SaleOrder(models.Model):
             d2 = datetime.datetime.strptime(str(self.end_date), '%Y-%m-%d')
             d3 = d2 - d1
             self.initial_term = int(d3.days) / 30
-
 
     @api.model
     def cron_invoice_recurring_method(self):
