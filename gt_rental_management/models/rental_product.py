@@ -205,7 +205,10 @@ class SaleOrder(models.Model):
     quantity_total = fields.Integer('Total Delivery', compute='_compute_all_delivery', store=False)            
     customer_note = fields.Char('Customer Note')
     delivery_note = fields.Char('Delivery Note')
+
     site_note = fields.Char('Site Note')
+    site_city = fields.Char(related='partner_shipping_id.city', string='Site City')
+
     start_date = fields.Date(string='Cust Req Del Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='Cust Req Pu Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     del_date = fields.Date(string='Del Date')
