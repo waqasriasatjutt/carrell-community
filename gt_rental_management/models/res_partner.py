@@ -1,3 +1,4 @@
+from odoo import models, fields  # Import models and fields
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
 
@@ -29,12 +30,6 @@ class PartnerTemplate(models.Model):
     doors_ref = fields.Char('Doors Ref')
     cord = fields.Char('Cord Lgth')
 
-    reefer_type = fields.Selection(
-        string="Reefer Type",
-        selection=[('dr', 'Dr'), ('er', 'Er'), ('rc', 'Rc')],
-        required=False,
-        default='dr'  # Default value added here
-    )
 
     # Cost Info
     miles = fields.Char('Miles ($)')
@@ -52,15 +47,22 @@ class PartnerTemplate(models.Model):
     del_fee = fields.Float('Del Fee')
     pickup_fee = fields.Float('Pickup Fee')
     fuel_amount = fields.Float('Fuel sur amount(number)')  # Fixed typo here
+
+    reefer_type = fields.Selection(
+        string="Reefer Type",
+        selection=[('dr', 'Dr'), ('er', 'Er'), ('rc', 'Rc')],
+        required=False,
+        default='dr'
+    )
     fuel_sur = fields.Selection(
         string="Fuel Sur",
         selection=[('yes', 'Y'), ('no', 'N')],
         required=False,
-        default='no'  # Default added
+        default='no'
     )
     fuel_sc = fields.Selection(
         string="Fuel SC Charge Type",
         selection=[('mil', 'Mileage'), ('pc', 'Percent Choice')],
         required=False,
-        default='mil'  # Default added
+        default='mil'
     )
