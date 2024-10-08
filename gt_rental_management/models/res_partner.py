@@ -17,6 +17,7 @@ from odoo.addons import decimal_precision as dp
 from werkzeug.urls import url_encode
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
+
 class PartnerTemplate(models.Model):
     _inherit = "res.partner"
 
@@ -34,9 +35,9 @@ class PartnerTemplate(models.Model):
     plug = fields.Char('Plug')
     number_of_pics = fields.Integer(string="Pics")
 
-    # contact_name_01 = fields.Char('Contact 1 Name')
-    # contact_phone_01 = fields.Char('Contact 1 Phone')
-    # contact_email_01 = fields.Char('Contact 1 Email')
+    contact1_name = fields.Char('Contact 1 Name')
+    contact1_phone = fields.Char('Contact 1 Phone')
+    contact1_email = fields.Char('Contact 1 Email')
     # contact_name_02 = fields.Char('Contact 2 Name')
     # contact_phone_02 = fields.Char('Contact 2 Phone')
     # contact_email_02 = fields.Char('Contact 2 Email')
