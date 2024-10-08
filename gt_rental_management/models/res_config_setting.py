@@ -41,24 +41,3 @@ class ResCompany(models.Model):
     reminder_days = fields.Integer('Reminder Days For Rental Expiration Mail')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
