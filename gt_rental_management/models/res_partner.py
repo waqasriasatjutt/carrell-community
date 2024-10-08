@@ -1,4 +1,19 @@
-from odoo import models, fields  # Import models and fields
+from datetime import datetime, date, time, timedelta
+import datetime
+from datetime import date
+from functools import partial
+from itertools import groupby
+from odoo.fields import Command
+
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.misc import formatLang
+from odoo.osv import expression
+from odoo.tools import float_is_zero, float_compare
+
+from odoo.addons import decimal_precision as dp
+
+from werkzeug.urls import url_encode
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
 
@@ -7,20 +22,35 @@ class PartnerTemplate(models.Model):
 
     customer_id = fields.Char('Customer ID')
     site_email = fields.Char('Site Email')
-    contact_name_01 = fields.Char('Contact 1 Name')
-    contact_phone_01 = fields.Char('Contact 1 Phone')
-    contact_email_01 = fields.Char('Contact 1 Email')
-    contact_name_02 = fields.Char('Contact 2 Name')
-    contact_phone_02 = fields.Char('Contact 2 Phone')
-    contact_email_02 = fields.Char('Contact 2 Email')
+    contact2_name = fields.Char('Contact 2 Name')
+    contact2_phone = fields.Char('Contact 2 Phone')
+    contact2_email = fields.Char('Contact 2 Email')
 
-    contact_name_03 = fields.Char("Contact 3 Name")
-    contact_phone_03 = fields.Char("Contact 3 Phone")
-    contact_email_03 = fields.Char('Contact 3 Email')
+    contact3_name = fields.Char("Contact 3 Name")
+    contact3_phone = fields.Char("Contact 3 Phone")
+    contact3_email = fields.Char('Contact 3 Email')
 
     notes = fields.Char('Notes')
     plug = fields.Char('Plug')
     number_of_pics = fields.Integer("Pics")
+
+
+    # customer_id = fields.Char('Customer ID')
+    # site_email = fields.Char('Site Email')
+    # contact_name_01 = fields.Char('Contact 1 Name')
+    # contact_phone_01 = fields.Char('Contact 1 Phone')
+    # contact_email_01 = fields.Char('Contact 1 Email')
+    # contact_name_02 = fields.Char('Contact 2 Name')
+    # contact_phone_02 = fields.Char('Contact 2 Phone')
+    # contact_email_02 = fields.Char('Contact 2 Email')
+    #
+    # contact_name_03 = fields.Char("Contact 3 Name")
+    # contact_phone_03 = fields.Char("Contact 3 Phone")
+    # contact_email_03 = fields.Char('Contact 3 Email')
+
+    # notes = fields.Char('Notes')
+    # plug = fields.Char('Plug')
+    # number_of_pics = fields.Integer("Pics")
 
     # Store Uses
     dry_cont = fields.Char('Dry cont Ct(N)')
@@ -29,7 +59,6 @@ class PartnerTemplate(models.Model):
     doors_dry = fields.Char('Doors Dry')
     doors_ref = fields.Char('Doors Ref')
     cord = fields.Char('Cord Lgth')
-
 
     # Cost Info
     miles = fields.Char('Miles ($)')
