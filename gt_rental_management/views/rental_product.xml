@@ -47,36 +47,41 @@
             </field>
         </record>
 
-
-        <xpath expr="//search/field[@name='name']" position="after">
-            <field name="site_city" string="City"/>
-            <field name="tag_ids" string="Tags"/>
-            <field name="dry_pickup" string="Dry Pickup"/>
-            <field name="dry_delivery" string="Dry Delivery"/>
-            <field name="po_number" string="PO Number"/>
-            <field name="sage_inv" string="Sage"/>
-            <field name="pu_date" string="PU Date"/>
-            <field name="company_id" string="Company"/>
-            <field name="delivery_status" string="Delivery Status"/>
-            <field name="invoice_status" string="Invoice Status"/>
-            <field name="activity_ids" string="Activity Ids"/>
-            <field name="dry_trailer" string="Dry Trailer"/>
-            <field name="user_id" string="User Id"/>
-            <field name="site_city" string="Site City"/>
-            <field name="site_state" string="Site State"/>
-            <field name="custom_city" string="Customer City"/>
-            <field name="custom_state" string="Customer State"/>
-            <field name="warehouse_id" string="Warehouse"/>
-            <field name="dry_container" string="Dry Container"/>
-            <field name="refeer_container" string="Refeer Container"/>
-            <field name="dry_electric" string="Dry Electric"/>
-            <field name="partner_id" string="Customer Name"/>
-            <field name="name" string="Rental ID"/>
-            <field name="date_order" string="Order Date"/>
-            <field name="warehouse_id" string="Warehouse"/>
-            <field name="amount_total" string="Total Amount"/>
-        </xpath>
-
+        <record id="search_view_inherited" model="ir.ui.view">
+            <field name="name">sale.order.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='name']" position="after">
+                    <field name="site_city" string="City"/>
+                    <field name="tag_ids" string="Tags"/>
+                    <field name="dry_pickup" string="Dry Pickup"/>
+                    <field name="dry_delivery" string="Dry Delivery"/>
+                    <field name="po_number" string="PO Number"/>
+                    <field name="sage_inv" string="Sage"/>
+                    <field name="pu_date" string="PU Date"/>
+                    <field name="company_id" string="Company"/>
+                    <field name="delivery_status" string="Delivery Status"/>
+                    <field name="invoice_status" string="Invoice Status"/>
+                    <field name="activity_ids" string="Activity Ids"/>
+                    <field name="dry_trailer" string="Dry Trailer"/>
+                    <field name="user_id" string="User Id"/>
+                    <field name="site_city" string="Site City"/>
+                    <field name="site_state" string="Site State"/>
+                    <field name="custom_city" string="Customer City"/>
+                    <field name="custom_state" string="Customer State"/>
+                    <field name="warehouse_id" string="Warehouse"/>
+                    <field name="dry_container" string="Dry Container"/>
+                    <field name="refeer_container" string="Refeer Container"/>
+                    <field name="dry_electric" string="Dry Electric"/>
+                    <field name="partner_id" string="Customer Name"/>
+                    <field name="name" string="Rental ID"/>
+                    <field name="date_order" string="Order Date"/>
+                    <field name="warehouse_id" string="Warehouse"/>
+                    <field name="amount_total" string="Total Amount"/>
+                </xpath>
+            </field>
+        </record>
 
         <record id="product_template_form_inherited_view" model="ir.ui.view">
             <field name="name">product.template.common.form</field>
