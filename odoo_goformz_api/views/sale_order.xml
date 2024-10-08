@@ -8,16 +8,16 @@
             <field name="inherit_id" ref="gt_rental_management.view_order_form_inherited"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='start_date']" position="replace">
-                                <field  name="start_date" string="Del Date"/>
+                                <field  name="start_date" string="Cust Req Del Date"/>
                     <!-- Your Custom Button -->
                 </xpath>
                 <xpath expr="//field[@name='end_date']" position="replace">
-                                <field  name="end_date" string="By"/>
+                                <field  name="end_date" string="Cust Req Pu Date"/>
                     <!-- Your Custom Button -->
                 </xpath>
                 <!-- <xpath expr="//group[@name='other_details']" position="inside">
                         <group >
-                            
+                           z
                             <group >
 
                             </group>
