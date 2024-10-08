@@ -32,7 +32,8 @@ class PartnerTemplate(models.Model):
 
     notes = fields.Char('Notes')
     plug = fields.Char('Plug')
-    number_of_pics = fields.Integer("Pics")
+    # new_field = fields.Integer(string="", required=False, )
+    number_of_pics = fields.Integer(string="Pics")
 
 
     # customer_id = fields.Char('Customer ID')
@@ -53,7 +54,7 @@ class PartnerTemplate(models.Model):
     # number_of_pics = fields.Integer("Pics")
 
     # Store Uses
-    dry_cont = fields.Char('Dry cont Ct(N)')
+    dry_cont = fields.Char(string="Dry cont Ct(N)", required=False, )
     dry_trl = fields.Char('Dry Trl Ct')
     reefer_ct = fields.Char('Reefer Ct')
     doors_dry = fields.Char('Doors Dry')
