@@ -54,15 +54,15 @@ class PartnerTemplate(models.Model):
     # number_of_pics = fields.Integer("Pics")
 
     # Store Uses
-    dry_cont = fields.Char(string="Dry cont Ct(N)", required=False, )
-    dry_trl = fields.Char('Dry Trl Ct')
-    reefer_ct = fields.Char('Reefer Ct')
-    doors_dry = fields.Char('Doors Dry')
-    doors_ref = fields.Char('Doors Ref')
-    cord = fields.Char('Cord Lgth')
+    dry_cont = fields.Char(string="Dry cont Ct(N)")
+    dry_trl = fields.Char(string="Dry Trl Ct")
+    reefer_ct = fields.Char(string="Reefer Ct")
+    doors_dry = fields.Char(string="Doors Dry")
+    doors_ref = fields.Char(string="Doors Ref")
+    cord = fields.Char(string="Cord Lgth")
 
     # Cost Info
-    miles = fields.Char('Miles ($)')
+    miles = fields.Char(string="Miles ($)")
     gallons = fields.Float('Gallons')
     fuel = fields.Float('Fuel Cost')
     driver = fields.Float('Driver Pay')
