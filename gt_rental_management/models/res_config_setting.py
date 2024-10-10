@@ -18,26 +18,47 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-from odoo import fields, models, api, _
+from odoo import fields, models ,api, _
 
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
-
-    reminder_days = fields.Integer('Reminder Days For Rental Expiration Mail', related='company_id.reminder_days',
-                                   readonly=False)
-
+    
+    reminder_days = fields.Integer('Reminder Days For Rental Expiration Mail', related='company_id.reminder_days', readonly=False )
+    
     @api.onchange('reminder_days')
     def _onchange_reminder_days(self):
         if self.reminder_days:
             company = self.env['res.company']
             company_obj = company.browse(self.company_id.id)
-            company_obj.write({'reminder_days': self.reminder_days})
-
-
+            company_obj.write({'reminder_days':self.reminder_days})
+    
+    
+    
 class ResCompany(models.Model):
     _inherit = "res.company"
-
+    
     reminder_days = fields.Integer('Reminder Days For Rental Expiration Mail')
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
