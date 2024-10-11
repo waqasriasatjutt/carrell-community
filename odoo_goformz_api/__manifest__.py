@@ -12,8 +12,8 @@
     'summary': "GOFormz Integration",
     'depends' : ['sale_management','stock','gt_rental_management'],
     'data': [
-        # 'views/sale_order.xml',
-        # 'views/company.xml',
+        'views/sale_order.xml',
+        'views/company.xml',
     ],
     'qweb' : [
     ],
