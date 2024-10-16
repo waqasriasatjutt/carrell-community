@@ -823,12 +823,12 @@ class SaleOrderGF(models.Model):
                                     "type": "Text"
                                     },
                                 
-                                    "Contract No": {
-                                    "value": extracted_number + "-" + str(qty) ,
-                                    "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                                    "name": "Contract Number",
-                                    "type": "AutoNumber"
-                                    },
+                                    # "Contract No": {
+                                    # "value": extracted_number + "-" + str(qty) ,
+                                    # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                                    # "name": "Contract Number",
+                                    # "type": "AutoNumber"
+                                    # },
                                     "Customer Name": {
                                     "value": self.partner_id.name if self.partner_id.name else "",
                                     "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
