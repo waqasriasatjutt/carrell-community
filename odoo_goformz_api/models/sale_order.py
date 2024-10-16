@@ -823,12 +823,12 @@ class SaleOrderGF(models.Model):
                                     "type": "Text"
                                     },
                                 
-                                    # "Contract No": {
-                                    # "value": extracted_number + "-" + str(qty) ,
-                                    # "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
-                                    # "name": "Contract Number",
-                                    # "type": "AutoNumber"
-                                    # },
+                                    "Contract No": {
+                                    "value": extracted_number + "-" + str(qty) ,
+                                    "id": "9fd77991-4fbd-4eea-bfdb-a1b0c75f5d2b",
+                                    "name": "Contract Number",
+                                    "type": "AutoNumber"
+                                    },
                                     "Customer Name": {
                                     "value": self.partner_id.name if self.partner_id.name else "",
                                     "id": "a8a19313-34ce-47bc-96cf-3a3297c04c42",
@@ -855,16 +855,16 @@ class SaleOrderGF(models.Model):
                                     "name": "Unit Type",
                                     "type": "Text"
                                 },
-                                # "Delivery Note": {
-                                #     "value": str(self.delivery_note),
-                                #     "name": "Delivery Note",
-                                #     "type": "Text"
-                                # },
-                                # "Min Rental Period": {
-                                #     "value": str(self.initial_term),
-                                #     "name": "Min Rental Period",
-                                #     "type": "Text"
-                                # },
+                                "Delivery Note": {
+                                    "value": str(self.delivery_note),
+                                    "name": "Delivery Note",
+                                    "type": "Text"
+                                },
+                                "Min Rental Period": {
+                                    "value": str(self.initial_term),
+                                    "name": "Min Rental Period",
+                                    "type": "Text"
+                                },
                                 "Order Date": {
                                     "value": str(formatted_date_string),
                                     "id": "654a748e-eccc-4b3c-a8fc-e337234330d6",
@@ -1026,7 +1026,7 @@ class SaleOrderGF(models.Model):
                         }
                         qty = qty + 1
                         qty_form_number = qty_form_number + 1
-                        response = requests.request("POST", url, headers=headers, data="")
+                        response = requests.request("POST", url, headers=headers, data=payload)
                         logging.info('response.text-------------------------------')
                         logging.info(response.text)
                         forms_data = response.json()
