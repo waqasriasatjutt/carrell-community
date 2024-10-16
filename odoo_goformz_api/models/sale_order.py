@@ -1026,7 +1026,7 @@ class SaleOrderGF(models.Model):
                         }
                         qty = qty + 1
                         qty_form_number = qty_form_number + 1
-                        response = requests.request("POST", url, headers=headers, data=payload)
+                        response = requests.request("POST", url, headers=headers, data="")
                         logging.info('response.text-------------------------------')
                         logging.info(response.text)
                         forms_data = response.json()
