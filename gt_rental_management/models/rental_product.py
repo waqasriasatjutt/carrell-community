@@ -626,6 +626,16 @@ class SaleOrderLine(models.Model):
     monthly_rent = fields.Float('Monthly Rent', default=0.0)
     replace = fields.Boolean('Replace')
 
+    units = fields.Integer("Units")
+    rental_period_quantity = fields.Integer("Rental Period Quantity")
+
+
+    @api.onchange('units','rental_period_quantity')
+    def _onchange_units_period(self):
+        for line in self:
+            line.product_uom_qty = line.units * line.rental_period_quantity
+
+
     @api.onchange('part_type')
     def _onchange_part_type(self):
         if self.part_type == 'inventory':
