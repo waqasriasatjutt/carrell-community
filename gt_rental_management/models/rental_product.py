@@ -100,19 +100,19 @@ class SaleOrder(models.Model):
             order.order_line_sequence = "\n".join(sequences)
 
 
-    @api.model
-    def create(self, vals):
-        # Create the order first
-        order = super(SaleOrder, self).create(vals)
-        # Call the function to add charges
-        order.action_add_charges()
-        return order
+    # @api.model
+    # def create(self, vals):
+    #     # Create the order first
+    #     order = super(SaleOrder, self).create(vals)
+    #     # Call the function to add charges
+    #     order.action_add_charges()
+    #     return order
 
-    def write(self, vals):
-        res = super(SaleOrder, self).write(vals)
-        # Call the function to add charges on order update
-        self.action_add_charges()
-        return res
+    # def write(self, vals):
+    #     res = super(SaleOrder, self).write(vals)
+    #     # Call the function to add charges on order update
+    #     self.action_add_charges()
+    #     return res
 
 
 
