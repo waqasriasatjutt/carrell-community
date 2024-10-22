@@ -626,8 +626,8 @@ class SaleOrderLine(models.Model):
     monthly_rent = fields.Float('Monthly Rent', default=0.0)
     replace = fields.Boolean('Replace')
 
-    units = fields.Integer("Units")
-    rental_period_quantity = fields.Integer("Rental Period Quantity")
+    units = fields.Float("Units")
+    rental_period_quantity = fields.Float("Rental Period Quantity")
 
 
     @api.onchange('units','rental_period_quantity')
