@@ -99,6 +99,10 @@ class SaleOrder(models.Model):
                         sequence_number += 1
             order.order_line_sequence = "\n".join(sequences)
 
+
+    def action_add_charges(self):
+        print("aaa")
+
     def _compute_del_numbers(self):
         for rec in self:
             qty = 0

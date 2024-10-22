@@ -316,6 +316,10 @@
                         <notebook>
                             <page string="Order Lines" name="order_lines">
                                 <field name="part_type" widget="radio"/>
+                                <button name="action_add_charges" type="object"
+                                string="Add Charges" class="oe_highlight"
+/>
+                                
 
                                 <field
                                         name="order_line"
