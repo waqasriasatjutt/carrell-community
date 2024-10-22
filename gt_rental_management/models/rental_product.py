@@ -100,8 +100,48 @@ class SaleOrder(models.Model):
             order.order_line_sequence = "\n".join(sequences)
 
 
+    @api.model
+    def create(self, vals):
+        # Create the order first
+        order = super(SaleOrder, self).create(vals)
+        # Call the function to add charges
+        order.action_add_charges()
+        return order
+
+    def write(self, vals):
+        res = super(SaleOrder, self).write(vals)
+        # Call the function to add charges on order update
+        self.action_add_charges()
+        return res
+
+
+
     def action_add_charges(self):
-        print("aaa")
+        # Define the products for pickup and delivery charges
+        pickup_charge_product = self.env['product.product'].search([('name', '=', 'Pick Up Fee')], limit=1)
+        delivery_charge_product = self.env['product.product'].search([('name', '=', 'Delivery Fee')], limit=1)
+
+        if pickup_charge_product and delivery_charge_product:
+            # Check if the charges are already added to avoid duplicates
+            existing_pickup = self.order_line.filtered(lambda line: line.product_id == pickup_charge_product)
+            existing_delivery = self.order_line.filtered(lambda line: line.product_id == delivery_charge_product)
+
+            # Add the lines if they don't exist
+            if not existing_pickup:
+                self.order_line.create({
+                    'order_id': self.id,
+                    'product_id': pickup_charge_product.id,
+                    'product_uom_qty': 1,
+                    'price_unit': pickup_charge_product.list_price,
+                })
+            if not existing_delivery:
+                self.order_line.create({
+                    'order_id': self.id,
+                    'product_id': delivery_charge_product.id,
+                    'product_uom_qty': 1,
+                    'price_unit': delivery_charge_product.list_price,
+                })
+
 
     def _compute_del_numbers(self):
         for rec in self:
