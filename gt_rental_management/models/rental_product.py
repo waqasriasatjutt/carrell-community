@@ -131,15 +131,15 @@ class SaleOrder(models.Model):
                 self.order_line.create({
                     'order_id': self.id,
                     'product_id': pickup_charge_product.id,
-                    'product_uom_qty': 1,
-                    'price_unit': pickup_charge_product.list_price,
+                    'product_uom_qty': 3,
+                    'price_unit': 100,
                 })
             if not existing_delivery:
                 self.order_line.create({
                     'order_id': self.id,
                     'product_id': delivery_charge_product.id,
-                    'product_uom_qty': 1,
-                    'price_unit': delivery_charge_product.list_price,
+                    'product_uom_qty': 3,
+                    'price_unit': 100,
                 })
 
 
