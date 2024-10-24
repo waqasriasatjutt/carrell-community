@@ -78,7 +78,7 @@ class SaleOrder(models.Model):
             for line in order.order_line:
                 if line.product_id.detailed_type == 'product':
                     product_name = line.product_id.name
-                    product_quantities[product_name] = product_quantities.get(product_name, 0) + line.product_uom_qty
+                    product_quantities[product_name] = product_quantities.get(product_name, 0) + line.units
 
             for product, qty in product_quantities.items():
                 quantities.append(f"{int(qty)} {product}")
