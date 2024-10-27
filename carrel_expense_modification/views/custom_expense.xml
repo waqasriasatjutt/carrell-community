@@ -1,0 +1,76 @@
+<odoo>
+    <!-- New Menu -->
+    <menuitem id="menu_custom_expense" name="Custom Expenses" parent="hr_expense.menu_hr_expense_root" sequence="10"/>
+
+    <!-- Action for Custom Views -->
+    <record id="action_custom_expense" model="ir.actions.act_window">
+        <field name="name">Custom Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <menuitem id="menu_custom_expense_action" parent="menu_custom_expense" action="action_custom_expense" sequence="10"/>
+
+    <!-- Custom Tree View -->
+    <record id="view_custom_expense_tree" model="ir.ui.view">
+        <field name="name">custom.hr.expense.tree</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Custom Expenses">
+                <field name="sequence"/>
+                <field name="date"/>
+                <field name="name"/>
+                <field name="po_des"/>
+                <field name="product_id"/>
+                <field name="sub_category"/>
+                <field name="total_amount_company"/>
+                <field name="vendor"/>
+                <field name="company_id"/>
+                <field name="warehouse_id"/>
+                <field name="payment_mode"/>
+                <field name="pay_type"/>
+                <field name="employee_id"/>
+                <field name="order_by"/>
+                <field name="received_by"/>
+                <field name="date_received"/>
+                <field name="paid_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Custom Form View -->
+    <record id="view_custom_expense_form" model="ir.ui.view">
+        <field name="name">custom.hr.expense.form</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <form string="Custom Expense Form">
+                <sheet>
+                    <group>
+                        <field name="sequence"/>
+                        <field name="date"/>
+                        <field name="name"/>
+                        <!-- Add more fields as needed -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Custom Kanban View -->
+    <record id="view_custom_expense_kanban" model="ir.ui.view">
+        <field name="name">custom.hr.expense.kanban</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <strong><field name="name"/></strong>
+                            <div><field name="date"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
