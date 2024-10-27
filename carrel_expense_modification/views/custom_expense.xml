@@ -1,6 +1,6 @@
 <odoo>
     <!-- New Menu -->
-    <menuitem id="menu_custom_expense" name="Custom Expenses" parent="hr_expense.menu_hr_expense_root" sequence="10"/>
+    <menuitem id="menu_custom_expense" name="My Expenses" parent="hr_expense.menu_hr_expense_root" sequence="0"/>
 
     <!-- Action for Custom Views -->
     <record id="action_custom_expense" model="ir.actions.act_window">
