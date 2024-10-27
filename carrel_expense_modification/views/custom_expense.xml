@@ -38,7 +38,7 @@
     </record>
 
     <!-- Custom Form View -->
-    <record id="view_custom_expense_form" model="ir.ui.view">
+    <!-- <record id="view_custom_expense_form" model="ir.ui.view">
         <field name="name">custom.hr.expense.form</field>
         <field name="model">hr.expense</field>
         <field name="arch" type="xml">
@@ -48,12 +48,11 @@
                         <field name="sequence"/>
                         <field name="date"/>
                         <field name="name"/>
-                        <!-- Add more fields as needed -->
                     </group>
                 </sheet>
             </form>
         </field>
-    </record>
+    </record> -->
 
     <!-- Custom Kanban View -->
     <record id="view_custom_expense_kanban" model="ir.ui.view">
