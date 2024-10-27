@@ -30,7 +30,7 @@
                     <attribute name="optional">show</attribute>
                 </xpath>
                 <xpath expr="//field[@name='payment_mode']" position="after">
-                    <field name="company_select" optional="show" string="Company"/>
+                    <!-- <field name="company_select" optional="show" string="Company"/> -->
                     <field name="warehouse_id" optional="show" string="Warehouse"/>
                     <field name="order_by" optional="show" string="Order By"/>
                     <field name="received_by" optional="show" string="Received By"/>
