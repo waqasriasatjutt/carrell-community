@@ -14,7 +14,7 @@
     'data': [
         'data/ir_sequence_data.xml',
         'data/ir.model.access.csv',
-        # 'views/hr_expense.xml',
+        'views/hr_expense.xml',
         'views/custom_expense.xml',
         'views/asset.xml',
     ],
