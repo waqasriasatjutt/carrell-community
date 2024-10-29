@@ -24,7 +24,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'carrel_expense_modification/static/src/views/*.xml',
+            # 'carrel_expense_modification/static/src/views/*.xml',
         ],
     },
 

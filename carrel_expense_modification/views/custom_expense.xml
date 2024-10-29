@@ -18,7 +18,7 @@
         <field name="arch" type="xml">
 
         <xpath expr="//header" position="inside">
-            <t t-call="custom_expense_list_buttons"/>
+            <t t-call="hr_expense.ListButtons"/>
         </xpath>
 
             <tree string="Custom Expenses">
