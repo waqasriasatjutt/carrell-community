@@ -1,4 +1,11 @@
 <odoo>
+
+<template id="custom_expense_list_buttons" inherit_id="hr_expense.ListButtons">
+    <xpath expr="//button[contains(@class, 'o_button_upload_expense')]" position="attributes">
+        <attribute name="class">btn btn-primary</attribute>
+    </xpath>
+</template>
+
     <!-- New Menu -->
     <menuitem id="menu_custom_expense" name="My Expenses" parent="hr_expense.menu_hr_expense_root" sequence="0"/>
 
@@ -15,6 +22,11 @@
         <field name="name">custom.hr.expense.tree</field>
         <field name="model">hr.expense</field>
         <field name="arch" type="xml">
+
+        <xpath expr="//header" position="inside">
+            <t t-call="custom_expense_list_buttons"/>
+        </xpath>
+
             <tree string="Custom Expenses">
                 <field name="sequence"/>
                 <field name="date"/>
