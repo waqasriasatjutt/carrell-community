@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template id="custom_expense_list_buttons" inherit_id="hr_expense.ListButtons">
-    <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
-        <input type="file" name="ufile" class="d-none" t-ref="fileInput" multiple="1" accept="*" t-on-change="onChangeFileInput"/>
-        <button type="button" class="o_button_upload_expense btn btn-primary me-1" t-on-click.prevent="uploadDocument">
-            Scan
-        </button>
-    </xpath>
-</template>
+<odoo>
+    <template id="custom_expense_list_buttons" inherit_id="hr_expense.ListButtons">
+        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+            <input type="file" name="ufile" class="d-none" t-ref="fileInput" multiple="1" accept="*" t-on-change="onChangeFileInput"/>
+            <button type="button" class="o_button_upload_expense btn btn-primary me-1" t-on-click.prevent="uploadDocument">
+                Scan
+            </button>
+        </xpath>
+    </template>
+</odoo>
