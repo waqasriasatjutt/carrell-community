@@ -22,6 +22,12 @@
     ],
     'test': [
     ],
+    'assets': {
+        'web.assets_backend': [
+            'carrel_expense_modification/static/src/views/*.xml',
+        ],
+    },
+
     'installable': True,
     'auto_install': False,
 }
