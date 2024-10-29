@@ -47,7 +47,7 @@ class HrExpense(models.Model):
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
     date_received = fields.Datetime(string="Time Received", readonly=True)
-    received_by = fields.Many2one('res.users', string="Received By", default=lambda self: self.env.user)
+    received_by = fields.Many2one('res.users', string="Received By")
     received_by_with_date = fields.Char(
         string="Received By (Date)",
         compute="_compute_received_by_with_date",
@@ -137,7 +137,7 @@ class HrExpense(models.Model):
                 line.warehouse_id = vals.get('warehouse_id')
         return res
 
-    order_for_who = fields.Many2one('res.users', string="Order For Who")
+    order_for_who = fields.Many2one('res.users', string="Order For Who", default=lambda self: self.env.user)
     paid_date = fields.Date("Paid Date")
     expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
     po_number = fields.Char(string="PO Number",)
