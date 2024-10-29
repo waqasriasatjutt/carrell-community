@@ -44,10 +44,10 @@ class HrExpense(models.Model):
 
     # received_by = fields.Many2one('res.users', string="Received By", tracking=True)
     sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
-    order_by = fields.Many2one('res.users', string="Order By", tracking=True)
+    order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
     date_received = fields.Datetime(string="Time Received", readonly=True)
-    received_by = fields.Many2one('res.users', string="Received By")
+    received_by = fields.Many2one('res.users', string="Received By", default=lambda self: self.env.user)
     received_by_with_date = fields.Char(
         string="Received By (Date)",
         compute="_compute_received_by_with_date",

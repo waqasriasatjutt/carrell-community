@@ -122,7 +122,7 @@
                     <!--                    <field name="sub_category" string="Sub Category"/>-->
                     <field name="asset_id"/>
                     <field name="warehouse_id"/>
-                    <field name="company_select"/>
+                    <!-- <field name="company_select"/> -->
                     <field name="expense_code"/>
                     <field name="order_total"/>
                     <field name="vendor"/>
