@@ -30,6 +30,7 @@
                     <!-- Your Custom Button -->
                     <button string="Create GoFormz Contract" type="object" name="action_goformz" class="oe_highlight"/>
                     <button string="Update Contracts From Goformz" type="object" name="action_update_from_goformz" class="oe_highlight"/>
+                    <button string="Download PDF" type="object" name="action_download_goformz_attachments" class="oe_highlight"/>
                 </xpath>
             </field>
         </record>
