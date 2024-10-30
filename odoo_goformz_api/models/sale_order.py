@@ -1050,7 +1050,6 @@ class SaleOrderGF(models.Model):
         credentials = f'{username}:{password}'
         encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
                         
-
         headers = {
             'accept': 'application/json',
             'content-type': 'application/json',
@@ -1064,21 +1063,26 @@ class SaleOrderGF(models.Model):
             raise UserError(f"Error downloading form {form_id}: {response.text}")
 
     def action_download_goformz_attachments(self):
-        form_ids = self.order_line.form_id.split(',')
         attachment_ids = []
         
-        for form_id in form_ids:
-            content = self.download_goformz_form(form_id)
-            if content:
-                attachment = self.env['ir.attachment'].create({
-                    'name': f'GoFormz_Form_{form_id}.pdf',
-                    'res_model': 'sale.order',
-                    'res_id': self.id,
-                    'type': 'binary',
-                    'datas': content.encode('base64'),  # Convert content to base64
-                    'mimetype': 'application/pdf',
-                })
-                attachment_ids.append(attachment.id)
+        # Iterate through each order line to get form IDs
+        for line in self.order_line:
+            form_ids = line.form_id.split(',') if line.form_id else []
+
+            for form_id in form_ids:
+                content = self.download_goformz_form(form_id)
+                if content:
+                    # Encode content as base64 for attachment storage
+                    encoded_content = base64.b64encode(content).decode('utf-8')
+                    attachment = self.env['ir.attachment'].create({
+                        'name': f'GoFormz_Form_{form_id}.pdf',
+                        'res_model': 'sale.order',
+                        'res_id': self.id,
+                        'type': 'binary',
+                        'datas': encoded_content,
+                        'mimetype': 'application/pdf',
+                    })
+                    attachment_ids.append(attachment.id)
 
         return {
             'type': 'ir.actions.client',
