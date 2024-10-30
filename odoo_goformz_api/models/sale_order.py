@@ -1037,3 +1037,50 @@ class SaleOrderGF(models.Model):
                         print(response.text)
                     order_line.form_id = ','.join(map(str, form_ids))
 
+
+
+
+    @api.model
+    def download_goformz_form(self, form_id):
+        url = f"https://api.goformz.com/v2/formz/{form_id}/exports"
+        company = self.env.user.company_id
+        username = company.goform_username
+        password = company.goform_password
+
+        credentials = f'{username}:{password}'
+        encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+                        
+
+        headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json',
+            'Authorization': f'Basic {encoded_credentials}'
+        }
+        
+        response = requests.post(url, headers=headers)
+        if response.status_code == 200:
+            return response.content
+        else:
+            raise UserError(f"Error downloading form {form_id}: {response.text}")
+
+    def action_download_goformz_attachments(self):
+        form_ids = self.order_line.form_id.split(',')
+        attachment_ids = []
+        
+        for form_id in form_ids:
+            content = self.download_goformz_form(form_id)
+            if content:
+                attachment = self.env['ir.attachment'].create({
+                    'name': f'GoFormz_Form_{form_id}.pdf',
+                    'res_model': 'sale.order',
+                    'res_id': self.id,
+                    'type': 'binary',
+                    'datas': content.encode('base64'),  # Convert content to base64
+                    'mimetype': 'application/pdf',
+                })
+                attachment_ids.append(attachment.id)
+
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
