@@ -1056,7 +1056,8 @@ class SaleOrderGF(models.Model):
             'Authorization': f'Basic {encoded_credentials}'
         }
         
-        response = requests.post(url, headers=headers)
+        # Include an empty JSON body in the POST request
+        response = requests.post(url, headers=headers, data=json.dumps({}))
         if response.status_code == 200:
             return response.content
         else:
