@@ -1057,7 +1057,10 @@ class SaleOrderGF(models.Model):
         }
         
         # Include an empty JSON body in the POST request
-        response = requests.post(url, headers=headers, data=json.dumps({}))
+        response = requests.post(url, headers=headers, data=json.dumps({
+  "type": "pdf",      
+  "pages": "1-5,7,9" 
+}))
         if response.status_code == 200:
             return response.content
         else:
