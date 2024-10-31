@@ -98,10 +98,13 @@
             <field name="arch" type="xml">
                 <div class="oe_title">
                     <h1>
+                        <group >
                         <label for="sequence" string="Expense Reference"/>
                         <field name="sequence" readonly="1"/>
                         <label for="po_number" string="PO Number"/>
                         <field name="po_number"/>
+                            
+                        </group>
                         <label for="po_des" string="PO Description"/>
                         <field name="po_des"/>
                     </h1>
