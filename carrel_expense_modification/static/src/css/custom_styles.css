@@ -1,0 +1,4 @@
+.scrollable-tree {
+    overflow-x: auto;
+    white-space: nowrap;
+}
