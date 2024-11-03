@@ -22,23 +22,23 @@
         </xpath>
 
             <tree string="Custom Expenses">
-                <field name="sequence"/>
-                <field name="date"/>
-                <field name="name"/>
+                <field name="sequence" optional="show" />
+                <field name="date" optional="show" />
+                <field name="name" optional="show" />
                 <field name="po_des" optional="show" />
                 <field name="product_id" optional="show"/>
-                <field name="sub_category"/>
-                <field name="total_amount_company"/>
-                <field name="vendor"/>
-                <field name="company_id"/>
-                <field name="warehouse_id"/>
-                <field name="payment_mode"/>
-                <field name="pay_type"/>
-                <field name="employee_id"/>
-                <field name="order_by"/>
-                <field name="received_by"/>
-                <field name="date_received"/>
-                <field name="paid_date"/>
+                <field name="sub_category" optional="show" />
+                <field name="total_amount_company" optional="show" />
+                <field name="vendor" optional="show" />
+                <field name="company_id" optional="show" />
+                <field name="warehouse_id" optional="show" />
+                <field name="payment_mode" optional="show" />
+                <field name="pay_type" optional="show" />
+                <field name="employee_id" optional="show" />
+                <field name="order_by" optional="show" />
+                <field name="received_by" optional="show" />
+                <field name="date_received" optional="show" />
+                <field name="paid_date" optional="show" />
             </tree>
         </field>
     </record>
