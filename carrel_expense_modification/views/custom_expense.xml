@@ -21,6 +21,7 @@
             <t t-call="hr_expense.ListButtons"/>
         </xpath>
 
+        <div class="scrollable-tree">
             <tree string="Custom Expenses">
                 <field name="sequence" optional="show" />
                 <field name="date" optional="show" />
@@ -40,6 +41,7 @@
                 <field name="date_received" optional="show" />
                 <field name="paid_date" optional="show" />
             </tree>
+        </div>
         </field>
     </record>
 
