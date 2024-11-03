@@ -25,8 +25,8 @@
                 <field name="sequence"/>
                 <field name="date"/>
                 <field name="name"/>
-                <field name="po_des"/>
-                <field name="product_id"/>
+                <field name="po_des" optional="show" />
+                <field name="product_id" optional="show"/>
                 <field name="sub_category"/>
                 <field name="total_amount_company"/>
                 <field name="vendor"/>
