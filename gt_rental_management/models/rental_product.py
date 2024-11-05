@@ -279,17 +279,17 @@ class SaleOrder(models.Model):
         ('cancel', 'Closed Rental'),
     ], string='Status', default='draft', compute='_compute_state_new')
 
-    @api.depends('partner_id')
-    def _compute_partner_invoice_id(self):
-        for order in self:
-            if order.partner_id:
-                invoice_addresses = order.partner_id.address_get(['invoice'])
-                if len(invoice_addresses) == 1:
-                    order.partner_invoice_id = invoice_addresses['invoice']
-                else:
-                    order.partner_invoice_id = False
-            else:
-                order.partner_invoice_id = False
+    # @api.depends('partner_id')
+    # def _compute_partner_invoice_id(self):
+    #     for order in self:
+    #         if order.partner_id:
+    #             invoice_addresses = order.partner_id.address_get(['invoice'])
+    #             if len(invoice_addresses) == 1:
+    #                 order.partner_invoice_id = invoice_addresses['invoice']
+    #             else:
+    #                 order.partner_invoice_id = False
+    #         else:
+    #             order.partner_invoice_id = False
 
     refeer_container = fields.Float('Ref Cont', compute='_compute_calculation_refeer', store=False)
 
@@ -357,17 +357,17 @@ class SaleOrder(models.Model):
             # rec.dry_container = len(dry_container_count)
             print("Dry Pickup Count ------- ", rec.dry_pickup)
 
-    @api.depends('partner_id')
-    def _compute_partner_shipping_id(self):
-        for order in self:
-            if order.partner_id:
-                delivery_addresses = order.partner_id.address_get(['delivery'])
-                if len(delivery_addresses) == 1:
-                    order.partner_shipping_id = delivery_addresses['delivery']
-                else:
-                    order.partner_shipping_id = False
-            else:
-                order.partner_shipping_id = False
+    # @api.depends('partner_id')
+    # def _compute_partner_shipping_id(self):
+    #     for order in self:
+    #         if order.partner_id:
+    #             delivery_addresses = order.partner_id.address_get(['delivery'])
+    #             if len(delivery_addresses) == 1:
+    #                 order.partner_shipping_id = delivery_addresses['delivery']
+    #             else:
+    #                 order.partner_shipping_id = False
+    #         else:
+    #             order.partner_shipping_id = False
 
     @api.model
     def cron_product_rental(self):
