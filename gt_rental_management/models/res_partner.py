@@ -57,18 +57,18 @@ class PartnerTemplate(models.Model):
     doors_dry = fields.Char(string="Doors Dry")
     doors_ref = fields.Char(string="Doors Ref")
     cord = fields.Char(string="Cord Lgth")
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
 
     # Cost Info
     miles = fields.Char(string="Miles ($)")
-    gallons = fields.Float('Gallons')
-    fuel = fields.Float('Fuel Cost', currency_field='currency_id')
-    driver = fields.Float('Driver Pay', currency_field='currency_id')
-    expense = fields.Float('Expenses', currency_field='currency_id')
-    net = fields.Float('Net', currency_field='currency_id')
-    fuel_cost = fields.Float('Fuel Cost pG ($)', currency_field='currency_id')
+    gallons = fields.Monetary('Gallons')
+    fuel = fields.Monetary('Fuel Cost', currency_field='currency_id')
+    driver = fields.Monetary('Driver Pay', currency_field='currency_id')
+    expense = fields.Monetary('Expenses', currency_field='currency_id')
+    net = fields.Monetary('Net', currency_field='currency_id')
+    fuel_cost = fields.Monetary('Fuel Cost pG ($)', currency_field='currency_id')
 
     # Rental Charges
-    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
     
     dry_con_rent = fields.Monetary('Dry Con Rental', currency_field='currency_id')
     dry_trl_rent = fields.Monetary('Dry Trailer Rental', currency_field='currency_id')
