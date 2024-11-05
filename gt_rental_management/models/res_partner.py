@@ -61,11 +61,11 @@ class PartnerTemplate(models.Model):
     # Cost Info
     miles = fields.Char(string="Miles ($)")
     gallons = fields.Float('Gallons')
-    fuel = fields.Float('Fuel Cost')
-    driver = fields.Float('Driver Pay')
-    expense = fields.Float('Expenses')
-    net = fields.Float('Net')
-    fuel_cost = fields.Float('Fuel Cost pG ($)')
+    fuel = fields.Float('Fuel Cost', currency_field='currency_id')
+    driver = fields.Float('Driver Pay', currency_field='currency_id')
+    expense = fields.Float('Expenses', currency_field='currency_id')
+    net = fields.Float('Net', currency_field='currency_id')
+    fuel_cost = fields.Float('Fuel Cost pG ($)', currency_field='currency_id')
 
     # Rental Charges
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
