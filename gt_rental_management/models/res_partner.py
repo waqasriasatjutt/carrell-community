@@ -68,12 +68,15 @@ class PartnerTemplate(models.Model):
     fuel_cost = fields.Float('Fuel Cost pG ($)')
 
     # Rental Charges
-    dry_con_rent = fields.Float('Dry Con Rental')
-    dry_trl_rent = fields.Float('Dry Trailer Rental')
-    reefer_rent = fields.Float('Reefer Rental')
-    del_fee = fields.Float('Del Fee')
-    pickup_fee = fields.Float('Pickup Fee')
-    fuel_amount = fields.Float('Fuel sur amount(number)')  # Fixed typo here
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
+    
+    dry_con_rent = fields.Monetary('Dry Con Rental', currency_field='currency_id')
+    dry_trl_rent = fields.Monetary('Dry Trailer Rental', currency_field='currency_id')
+    reefer_rent = fields.Monetary('Reefer Rental', currency_field='currency_id')
+    del_fee = fields.Monetary('Del Fee', currency_field='currency_id')
+    pickup_fee = fields.Monetary('Pickup Fee', currency_field='currency_id')
+    fuel_amount = fields.Monetary('Fuel sur amount(number)', currency_field='currency_id')
+
 
     reefer_type = fields.Selection(
         string="Reefer Type",
