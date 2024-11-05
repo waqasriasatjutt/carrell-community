@@ -173,6 +173,7 @@
                                     </group>
 
                                     <group attrs="{'invisible': [('type','!=', 'delivery')]}">
+                                        <field name="currency_id" invisible="1"/>
                                         <field name="dry_con_rent"/>
                                         <field name="dry_trl_rent"/>
                                         <field name="reefer_rent"/>
