@@ -79,6 +79,9 @@ class SaleOrderGF(models.Model):
     contact_phone2 = fields.Char(string='Contact2 Phone', related='partner_contact2.phone')
     contact_email2 = fields.Char(string='Contact2 Email', related='partner_contact2.email')
 
+
+
+
     order_status = fields.Selection([
     ('pullfromlist', 'Pull From List'),
     ('preloaded', 'Preloaded'),
@@ -116,7 +119,8 @@ class SaleOrderGF(models.Model):
     truck = fields.Char('Truck')
     notes = fields.Char('Notes')
     weight = fields.Float(string='Weight')
-    start_date = fields.Date(string='Start Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
+    start_date = fields.Date(string='Start Date',  default=fields.Date.context_today,
+        readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     driver = fields.Many2one('hr.employee',string='Driver')
 
