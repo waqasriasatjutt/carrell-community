@@ -47,6 +47,12 @@ class SaleOrderGF(models.Model):
         string="Product")
     driver_pay = fields.Float(string='Driver Pay')
     pin = fields.Char(string='PIN')
+
+    street = fields.Char(string="Street")
+    city = fields.Char(string="City")
+    state_id = fields.Many2one('res.country.state', string="State")
+
+
     mp_number = fields.Char(string='MP Web Order Number')
     bar_price = fields.Float(string='Bar Price')
     flat_price = fields.Float(sting='Flat Price')
