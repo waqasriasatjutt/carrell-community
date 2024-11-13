@@ -74,22 +74,20 @@
                 <!--                </xpath>-->
 
 
-                
-<!--                <xpath expr="//field[@name='po_des']" position="after">-->
-<!--                    &lt;!&ndash; Container group with two columns for better alignment &ndash;&gt;-->
-<!--                    <group col="3">-->
-<!--                        <group>-->
-<!--                            <field name="invoice_text"/>-->
-<!--                        </group>-->
-<!--                        <group>-->
-<!--                            <field name="ref_text"/>-->
-<!--                        </group>-->
-<!--                        <group>-->
-<!--                            <field name="pay_text"/>-->
-<!--                        </group>-->
-<!--                    </group>-->
 
-<!--                </xpath>-->
+                <xpath expr="//field[@name='po_des']" position="after">
+                    <group col="3">
+                        <group>
+                            <field name="invoice_text"/>
+                        </group>
+                        <group>
+                            <field name="ref_text"/>
+                        </group>
+                        <group>
+                            <field name="pay_text"/>
+                        </group>
+                    </group>
+                </xpath>
 
 
                 <xpath expr="//field[@name='date']" position="before">
@@ -117,19 +115,19 @@
                     <field name="pay_type"/>
                 </xpath>
 
-<!--                <xpath expr="//sheet" position="inside">-->
-<!--                    &lt;!&ndash;                    <group col="1">&ndash;&gt;-->
-<!--                    <group>-->
-<!--                    <group>-->
-<!--                        <field name="carrell_acc_code" string="Account Code"/>-->
-<!--                        <field name="carrell_cash_code" string="Cash Code"/>-->
-<!--                    </group>-->
-<!--                    <group>-->
-<!--                        <field name="carrell_extra_code" string="Extra Code"/>-->
-<!--                        <field name="carrell_tab_order"/>-->
-<!--                    </group>-->
-<!--                    </group>-->
-<!--                </xpath>-->
+                <xpath expr="//sheet" position="inside">
+                    <!--                    <group col="1">-->
+                    <group>
+                    <group>
+                        <field name="carrell_acc_code" string="Account Code"/>
+                        <field name="carrell_cash_code" string="Cash Code"/>
+                    </group>
+                    <group>
+                        <field name="carrell_extra_code" string="Extra Code"/>
+                        <field name="carrell_tab_order"/>
+                    </group>
+                    </group>
+                </xpath>
 
                 <!-- Adding a notebook with a new tab for expense lines -->
                 <xpath expr="//sheet" position="inside">
