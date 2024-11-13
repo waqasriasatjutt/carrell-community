@@ -15,37 +15,37 @@
 
 
         <!--        &lt;!&ndash;        Custom Tree View&ndash;&gt;-->
-<!--        <record id="view_custom_expense_tree" model="ir.ui.view">-->
-<!--            <field name="name">custom.hr.expense.tree</field>-->
-<!--            <field name="model">hr.expense</field>-->
-<!--            <field name="arch" type="xml">-->
+       <record id="view_custom_expense_tree" model="ir.ui.view">
+           <field name="name">custom.hr.expense.tree</field>
+           <field name="model">hr.expense</field>
+           <field name="arch" type="xml">
 
-<!--                <xpath expr="//header" position="inside">-->
-<!--                    <t t-call="hr_expense.ListButtons"/>-->
-<!--                </xpath>-->
+               <xpath expr="//header" position="inside">
+                   <t t-call="hr_expense.ListButtons"/>
+               </xpath>
 
-<!--                <div class="scrollable-tree">-->
-<!--                <tree string="Custom Expenses">-->
-<!--                    <field name="sequence" optional="show"/>-->
-<!--                    <field name="date" optional="show"/>-->
-<!--                    <field name="name" optional="show"/>-->
-<!--                    <field name="po_des" optional="show"/>-->
-<!--                    <field name="product_id" optional="show"/>-->
-<!--                    <field name="sub_category" optional="show"/>-->
-<!--                    <field name="total_amount_company" optional="show"/>-->
-<!--                    <field name="vendor" optional="show"/>-->
-<!--                    <field name="company_id" optional="show"/>-->
-<!--                    <field name="warehouse_id" optional="show"/>-->
-<!--                    <field name="payment_mode" optional="show"/>-->
-<!--                    <field name="pay_type" optional="show"/>-->
-<!--                    <field name="employee_id" optional="show"/>-->
-<!--                    <field name="order_by" optional="show"/>-->
-<!--                    <field name="received_by" optional="show"/>-->
-<!--                    <field name="date_received" optional="show"/>-->
-<!--                    <field name="paid_date" optional="show"/>-->
-<!--                </tree>-->
-<!--            </field>-->
-<!--        </record>-->
+               <div class="scrollable-tree">
+               <tree string="Custom Expenses">
+                   <field name="sequence" optional="show"/>
+                   <field name="date" optional="show"/>
+                   <field name="name" optional="show"/>
+                   <field name="po_des" optional="show"/>
+                   <field name="product_id" optional="show"/>
+                   <field name="sub_category" optional="show"/>
+                   <field name="total_amount_company" optional="show"/>
+                   <field name="vendor" optional="show"/>
+                   <field name="company_id" optional="show"/>
+                   <field name="warehouse_id" optional="show"/>
+                   <field name="payment_mode" optional="show"/>
+                   <field name="pay_type" optional="show"/>
+                   <field name="employee_id" optional="show"/>
+                   <field name="order_by" optional="show"/>
+                   <field name="received_by" optional="show"/>
+                   <field name="date_received" optional="show"/>
+                   <field name="paid_date" optional="show"/>
+               </tree>
+           </field>
+        </record>
 
         <!-- Custom Form View -->
         <!-- <record id="view_custom_expense_form" model="ir.ui.view">
