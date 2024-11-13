@@ -6,6 +6,16 @@ from datetime import datetime
 class HrExpense(models.Model):
     _inherit = "hr.expense"
 
+
+    invoice_text = fields.Char(string="Invoice", required=False, )
+    ref_text = fields.Char(string="Ref", required=False, )
+    pay_text = fields.Char(string="Pay Id", required=False, )
+
+    carrell_acc_code = fields.Char(string="Account Code", required=False, )
+    carrell_cash_code = fields.Char(string="Cash Code", required=False, )
+    carrell_extra_code = fields.Char(string="Extra Code", required=False, )
+    carrell_tab_order = fields.Char(string="Order Last Static Info", required=False, )
+
     part_type = fields.Selection([
         ('inventory', 'Inventory'),
         ('non_inv', 'Non Inventory')
