@@ -12,7 +12,7 @@
     'summary': "Carrel Transportation",
     'depends' : ['sale_management', 'hr','stock'],
     'data': [
-        'views/sale_order.xml',
+        # 'views/sale_order.xml',
     ],
     'qweb' : [
     ],
