@@ -27,6 +27,34 @@ class SaleOrderGF(models.Model):
     _inherit = "sale.order"
     
 
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        """
+        Dynamically update the domain for shipping and invoicing addresses
+        based on the selected customer.
+        """
+        for record in self:
+            if record.partner_id:
+                return {
+                    'domain': {
+                        'partner_shipping_id': [
+                            ('parent_id', '=', record.partner_id.id),
+                            ('type', '=', 'delivery'),
+                        ],
+                        'partner_invoice_id': [
+                            ('parent_id', '=', record.partner_id.id),
+                            ('type', '=', 'invoice'),
+                        ],
+                    }
+                }
+            else:
+                # Reset domains if no customer is selected
+                return {
+                    'domain': {
+                        'partner_shipping_id': [('id', '=', False)],
+                        'partner_invoice_id': [('id', '=', False)],
+                    }
+                }
 
     mile_rate = fields.Float("Mile Rate")
     tons = fields.Float("Tons")
