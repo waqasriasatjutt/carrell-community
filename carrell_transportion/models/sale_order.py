@@ -162,10 +162,7 @@ class SaleOrderGF(models.Model):
     start_date = fields.Date(string='Start Date',  default=fields.Date.context_today,
         readonly=True, copy=False, states={'draft': [('readonly', False)]})
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
-    driver = fields.Many2one('hr.employee',string='Driver')
-
-
-
+    driver = fields.Many2one('hr.employee', string='Driver', context={'create': False}, )
 
     bill_type = fields.Selection(string="Bill Type", selection=[('flat', 'Flat'), ('miles', 'Miles'), ('lb', '100 LB'), ], required=False, )
     fc_type = fields.Selection(string="FC Type SEL", selection=[('none', 'None'), ('miles', 'Miles'), ('percent', 'Percent'), ], required=False, )

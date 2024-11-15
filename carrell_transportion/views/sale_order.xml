@@ -88,6 +88,7 @@
                         </group>
                         <group>
                             <field name="delivery_type"/>
+                           <field name="driver" options="{'no_create': True}" />
                             <field name="driver" string="Driver"/>
                             <field name="truck"></field>
                             <field name="weight" string="Weight"/>
