@@ -9,28 +9,28 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//div[@class='oe_title']" position="before">
-<div style="display: flex; width: 100%; justify-content: space-between;">
-    <div style="flex-grow: 1; padding-right: 10px;">
-        <label for="pro_number">PRO#</label>  <!-- Explicit label -->
-        <field name="pro_number" string="PRO#"/>
-    </div>
-    <div style="flex-grow: 1; padding-right: 10px;">
-        <label for="wo_number">WO#</label>  <!-- Explicit label -->
-        <field name="wo_number" string="WO#"/>
-    </div>
-    <div style="flex-grow: 1; padding-right: 10px;">
-        <label for="po_number">PO#</label>  <!-- Explicit label -->
-        <field name="po_number" string="PO#"/>
-    </div>
-    <div style="flex-grow: 1;">
-        <label for="order_status">Order Status</label>  <!-- Explicit label -->
-        <field name="order_status" string="Order Status"/>
-    </div>
-    <div style="flex-grow: 1;">
-        <label for="date_order">Date</label>  <!-- Explicit label -->
-        <field name="date_order" string="Date"/>
-    </div>
-</div>                    <!-- <group name="top_f" colspan="3">
+                    <div style="display: flex; width: 100%; justify-content: space-between;">
+                        <div style="flex-grow: 1; padding-right: 10px;">
+                            <label for="pro_number">PRO#</label>  <!-- Explicit label -->
+                            <field name="pro_number" string="PRO#"/>
+                        </div>
+                        <div style="flex-grow: 1; padding-right: 10px;">
+                            <label for="wo_number">WO#</label>  <!-- Explicit label -->
+                            <field name="wo_number" string="WO#"/>
+                        </div>
+                        <div style="flex-grow: 1; padding-right: 10px;">
+                            <label for="po_number">PO#</label>  <!-- Explicit label -->
+                            <field name="po_number" string="PO#"/>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <label for="order_status">Order Status</label>  <!-- Explicit label -->
+                            <field name="order_status" string="Order Status"/>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <label for="date_order">Date</label>  <!-- Explicit label -->
+                            <field name="date_order" string="Date"/>
+                        </div>
+                    </div>              <!-- <group name="top_f" colspan="3">
 
                         <group>
                                 <field  name="pro_number" string="PRO#"/>
@@ -45,54 +45,77 @@
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
+                    <group>
                         <group>
-                            <group>
-                                <field name="contact_phone1" />
-                                <field name="contact_email1" />
-                                <field  name="start_date" string="Del Date"/>
-                                <field  name="end_date" string="By"/>
-                                <field name="rig" />
-                                <field name="lease"/>
-                                <field name="operator"/>
-                                <field name="pu_at"/>
-                                <field name="del_to"/>
-                                <field name="s_instruction"/>
-                                <field name="product"/>
-                                <field name="driver_pay"/>
-                                <field name="pin"/>
-                                <field name="state_id"/>
-                                <field name="city"/>
-                                <field name="street"/>
-                                <field name="miles" />
-                                <field name="miles_group" />
-                                <field name="mile_rate" />
-                                <field name="flat_price" />
-                                <field name="bar_price" />
-                                <field name="mile_rate" />
-                                <field name="fuel_s_rate" />
-                                <field name="trucking_cost" />
-                                <field name="fuel_s_cost" />
-                                <field name="bar_cost" />
-                                <field name="other_services" />
-                                <field name="total_amount_carrel" />
-                            </group>
-                            <group>
-                                <field name="delivery_type"/>
-                                <field name="driver" string="Driver" />
-                                <field name="truck"></field>
-                                <field name="weight" string="Weight"/>
-                                <field name="tons" string="Tons" />
-                                <field name="warehouse_id"/>
-                                <field name="partner_contact1" />
-                                <!-- <field name="contact_phone1" />
-                                <field name="contact_email1" /> -->
-                                <field name="partner_contact2"></field>
-                                <field name="contact_phone2"></field>
-                                <field name="contact_email2"></field>
-                                <field name="trailer" string="Trailer"/>
-                                <field name="fork_lift" string="Fork Lift" />
-                            </group>
+                            <field name="contact_phone1"/>
+                            <field name="contact_email1"/>
+                            <field name="start_date" string="Del Date"/>
+                            <field name="end_date" string="By"/>
+                            <field name="rig"/>
+                            <field name="lease"/>
+                            <field name="operator"/>
+                            <field name="pu_at"/>
+                            <field name="del_to"/>
+                            <field name="s_instruction"/>
+                            <field name="product"/>
+
+                            <field name="pin"/>
+                            <field name="state_id"/>
+                            <field name="city"/>
+                            <field name="street"/>
+                            <field name="miles"/>
+                            <field name="miles_group"/>
+                            <field name="mile_rate"/>
+                            <field name="flat_price"/>
+                            <field name="bar_price"/>
+                            <field name="fuel_s_rate"/>
+                            <field name="trucking_cost"/>
+                            <field name="fuel_s_cost"/>
+                            <field name="bar_cost"/>
+                            <field name="other_services"/>
+                            <field name="total_amount_carrel"/>
                         </group>
+                        <group>
+                            <field name="delivery_type"/>
+                            <field name="driver" string="Driver"/>
+                            <field name="truck"></field>
+                            <field name="weight" string="Weight"/>
+                            <field name="tons" string="Tons"/>
+                            <field name="warehouse_id"/>
+                            <field name="partner_contact1"/>
+                            <!-- <field name="contact_phone1" />
+                            <field name="contact_email1" /> -->
+                            <field name="partner_contact2"></field>
+                            <field name="contact_phone2"></field>
+                            <field name="contact_email2"></field>
+                            <field name="trailer" string="Trailer"/>
+                            <field name="fork_lift" string="Fork Lift"/>
+                            <!--                            </group>-->
+                            <!--                            <group>-->
+                            <field name="warehouse"/>
+                            <field name="fork_lift_price"/>
+                            <field name="labour_charge"/>
+                            <field name="rental_tank"/>
+                            <field name="rental_stand"/>
+                            <field name="rental_mat"/>
+                            <field name="rental_comp"/>
+                            <field name="bill_type"/>
+                            <field name="fc_type"/>
+                            <field name="product_type"/>
+                            <field name="bar_type"/>
+                            <field name="rev_fixed_cost"/>
+                            <field name="cpg"/>
+                            <field name="mpg"/>
+                            <field name="gall_used"/>
+                            <field name="fuel_cost"/>
+                            <field name="driver_over"/>
+                            <field name="driver_pay"/>
+                            <field name="driver_total"/>
+                            <field name="gross_expence"/>
+                            <field name="gross_total"/>
+                            <field name="net_total"/>
+                        </group>
+                    </group>
                 </xpath>
 
             </field>
