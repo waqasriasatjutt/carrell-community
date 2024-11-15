@@ -25,49 +25,63 @@ _logger = logging.getLogger(__name__)
 
 class SaleOrderGF(models.Model):
     _inherit = "sale.order"
-    
+
 
 
     pu = fields.Many2one(
         comodel_name='res.partner',
         string='PU',
-        readonly=False,
-        check_company=True,
-        help="The delivery address will be used in the computation of the fiscal position.",
+        help="Select an active delivery address related to the selected customer."
+    )
+    lease_address = fields.Many2one(
+        comodel_name='res.partner',
+        string='PU',
+        help="Select an active delivery address related to the selected customer."
     )
 
-    @api.onchange('partner_id')
-    def _onchange_partner_id(self):
-        """
-        Dynamically update the domain for shipping, invoicing, and PU addresses
-        based on the selected customer.
-        """
-        for record in self:
-            if record.partner_id:
-                return {
-                    'domain': {
-                        'partner_shipping_id': [
-                            ('parent_id', '=', record.partner_id.id),
-                            ('type', '=', 'delivery'),
-                        ],
-                        'partner_invoice_id': [
-                            ('parent_id', '=', record.partner_id.id),
-                            ('type', '=', 'invoice'),
-                        ],
-                        'pu': [
-                            ('parent_id', '=', record.partner_id.id),
-                        ],
-                    }
-                }
-            else:
-                # Reset domains if no customer is selected
-                return {
-                    'domain': {
-                        'partner_shipping_id': [('id', '=', False)],
-                        'partner_invoice_id': [('id', '=', False)],
-                        'pu': [('id', '=', False)],
-                    }
-                }
+    
+
+
+    # pu = fields.Many2one(
+    #     comodel_name='res.partner',
+    #     string='PU',
+    #     readonly=False,
+    #     check_company=True,
+    #     help="The delivery address will be used in the computation of the fiscal position.",
+    # )
+    #
+    # @api.onchange('partner_id')
+    # def _onchange_partner_id(self):
+    #     """
+    #     Dynamically update the domain for shipping, invoicing, and PU addresses
+    #     based on the selected customer.
+    #     """
+    #     for record in self:
+    #         if record.partner_id:
+    #             return {
+    #                 'domain': {
+    #                     'partner_shipping_id': [
+    #                         ('parent_id', '=', record.partner_id.id),
+    #                         ('type', '=', 'delivery'),
+    #                     ],
+    #                     'partner_invoice_id': [
+    #                         ('parent_id', '=', record.partner_id.id),
+    #                         ('type', '=', 'invoice'),
+    #                     ],
+    #                     'pu': [
+    #                         ('parent_id', '=', record.partner_id.id),
+    #                     ],
+    #                 }
+    #             }
+    #         else:
+    #             # Reset domains if no customer is selected
+    #             return {
+    #                 'domain': {
+    #                     'partner_shipping_id': [('id', '=', False)],
+    #                     'partner_invoice_id': [('id', '=', False)],
+    #                     'pu': [('id', '=', False)],
+    #                 }
+    #             }
 
     mile_rate = fields.Float("Mile Rate")
     tons = fields.Float("Tons")
@@ -87,7 +101,8 @@ class SaleOrderGF(models.Model):
         comodel_name='product.product',
         string="Product")
 
-    pin = fields.Char(string='PIN')
+    pu_pin = fields.Char(string='PU PIN')
+    del_pin = fields.Char(string='DEL PIN')
 
     street = fields.Char(string="Street")
     city = fields.Char(string="City")

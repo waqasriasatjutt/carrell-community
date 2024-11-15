@@ -30,7 +30,7 @@
                             <label for="date_order">Date</label>  <!-- Explicit label -->
                             <field name="date_order" string="Date"/>
                         </div>
-                    </div>              
+                    </div>
                     <!-- <group name="top_f" colspan="3">
 
                         <group>
@@ -57,7 +57,10 @@
                 <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'delivery')]</attribute>
                 <attribute name="string">Lease Name</attribute>
             </field>
-            <field name="pu" domain="[('parent_id', '=', parent.partner_id.id)]" />
+                            <field name="pu" string="PU"
+                                   domain="[('parent_id', '=', partner_id)]"/>
+                            <field name="lease_address" string="Lease Name"
+                                   domain="[('parent_id', '=', partner_id), ('type', '=', 'delivery')]"/>
 
             <!-- Modify partner_invoice_id -->
             <!-- <field name="partner_invoice_id" position="attributes">
@@ -70,7 +73,9 @@
                             <field name="s_instruction"/>
                             <field name="product"/>
 
-                            <field name="pin"/>
+                            <field name="pu_pin"/>
+                            <field name="del_pin"/>
+
                             <field name="state_id"/>
                             <!-- <field name="city"/>
                             <field name="street"/> -->
@@ -88,7 +93,7 @@
                         </group>
                         <group>
                             <field name="delivery_type"/>
-                           <field name="driver" options="{'no_create': True}" />
+                            <field name="driver" options="{'no_create': True}"/>
                             <field name="driver" string="Driver"/>
                             <field name="truck"></field>
                             <field name="weight" string="Weight"/>

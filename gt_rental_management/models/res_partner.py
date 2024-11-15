@@ -31,6 +31,9 @@ class PartnerTemplate(models.Model):
     contact3_phone = fields.Char("Contact 3 Phone")
     contact3_email = fields.Char('Contact 3 Email')
 
+
+    active_address = fields.Boolean(string="Active", default=True)
+
     notes = fields.Char('Notes')
     plug = fields.Char('Plug')
     number_of_pics = fields.Integer(string="Pics")
