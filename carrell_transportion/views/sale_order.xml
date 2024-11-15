@@ -53,12 +53,12 @@
                             <field name="start_date" string="Del Date"/>
                             <field name="end_date" string="By"/>
                             <field name="rig"/>
-            <field name="partner_shipping_id" string="Lease" position="attributes">
+            <field name="partner_shipping_id" position="attributes">
                 <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'delivery')]</attribute>
             </field>
 
             <!-- Modify partner_invoice_id -->
-            <field name="partner_invoice_id" string="PU" position="attributes">
+            <field name="partner_invoice_id" position="attributes">
                 <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'invoice')]</attribute>
             </field>
                             <!-- <field name="lease"/> -->
