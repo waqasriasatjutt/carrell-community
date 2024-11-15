@@ -27,10 +27,19 @@ class SaleOrderGF(models.Model):
     _inherit = "sale.order"
     
 
+
+    pu = fields.Many2one(
+        comodel_name='res.partner',
+        string='PU',
+        readonly=False,
+        check_company=True,
+        help="The delivery address will be used in the computation of the fiscal position.",
+    )
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         """
-        Dynamically update the domain for shipping and invoicing addresses
+        Dynamically update the domain for shipping, invoicing, and PU addresses
         based on the selected customer.
         """
         for record in self:
@@ -45,6 +54,9 @@ class SaleOrderGF(models.Model):
                             ('parent_id', '=', record.partner_id.id),
                             ('type', '=', 'invoice'),
                         ],
+                        'pu': [
+                            ('parent_id', '=', record.partner_id.id),
+                        ],
                     }
                 }
             else:
@@ -53,6 +65,7 @@ class SaleOrderGF(models.Model):
                     'domain': {
                         'partner_shipping_id': [('id', '=', False)],
                         'partner_invoice_id': [('id', '=', False)],
+                        'pu': [('id', '=', False)],
                     }
                 }
 

@@ -56,11 +56,12 @@
             <field name="partner_shipping_id" position="attributes">
                 <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'delivery')]</attribute>
             </field>
+            <field name="pu" domain="[('parent_id', '=', parent.partner_id.id)]" />
 
             <!-- Modify partner_invoice_id -->
-            <field name="partner_invoice_id" position="attributes">
+            <!-- <field name="partner_invoice_id" position="attributes">
                 <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'invoice')]</attribute>
-            </field>
+            </field> -->
                             <!-- <field name="lease"/> -->
                             <field name="operator"/>
                             <field name="pu_at"/>
@@ -70,8 +71,8 @@
 
                             <field name="pin"/>
                             <field name="state_id"/>
-                            <field name="city"/>
-                            <field name="street"/>
+                            <!-- <field name="city"/>
+                            <field name="street"/> -->
                             <field name="miles"/>
                             <field name="miles_group"/>
                             <field name="mile_rate"/>
