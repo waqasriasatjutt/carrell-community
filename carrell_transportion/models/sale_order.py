@@ -61,32 +61,6 @@ class SaleOrder(models.Model):
         help="Select an active delivery address related to the selected customer."
     )
 
-    @api.onchange('partner_id')
-    def _onchange_partner_id(self):
-        """
-        Dynamically update the domains for `pu` and `lease_address` fields
-        based on the selected customer and active addresses.
-        """
-        for record in self:
-            if record.partner_id:
-                domain = [
-                    ('parent_id', '=', record.partner_id.id),
-                    ('active_address', '=', True),
-                ]
-                return {
-                    'domain': {
-                        'pu': domain,
-                        'lease_address': domain,
-                    }
-                }
-            else:
-                # Reset domains if no customer is selected
-                return {
-                    'domain': {
-                        'pu': [('id', '=', False)],
-                        'lease_address': [('id', '=', False)],
-                    }
-                }
 
 
     # pu = fields.Many2one(
@@ -97,38 +71,34 @@ class SaleOrder(models.Model):
     #     help="The delivery address will be used in the computation of the fiscal position.",
     # )
     #
-    # @api.onchange('partner_id')
-    # def _onchange_partner_id(self):
-    #     """
-    #     Dynamically update the domain for shipping, invoicing, and PU addresses
-    #     based on the selected customer.
-    #     """
-    #     for record in self:
-    #         if record.partner_id:
-    #             return {
-    #                 'domain': {
-    #                     'partner_shipping_id': [
-    #                         ('parent_id', '=', record.partner_id.id),
-    #                         ('type', '=', 'delivery'),
-    #                     ],
-    #                     'partner_invoice_id': [
-    #                         ('parent_id', '=', record.partner_id.id),
-    #                         ('type', '=', 'invoice'),
-    #                     ],
-    #                     'pu': [
-    #                         ('parent_id', '=', record.partner_id.id),
-    #                     ],
-    #                 }
-    #             }
-    #         else:
-    #             # Reset domains if no customer is selected
-    #             return {
-    #                 'domain': {
-    #                     'partner_shipping_id': [('id', '=', False)],
-    #                     'partner_invoice_id': [('id', '=', False)],
-    #                     'pu': [('id', '=', False)],
-    #                 }
-    #             }
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        """
+        Dynamically update the domain for shipping, invoicing, and PU addresses
+        based on the selected customer.
+        """
+        for record in self:
+            if record.partner_id:
+                return {
+                    'domain': {
+                        'lease_address': [
+                            ('parent_id', '=', record.partner_id.id),
+                            ('active_address', '=', True),
+                        ],
+                        'pu': [
+                            ('parent_id', '=', record.partner_id.id),
+                            ('active_address', '=', True),
+                        ],
+                    }
+                }
+            else:
+                # Reset domains if no customer is selected
+                return {
+                    'domain': {
+                        'lease_address': [('id', '=', False)],
+                        'pu': [('id', '=', False)],
+                    }
+                }
 
     mile_rate = fields.Float("Mile Rate")
     tons = fields.Float("Tons")
