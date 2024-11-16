@@ -53,11 +53,11 @@
                             <field name="start_date" string="Del Date"/>
                             <field name="end_date" string="By"/>
                             <field name="rig"/>
-            <field name="partner_shipping_id" position="attributes">
-                <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'delivery')]</attribute>
-                <attribute name="string">Lease Name</attribute>
-            </field>
-                            <field name="pu" string="PU"
+<!--            <field name="partner_shipping_id" position="attributes">-->
+<!--                <attribute name="domain">[('parent_id', '=', parent.partner_id.id), ('type', '=', 'delivery')]</attribute>-->
+<!--                <attribute name="string">Lease Name</attribute>-->
+<!--            </field>-->
+                            <field name="pu" string="Pickup AddressU"
                                    domain="[('parent_id', '=', partner_id)]"/>
                             <field name="lease_address" string="Lease Name"
                                    domain="[('parent_id', '=', partner_id), ('type', '=', 'delivery')]"/>
