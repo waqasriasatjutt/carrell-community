@@ -60,7 +60,7 @@
                             <field name="pu" string="Pickup AddressU"
                                    domain="[('parent_id', '=', partner_id),('active_address', '=', True)]"/>
                             <field name="lease_address" string="Lease Name"
-                                   domain="[('parent_id', '=', partner_id), ('type', '=', 'delivery'),,('active_address', '=', True)]"/>
+                                   domain="[('parent_id', '=', partner_id), ('type', '=', 'delivery'),('active_address', '=', True)]"/>
 
             <!-- Modify partner_invoice_id -->
             <!-- <field name="partner_invoice_id" position="attributes">
