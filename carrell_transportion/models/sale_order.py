@@ -22,6 +22,11 @@ _logger = logging.getLogger(__name__)
 #     _inherit = "stock.picking"
 
 
+class ResPartner(models.Model):
+    _inherit = "res.partner"
+
+    active_address = fields.Boolean("Active", default=True)
+
 
 class SaleOrderGF(models.Model):
     _inherit = "sale.order"
