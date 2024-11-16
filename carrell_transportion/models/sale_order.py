@@ -45,6 +45,48 @@ class SaleOrderGF(models.Model):
     )
 
     
+from odoo import models, fields, api
+
+class SaleOrder(models.Model):
+    _inherit = "sale.order"
+
+    pu = fields.Many2one(
+        comodel_name='res.partner',
+        string='Pickup Address',
+        help="Select an active delivery address related to the selected customer."
+    )
+    lease_address = fields.Many2one(
+        comodel_name='res.partner',
+        string='Lease Address',
+        help="Select an active delivery address related to the selected customer."
+    )
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        """
+        Dynamically update the domains for `pu` and `lease_address` fields
+        based on the selected customer and active addresses.
+        """
+        for record in self:
+            if record.partner_id:
+                domain = [
+                    ('parent_id', '=', record.partner_id.id),
+                    ('active_address', '=', True),
+                ]
+                return {
+                    'domain': {
+                        'pu': domain,
+                        'lease_address': domain,
+                    }
+                }
+            else:
+                # Reset domains if no customer is selected
+                return {
+                    'domain': {
+                        'pu': [('id', '=', False)],
+                        'lease_address': [('id', '=', False)],
+                    }
+                }
 
 
     # pu = fields.Many2one(
