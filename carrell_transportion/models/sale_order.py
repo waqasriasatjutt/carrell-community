@@ -84,10 +84,12 @@ class SaleOrder(models.Model):
                         'lease_address': [
                             ('parent_id', '=', record.partner_id.id),
                             ('active_address', '=', True),
+                            ('type', '=', 'delivery'),
                         ],
                         'pu': [
                             ('parent_id', '=', record.partner_id.id),
                             ('active_address', '=', True),
+                            ('type', '=', 'invoice'),
                         ],
                     }
                 }

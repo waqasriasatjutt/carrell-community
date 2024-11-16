@@ -60,7 +60,7 @@
 
                 <!-- Lease Address Field -->
                 <field name="lease_address"
-                       string="Lease Address"
+                       string="Lease Name"
                        domain="[('parent_id', '=', partner_id), ('active_address', '=', True),('type', '=', 'delivery')]"/>
                 <field name="pu"
                        string="PU"
