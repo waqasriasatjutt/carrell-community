@@ -61,10 +61,10 @@
                 <!-- Lease Address Field -->
                 <field name="lease_address"
                        string="Lease Address"
-                       domain="[('parent_id', '=', partner_id), ('active_address', '=', True)]"/>
+                       domain="[('parent_id', '=', partner_id), ('active_address', '=', True),('type', '=', 'delivery')]"/>
                 <field name="pu"
                        string="PU"
-                       domain="[('parent_id', '=', partner_id), ('active_address', '=', True)]"/>
+                       domain="[('parent_id', '=', partner_id), ('active_address', '=', True),('type', '=', 'invoice')]"/>
 
             <!-- Modify partner_invoice_id -->
             <!-- <field name="partner_invoice_id" position="attributes">
