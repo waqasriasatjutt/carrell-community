@@ -1036,6 +1036,7 @@ class SaleOrderGF(models.Model):
                         form_ids.append(forms_data['id'])
                         print(response.text)
                     order_line.form_id = ','.join(map(str, form_ids))
+            self.goformz_create_date = fields.Datetime.now()
 
 
 
