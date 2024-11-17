@@ -47,6 +47,34 @@ class ProductTemplate(models.Model):
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        """
+        Dynamically update the domain for shipping, invoicing, and PU addresses
+        based on the selected customer.
+        """
+        for record in self:
+            if record.partner_id:
+                return {
+                    'domain': {
+                        'partner_shipping_id': [
+                            ('parent_id', '=', record.partner_id.id),
+                        ],
+                        'partner_invoice_id': [
+                            ('parent_id', '=', record.partner_id.id),
+                        ],
+                    }
+                }
+            else:
+                # Reset domains if no customer is selected
+                return {
+                    'domain': {
+                        'partner_shipping_id': [('id', '=', False)],
+                        'partner_invoice_id': [('id', '=', False)],
+                    }
+                }
+
+
     part_type = fields.Selection([
         ('inventory', 'Inventory'),
         ('non_inv', 'Non Inventory')

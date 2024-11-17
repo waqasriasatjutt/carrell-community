@@ -257,7 +257,7 @@
                                 <field name="address_type_invoice" widget="radio" options="{'horizontal': true}"/>
 
                                 <field name="partner_invoice_id" widget="res_partner_many2one"
-                                       domain="[('type', '=', address_type_invoice)]"
+                                       domain="[('parent_id', '=', partner_id),('type', '=', address_type_invoice)]"
                                        context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}"
                                        options='{"always_reload": True}'/>
                                 <field name="partner_invoice_id_email"/>
@@ -265,7 +265,7 @@
                                 <field name="address_type_delivery" widget="radio" options="{'horizontal': true}"/>
 
                                 <field name="partner_shipping_id" widget="res_partner_many2one"
-                                       domain="[('type', '=', address_type_delivery)]"
+                                       domain="[('parent_id', '=', partner_id),('type', '=', address_type_delivery)]"
                                        context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}"
                                        options='{"always_reload": True}'/>
                                 <field name="partner_shipping_id_email"/>
