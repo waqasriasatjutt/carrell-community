@@ -265,6 +265,7 @@ class SaleOrder(models.Model):
     pu_date = fields.Date(string='Pu Date')
     bill_start_date = fields.Date(string='Bill Start Date')
     bill_end_date = fields.Date(string='Bill End Date')
+    goformz_create_date = fields.Date(string='GOFormz Create Date')
     agreement_received = fields.Boolean('Agreement Received?')
     initial_term = fields.Integer('Initial Terms (Months)')
     purchase_price = fields.Float('Purchase Price')
