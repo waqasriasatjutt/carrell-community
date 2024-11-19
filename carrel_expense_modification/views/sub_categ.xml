@@ -12,12 +12,45 @@
         </field>
     </record>
 
-    <record id="action_product_subcategory" model="ir.actions.act_window">
+
+    <record id="view_product_subcategory_tree" model="ir.ui.view">
+        <field name="name">product.subcategory.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Subcategories">
+                <field name="name"/>
+                <field name="default_code"/>
+                <field name="is_subcategory"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_subcategory_form" model="ir.ui.view">
+        <field name="name">product.subcategory.form</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <form string="Subcategory">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="default_code"/>
+                        <field name="is_subcategory"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_subcategory_products" model="ir.actions.act_window">
         <field name="name">Subcategories</field>
         <field name="res_model">product.product</field>
         <field name="view_mode">tree,form</field>
-        <field name="domain">[('categ_id.name', '=', 'Subcategories')]</field>
+        <field name="domain">[('is_subcategory', '=', True)]</field>
     </record>
+
+    
 
     <menuitem id="menu_product_subcategory_root" name="Subcategories" parent="hr_expense.menu_hr_expense_configuration" sequence="10"/>
     <menuitem id="menu_product_subcategory" name="Manage Subcategories" parent="menu_product_subcategory_root" action="action_product_subcategory" sequence="10"/>
