@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_subcategory_tree" model="ir.ui.view">
+        <field name="name">product.subcategory.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Subcategories">
+                <field name="name"/>
+                <field name="default_code"/>
+                <field name="categ_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_product_subcategory" model="ir.actions.act_window">
+        <field name="name">Subcategories</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('categ_id.name', '=', 'Subcategories')]</field>
+    </record>
+
+    <menuitem id="menu_product_subcategory_root" name="Subcategories" parent="base.menu_custom" sequence="10"/>
+    <menuitem id="menu_product_subcategory" name="Manage Subcategories" parent="menu_product_subcategory_root" action="action_product_subcategory" sequence="10"/>
+</odoo>

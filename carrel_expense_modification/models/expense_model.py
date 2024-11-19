@@ -3,6 +3,14 @@ from odoo.exceptions import UserError
 from datetime import datetime
 
 
+
+class ProductCategory(models.Model):
+    _inherit = 'product.category'
+
+    is_subcategory = fields.Boolean(string="Is Subcategory", default=False)
+
+
+
 class HrExpense(models.Model):
     _inherit = "hr.expense"
 
@@ -53,7 +61,13 @@ class HrExpense(models.Model):
     ], string='Received Status')
 
     # received_by = fields.Many2one('res.users', string="Received By", tracking=True)
-    sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
+    sub_category = fields.Many2one(
+    'product.product',
+    string="Sub Cat",
+    tracking=True,
+    domain="[('categ_id.is_subcategory', '=', True)]"
+    )
+    # sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
     date_received = fields.Datetime(string="Time Received", readonly=True)
