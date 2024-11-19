@@ -4,6 +4,16 @@ from datetime import datetime
 
 
 
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    is_subcategory = fields.Boolean(string="Is Subcategory", default=False)
+
+
+
+
+
 class ProductCategory(models.Model):
     _inherit = 'product.category'
 
