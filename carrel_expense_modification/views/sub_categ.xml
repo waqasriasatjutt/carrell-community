@@ -36,7 +36,17 @@
         <field name="res_model">product.product</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_subcategory', '=', True)]</field>
-        <field name="view_id" ref="view_product_subcategory_tree"/>
+        <!-- Add view_id for both Tree and Form Views -->
+        <field name="view_ids">
+            <record id="view_product_subcategory_tree" model="ir.ui.view">
+                <field name="view_mode">tree</field>
+                <field name="view_id" ref="view_product_subcategory_tree"/>
+            </record>
+            <record id="view_product_subcategory_form" model="ir.ui.view">
+                <field name="view_mode">form</field>
+                <field name="view_id" ref="view_product_subcategory_form"/>
+            </record>
+        </field>
     </record>
 
     <!-- Menu Items -->
