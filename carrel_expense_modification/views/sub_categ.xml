@@ -31,22 +31,16 @@
     </record>
 
     <!-- Action for Subcategories -->
+<!-- Action for Subcategories -->
     <record id="action_subcategory_products" model="ir.actions.act_window">
         <field name="name">Subcategories</field>
         <field name="res_model">product.product</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_subcategory', '=', True)]</field>
-        <!-- Add view_id for both Tree and Form Views -->
-        <field name="view_ids">
-            <record id="view_product_subcategory_tree" model="ir.ui.view">
-                <field name="view_mode">tree</field>
-                <field name="view_id" ref="view_product_subcategory_tree"/>
-            </record>
-            <record id="view_product_subcategory_form" model="ir.ui.view">
-                <field name="view_mode">form</field>
-                <field name="view_id" ref="view_product_subcategory_form"/>
-            </record>
-        </field>
+        <field name="view_ids" eval="[(5, 0, 0), 
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_product_subcategory_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_product_subcategory_form')})
+        ]"/>
     </record>
 
     <!-- Menu Items -->
