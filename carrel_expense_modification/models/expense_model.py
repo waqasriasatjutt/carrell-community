@@ -75,7 +75,7 @@ class HrExpense(models.Model):
     'product.product',
     string="Sub Cat",
     tracking=True,
-    domain="[('categ_id.is_subcategory', '=', True)]"
+    domain="[('is_subcategory', '=', True)]"
     )
     # sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
