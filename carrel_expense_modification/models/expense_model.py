@@ -188,8 +188,11 @@ class HrExpense(models.Model):
 
     order_for_who = fields.Many2one('res.users', string="Order For Who", default=lambda self: self.env.user)
     paid_date = fields.Date("Paid Date")
-    expense_code = fields.Char(string="Expense Code", readonly=True, copy=False, default='New')
+    expense_code = fields.Char(string="Expense Code", related='partner_id.exp_code', readonly=True, copy=False)
+    ext_code = fields.Char(string="EXT Code", related='partner_id.ext_code', readonly=True, copy=False)
+    case_code = fields.Char(string="Case Code", related='partner_id.case_code', readonly=True, copy=False)
     po_number = fields.Char(string="PO Number",)
+    # expense_code = fields.Char(string="Expense Code", related='partner_id.exp_code', readonly=True, copy=False, default='New')
     po_des = fields.Char(string="PO Description",)
     expense_line_ids = fields.One2many('hr.expense.line', 'expense_id', string="Expense Lines")
     # company_select = fields.Many2one('res.company', string='Company', required=True, default=lambda self: self.env.company)
