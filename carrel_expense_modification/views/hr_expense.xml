@@ -106,8 +106,8 @@
                     <field name="warehouse_id"/>
                     <!-- <field name="company_select"/> -->
                     <field name="expense_code"/>
-                    <!-- <field name="case_code"/>
-                    <field name="ext_code"/> -->
+                    <field name="case_code"/>
+                    <field name="ext_code"/>
                     <field name="order_total"/>
                     <field name="vendor"/>
                     <field name="received_status"/>
