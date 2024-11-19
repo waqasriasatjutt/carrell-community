@@ -5,6 +5,19 @@ from datetime import datetime
 
 
 
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    exp_code = fields.Char(string="Expense Code")
+    case_code = fields.Char(string="Case Code")
+    ext_code = fields.Char(string="Ext Code")
+
+
+
+
+
+
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
@@ -28,6 +41,8 @@ class HrExpense(models.Model):
     invoice_text = fields.Char(string="Invoice", required=False, )
     ref_text = fields.Char(string="Ref", required=False, )
     pay_text = fields.Char(string="Pay Id", required=False, )
+
+
 
     carrell_acc_code = fields.Char(string="Account Code", required=False, )
     carrell_cash_code = fields.Char(string="Cash Code", required=False, )

@@ -15,7 +15,7 @@
 
 
         <!--        &lt;!&ndash;        Custom Tree View&ndash;&gt;-->
-<!--        <record id="view_custom_expense_tree" model="ir.ui.view">-->
+       <!-- <record id="view_custom_expense_tree" model="ir.ui.view">-->
 <!--            <field name="name">custom.hr.expense.tree</field>-->
 <!--            <field name="model">hr.expense</field>-->
 <!--            <field name="arch" type="xml">-->
@@ -45,7 +45,7 @@
 <!--                    <field name="paid_date" optional="show"/>-->
 <!--                </tree>-->
 <!--            </field>-->
-<!--        </record>-->
+<!--        </record> -->
 
         <!-- Custom Form View -->
         <!-- <record id="view_custom_expense_form" model="ir.ui.view">
