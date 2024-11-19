@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_product_subcategory_tree" model="ir.ui.view">
-        <field name="name">product.subcategory.tree</field>
-        <field name="model">product.product</field>
-        <field name="arch" type="xml">
-            <tree string="Subcategories">
-                <field name="name"/>
-                <field name="default_code"/>
-                <field name="categ_id"/>
-            </tree>
-        </field>
-    </record>
-
-
+    <!-- Tree View for Subcategories -->
     <record id="view_product_subcategory_tree" model="ir.ui.view">
         <field name="name">product.subcategory.tree</field>
         <field name="model">product.product</field>
@@ -25,6 +13,7 @@
         </field>
     </record>
 
+    <!-- Form View for Subcategories -->
     <record id="view_product_subcategory_form" model="ir.ui.view">
         <field name="name">product.subcategory.form</field>
         <field name="model">product.product</field>
@@ -41,17 +30,18 @@
         </field>
     </record>
 
-
-
+    <!-- Action for Subcategories -->
     <record id="action_subcategory_products" model="ir.actions.act_window">
         <field name="name">Subcategories</field>
         <field name="res_model">product.product</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_subcategory', '=', True)]</field>
+        <field name="view_id" ref="view_product_subcategory_tree"/>
     </record>
 
-    
-
-    <menuitem id="menu_product_subcategory_root" name="Subcategories" parent="hr_expense.menu_hr_expense_configuration" sequence="10"/>
-    <menuitem id="menu_product_subcategory" name="Manage Subcategories" parent="menu_product_subcategory_root" action="action_product_subcategory" sequence="10"/>
+    <!-- Menu Items -->
+    <menuitem id="menu_product_subcategory_root" name="Subcategories"
+              parent="hr_expense.menu_hr_expense_configuration" sequence="10"/>
+    <menuitem id="menu_product_subcategory" name="Manage Subcategories"
+              parent="menu_product_subcategory_root" action="action_subcategory_products" sequence="10"/>
 </odoo>
