@@ -6,12 +6,12 @@ from datetime import datetime
 
 
 
-# class ResPartner(models.Model):
-#     _inherit = 'res.partner'
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
 
-#     exp_code = fields.Char(string="Expense Code")
-#     case_code = fields.Char(string="Case Code")
-#     ext_code = fields.Char(string="Ext Code")
+    exp_code = fields.Char(string="Expense Code")
+    case_code = fields.Char(string="Case Code")
+    ext_code = fields.Char(string="Ext Code")
 
 
 
