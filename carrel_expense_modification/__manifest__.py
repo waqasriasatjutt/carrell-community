@@ -17,7 +17,7 @@
         'views/hr_expense.xml',
         'views/custom_expense.xml',
         'views/sub_categ.xml',
-        'views/partner.xml',
+        # 'views/partner.xml',
         'views/asset.xml',
     ],
     'qweb': [
