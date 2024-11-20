@@ -23,26 +23,24 @@
                             <field name="po_number" string="PO#"/>
                         </div>
                         <div style="flex-grow: 1;">
-                            <label for="order_status">Order Status</label>  <!-- Explicit label -->
+                            <label for="order_status">WO Status</label>  <!-- Explicit label -->
                             <field name="order_status" string="Order Status"/>
                         </div>
+                    </div>
+                    <div style="display: flex; width: 100%; justify-content: space-between;">
                         <div style="flex-grow: 1;">
                             <label for="date_order">Date</label>  <!-- Explicit label -->
                             <field name="date_order" string="Date"/>
                         </div>
+                        <div style="flex-grow: 1; padding-right: 10px;">
+                            <label for="date_order_changed_by">Enter By</label>  <!-- Explicit label -->
+                            <field name="date_order_changed_by" string="Enter By"/>
+                        </div>
+                        <div style="flex-grow: 1; padding-right: 10px;">
+                            <label for="invoice_manual">Invoice#</label>  <!-- Explicit label -->
+                            <field name="invoice_manual" string="Invoice#"/>
+                        </div>
                     </div>
-                    <!-- <group name="top_f" colspan="3">
-
-                        <group>
-                                <field  name="pro_number" string="PRO#"/>
-                        </group>
-                        <group>
-                                <field name="wo_number" string="WO#"/>
-                        </group>
-                        <group>
-                            <field  name="order_status" string="Order Status"/>                    
-                        </group>
-                    </group> -->
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">

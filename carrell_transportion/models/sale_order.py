@@ -107,7 +107,15 @@ class SaleOrder(models.Model):
 
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
 
-    pro_number = fields.Char(string='Pro Number A')
+    pro_number = fields.Char(string='Pro Number A', readonly=True, copy=False)
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('pro_number'):
+            vals['pro_number'] = self.env['ir.sequence'].next_by_code('sale.order.pro.number') or 'New'
+        return super(SaleOrder, self).create(vals)
+    
+    
     wo_number = fields.Char(string='Wo Number')
     po_number = fields.Char(string='Po Number')
     rig = fields.Selection(string="RIG", selection=[('rig_2', 'RIG 2'), ('dan', 'DAN D'), ], required=False, )
@@ -148,12 +156,26 @@ class SaleOrder(models.Model):
         string="Contact 2",
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
 
+
+    invoice_manual = fields.Char(string='Invoice #')
+
     contact_phone1 = fields.Char(string='Contact1 Phone', related='partner_contact1.phone')
     contact_email1 = fields.Char(string='Contact1 Email', related='partner_contact1.email')
     contact_phone2 = fields.Char(string='Contact2 Phone', related='partner_contact2.phone')
     contact_email2 = fields.Char(string='Contact2 Email', related='partner_contact2.email')
 
+    date_order_changed_by = fields.Many2one(
+        'res.users', 
+        string="Date Changed By", 
+        readonly=True, 
+        help="User who last modified the Order Date"
+    )
 
+    @api.onchange('date_order')
+    def _onchange_date_order(self):
+        """Track the user who changes the date_order."""
+        if self.date_order:
+            self.date_order_changed_by = self.env.user
 
 
     order_status = fields.Selection([
