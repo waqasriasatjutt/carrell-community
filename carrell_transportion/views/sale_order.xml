@@ -54,11 +54,11 @@
                             <field name="partner_id"/>
                         </div>
                         <!-- Address -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="street">Address</label>
-                            <field name="partner_id.street" placeholder="Enter Address"/>
+                        <!-- <div style="flex: 1; min-width: 30%;">
+                            <label for="street2">Address</label>
+                            <field name="partner_id.street2" placeholder="Enter Address"/>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 10px;">
                         <!-- City -->
