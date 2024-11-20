@@ -64,6 +64,18 @@ class SaleOrder(models.Model):
         string='Pickup Address',
         help="Select an active delivery address related to the selected customer."
     )
+
+
+    pu_street = fields.Char(related='partner_invoice_id.street')
+    pu_city = fields.Char(related='partner_invoice_id.city')
+    pu_zip = fields.Char(related='partner_invoice_id.zip')
+    pu_phone = fields.Char(related='partner_invoice_id.phone')
+    pu_email = fields.Char(related='partner_invoice_id.email')
+    pu_state = fields.Many2one(related='partner_invoice_id.state_id')
+    pu_country = fields.Many2one(related='partner_invoice_id.country_id')
+    pu_directions = fields.Char("Pu Directions")
+
+
     lease_address = fields.Many2one(
         comodel_name='res.partner',
         string='Lease Address',

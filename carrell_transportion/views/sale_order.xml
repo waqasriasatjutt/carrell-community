@@ -108,6 +108,62 @@
                 </div>
 
 
+                <div style="margin-top: 20px;">
+                    <h3 style="margin-bottom: 10px;">Pu Info</h3>
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                        <!-- Pu Name -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu">Pu Name</label>
+                            <field name="pu"/>
+                        </div>
+                        <!-- Pu Address -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_street">Pu Address</label>
+                            <field name="pu_street"/>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                        <!-- Pu City -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_city">Pu City</label>
+                            <field name="pu_city"/>
+                        </div>
+                        <!-- Pu State -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="pu_state">Pu State</label>
+                            <field name="pu_state"/>
+                        </div>
+                        <!-- Pu County -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_country">Pu County</label>
+                            <field name="pu_country"/>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                        <!-- Pu Contact -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_phone">Pu Contact</label>
+                            <field name="pu_phone"/>
+                        </div>
+                        <!-- Pu PIN -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="pu_pin">Pu PIN</label>
+                            <field name="pu_pin"/>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <!-- Pu Directions -->
+                        <div style="flex: 1; width: 100%;">
+                            <label for="pu_directions">Pu Directions</label>
+                            <field name="pu_directions" widget="text"/>
+                        </div>
+                    </div>
+                </div>
+
+
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
