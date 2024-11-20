@@ -24,7 +24,7 @@
                         </div>
                         <div style="flex-grow: 1;">
                             <label for="order_status">WO Status</label>  <!-- Explicit label -->
-                            <field name="order_status" string="Order Status"/>
+                            <field name="order_status" string="WO Status"/>
                         </div>
                     </div>
                     <div style="display: flex; width: 100%; justify-content: space-between;">
