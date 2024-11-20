@@ -219,7 +219,7 @@
 
 
 
-                        <div>
+                        <div style="display: flex; align-items: center; gap: 20px;">
                             <h1>
                                 <label for="goformz_created_by" string="GOFORMZ Created by"/>
                                 <field name="goformz_created_by" readonly="1"/>
