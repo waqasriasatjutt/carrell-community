@@ -39,10 +39,16 @@ class HrExpense(models.Model):
 
 
     invoice_text = fields.Char(string="Invoice", required=False, )
+    invoice_chk = fields.Boolean(string="Invoice", default=False, )
     ref_text = fields.Char(string="Ref", required=False, )
     pay_text = fields.Char(string="Pay Id", required=False, )
 
-
+    payment_mode = fields.Selection(
+        selection_add=[
+            ('fuel_card', 'Paid by Fuel Card')
+        ],
+        default='company',  # Set the default to "Company"
+    )
 
     carrell_acc_code = fields.Char(string="Account Code", required=False, )
     carrell_cash_code = fields.Char(string="Cash Code", required=False, )
@@ -80,6 +86,8 @@ class HrExpense(models.Model):
 
     vendor = fields.Many2one('res.partner', string="Vendors", domain="[('supplier_rank', '>', 0)]")
     received_status = fields.Selection([
+        ('received', 'Received'),
+        ('topu', 'To Pu'),
         ('ordered', 'Ordered'),
         ('pickedup', 'Picked Up'),
         ('overnight', 'Over Night'),
@@ -96,6 +104,7 @@ class HrExpense(models.Model):
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
     date_received = fields.Datetime(string="Time Received", readonly=True)
+    date_invoice = fields.Datetime(string="Invoice Date")
     received_by = fields.Many2one('res.users', string="Received By")
     received_by_with_date = fields.Char(
         string="Received By (Date)",

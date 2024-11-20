@@ -67,8 +67,10 @@
                         <field name="sequence" readonly="1"/>
                         <label for="po_number" string="PO Number"/>
                         <field name="po_number"/>
-                        <label for="po_des" string="PO Description"/>
+                        <label for="po_des" string="Exp Description"/>
                         <field name="po_des"/>
+                        <label for="date_invoice" string="Invoice Date"/>
+                        <field name="date_invoice"></field>
                     </h1>
                 </div>
                 <!-- Adding fields after the date field -->
@@ -99,11 +101,18 @@
                 <xpath expr="//field[@name='date']" position="before">
                     <field name="sub_category" string="Sub Category"/>
                 </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="required">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="required">0</attribute>
+                </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="company_carrel"/>
                     <!--                    <field name="sub_category" string="Sub Category"/>-->
                     <field name="asset_id"/>
                     <field name="warehouse_id"/>
+                    <field name="invoice_chk"></field>
                     <!-- <field name="company_select"/> -->
                     <field name="expense_code"/>
                     <!-- <field name="case_code"/>
@@ -127,8 +136,8 @@
                     <!--                    <group col="1">-->
                     <group>
                         <group>
-                            <field name="carrell_acc_code" string="Account Code"/>
-                            <field name="carrell_cash_code" string="Cash Code"/>
+                            <field name="carrell_acc_code" invisible="1" string="Account Code"/>
+                            <field name="carrell_cash_code" invisible="1" string="Cash Code"/>
                         </group>
                         <group>
                             <field name="carrell_extra_code" string="Extra Code"/>
