@@ -53,7 +53,7 @@ class HrExpense(models.Model):
         selection_add=[
             ('fuel_card', 'Paid by Fuel Card')
         ],
-        default='company',  # Set the default to "Company"
+        default='company_account',  # Set the default to "Company"
     )
 
     carrell_acc_code = fields.Char(string="Account Code", required=False, )
