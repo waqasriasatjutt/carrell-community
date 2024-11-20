@@ -41,6 +41,77 @@
                             <field name="invoice_manual" string="Invoice#"/>
                         </div>
                     </div>
+                 <div style="margin-top: 20px;">
+                    <!-- Invoice Info Title -->
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <h2>Invoice Info</h2>
+                    </div>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
+                        <!-- Customer Name -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="partner_id">Customer Name</label>
+                            <field name="partner_id"/>
+                        </div>
+                        <!-- Address -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="street">Address</label>
+                            <field name="partner_invoice_id.street" placeholder="Enter Address"/>
+                        </div>
+                        <!-- Invoice Info Label -->
+                        <div style="flex: 1; min-width: 30%; text-align: center;">
+                            <h3>Invoice Info</h3>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 10px;">
+                        <!-- City -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="city">City</label>
+                            <field name="partner_invoice_id.city"/>
+                        </div>
+                        <!-- State -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="state_id">State</label>
+                            <field name="partner_invoice_id.state_id"/>
+                        </div>
+                        <!-- ZIP -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="zip">ZIP</label>
+                            <field name="partner_invoice_id.zip"/>
+                        </div>
+                        <!-- Contact -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="contact">Contact</label>
+                            <field name="partner_id.phone"/>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 10px;">
+                        <!-- Phone -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="phone">Phone</label>
+                            <field name="partner_id.phone"/>
+                        </div>
+                        <!-- Email -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="email">Email</label>
+                            <field name="partner_id.email"/>
+                        </div>
+                        <!-- EB -->
+                        <div style="flex: 1; min-width: 30%; text-align: center;">
+                            <h3>EB</h3>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <!-- Customer Notes -->
+                        <label for="note">Customer Notes</label>
+                        <field name="note" style="width: 100%;" placeholder="Add any customer notes here"/>
+                    </div>
+                </div>
+
+
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
