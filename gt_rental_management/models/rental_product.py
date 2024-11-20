@@ -294,13 +294,13 @@ class SaleOrder(models.Model):
     bill_start_date = fields.Date(string='Bill Start Date', compute='compute_bill_start')
     bill_end_date = fields.Date(string='Bill End Date', compute='compute_bill_end')
 
-
+    @api.depends('start_date')
     def compute_bill_start(self):
         for rec in self:
             self.bill_start_date = self.start_date
 
 
-
+    @api.depends('end_date')
     def compute_bill_end(self):
         for rec in self:
             self.bill_end_date = self.end_date
