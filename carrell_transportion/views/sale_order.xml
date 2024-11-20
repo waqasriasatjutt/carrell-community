@@ -78,7 +78,7 @@
                         </div>
                         <!-- Contact -->
                         <div style="flex: 1; min-width: 20%;">
-                            <label for="contact">Contact</label>
+                            <label for="phone">Contact</label>
                             <field name="phone"/>
                         </div>
                     </div>
