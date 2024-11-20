@@ -54,32 +54,32 @@
                             <field name="partner_id"/>
                         </div>
                         <!-- Address -->
-                        <!-- <div style="flex: 1; min-width: 30%;">
-                            <label for="street2">Address</label>
-                            <field name="partner_id.street2" placeholder="Enter Address"/>
-                        </div> -->
-                    </div> 
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="street">Address</label>
+                            <field name="street" placeholder="Enter Address"/>
+                        </div>
+                    </div>
 
                     <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 10px;">
                         <!-- City -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="city">City</label>
-                            <field name="partner_id.city"/>
+                            <field name="city"/>
                         </div>
                         <!-- State -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="state_id">State</label>
-                            <field name="partner_id.state_id"/>
+                            <field name="state_id"/>
                         </div>
                         <!-- ZIP -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="zip">ZIP</label>
-                            <field name="partner_id.zip"/>
+                            <field name="zip"/>
                         </div>
                         <!-- Contact -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="contact">Contact</label>
-                            <field name="partner_id.phone"/>
+                            <field name="phone"/>
                         </div>
                     </div>
 
@@ -87,12 +87,12 @@
                         <!-- Phone -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="phone">Phone</label>
-                            <field name="partner_id.phone"/>
+                            <field name="phone"/>
                         </div>
                         <!-- Email -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="email">Email</label>
-                            <field name="partner_id.email"/>
+                            <field name="email"/>
                         </div>
                         <!-- EB -->
                         <div style="flex: 1; min-width: 30%; text-align: center;">

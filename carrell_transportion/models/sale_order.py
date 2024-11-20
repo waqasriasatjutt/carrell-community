@@ -50,6 +50,15 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+
+
+    street = fields.Char(related='partner_invoice_id.street')
+    city = fields.Char(related='partner_invoice_id.city')
+    zip = fields.Char(related='partner_invoice_id.zip')
+    phone = fields.Char(related='partner_invoice_id.phone')
+    email = fields.Char(related='partner_invoice_id.email')
+
+
     pu = fields.Many2one(
         comodel_name='res.partner',
         string='Pickup Address',
