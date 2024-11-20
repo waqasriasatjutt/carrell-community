@@ -43,9 +43,7 @@
                     </div>
                  <div style="margin-top: 0px;">
                     <!-- Invoice Info Title -->
-                    <div style="text-align: center; margin-bottom: 10px;">
-                        <h2>Invoice Info</h2>
-                    </div>
+                <h3 style="margin-bottom: 10px;">Invoice Info</h3>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
                         <!-- Customer Name -->
