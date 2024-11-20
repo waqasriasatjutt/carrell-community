@@ -216,6 +216,23 @@
                                 <field name="delivery_count" widget="statinfo" string="Delivery"/>
                             </button>
                         </div>
+
+
+
+                        <div>
+                            <h1>
+                                <label for="goformz_created_by" string="GOFORMZ Created by"/>
+                                <field name="goformz_created_by" readonly="1"/>
+                            </h1>
+
+                            <h1>
+                                <label for="goformz_create_date" string="GOFORMZ Create Date"/>
+                                <field name="goformz_create_date" readonly="1"/>
+                            </h1>
+
+
+                        </div>
+
                         <div class="oe_title">
                             <h1>
                                 <label for="name" string="Rental Agreement"/>
@@ -277,8 +294,6 @@
                                 <field name="purchase_price"/>
                             </group>
                             <group name="other_details">
-                                <field name="goformz_created_by" />
-                                <field name="goformz_create_date" />
                                 <field name="date_order" string="Order Date"/>
                                 <field name="po_number"/>
                                 <field name="del_numbers"/>
