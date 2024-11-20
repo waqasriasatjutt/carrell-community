@@ -164,6 +164,63 @@
                 </div>
 
 
+
+            <div style="margin-top: 20px;">
+                <h3 style="margin-bottom: 10px;">Delivery Info</h3>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                    <!-- Lease KEY -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="lease_address">Lease KEY</label>
+                        <field name="lease_address"/>
+                    </div>
+                    <!-- Rig -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="rig">Rig</label>
+                        <field name="rig"/>
+                    </div>
+                    <!-- Operator -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="operator">Operator</label>
+                        <field name="operator"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                    <!-- Delivery To City -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_city">Del To City</label>
+                        <field name="del_city"/>
+                    </div>
+                    <!-- Delivery State -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="del_state">Del St</label>
+                        <field name="del_state"/>
+                    </div>
+                    <!-- Delivery County -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_country">Del County</label>
+                        <field name="del_country"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_pin">Del Pin</label>
+                        <field name="del_pin"/>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <!-- Delivery Directions -->
+                    <div style="flex: 1; width: 100%;">
+                        <label for="del_directions">Del Directions</label>
+                        <field name="del_directions" widget="text"/>
+                    </div>
+                </div>
+            </div>
+
+
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">

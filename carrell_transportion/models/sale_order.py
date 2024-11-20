@@ -40,9 +40,20 @@ class SaleOrderGF(models.Model):
     )
     lease_address = fields.Many2one(
         comodel_name='res.partner',
-        string='PU',
+        string='Lease Key',
         help="Select an active delivery address related to the selected customer."
     )
+
+
+
+    del_street = fields.Char(related='lease_address.street')
+    del_city = fields.Char(related='lease_address.city')
+    del_zip = fields.Char(related='lease_address.zip')
+    del_phone = fields.Char(related='lease_address.phone')
+    del_email = fields.Char(related='lease_address.email')
+    del_state = fields.Many2one(related='lease_address.state_id')
+    del_country = fields.Many2one(related='lease_address.country_id')
+    del_directions = fields.Char("Del Directions")
 
     
 from odoo import models, fields, api
@@ -66,13 +77,13 @@ class SaleOrder(models.Model):
     )
 
 
-    pu_street = fields.Char(related='partner_invoice_id.street')
-    pu_city = fields.Char(related='partner_invoice_id.city')
-    pu_zip = fields.Char(related='partner_invoice_id.zip')
-    pu_phone = fields.Char(related='partner_invoice_id.phone')
-    pu_email = fields.Char(related='partner_invoice_id.email')
-    pu_state = fields.Many2one(related='partner_invoice_id.state_id')
-    pu_country = fields.Many2one(related='partner_invoice_id.country_id')
+    pu_street = fields.Char(related='pu.street')
+    pu_city = fields.Char(related='pu.city')
+    pu_zip = fields.Char(related='pu.zip')
+    pu_phone = fields.Char(related='pu.phone')
+    pu_email = fields.Char(related='pu.email')
+    pu_state = fields.Many2one(related='pu.state_id')
+    pu_country = fields.Many2one(related='pu.country_id')
     pu_directions = fields.Char("Pu Directions")
 
 
