@@ -291,8 +291,21 @@ class SaleOrder(models.Model):
                            states={'draft': [('readonly', False)]})
     del_date = fields.Date(string='Del Date')
     pu_date = fields.Date(string='Pu Date')
-    bill_start_date = fields.Date(string='Bill Start Date')
-    bill_end_date = fields.Date(string='Bill End Date')
+    bill_start_date = fields.Date(string='Bill Start Date', compute='compute_bill_start')
+    bill_end_date = fields.Date(string='Bill End Date', compute='compute_bill_end')
+
+
+    def compute_bill_start(self):
+        for rec in self:
+            self.bill_start_date = self.start_date
+
+
+
+    def compute_bill_end(self):
+        for rec in self:
+            self.bill_end_date = self.end_date
+
+
     goformz_create_date = fields.Datetime(string='GOFormz Create Date')
     goformz_created_by = fields.Many2one('res.users',string="Goformz Created By")
     agreement_received = fields.Boolean('Agreement Received?')
