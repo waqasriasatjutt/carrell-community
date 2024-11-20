@@ -56,11 +56,7 @@
                         <!-- Address -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="street">Address</label>
-                            <field name="partner_invoice_id.street" placeholder="Enter Address"/>
-                        </div>
-                        <!-- Invoice Info Label -->
-                        <div style="flex: 1; min-width: 30%; text-align: center;">
-                            <h3>Invoice Info</h3>
+                            <field name="partner_id.street" placeholder="Enter Address"/>
                         </div>
                     </div>
 
@@ -68,17 +64,17 @@
                         <!-- City -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="city">City</label>
-                            <field name="partner_invoice_id.city"/>
+                            <field name="partner_id.city"/>
                         </div>
                         <!-- State -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="state_id">State</label>
-                            <field name="partner_invoice_id.state_id"/>
+                            <field name="partner_id.state_id"/>
                         </div>
                         <!-- ZIP -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="zip">ZIP</label>
-                            <field name="partner_invoice_id.zip"/>
+                            <field name="partner_id.zip"/>
                         </div>
                         <!-- Contact -->
                         <div style="flex: 1; min-width: 20%;">
