@@ -38,6 +38,12 @@ class HrExpense(models.Model):
     _inherit = "hr.expense"
 
 
+    name = fields.Char(
+        required=False,
+        default="Expense Name",  # Add a demo or placeholder text
+    )
+
+
     invoice_text = fields.Char(string="Invoice", required=False, )
     invoice_chk = fields.Boolean(string="Invoice", default=False, )
     ref_text = fields.Char(string="Ref", required=False, )

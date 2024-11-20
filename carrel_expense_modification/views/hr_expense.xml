@@ -103,6 +103,8 @@
                 </xpath>
                 <xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="required">0</attribute>
+                                    <attribute name="placeholder">"Enter expense name..."</attribute>
+
                 </xpath>
                 <xpath expr="//field[@name='product_uom_id']" position="attributes">
                     <attribute name="required">0</attribute>
