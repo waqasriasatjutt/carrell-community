@@ -51,7 +51,7 @@
                         <!-- Customer Name -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="partner_id">Customer Name</label>
-                            <field name="partner_id" widget="selection"/>
+                            <field name="partner_id" widget="many2one"/>
                         </div>
                         <!-- Address -->
                         <div style="flex: 1; min-width: 30%;">
