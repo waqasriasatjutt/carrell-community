@@ -12,7 +12,7 @@
     'summary': "Carrel Transportation",
     'depends' : ['sale_management', 'hr','stock'],
     'data': [
-        'data/id_data_sequence.xml',
+        'data/ir_sequence_data.xml',
         'views/sale_order.xml',
         'views/res_partner.xml',
     ],

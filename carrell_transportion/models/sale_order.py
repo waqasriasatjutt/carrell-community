@@ -107,14 +107,18 @@ class SaleOrder(models.Model):
 
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
 
-    pro_number = fields.Char(string='Pro Number A', readonly=True, copy=False)
+    pro_number = fields.Char(
+        string="Pro Number A", 
+        readonly=True, 
+        copy=False, 
+        default=lambda self: 'NEW'
+    )
 
     @api.model
     def create(self, vals):
-        if not vals.get('pro_number'):
-            vals['pro_number'] = self.env['ir.sequence'].next_by_code('sale.order.pro.number') or 'New'
-        return super(SaleOrder, self).create(vals)
-    
+        if vals.get('pro_number', 'NEW') == 'NEW':
+            vals['pro_number'] = self.env['ir.sequence'].next_by_code('sale.order.pro.number') or 'NEW'
+        return super(SaleOrder, self).create(vals)    
     
     wo_number = fields.Char(string='Wo Number')
     po_number = fields.Char(string='Po Number')
