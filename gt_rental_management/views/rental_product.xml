@@ -219,15 +219,15 @@
 
 
 
-                        <div style="display: flex; align-items: center; gap: 20px;">
+                        <div style="display: flex; align-items: center; gap: 40px;">
                             <h1>
                                 <label for="goformz_created_by" string="GOFORMZ Created by"/>
-                                <field name="goformz_created_by" readonly="1"/>
+                                <field style="margin-left: 10px; font-size: 11px;" name="goformz_created_by" readonly="1"/>
                             </h1>
 
                             <h1>
                                 <label for="goformz_create_date" string="GOFORMZ Create Date"/>
-                                <field name="goformz_create_date" readonly="1"/>
+                                <field style="margin-left: 10px; font-size: 11px;" name="goformz_create_date" readonly="1"/>
                             </h1>
 
 
