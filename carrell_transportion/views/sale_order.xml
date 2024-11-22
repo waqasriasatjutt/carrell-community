@@ -8,158 +8,320 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
+
+
                 <xpath expr="//div[@class='oe_title']" position="before">
-                    <div style="display: flex; width: 100%; justify-content: space-between;">
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
-                            <label for="pro_number">PRO#</label>  <!-- Explicit label -->
+
+                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">
+                            <label for="pro_number">PRO#</label> <!-- Explicit label -->
                             <field name="pro_number" string="PRO#"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
-                            <label for="wo_number">WO#</label>  <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">
+                            <label for="wo_number">WO#</label> <!-- Explicit label -->
                             <field name="wo_number" string="WO#"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
-                            <label for="po_number">PO#</label>  <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black;border-bottom: none; border-right: none; padding: 5px;">
+                            <label for="po_number">PO#</label> <!-- Explicit label -->
                             <field name="po_number" string="PO#"/>
                         </div>
-                        <div style="flex-grow: 1; width: 25%;">
-                            <label for="order_status">WO Status</label>  <!-- Explicit label -->
+                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-bottom: none; padding: 5px;">
+                            <label for="order_status">WO Status</label> <!-- Explicit label -->
                             <field name="order_status" string="WO Status"/>
                         </div>
                     </div>
-                    <div style="display: flex; width: 100%; justify-content: space-between;">
-                        <div style="flex-grow: 1; width: 25%;">
-                            <label for="date_order">Date</label>  <!-- Explicit label -->
+
+                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">
+                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">
+                            <label for="date_order">Date</label>
                             <field name="date_order" string="Date"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
-                            <label for="date_order_changed_by">Enter By</label>  <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">
+                            <label for="date_order_changed_by">Enter By</label>
                             <field name="date_order_changed_by" string="Enter By"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
-                            <label for="invoice_manual">Invoice#</label>  <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; padding: 5px;">
+                            <label for="invoice_manual">Invoice#</label> <!-- Explicit label -->
                             <field name="invoice_manual" string="Invoice#"/>
                         </div>
                     </div>
-                 <div style="margin-top: 0px;">
-                    <!-- Invoice Info Title -->
-                <h3 style="margin-bottom: 10px;">Invoice Info</h3>
-                    
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
+
+                    <h3 style="margin-top: 10px; margin-bottom: 10px; border: 2px solid black; padding-top: 5px;padding-bottom: 5px;">
+                        Invoice Info
+                    </h3>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">
                         <!-- Customer Name -->
-                        <div style="flex: 1; min-width: 30%;">
+                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none">
                             <label for="partner_id">Customer Name</label>
                             <field name="partner_id" widget="many2one"/>
                         </div>
                         <!-- Address -->
-                        <div style="flex: 1; min-width: 30%;">
+                        <div style="flex: 1; min-width: 30%; border: 1px solid black;">
                             <label for="street">Address</label>
                             <field name="street" placeholder="Enter Address"/>
                         </div>
                     </div>
 
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">
-                        <!-- City -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="city">City</label>
-                            <field name="city"/>
-                        </div>
-                        <!-- State -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="state_id">State</label>
-                            <field name="state_id"/>
-                        </div>
-                        <!-- ZIP -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="zip">ZIP</label>
-                            <field name="zip"/>
-                        </div>
-                        <!-- Contact -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="phone">Contact</label>
-                            <field name="phone"/>
-                        </div>
-                    </div>
+                    <table width="100%" style="background-color: #2596be;">
+                        <tr>
+                            <td style=" border-left:1px solid; width:5%; padding: 5px;">City</td>
+                            <td style="border-right:1px solid; height:25px; width:15%; background-color: #2596be;">
+                                <field style="width:90%; text-align: center;" string="City" name="city"/>
+                            </td>
+                            <td style="width:5%; padding: 5px;">State</td>
+                            <td style="border-right:1px solid; width:20%; padding: 5px;">
+                                <field style="width:90%; text-align: center;" name="state_id"/>
+                            </td>
+                            <td style="width:5%; padding: 5px;">Zip</td>
+                            <td style="border-right:1px solid black; width:15%; padding: 5px;">
+                                <span>
+                                    <field style="width:90%; text-align: center;" name="zip"/>
+                                </span>
+                            </td>
+                            <td style=" width:10%; padding: 5px;">Contact</td>
+                            <td style="border-right:1px solid; width:15%; padding: 5px;">
+                                <field style="width:90%; text-align: center;" name="phone"/>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">
                         <!-- Phone -->
-                        <div style="flex: 1; min-width: 30%;">
+                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">
                             <label for="phone">Phone</label>
                             <field name="phone"/>
                         </div>
                         <!-- Email -->
-                        <div style="flex: 1; min-width: 30%;">
+                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">
                             <label for="email">Email</label>
                             <field name="email"/>
                         </div>
                         <!-- EB -->
-                        <div style="flex: 1; min-width: 30%; text-align: center;">
+                        <div style="flex: 1; min-width: 30%; text-align: center; border: 1px solid black; padding: 5px;">
                             <h3>EB</h3>
                         </div>
                     </div>
+                    <table width="100%" style="background-color: #2596be;">
+                        <tr>
+                            <td style=" width:15%; padding: 5px;">Customer Notes</td>
+                            <td style="border-right:1px solid; width:85%; padding: 5px;">
+                                <field style="width:90%; text-align: left;" name="note"
+                                       placeholder="Add any customer notes here"/>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <div style="margin-top: 0px;">
-                        <!-- Customer Notes -->
-                        <label for="note">Customer Notes</label>
-                        <field name="note" style="width: 100%;" placeholder="Add any customer notes here"/>
+
+<!--                <xpath expr="//div[@class='oe_title']" position="before">-->
+<!--                    <div style="display: flex; width: 100%; justify-content: space-between;">-->
+<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">-->
+<!--                            <label for="pro_number">PRO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="pro_number" string="PRO#"/>-->
+<!--                        </div>-->
+<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">-->
+<!--                            <label for="wo_number">WO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="wo_number" string="WO#"/>-->
+<!--                        </div>-->
+<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">-->
+<!--                            <label for="po_number">PO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="po_number" string="PO#"/>-->
+<!--                        </div>-->
+<!--                        <div style="flex-grow: 1; width: 25%;">-->
+<!--                            <label for="order_status">WO Status</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="order_status" string="WO Status"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div style="display: flex; width: 100%; justify-content: space-between;">-->
+<!--                        <div style="flex-grow: 1; width: 25%;">-->
+<!--                            <label for="date_order">Date</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="date_order" string="Date"/>-->
+<!--                        </div>-->
+<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">-->
+<!--                            <label for="date_order_changed_by">Enter By</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="date_order_changed_by" string="Enter By"/>-->
+<!--                        </div>-->
+<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">-->
+<!--                            <label for="invoice_manual">Invoice#</label>  &lt;!&ndash; Explicit label &ndash;&gt;-->
+<!--                            <field name="invoice_manual" string="Invoice#"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                 <div style="margin-top: 0px;">-->
+<!--                    &lt;!&ndash; Invoice Info Title &ndash;&gt;-->
+<!--                <h3 style="margin-bottom: 10px;">Invoice Info</h3>-->
+<!--                    -->
+<!--                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">-->
+<!--                        &lt;!&ndash; Customer Name &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="partner_id">Customer Name</label>-->
+<!--                            <field name="partner_id" widget="many2one"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Address &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="street">Address</label>-->
+<!--                            <field name="street" placeholder="Enter Address"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">-->
+<!--                        &lt;!&ndash; City &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="city">City</label>-->
+<!--                            <field name="city"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; State &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="state_id">State</label>-->
+<!--                            <field name="state_id"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; ZIP &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="zip">ZIP</label>-->
+<!--                            <field name="zip"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Contact &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="phone">Contact</label>-->
+<!--                            <field name="phone"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">-->
+<!--                        &lt;!&ndash; Phone &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="phone">Phone</label>-->
+<!--                            <field name="phone"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Email &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="email">Email</label>-->
+<!--                            <field name="email"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; EB &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%; text-align: center;">-->
+<!--                            <h3>EB</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div style="margin-top: 0px;">-->
+<!--                        &lt;!&ndash; Customer Notes &ndash;&gt;-->
+<!--                        <label for="note">Customer Notes</label>-->
+<!--                        <field name="note" style="width: 100%;" placeholder="Add any customer notes here"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                    <div style="margin-top: 10px; background-color: #2596be; box-sizing: border-box;">
+                        <h3 style="margin-bottom: 10px;">Pu Info</h3>
+
+                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">
+                            <!-- Pu Name -->
+                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu">Pu Name</label>
+                                <field name="pu"/>
+                            </div>
+                            <!-- Pu Address -->
+                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_street">Pu Address</label>
+                                <field name="pu_street"/>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">
+                            <!-- Pu City -->
+                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_city">Pu City</label>
+                                <field name="pu_city"/>
+                            </div>
+                            <!-- Pu State -->
+                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_state">Pu State</label>
+                                <field name="pu_state"/>
+                            </div>
+                            <!-- Pu County -->
+                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_country">Pu County</label>
+                                <field name="pu_country"/>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">
+                            <!-- Pu Contact -->
+                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_phone">Pu Contact</label>
+                                <field name="pu_phone"/>
+                            </div>
+                            <!-- Pu PIN -->
+                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_pin">Pu PIN</label>
+                                <field name="pu_pin"/>
+                            </div>
+                        </div>
+
+                        <div style="box-sizing: border-box;">
+                            <!-- Pu Directions -->
+                            <div style="flex: 1; width: 100%; border: 1px solid black; padding: 5px; box-sizing: border-box;">
+                                <label for="pu_directions">Pu Directions</label>
+                                <field name="pu_directions" widget="text" style="width: 100%;"/>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
 
-                <div style="margin-top: 0px;">
-                    <h3 style="margin-bottom: 10px;">Pu Info</h3>
-                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
-                        <!-- Pu Name -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="pu">Pu Name</label>
-                            <field name="pu"/>
-                        </div>
-                        <!-- Pu Address -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="pu_street">Pu Address</label>
-                            <field name="pu_street"/>
-                        </div>
-                    </div>
+<!--                <div style="margin-top: 0px;">-->
+<!--                    <h3 style="margin-bottom: 10px;">Pu Info</h3>-->
+<!--                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">-->
+<!--                        &lt;!&ndash; Pu Name &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="pu">Pu Name</label>-->
+<!--                            <field name="pu"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Pu Address &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="pu_street">Pu Address</label>-->
+<!--                            <field name="pu_street"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
-                        <!-- Pu City -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="pu_city">Pu City</label>
-                            <field name="pu_city"/>
-                        </div>
-                        <!-- Pu State -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="pu_state">Pu State</label>
-                            <field name="pu_state"/>
-                        </div>
-                        <!-- Pu County -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="pu_country">Pu County</label>
-                            <field name="pu_country"/>
-                        </div>
-                    </div>
+<!--                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
+<!--                        &lt;!&ndash; Pu City &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="pu_city">Pu City</label>-->
+<!--                            <field name="pu_city"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Pu State &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="pu_state">Pu State</label>-->
+<!--                            <field name="pu_state"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Pu County &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="pu_country">Pu County</label>-->
+<!--                            <field name="pu_country"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
-                        <!-- Pu Contact -->
-                        <div style="flex: 1; min-width: 30%;">
-                            <label for="pu_phone">Pu Contact</label>
-                            <field name="pu_phone"/>
-                        </div>
-                        <!-- Pu PIN -->
-                        <div style="flex: 1; min-width: 20%;">
-                            <label for="pu_pin">Pu PIN</label>
-                            <field name="pu_pin"/>
-                        </div>
-                    </div>
+<!--                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
+<!--                        &lt;!&ndash; Pu Contact &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 30%;">-->
+<!--                            <label for="pu_phone">Pu Contact</label>-->
+<!--                            <field name="pu_phone"/>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Pu PIN &ndash;&gt;-->
+<!--                        <div style="flex: 1; min-width: 20%;">-->
+<!--                            <label for="pu_pin">Pu PIN</label>-->
+<!--                            <field name="pu_pin"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div style="margin-top: 10px;">
-                        <!-- Pu Directions -->
-                        <div style="flex: 1; width: 100%;">
-                            <label for="pu_directions">Pu Directions</label>
-                            <field name="pu_directions" widget="text"/>
-                        </div>
-                    </div>
-                </div>
+<!--                    <div style="margin-top: 10px;">-->
+<!--                        &lt;!&ndash; Pu Directions &ndash;&gt;-->
+<!--                        <div style="flex: 1; width: 100%;">-->
+<!--                            <label for="pu_directions">Pu Directions</label>-->
+<!--                            <field name="pu_directions" widget="text"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
 
