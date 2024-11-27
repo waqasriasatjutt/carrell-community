@@ -8,1142 +8,218 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
-
                 <xpath expr="//div[@class='oe_title']" position="before">
-
-                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">
-                            <label for="pro_number">PRO#</label> <!-- Explicit label -->
+                    <div style="display: flex; width: 100%; justify-content: space-between;">
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
+                            <label for="pro_number">PRO#</label>  <!-- Explicit label -->
                             <field name="pro_number" string="PRO#"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">
-                            <label for="wo_number">WO#</label> <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
+                            <label for="wo_number">WO#</label>  <!-- Explicit label -->
                             <field name="wo_number" string="WO#"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black;border-bottom: none; border-right: none; padding: 5px;">
-                            <label for="po_number">PO#</label> <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
+                            <label for="po_number">PO#</label>  <!-- Explicit label -->
                             <field name="po_number" string="PO#"/>
                         </div>
-                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-bottom: none; padding: 5px;">
-                            <label for="order_status">WO Status</label> <!-- Explicit label -->
+                        <div style="flex-grow: 1; width: 25%;">
+                            <label for="order_status">WO Status</label>  <!-- Explicit label -->
                             <field name="order_status" string="WO Status"/>
                         </div>
                     </div>
-
-                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">
-                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">
-                            <label for="date_order">Date</label>
+                    <div style="display: flex; width: 100%; justify-content: space-between;">
+                        <div style="flex-grow: 1; width: 25%;">
+                            <label for="date_order">Date</label>  <!-- Explicit label -->
                             <field name="date_order" string="Date"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">
-                            <label for="date_order_changed_by">Enter By</label>
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
+                            <label for="date_order_changed_by">Enter By</label>  <!-- Explicit label -->
                             <field name="date_order_changed_by" string="Enter By"/>
                         </div>
-                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; padding: 5px;">
-                            <label for="invoice_manual">Invoice#</label> <!-- Explicit label -->
+                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
+                            <label for="invoice_manual">Invoice#</label>  <!-- Explicit label -->
                             <field name="invoice_manual" string="Invoice#"/>
                         </div>
                     </div>
-
-                    <h3 style="margin-top: 10px; margin-bottom: 0; background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Invoice Info
-                    </h3>
-
-                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">
+                 <div style="margin-top: 0px;">
+                    <!-- Invoice Info Title -->
+                <h3 style="margin-bottom: 10px;">Invoice Info</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
                         <!-- Customer Name -->
-                        <div style="flex: 1; min-width: 30%; padding: 5px; border: 1px solid black; border-right: none; border-top: none">
+                        <div style="flex: 1; min-width: 30%;">
                             <label for="partner_id">Customer Name</label>
                             <field name="partner_id" widget="many2one"/>
                         </div>
                         <!-- Address -->
-                        <div style="flex: 1; min-width: 30%; padding: 5px; border: 1px solid black;border-top: none">
+                        <div style="flex: 1; min-width: 30%;">
                             <label for="street">Address</label>
                             <field name="street" placeholder="Enter Address"/>
                         </div>
                     </div>
 
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; width:5%; padding: 5px;">City</td>
-                            <td style="border-right:1px solid; height:25px; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" string="City" name="city"/>
-                            </td>
-                            <td style="width:5%; padding: 5px;">State</td>
-                            <td style="border-right:1px solid; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:5%; padding: 5px;">Zip</td>
-                            <td style="border-right:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" width:10%; padding: 5px;">Contact</td>
-                            <td style="border-right:1px solid; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="phone"/>
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">
+                        <!-- City -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="city">City</label>
+                            <field name="city"/>
+                        </div>
+                        <!-- State -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="state_id">State</label>
+                            <field name="state_id"/>
+                        </div>
+                        <!-- ZIP -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="zip">ZIP</label>
+                            <field name="zip"/>
+                        </div>
+                        <!-- Contact -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="phone">Contact</label>
+                            <field name="phone"/>
+                        </div>
+                    </div>
 
-
-                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">
                         <!-- Phone -->
-                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">
+                        <div style="flex: 1; min-width: 30%;">
                             <label for="phone">Phone</label>
                             <field name="phone"/>
                         </div>
                         <!-- Email -->
-                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">
+                        <div style="flex: 1; min-width: 30%;">
                             <label for="email">Email</label>
                             <field name="email"/>
                         </div>
                         <!-- EB -->
-                        <div style="flex: 1; min-width: 30%; text-align: center; border: 1px solid black; padding: 5px;">
+                        <div style="flex: 1; min-width: 30%; text-align: center;">
                             <h3>EB</h3>
                         </div>
                     </div>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" width:10%; padding: 5px;">Customer Notes</td>
-                            <td style="border-right:1px solid; width:90%; padding: 5px;">
-                                <field style="width:100%; text-align: left;" name="note"
-                                       placeholder="Add any customer notes here"/>
-                            </td>
-                        </tr>
-                    </table>
 
-                    <!--                    <div style="margin-top: 10px;  background-color: #2596be;">-->
-                    <!--                        <h3 style="margin-bottom: 10px;">Pu Info</h3>-->
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">-->
-                    <!--                            &lt;!&ndash; Pu Name &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="pu">Pu Name</label>-->
-                    <!--                                <field name="pu"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu Address &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="pu_street">Pu Address</label>-->
-                    <!--                                <field name="pu_street"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-                    <!--                            &lt;!&ndash; Pu City &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="pu_city">Pu City</label>-->
-                    <!--                                <field name="pu_city"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu State &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%;">-->
-                    <!--                                <label for="pu_state">Pu State</label>-->
-                    <!--                                <field name="pu_state"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu County &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="pu_country">Pu County</label>-->
-                    <!--                                <field name="pu_country"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-                    <!--                            &lt;!&ndash; Pu Contact &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="pu_phone">Pu Contact</label>-->
-                    <!--                                <field name="pu_phone"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu PIN &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%;">-->
-                    <!--                                <label for="pu_pin">Pu PIN</label>-->
-                    <!--                                <field name="pu_pin"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="margin-top: 10px;">-->
-                    <!--                            &lt;!&ndash; Pu Directions &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; width: 100%;">-->
-                    <!--                                <label for="pu_directions">Pu Directions</label>-->
-                    <!--                                <field name="pu_directions" widget="text"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                    <div style="margin-top: 0px;">
+                        <!-- Customer Notes -->
+                        <label for="note">Customer Notes</label>
+                        <field name="note" style="width: 100%;" placeholder="Add any customer notes here"/>
+                    </div>
+                </div>
 
 
-                    <!--                    <div style="margin-top: 10px; background-color: #2596be; box-sizing: border-box;">-->
-                    <h3 style="margin-top: 10px; margin-bottom: 0; background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Pu Info
-                    </h3>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Pu Name
-                            </td>
-                            <td style="border-right:1px solid; width:20%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="pu"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Pu Address</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:60%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="pu_street"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Pu City
-                            </td>
-                            <td style="border-right:1px solid; width:15%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="pu_city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Pu State</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="pu_state"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">PU County</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:35%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="pu_country"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Pu Contact
-                            </td>
-                            <td style="border-right:1px solid; width:20%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="pu_phone"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Pu PIN</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:60%; padding: 5px;">
-                                <field style="width:90%; text-align: left;" name="pu_pin"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Pu Directions
-                            </td>
-                            <td style="border-right:1px solid; width:90%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:100%; text-align: center;" name="pu_directions" widget="text"/>
-                            </td>
-                        </tr>
-                    </table>
+                <div style="margin-top: 0px;">
+                    <h3 style="margin-bottom: 10px;">Pu Info</h3>
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                        <!-- Pu Name -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu">Pu Name</label>
+                            <field name="pu"/>
+                        </div>
+                        <!-- Pu Address -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_street">Pu Address</label>
+                            <field name="pu_street"/>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                        <!-- Pu City -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_city">Pu City</label>
+                            <field name="pu_city"/>
+                        </div>
+                        <!-- Pu State -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="pu_state">Pu State</label>
+                            <field name="pu_state"/>
+                        </div>
+                        <!-- Pu County -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_country">Pu County</label>
+                            <field name="pu_country"/>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                        <!-- Pu Contact -->
+                        <div style="flex: 1; min-width: 30%;">
+                            <label for="pu_phone">Pu Contact</label>
+                            <field name="pu_phone"/>
+                        </div>
+                        <!-- Pu PIN -->
+                        <div style="flex: 1; min-width: 20%;">
+                            <label for="pu_pin">Pu PIN</label>
+                            <field name="pu_pin"/>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <!-- Pu Directions -->
+                        <div style="flex: 1; width: 100%;">
+                            <label for="pu_directions">Pu Directions</label>
+                            <field name="pu_directions" widget="text"/>
+                        </div>
+                    </div>
+                </div>
 
 
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-                    <!--                            &lt;!&ndash; Pu Name &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu">Pu Name</label>-->
-                    <!--                                <field name="pu"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu Address &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_street">Pu Address</label>-->
-                    <!--                                <field name="pu_street"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
 
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-                    <!--                            &lt;!&ndash; Pu City &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_city">Pu City</label>-->
-                    <!--                                <field name="pu_city"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu State &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_state">Pu State</label>-->
-                    <!--                                <field name="pu_state"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu County &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_country">Pu County</label>-->
-                    <!--                                <field name="pu_country"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
+            <div style="margin-top: 0px;">
+                <h3 style="margin-bottom: 10px;">Delivery Info</h3>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                    <!-- Lease KEY -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="lease_address">Lease KEY</label>
+                        <field name="lease_address"/>
+                    </div>
+                    <!-- Rig -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="rig">Rig</label>
+                        <field name="rig"/>
+                    </div>
+                    <!-- Operator -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="operator">Operator</label>
+                        <field name="operator"/>
+                    </div>
+                </div>
 
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-                    <!--                            &lt;!&ndash; Pu Contact &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_phone">Pu Contact</label>-->
-                    <!--                                <field name="pu_phone"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Pu PIN &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_pin">Pu PIN</label>-->
-                    <!--                                <field name="pu_pin"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery To City -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_city">Del To City</label>
+                        <field name="del_city"/>
+                    </div>
+                    <!-- Delivery State -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="del_state">Del St</label>
+                        <field name="del_state"/>
+                    </div>
+                    <!-- Delivery County -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_country">Del County</label>
+                        <field name="del_country"/>
+                    </div>
+                </div>
 
-                    <!--                        <div style="box-sizing: border-box;">-->
-                    <!--                            <div style="flex: 1; width: 100%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-                    <!--                                <label for="pu_directions">Pu Directions</label>-->
-                    <!--                                <field name="pu_directions" widget="text" style="width: 100%;"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="del_pin">Del Pin</label>
+                        <field name="del_pin"/>
+                    </div>
+                </div>
 
-
-                    <h3 style="margin-top: 10px; margin-bottom: 0; background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Delivery Info
-                    </h3>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Lease KEY
-                            </td>
-                            <td style="border-right:1px solid; width:45%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="lease_address"/>
-                            </td>
-                            <td style="width:5%; padding: 5px; border-bottom:1px solid;">Rig</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="rig"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Operator</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="operator"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                Del To City
-                            </td>
-                            <td style="border-right:1px solid; width:25%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="del_city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Del State</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="del_state"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Del Country</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:25%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="del_country"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:7%; padding: 5px;">
-                                Del Pin
-                            </td>
-                            <td style="border-right:1px solid; width:18%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="del_pin"/>
-                            </td>
-                            <td style="width:15%; padding: 5px; border-bottom:1px solid;">Del Directions</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:60%; padding: 5px;">
-                                <field style="width:90%; text-align: left;" name="del_directions" widget="text"/>
-                            </td>
-                        </tr>
-                    </table>
+                <div style="margin-top: 0px;">
+                    <!-- Delivery Directions -->
+                    <div style="flex: 1; width: 100%;">
+                        <label for="del_directions">Del Directions</label>
+                        <field name="del_directions" widget="text"/>
+                    </div>
+                </div>
+            </div>
 
 
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">-->
-                    <!--                            &lt;!&ndash; Lease KEY &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="lease_address">Lease KEY</label>-->
-                    <!--                                <field name="lease_address"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Rig &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%;">-->
-                    <!--                                <label for="rig">Rig</label>-->
-                    <!--                                <field name="rig"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Operator &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="operator">Operator</label>-->
-                    <!--                                <field name="operator"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-                    <!--                            &lt;!&ndash; Delivery To City &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="del_city">Del To City</label>-->
-                    <!--                                <field name="del_city"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Delivery State &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 20%;">-->
-                    <!--                                <label for="del_state">Del St</label>-->
-                    <!--                                <field name="del_state"/>-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; Delivery County &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="del_country">Del County</label>-->
-                    <!--                                <field name="del_country"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-                    <!--                            &lt;!&ndash; Delivery PIN &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; min-width: 30%;">-->
-                    <!--                                <label for="del_pin">Del Pin</label>-->
-                    <!--                                <field name="del_pin"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-
-                    <!--                        <div style="margin-top: 0px;">-->
-                    <!--                            &lt;!&ndash; Delivery Directions &ndash;&gt;-->
-                    <!--                            <div style="flex: 1; width: 100%;">-->
-                    <!--                                <label for="del_directions">Del Directions</label>-->
-                    <!--                                <field name="del_directions" widget="text"/>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-
-
-                    <h3 style="margin-top: 10px; margin-bottom: 0; background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Load info
-                    </h3>
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid; width:5%; padding: 5px;">
-                                Customer
-                            </td>
-                            <td style="border-right:1px solid; width:15%; border-bottom:1px solid; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Delivery Type</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid;">Load Type</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" width:10%; padding: 5px; border-bottom:1px solid;">Bar Type</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="phone"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid; width:10%; padding: 5px;">Del
-                                Date
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid; padding: 5px;">Time</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid; padding: 5px;">Driver</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:45%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid; width:5%; padding: 5px;">Truck
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; height:25px; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid; padding: 5px;">Trailer</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid; padding: 5px;">Tons</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:15%; border-bottom:1px solid; padding: 5px;">Trailer At</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid; width:5%; padding: 5px;">Folk
-                                Lift
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid; height:25px; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid; padding: 5px;">Contact</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid black; padding: 5px;">Phone #</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                Special Instructions
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; height:25px; width:55%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Drop Trailer</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                        </tr>
-                    </table>
-
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Driver Pay
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:30%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Driver Phone</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Email</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-
-                    <h3 style="margin-top: 10px; margin-bottom: 0; background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Billing Rates
-                    </h3>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Bill Miles
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; height:25px; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid black;">Actual Miles</td>
-                            <td style="border-right:1px solid; width:15%; padding: 5px; border-bottom:1px solid black;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Bill Type</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Flat Cost</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                FC Type
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:10%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Mile Rate</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Bar Cost</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Fork lift Cost</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Hr Cost</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-
-                    <h3 style="margin-top: 10px; margin-bottom: 0px;background-color: #2596be; color: white; border: 2px solid black; padding: 5px;">
-                        Billing for this Load
-                    </h3>
-
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid;border-bottom:1px solid black; width:5%; padding: 5px;">
-                                Freight
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid black; padding: 5px;">Flat</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid black; padding: 5px;">FC</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="state_id"/>
-                                </span>
-                            </td>
-                            <td style="width:15%; border-bottom:1px solid black; padding: 5px;">Total Trucking</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:20%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="state_id"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style=" border-left:1px solid; border-bottom:1px solid black; width:10%; padding: 5px;">
-                                Fork Lift
-                            </td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; height:25px; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:15%; border-bottom:1px solid black; padding: 5px;">Hours N Per Hour</td>
-                            <td style="border-right:1px solid; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">HR Charge</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:5%; border-bottom:1px solid black; padding: 5px;">Other</td>
-                            <td style="border-right:1px solid black; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="width:10%; padding: 5px;">Sub Total</td>
-                            <td style="border-right:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" border-left:1px solid; border-bottom:1px solid black; width:15%; padding: 5px;">
-                                Other Charge Desc
-                            </td>
-                            <td style="border-right:1px solid;width:10%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px;">Total Charge</td>
-                            <td style="border-right:1px solid; width:10%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; padding: 5px;">HR Charge</td>
-                            <td style="border-right:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style="width:5%; padding: 5px;">Other</td>
-                            <td style="border-right:1px solid black; width:10%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <!--                            <td style="width:5%; padding: 5px;">Sub Total</td>-->
-                            <!--                            <td style="border-right:1px solid black; width:15%; padding: 5px;">-->
-                            <!--                                <span>-->
-                            <!--                                    <field style="width:90%; text-align: center;" name="zip"/>-->
-                            <!--                                </span>-->
-                            <!--                            </td>-->
-                        </tr>
-                    </table>
-
-                    <h3 style="margin-top: 10px;margin-bottom: 0; background-color: #2596be; color: white;border: 2px solid black; padding: 5px;">
-                        Revenue
-                    </h3>
-
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="width:10%; border-bottom:1px solid black; padding: 5px;">Driver Pay</td>
-                            <td style="border-right:1px solid black; width:15%; border-bottom:1px solid black;padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" border-left:1px solid; width:10%; padding: 5px; border-bottom:1px solid black;">
-                                Per Cent
-                            </td>
-                            <td style="border-right:1px solid; width:5%; background-color: #2596be; border-bottom:1px solid black;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid black;">Other Total</td>
-                            <td style="border-right:1px solid; width:20%; padding: 5px; border-bottom:1px solid black;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid black;">Driver Expence</td>
-                            <td style="border-right:1px solid black; width:20%; padding: 5px; border-bottom:1px solid black;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="width:15%; padding: 5px; border-bottom:1px solid black;">Fuel Cost Per Gallon
-                            </td>
-                            <td style="border-right:1px solid black; width:15%; padding: 5px; border-bottom:1px solid black;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" border-left:1px solid; width:5%; padding: 5px; border-bottom:1px solid black;">
-                                MPG
-                            </td>
-                            <td style="border-right:1px solid; width:15%; background-color: #2596be; border-bottom:1px solid black;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid black;">Gallons Used</td>
-                            <td style="border-right:1px solid; width:10%; padding: 5px; border-bottom:1px solid black;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:15%; padding: 5px; border-bottom:1px solid black;">Tot fuel Cost</td>
-                            <td style="border-right:1px solid black; width:15%; padding: 5px; border-bottom:1px solid black;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="100%" style="background-color: #2596be;">
-                        <tr>
-                            <td style="width:10%; padding: 5px; border-bottom:1px solid black;">Total Expence</td>
-                            <td style="border-right:1px solid black; width:10%; padding: 5px; border-bottom:1px solid black;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                            <td style=" border-left:1px solid; width:5%; padding: 5px;">Net</td>
-                            <td style="border-right:1px solid; width:15%; background-color: #2596be;">
-                                <field style="width:90%; text-align: center;" name="city"/>
-                            </td>
-                            <td style="width:5%; padding: 5px;">Notes</td>
-                            <td style="border-right:1px solid; width:25%; padding: 5px;">
-                                <field style="width:90%; text-align: center;" name="state_id"/>
-                            </td>
-                            <td style="width:5%; padding: 5px;">Multine</td>
-                            <td style="border-right:1px solid black; width:25%; padding: 5px;">
-                                <span>
-                                    <field style="width:90%; text-align: center;" name="zip"/>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
                 </xpath>
-
-<!--                <xpath expr="//div[@class='oe_title']" position="before">-->
-
-<!--                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">-->
-<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">-->
-<!--                            <label for="pro_number">PRO#</label> &lt;!&ndash; Explicit label &ndash;&gt;-->
-<!--                            <field name="pro_number" string="PRO#"/>-->
-<!--                        </div>-->
-<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none;border-bottom: none; padding: 5px;">-->
-<!--                            <label for="wo_number">WO#</label> &lt;!&ndash; Explicit label &ndash;&gt;-->
-<!--                            <field name="wo_number" string="WO#"/>-->
-<!--                        </div>-->
-<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black;border-bottom: none; border-right: none; padding: 5px;">-->
-<!--                            <label for="po_number">PO#</label> &lt;!&ndash; Explicit label &ndash;&gt;-->
-<!--                            <field name="po_number" string="PO#"/>-->
-<!--                        </div>-->
-<!--                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-bottom: none; padding: 5px;">-->
-<!--                            <label for="order_status">WO Status</label> &lt;!&ndash; Explicit label &ndash;&gt;-->
-<!--                            <field name="order_status" string="WO Status"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div style="display: flex; width: 100%; justify-content: space-between; background-color: #2596be;">-->
-<!--                        <div style="flex-grow: 1; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">-->
-<!--                            <label for="date_order">Date</label>-->
-<!--                            <field name="date_order" string="Date"/>-->
-<!--                        </div>-->
-<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; border-right: none; padding: 5px;">-->
-<!--                            <label for="date_order_changed_by">Enter By</label>-->
-<!--                            <field name="date_order_changed_by" string="Enter By"/>-->
-<!--                        </div>-->
-<!--                        <div style="flex-grow: 1; padding-right: 10px; width: 25%; border: 1px solid black; padding: 5px;">-->
-<!--                            <label for="invoice_manual">Invoice#</label> &lt;!&ndash; Explicit label &ndash;&gt;-->
-<!--                            <field name="invoice_manual" string="Invoice#"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <h3 style="margin-top: 10px; margin-bottom: 10px; border: 2px solid black; padding-top: 5px;padding-bottom: 5px;">-->
-<!--                        Invoice Info-->
-<!--                    </h3>-->
-
-<!--                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">-->
-<!--                        &lt;!&ndash; Customer Name &ndash;&gt;-->
-<!--                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none">-->
-<!--                            <label for="partner_id">Customer Name</label>-->
-<!--                            <field name="partner_id" widget="many2one"/>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Address &ndash;&gt;-->
-<!--                        <div style="flex: 1; min-width: 30%; border: 1px solid black;">-->
-<!--                            <label for="street">Address</label>-->
-<!--                            <field name="street" placeholder="Enter Address"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <table width="100%" style="background-color: #2596be;">-->
-<!--                        <tr>-->
-<!--                            <td style=" border-left:1px solid; width:5%; padding: 5px;">City</td>-->
-<!--                            <td style="border-right:1px solid; height:25px; width:15%; background-color: #2596be;">-->
-<!--                                <field style="width:90%; text-align: center;" string="City" name="city"/>-->
-<!--                            </td>-->
-<!--                            <td style="width:5%; padding: 5px;">State</td>-->
-<!--                            <td style="border-right:1px solid; width:20%; padding: 5px;">-->
-<!--                                <field style="width:90%; text-align: center;" name="state_id"/>-->
-<!--                            </td>-->
-<!--                            <td style="width:5%; padding: 5px;">Zip</td>-->
-<!--                            <td style="border-right:1px solid black; width:15%; padding: 5px;">-->
-<!--                                <span>-->
-<!--                                    <field style="width:90%; text-align: center;" name="zip"/>-->
-<!--                                </span>-->
-<!--                            </td>-->
-<!--                            <td style=" width:10%; padding: 5px;">Contact</td>-->
-<!--                            <td style="border-right:1px solid; width:15%; padding: 5px;">-->
-<!--                                <field style="width:90%; text-align: center;" name="phone"/>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                    </table>-->
-
-
-<!--                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; background-color: #2596be;">-->
-<!--                        &lt;!&ndash; Phone &ndash;&gt;-->
-<!--                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">-->
-<!--                            <label for="phone">Phone</label>-->
-<!--                            <field name="phone"/>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Email &ndash;&gt;-->
-<!--                        <div style="flex: 1; min-width: 30%; border: 1px solid black; border-right: none; padding: 5px;">-->
-<!--                            <label for="email">Email</label>-->
-<!--                            <field name="email"/>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; EB &ndash;&gt;-->
-<!--                        <div style="flex: 1; min-width: 30%; text-align: center; border: 1px solid black; padding: 5px;">-->
-<!--                            <h3>EB</h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <table width="100%" style="background-color: #2596be;">-->
-<!--                        <tr>-->
-<!--                            <td style=" width:15%; padding: 5px;">Customer Notes</td>-->
-<!--                            <td style="border-right:1px solid; width:85%; padding: 5px;">-->
-<!--                                <field style="width:90%; text-align: left;" name="note"-->
-<!--                                       placeholder="Add any customer notes here"/>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                    </table>-->
-
-
-<!--&lt;!&ndash;                <xpath expr="//div[@class='oe_title']" position="before">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div style="display: flex; width: 100%; justify-content: space-between;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pro_number">PRO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pro_number" string="PRO#"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="wo_number">WO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="wo_number" string="WO#"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="po_number">PO#</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="po_number" string="PO#"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="order_status">WO Status</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="order_status" string="WO Status"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div style="display: flex; width: 100%; justify-content: space-between;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="date_order">Date</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="date_order" string="Date"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="date_order_changed_by">Enter By</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="date_order_changed_by" string="Enter By"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex-grow: 1; padding-right: 10px; width: 25%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="invoice_manual">Invoice#</label>  &lt;!&ndash; Explicit label &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="invoice_manual" string="Invoice#"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                 <div style="margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                    &lt;!&ndash; Invoice Info Title &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                <h3 style="margin-bottom: 10px;">Invoice Info</h3>&ndash;&gt;-->
-<!--&lt;!&ndash;                    &ndash;&gt;-->
-<!--&lt;!&ndash;                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Customer Name &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="partner_id">Customer Name</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="partner_id" widget="many2one"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Address &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="street">Address</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="street" placeholder="Enter Address"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; City &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="city">City</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="city"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; State &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="state_id">State</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="state_id"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; ZIP &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="zip">ZIP</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="zip"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Contact &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="phone">Contact</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="phone"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Phone &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="phone">Phone</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="phone"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Email &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="email">Email</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="email"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; EB &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%; text-align: center;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <h3>EB</h3>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Customer Notes &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <label for="note">Customer Notes</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <field name="note" style="width: 100%;" placeholder="Add any customer notes here"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-
-<!--                    <div style="margin-top: 10px; background-color: #2596be; box-sizing: border-box;">-->
-<!--                        <h3 style="margin-bottom: 10px;">Pu Info</h3>-->
-
-<!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-<!--                            &lt;!&ndash; Pu Name &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu">Pu Name</label>-->
-<!--                                <field name="pu"/>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; Pu Address &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_street">Pu Address</label>-->
-<!--                                <field name="pu_street"/>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-<!--                            &lt;!&ndash; Pu City &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_city">Pu City</label>-->
-<!--                                <field name="pu_city"/>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; Pu State &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_state">Pu State</label>-->
-<!--                                <field name="pu_state"/>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; Pu County &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_country">Pu County</label>-->
-<!--                                <field name="pu_country"/>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div style="display: flex; width: 100%; flex-wrap: wrap; box-sizing: border-box;">-->
-<!--                            &lt;!&ndash; Pu Contact &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 30%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_phone">Pu Contact</label>-->
-<!--                                <field name="pu_phone"/>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; Pu PIN &ndash;&gt;-->
-<!--                            <div style="flex: 1; min-width: 20%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_pin">Pu PIN</label>-->
-<!--                                <field name="pu_pin"/>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div style="box-sizing: border-box;">-->
-<!--                            &lt;!&ndash; Pu Directions &ndash;&gt;-->
-<!--                            <div style="flex: 1; width: 100%; border: 1px solid black; padding: 5px; box-sizing: border-box;">-->
-<!--                                <label for="pu_directions">Pu Directions</label>-->
-<!--                                <field name="pu_directions" widget="text" style="width: 100%;"/>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-
-<!--&lt;!&ndash;                <div style="margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <h3 style="margin-bottom: 10px;">Pu Info</h3>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu Name &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu">Pu Name</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu Address &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_street">Pu Address</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_street"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu City &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_city">Pu City</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_city"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu State &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_state">Pu State</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_state"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu County &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_country">Pu County</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_country"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu Contact &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 30%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_phone">Pu Contact</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_phone"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu PIN &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; min-width: 20%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_pin">Pu PIN</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_pin"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div style="margin-top: 10px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                        &lt;!&ndash; Pu Directions &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div style="flex: 1; width: 100%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <label for="pu_directions">Pu Directions</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="pu_directions" widget="text"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-
-
-
-<!--            <div style="margin-top: 0px;">-->
-<!--                <h3 style="margin-bottom: 10px;">Delivery Info</h3>-->
-<!--                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">-->
-<!--                    &lt;!&ndash; Lease KEY &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 30%;">-->
-<!--                        <label for="lease_address">Lease KEY</label>-->
-<!--                        <field name="lease_address"/>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Rig &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 20%;">-->
-<!--                        <label for="rig">Rig</label>-->
-<!--                        <field name="rig"/>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Operator &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 30%;">-->
-<!--                        <label for="operator">Operator</label>-->
-<!--                        <field name="operator"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-<!--                    &lt;!&ndash; Delivery To City &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 30%;">-->
-<!--                        <label for="del_city">Del To City</label>-->
-<!--                        <field name="del_city"/>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Delivery State &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 20%;">-->
-<!--                        <label for="del_state">Del St</label>-->
-<!--                        <field name="del_state"/>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Delivery County &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 30%;">-->
-<!--                        <label for="del_country">Del County</label>-->
-<!--                        <field name="del_country"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">-->
-<!--                    &lt;!&ndash; Delivery PIN &ndash;&gt;-->
-<!--                    <div style="flex: 1; min-width: 30%;">-->
-<!--                        <label for="del_pin">Del Pin</label>-->
-<!--                        <field name="del_pin"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div style="margin-top: 0px;">-->
-<!--                    &lt;!&ndash; Delivery Directions &ndash;&gt;-->
-<!--                    <div style="flex: 1; width: 100%;">-->
-<!--                        <label for="del_directions">Del Directions</label>-->
-<!--                        <field name="del_directions" widget="text"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--                </xpath>-->
 
                 <xpath expr="//group[@name='sale_header']" position="after">
                     <group>
