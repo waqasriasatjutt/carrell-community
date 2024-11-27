@@ -219,6 +219,144 @@
             </div>
 
 
+            <div style="margin-top: 0px;">
+                <h3 style="margin-bottom: 10px;">Load Info</h3>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                    <!-- Lease KEY -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="partner_id">Customer</label>
+                        <field name="partner_id"/>
+                    </div>
+                    <!-- Rig -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="delivery_type">Delivery</label>
+                        <field name="delivery_type"/>
+                    </div>
+                    <!-- Operator -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="bar_type">Bar Type</label>
+                        <field name="bar_type"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery To City -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="start_date">Del Date</label>
+                        <field name="start_date"/>
+                    </div>
+                    <!-- Delivery State -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="start_date">Time</label>
+                        <field name="start_date"/>
+                    </div>
+                    <!-- Delivery County -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="driver">Driver</label>
+                        <field name="driver"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="truck">Truck</label>
+                        <field name="truck"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="trailer">Trailer</label>
+                        <field name="trailer"/>
+                    </div>
+                    <div style="flex: 1; width: 100%;">
+                        <label for="tons">Tons</label>
+                        <field name="tons" widget="text"/>
+                    </div>
+                </div>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="s_instruction">Special Instruction</label>
+                        <field name="s_instruction"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="trailer">Trailer</label>
+                        <field name="trailer"/>
+                    </div>
+                    <div style="flex: 1; width: 100%;">
+                        <label for="tons">Tons</label>
+                        <field name="tons" widget="text"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="driver_pay">Driver Pay</label>
+                        <field name="driver_pay"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="trailer">Trailer</label>
+                        <field name="trailer"/>
+                    </div>
+                    <div style="flex: 1; width: 100%;">
+                        <label for="tons">Tons</label>
+                        <field name="tons" widget="text"/>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div style="margin-top: 0px;">
+                <h3 style="margin-bottom: 10px;">Billing Rates</h3>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                    <!-- Lease KEY -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="miles">Bill Miles</label>
+                        <field name="miles"/>
+                    </div>
+                    <!-- Rig -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="bill_type">Bill Type</label>
+                        <field name="bill_type"/>
+                    </div>
+                    <!-- Operator -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="flat_price">Flat Cost</label>
+                        <field name="flat_price"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery To City -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="fc_type">FC Type</label>
+                        <field name="fc_type"/>
+                    </div>
+                    <!-- Delivery State -->
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="mile_rate">Mile Rate</label>
+                        <field name="mile_rate"/>
+                    </div>
+                    <!-- Delivery County -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="bar_price">Bar Cost</label>
+                        <field name="bar_price"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="fork_lift_price">Fork Lift Cost</label>
+                        <field name="fork_lift_price"/>
+                    </div>
+                </div>
+
+            </div>
+
+
+
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
