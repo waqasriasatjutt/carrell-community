@@ -71,16 +71,12 @@
 
                 <div class="oe_title">
 
-                <xpath expr="//field[@name='name']" position="replace">
-                        <field name="sequence" readonly="1"/>
-                </xpath>
-                <xpath expr="//label[@for='name']" position="replace">
-                        <label for="sequence" string="Expense Reference"/>
-                </xpath>
+                <!-- <xpath expr="//field[@name='name']" position="replace">
+                </xpath> -->
 
                     <h1>
-                        <!-- <label for="sequence" string="Expense Reference"/>
-                        <field name="sequence" readonly="1"/> -->
+                        <label for="sequence" string="Expense Reference"/>
+                        <field name="sequence" readonly="1"/>
                         <label for="po_number" string="PO Number"/>
                         <field name="po_number"/>
                         <label for="po_des" string="Exp Description"/>
