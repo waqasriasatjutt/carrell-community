@@ -40,7 +40,7 @@ class HrExpense(models.Model):
 
     name = fields.Char(
         required=False,
-        default="Expense Name",  # Add a demo or placeholder text
+        default="description",  # Add a demo or placeholder text
     )
 
 
