@@ -120,11 +120,11 @@ class HrExpense(models.Model):
 
     @api.onchange('received_status')
     def _onchange_received_status(self):
-        if self.received_status == 'Received':
+        if self.received_status == 'received':
             self.date_received = datetime.now()
             self.received_by = self.env.user
 
-
+            
     @api.model
     def create(self, vals):
         # Use Odoo's fields.Datetime.now() instead of datetime.now()

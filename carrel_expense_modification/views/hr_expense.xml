@@ -82,6 +82,8 @@
                 <!--                    <field name="po_des"/>-->
                 <!--                </xpath>-->
 
+                <xpath expr="//field[@name='name']" position="replace">
+                </xpath>
 
                 <xpath expr="//field[@name='po_des']" position="after">
                     <group col="3">
