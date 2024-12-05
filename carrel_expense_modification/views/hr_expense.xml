@@ -62,8 +62,9 @@
             <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//field[@name='name']" position="replace">
-                </xpath>
+        <field name="name" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </field>
 
                 <div class="oe_title">
 
@@ -154,6 +155,10 @@
                         <group>
                             <field name="carrell_extra_code" string="Extra Code"/>
                             <field name="carrell_tab_order"/>
+                        </group>
+                        <group >
+                                            <field name="name" />
+
                         </group>
                     </group>
                 </xpath>
