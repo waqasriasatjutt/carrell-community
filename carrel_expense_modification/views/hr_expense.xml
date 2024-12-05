@@ -144,7 +144,7 @@
                     <!--                    <field name="received_by_with_date"/>-->
                 </xpath>
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
-                <xpath expr="//field[@name='payment_mode']" position="before">
+                <xpath expr="//field[@name='employee_id']" position="after">
                     <field name="pay_type" string="Payment Type"/>
                 </xpath>
 
