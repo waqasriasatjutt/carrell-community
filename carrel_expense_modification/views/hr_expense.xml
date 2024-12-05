@@ -62,17 +62,17 @@
             <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
             <field name="arch" type="xml">
 
-        <field name="name" position="replace">
+                <xpath expr="//field[@name='name']" position="replace">
                         <field name="sequence" readonly="1"/>
-        </field>
-        <label for="name" position="replace">
+        </xpath>
+                <xpath expr="//label[@for='name']" position="replace">
                         <label for="sequence" string="Expense Reference"/>
-        </label>
+        </xpath>
 
                 <div class="oe_title">
 
-                <xpath expr="//field[@name='name']" position="replace">
-                </xpath>
+                <!-- <xpath expr="//field[@name='name']" position="replace">
+                </xpath> -->
 
                     <h1>
                         <label for="sequence" string="Expense Reference"/>
