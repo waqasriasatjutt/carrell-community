@@ -145,7 +145,7 @@
                 </xpath>
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
                 <xpath expr="//field[@name='payment_mode']" position="before">
-                    <field name="pay_type"/>
+                    <field name="pay_type" string=""Payment Type/>
                 </xpath>
 
                 <xpath expr="//sheet" position="inside">

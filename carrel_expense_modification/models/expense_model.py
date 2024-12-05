@@ -49,12 +49,12 @@ class HrExpense(models.Model):
     ref_text = fields.Char(string="Ref", required=False, )
     pay_text = fields.Char(string="Pay Id", required=False, )
 
-    payment_mode = fields.Selection(
-        selection_add=[
-            ('fuel_card', 'Paid by Fuel Card')
-        ],
-        default='company_account',  # Set the default to "Company"
-    )
+    # payment_mode = fields.Selection(
+    #     selection_add=[
+    #         ('fuel_card', 'Paid by Fuel Card')
+    #     ],
+    #     default='company_account',  # Set the default to "Company"
+    # )
 
     carrell_acc_code = fields.Char(string="Account Code", required=False, )
     carrell_cash_code = fields.Char(string="Cash Code", required=False, )
@@ -81,6 +81,7 @@ class HrExpense(models.Model):
     ], string='Company')
 
     pay_type = fields.Selection([
+        ('fuel_card', 'Fuel Card'),
         ('check', 'Check'),
         ('credit_card', 'Credit Card'),
         ('cash', 'Cash'),
