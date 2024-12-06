@@ -27,7 +27,7 @@ class ProductProduct(models.Model):
     parent_category_id = fields.Many2one(
         'product.product', 
         string="Parent Category", 
-        domain="[('is_category', '=', True)]"
+        domain="[('can_be_expensed', '=', True)]"
     )
     subcategory_ids = fields.One2many(
         'product.product', 
@@ -110,15 +110,10 @@ class HrExpense(models.Model):
     ], string='Received Status')
 
     # received_by = fields.Many2one('res.users', string="Received By", tracking=True)
-    category_id = fields.Many2one(
-        'product.product', 
-        string="Category", 
-        domain="[('is_category', '=', True)]"
-    )
     sub_category = fields.Many2one(
         'product.product',
         string="Subcategory",
-        domain="[('is_subcategory', '=', True), ('parent_category_id', '=', category_id)]"
+        domain="[('is_subcategory', '=', True), ('parent_category_id', '=', product_id)]"
     )   # sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
