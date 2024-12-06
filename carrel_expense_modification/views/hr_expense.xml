@@ -110,6 +110,7 @@
 
 
                 <xpath expr="//field[@name='date']" position="before">
+                <field name="category_id" invisible="1"></field>
                     <field name="sub_category" string="Sub Category"/>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="attributes">
