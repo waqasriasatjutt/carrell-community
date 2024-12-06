@@ -22,12 +22,15 @@
         <form string="Subcategory">
             <sheet>
                 <group>
-                    <field name="name"/>
-                    <field name="default_code"/>
-                    <field name="parent_category_id"/>
-                    <field name="is_subcategory"/>
+                    <field name="name" string="Subcategory Name"/>
+                    <field name="default_code" string="Code"/>
+                    <field name="parent_category_id" string="Parent Category"/>
+                    <field name="is_subcategory" string="Is Subcategory"/>
                 </group>
-                <notebook>
+                <group attrs="{'invisible': [('is_category', '=', False)]}">
+                    <field name="is_category" string="Is Category"/>
+                </group>
+                <notebook attrs="{'invisible': [('is_category', '=', False)]}">
                     <page string="Subcategories">
                         <field name="subcategory_ids">
                             <tree string="Subcategories">
