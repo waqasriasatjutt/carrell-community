@@ -140,7 +140,7 @@
                     <field name="order_by" string="Order By"/>
                     <field name="paid_date" string="Paid Date"/>
                     <field name="received_by"/>
-                    <field name="date_received" string="Date Received/>
+                    <field name="date_received" string="Date Received"/>
                     <!--                    <field name="received_by_with_date"/>-->
                 </xpath>
                 <!-- Adding pay_type and part_type fields before the payment_mode field -->
