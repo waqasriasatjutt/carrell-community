@@ -30,7 +30,6 @@
                     <field name="date" optional="show" string="Date"/>
                     <field name="name" optional="show" string="Description"/>
                     <field name="po_des" optional="show" string="Po Description"/>
-                    <field name="category_id" optional="show" string="Po Description"/>
                     
                     <field name="product_id" optional="show" string="Category"/>
                     <field name="sub_category" optional="show" string="SubCategory"/>
@@ -112,7 +111,7 @@
 
 
                 <xpath expr="//field[@name='date']" position="before">
-                <field name="category_id" invisible="1"></field>
+                <field name="product_id" invisible="1"></field>
                     <field name="sub_category" string="Sub Category"/>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="attributes">
