@@ -21,14 +21,26 @@ class ResPartner(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    # is_subcategory = fields.Boolean(string="Is Subcategory", default=False)
+    is_category = fields.Boolean(string="Is Category", default=False)
     is_subcategory = fields.Boolean(string="Is Subcategory", default=False)
-
+    parent_category_id = fields.Many2one(
+        'product.product', 
+        string="Parent Category", 
+        domain="[('is_category', '=', True)]"
+    )
+    subcategory_ids = fields.One2many(
+        'product.product', 
+        'parent_category_id', 
+        string="Subcategories"
+    )
 
 
 
 
 class ProductCategory(models.Model):
     _inherit = 'product.category'
+
 
     is_subcategory = fields.Boolean(string="Is Subcategory", default=False)
 
@@ -98,13 +110,16 @@ class HrExpense(models.Model):
     ], string='Received Status')
 
     # received_by = fields.Many2one('res.users', string="Received By", tracking=True)
-    sub_category = fields.Many2one(
-    'product.product',
-    string="Sub Cat",
-    tracking=True,
-    domain="[('is_subcategory', '=', True)]"
+    category_id = fields.Many2one(
+        'product.product', 
+        string="Category", 
+        domain="[('is_category', '=', True)]"
     )
-    # sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
+    sub_category = fields.Many2one(
+        'product.product',
+        string="Subcategory",
+        domain="[('is_subcategory', '=', True), ('parent_category_id', '=', category_id)]"
+    )   # sub_category = fields.Many2one('product.product', string="Sub Cat", tracking=True)
     order_by = fields.Many2one('res.users', string="Order By", tracking=True, default=lambda self: self.env.user)
 
     date_received = fields.Datetime(string="Time Received", readonly=True)

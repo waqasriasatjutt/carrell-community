@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Tree View for Subcategories -->
-    <record id="view_product_subcategory_tree" model="ir.ui.view">
-        <field name="name">product.subcategory.tree</field>
-        <field name="model">product.product</field>
-        <field name="arch" type="xml">
-            <tree string="Subcategories">
-                <field name="name"/>
-                <field name="default_code"/>
-                <field name="is_subcategory"/>
-            </tree>
-        </field>
-    </record>
+<record id="view_product_subcategory_tree" model="ir.ui.view">
+    <field name="name">product.subcategory.tree</field>
+    <field name="model">product.product</field>
+    <field name="arch" type="xml">
+        <tree string="Subcategories">
+            <field name="name"/>
+            <field name="default_code"/>
+            <field name="parent_category_id"/>
+            <field name="is_subcategory"/>
+        </tree>
+    </field>
+</record>
 
     <!-- Form View for Subcategories -->
-    <record id="view_product_subcategory_form" model="ir.ui.view">
-        <field name="name">product.subcategory.form</field>
-        <field name="model">product.product</field>
-        <field name="arch" type="xml">
-            <form string="Subcategory">
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="default_code"/>
-                        <field name="is_subcategory"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+<record id="view_product_subcategory_form" model="ir.ui.view">
+    <field name="name">product.subcategory.form</field>
+    <field name="model">product.product</field>
+    <field name="arch" type="xml">
+        <form string="Subcategory">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="parent_category_id"/>
+                    <field name="is_subcategory"/>
+                </group>
+                <notebook>
+                    <page string="Subcategories">
+                        <field name="subcategory_ids">
+                            <tree string="Subcategories">
+                                <field name="name"/>
+                                <field name="is_subcategory"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
 
     <!-- Action for Subcategories -->
 <!-- Action for Subcategories -->
