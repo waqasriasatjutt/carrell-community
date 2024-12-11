@@ -97,7 +97,7 @@
 
                 <!-- <xpath expr="//field[@name='product_id']" position="after"> -->
                 <xpath expr="//sheet/group[1]" position="before">
-                    <group name="g1" col="3">
+                    <group name="g1" col="4">
                         <group>
                             <field name="invoice_text"/>
                         </group>
@@ -108,7 +108,7 @@
                             <field name="pay_text"/>
                         </group>
                     </group>
-                    <group name="g2" col="3">
+                    <group name="g2" col="4">
                         <group>
                             <field name="payment_mode"/>
                         </group>
@@ -119,7 +119,7 @@
                             <field name="invoice_chk"/>
                         </group>
                     </group>
-                    <group name="g2" col="3">
+                    <group name="g2" col="4">
                         <group>
             <field name="tax_manual" widget="monetary" options="{'currency_field': 'manual_tax_currency_id'}"/>
                         </group>
@@ -155,7 +155,7 @@
                         <field name="po_des"/>
                         </group>
                     </group>
-                    <group name="g5" col="3">
+                    <group name="g5" col="5">
                         <group>
                             <field name="order_by"/>
                         </group>
