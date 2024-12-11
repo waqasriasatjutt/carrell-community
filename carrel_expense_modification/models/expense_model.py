@@ -52,20 +52,8 @@ class HrExpense(models.Model):
 
     name = fields.Char(
         required=False,
-        compute='_compute_name',
-        store=False,
         default="description",  # Add a demo or placeholder text
     )
-
-
-    @api.depends("sequence")
-    def _compute_name(self):
-        """
-        Computes the `name` field using a unique sequence.
-        """
-        for record in self:
-            if not record.name or record.name == "description":
-                record.name = record.sequence
 
 
     tax_manual = fields.Monetary(
