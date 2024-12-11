@@ -186,54 +186,6 @@
                                     <attribute name="placeholder">"Enter expense name..."</attribute>
 
                 </xpath>
-                <xpath expr="//field[@name='product_uom_id']" position="attributes">
-                    <attribute name="required">0</attribute>
-                </xpath>
-                <xpath expr="//field[@name='product_id']" position="attributes">
-                    <attribute name="required">0</attribute>
-                </xpath>
-                <xpath expr="//field[@name='date']" position="after">
-                    <field name="company_carrel"/>
-                    <!--                    <field name="sub_category" string="Sub Category"/>-->
-                    <field name="asset_id"/>
-                    <field name="warehouse_id"/>
-                    <field name="invoice_chk"></field>
-                    <!-- <field name="company_select"/> -->
-                    <field name="expense_code"/>
-                    <!-- <field name="case_code"/>
-                    <field name="ext_code"/> -->
-                    <field name="order_total"/>
-                    <field name="vendor"/>
-                    <field name="received_status"/>
-                    <field name="order_for_who" string="Order For Who"/>
-                    <field name="order_by" string="Order By"/>
-                    <field name="paid_date" string="Paid Date"/>
-                    <field name="received_by"/>
-                    <field name="date_received" string="Date Received"/>
-                    <!--                    <field name="received_by_with_date"/>-->
-                </xpath>
-                <!-- Adding pay_type and part_type fields before the payment_mode field -->
-                <xpath expr="//field[@name='employee_id']" position="after">
-                    <field name="pay_type" string="Payment Type"/>
-                </xpath>
-
-                <xpath expr="//sheet" position="inside">
-                    <!--                    <group col="1">-->
-                    <group>
-                        <group>
-                            <field name="carrell_acc_code" invisible="1" string="Account Code"/>
-                            <field name="carrell_cash_code" invisible="1" string="Cash Code"/>
-                        </group>
-                        <group>
-                            <field name="carrell_extra_code" string="Extra Code" invisible="1"/>
-                            <field name="carrell_tab_order" invisible="1"/>
-                        </group>
-                        <group >
-                                            <field name="name" />
-
-                        </group>
-                    </group>
-                </xpath>
 
                 <!-- Adding a notebook with a new tab for expense lines -->
                 <xpath expr="//sheet" position="inside">
