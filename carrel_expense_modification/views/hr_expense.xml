@@ -16,6 +16,20 @@
             </field>
         </record>
 
+        <record id="view_expense_kanbaan_inherited" model="ir.ui.view">
+            <field name="name">hr.expense.kanban.inherit</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_kanban_view_header"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban/field[@name='name']" position="after">
+                    <field name="sequence" string="pppppppppppp"/>
+                    <field name="product_id" string="ttttttttt"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
         <record id="view_expense_tree_inherited" model="ir.ui.view">
             <field name="name">hr.expense.tree.inherit</field>
             <field name="model">hr.expense</field>
@@ -269,11 +283,6 @@
                 </xpath>
  -->
 
-                 <xpath expr="//sheet/group[1]" position="replace">
-                    <group name="name" string="string">
-                        
-                    </group>
-</xpath>
                 <xpath expr="//sheet" position="inside">
                     <notebook>
                         <page string="Expense Lines">
