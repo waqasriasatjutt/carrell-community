@@ -58,7 +58,7 @@ class HrExpense(models.Model):
     )
 
 
-    @api.depends("id")
+    @api.depends("sequence")
     def _compute_name(self):
         """
         Computes the `name` field using a unique sequence.
