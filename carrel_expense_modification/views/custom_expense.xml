@@ -2,7 +2,7 @@
     <data>
         <!-- New Menu -->
         <menuitem id="menu_custom_expense" name="Custom Expenses List" parent="hr_expense.menu_hr_expense_root"
-                  sequence="0"/>
+                  sequence="100"/>
 
         <!-- Action for Custom Views -->
         <record id="action_custom_expense" model="ir.actions.act_window">
