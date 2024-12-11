@@ -22,8 +22,8 @@
             <field name="inherit_id" ref="hr_expense.view_my_expenses_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
-                    <attribute name="create">false</attribute>
-                    <attribute name="delete">false</attribute>
+                    <!-- <attribute name="create">false</attribute>
+                    <attribute name="delete">false</attribute> -->
                 </xpath>
                 <xpath expr="//tree" position="inside">
                     <field name="sequence" optional="show" string="Expense"/>
