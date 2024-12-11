@@ -114,6 +114,24 @@
                 <xpath expr="//label[@for='total_amount']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='employee_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']/ancestor::div" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//label[@for='employee_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date']/ancestor::div" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//label[@for='date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
 
                 <!-- Hide the payment_mode field along with its label -->
                 <xpath expr="//div[@id='payment_mode']" position="attributes">
@@ -192,6 +210,12 @@
                     <group name="g6" col="4">
                         <group>
                         <field name="date_received"/>
+                        </group>
+                        <group>
+                        <field name="employee_id"/>
+                        </group>
+                        <group>
+                        <field name="date"/>
                         </group>
                     </group>
                 </xpath>
