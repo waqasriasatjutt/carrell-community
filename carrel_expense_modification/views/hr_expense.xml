@@ -96,7 +96,7 @@
                 <!--                </xpath>-->
 
                 <!-- <xpath expr="//field[@name='product_id']" position="after"> -->
-                <xpath expr="//sheet/group[1]" position="before">
+                <xpath expr="//sheet/group[1]" position="replace">
                     <group name="g1" col="4">
                         <group>
                             <field name="invoice_text"/>
@@ -155,7 +155,7 @@
                         <field name="po_des"/>
                         </group>
                     </group>
-                    <group name="g5" col="5">
+                    <group name="g5" col="4">
                         <group>
                             <field name="order_by"/>
                         </group>
@@ -168,6 +168,8 @@
                         <group>
                         <field name="received_by"/>
                         </group>
+                    </group>
+                    <group name="g6" col="4">
                         <group>
                         <field name="date_received"/>
                         </group>
