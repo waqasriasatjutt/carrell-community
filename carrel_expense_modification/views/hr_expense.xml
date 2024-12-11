@@ -117,16 +117,10 @@
                 <xpath expr="//field[@name='employee_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <xpath expr="//field[@name='employee_id']/ancestor::div" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <xpath expr="//label[@for='employee_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='date']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='date']/ancestor::div" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//label[@for='date']" position="attributes">
