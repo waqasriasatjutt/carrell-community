@@ -82,7 +82,7 @@ class HrExpense(models.Model):
     )
 
     invoice_text = fields.Char(string="Invoice", required=False, )
-    invoice_chk = fields.Boolean(string="Invoice", default=True )
+    invoice_chk = fields.Boolean(string="INV", default=False )
     ref_text = fields.Char(string="Ref", required=False, )
     pay_text = fields.Char(string="Pay Id", required=False, )
 
