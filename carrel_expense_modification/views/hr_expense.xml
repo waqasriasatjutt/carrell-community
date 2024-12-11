@@ -78,10 +78,10 @@
                     <h1>
                         <label for="sequence" string="Expense Reference"/>
                         <field name="sequence" readonly="1"/>
-                        <label for="po_number" string="PO Number"/>
+                        <!-- <label for="po_number" string="PO Number"/>
                         <field name="po_number"/>
                         <label for="po_des" string="Exp Description"/>
-                        <field name="po_des"/>
+                        <field name="po_des"/> -->
                         <label for="date_invoice" string="Invoice Date"/>
                         <field name="date_invoice"></field>
                     </h1>
@@ -96,7 +96,7 @@
                 <!--                </xpath>-->
 
                 <xpath expr="//field[@name='po_des']" position="after">
-                    <group col="3">
+                    <group name="g1" col="3">
                         <group>
                             <field name="invoice_text"/>
                         </group>
@@ -107,10 +107,74 @@
                             <field name="pay_text"/>
                         </group>
                     </group>
+                    <group name="g2" col="3">
+                        <group>
+                            <field name="payment_mode"/>
+                        </group>
+                        <group>
+                            <field name="pay_type"/>
+                        </group>
+                        <group>
+                            <field name="invoice_chk"/>
+                        </group>
+                    </group>
+                    <group name="g2" col="3">
+                        <group>
+            <field name="tax_manual" widget="monetary" options="{'currency_field': 'manual_tax_currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="total_amount"/>
+                        </group>
+                        <group>
+                            <field name="invoice_chk"/>
+                        </group>
+                    </group>
+                    <group name="g3" col="4">
+                        <group>
+                            <field name="vendor"/>
+                        </group>
+                        <group>
+                            <field name="company_carrel"/>
+                        </group>
+                        <group>
+                            <field name="asset_id"/>
+                        </group>
+                        <group>
+                            <field name="warehouse_id"/>
+                        </group>
+                    </group>
+                    <group name="g4" col="4">
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="sub_category"/>
+                        </group>
+                        <group>
+                        <field name="po_des"/>
+                        </group>
+                    </group>
+                    <group name="g5" col="3">
+                        <group>
+                            <field name="order_by"/>
+                        </group>
+                        <group>
+                            <field name="order_for_who"/>
+                        </group>
+                        <group>
+                        <field name="received_status"/>
+                        </group>
+                        <group>
+                        <field name="received_by"/>
+                        </group>
+                        <group>
+                        <field name="date_received"/>
+                        </group>
+                    </group>
                 </xpath>
 
 
-                <xpath expr="//field[@name='date']" position="before">
+                <xpath expr="//field[@name='category']" position="before">
                 <field name="product_id" invisible="1"></field>
                     <field name="sub_category" string="Sub Category"/>
                 </xpath>

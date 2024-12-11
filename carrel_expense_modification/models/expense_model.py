@@ -55,6 +55,18 @@ class HrExpense(models.Model):
         default="description",  # Add a demo or placeholder text
     )
 
+    tax_manual = fields.Monetary(
+        string="Manual Tax (USD)",
+        currency_field='manual_tax_currency_id',
+        help="Manually entered tax amount in USD."
+    )
+    manual_tax_currency_id = fields.Many2one(
+        'res.currency',
+        string="Currency",
+        default=lambda self: self.env.ref('base.USD'),
+        readonly=True,
+        help="Currency for manual tax (default is USD)."
+    )
 
     invoice_text = fields.Char(string="Invoice", required=False, )
     invoice_chk = fields.Boolean(string="Invoice", default=True, )
