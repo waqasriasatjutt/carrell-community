@@ -241,9 +241,10 @@
                 </xpath>
  -->
 
-                 <xpath expr="//sheet/group[1]" position="attributes">
-                        <attribute name="invisible">1</attribute>
-
+                 <xpath expr="//sheet/group[1]" position="replace">
+                    <group name="name" string="string">
+                        
+                    </group>
 </xpath>
                 <xpath expr="//sheet" position="inside">
                     <notebook>
