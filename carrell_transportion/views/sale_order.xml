@@ -391,7 +391,7 @@
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
-                    <group>
+                    <group invisible="1">
                         <group>
                             <field name="contact_phone1"/>
                             <field name="contact_email1"/>
