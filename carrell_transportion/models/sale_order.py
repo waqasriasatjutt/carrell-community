@@ -135,6 +135,87 @@ class SaleOrder(models.Model):
                 }
 
     mile_rate = fields.Float("Mile Rate")
+    rate_type = fields.Selection(string="Rate Type", selection=[('per 100 watt', 'Per 100 Watt'), ('flat', 'Flat'), ('miles', 'Miles')], required=False, )
+
+
+    price_list = fields.Selection(
+        string="Price List",
+        selection=[
+            ('none', 'None'),
+            ('basic', 'Basic'),
+            ('handling_inc', 'Handling inc'),
+        ],
+        required=True,
+    )
+
+    bill_miles = fields.Selection(
+        string="Bill Miles",
+        selection=[
+            ('0-50', '0-50'),
+            ('51-60', '51-60'),
+            ('61-70', '61-70'),
+            ('71-80', '71-80'),
+            ('81-90', '81-90'),
+            ('91-100', '91-100'),
+            ('101-110', '101-110'),
+            ('111-120', '111-120'),
+            ('121-130', '121-130'),
+            ('131-140', '131-140'),
+            ('141-150', '141-150'),
+            ('151-160', '151-160'),
+            ('161-170', '161-170'),
+            ('171-180', '171-180'),
+            ('181-190', '181-190'),
+            ('191-200', '191-200'),
+            ('201-210', '201-210'),
+            ('211-220', '211-220'),
+            ('221-230', '221-230'),
+            ('231-240', '231-240'),
+            ('241-250', '241-250'),
+            ('251-260', '251-260'),
+            ('261-270', '261-270'),
+            ('271-280', '271-280'),
+            ('281-290', '281-290'),
+            ('291-300', '291-300'),
+        ],
+        required=True,
+    )
+
+    bill_rate = fields.Float(string="Bill Rate", compute="_compute_bill_rate", store=True)
+
+    @api.depends('price_list', 'bill_miles')
+    def _compute_bill_rate(self):
+        rate_chart = {
+            'basic': {
+                '0-50': 1.36, '51-60': 1.46, '61-70': 1.56, '71-80': 1.68, '81-90': 1.83,
+                '91-100': 1.95, '101-110': 2.05, '111-120': 2.17, '121-130': 2.27, '131-140': 2.38,
+                '141-150': 2.50, '151-160': 2.56, '161-170': 2.66, '171-180': 2.75, '181-190': 2.86,
+                '191-200': 2.94, '201-210': 3.04, '211-220': 3.06, '221-230': 3.13, '231-240': 3.21,
+                '241-250': 3.28, '251-260': 3.40, '261-270': 3.52, '271-280': 3.63, '281-290': 3.75,
+                '291-300': 3.87,
+            },
+            'handling_inc': {
+                '0-50': 1.60, '51-60': 1.70, '61-70': 1.80, '71-80': 1.92, '81-90': 2.07,
+                '91-100': 2.19, '101-110': 2.29, '111-120': 2.41, '121-130': 2.51, '131-140': 2.62,
+                '141-150': 2.74, '151-160': 2.80, '161-170': 2.90, '171-180': 2.99, '181-190': 3.10,
+                '191-200': 3.18, '201-210': 3.28, '211-220': 3.30, '221-230': 3.37, '231-240': 3.45,
+                '241-250': 3.52, '251-260': 3.64, '261-270': 3.76, '271-280': 3.87, '281-290': 3.99,
+                '291-300': 4.11,
+            },
+            'none': {
+                '0-50': 0, '51-60': 0, '61-70': 0, '71-80': 0, '81-90': 0,
+                '91-100': 0, '101-110': 0, '111-120': 0, '121-130': 0, '131-140': 0,
+                '141-150': 0, '151-160': 0, '161-170': 0, '171-180': 0, '181-190': 0,
+                '191-200': 0, '201-210': 0, '211-220': 0, '221-230': 0, '231-240': 0,
+                '241-250': 0, '251-260': 0, '261-270': 0, '271-280': 0, '281-290': 0,
+                '291-300': 0,
+            },
+        }
+        for record in self:
+            price_list = record.price_list or 'none'
+            bill_miles = record.bill_miles or '0-50'
+            record.bill_rate = rate_chart.get(price_list, {}).get(bill_miles, 0)
+
     tons = fields.Float("Tons")
 
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
@@ -256,7 +337,7 @@ class SaleOrder(models.Model):
     end_date = fields.Date(string='End Date', readonly=True, copy=False, states={'draft': [('readonly', False)]})
     driver = fields.Many2one('hr.employee', string='Driver', context={'create': False}, )
 
-    bill_type = fields.Selection(string="Bill Type", selection=[('flat', 'Flat'), ('miles', 'Miles'), ('lb', '100 LB'), ], required=False, )
+    bill_type = fields.Selection(string="Bill Type", selection=[('flat', 'Flat'), ('miles', 'Miles'), ('lb', '100 LB'),('ton', 'Ton'), ], required=False, )
     fc_type = fields.Selection(string="FC Type SEL", selection=[('none', 'None'), ('miles', 'Miles'), ('percent', 'Percent'), ], required=False, )
     product_type = fields.Selection(string="Product Type", selection=[('all', 'All'), ('bar', '3.9 BAR'), ('bar_2', '4.1 Bar'), ('sack','SACK'), ('rental', 'Rental Only'), ], required=False, )
     bar_type = fields.Selection(string="BAR Type", selection=[('secl', 'SECL 3.9'), ('owner', 'OWNER 4.1'), ('own_1', 'OWNED 3.9'), ('sell_4', 'SELL 4.1'), ('sell', 'SELL'), ('all', 'ALL') ], required=False, )
@@ -292,6 +373,8 @@ class SaleOrder(models.Model):
     driver_over = fields.Float(string='Driver Overhead Percentage')
     driver_pay = fields.Monetary(sting='Driver Pay', currency_field='currency_id', digits=(16, 2))
     driver_total = fields.Float(string='Driver Total', compute='_compute_driver_total',  store=True )
+    per_cent = fields.Monetary(sting='Per Cent', default=1.25,currency_field='currency_id', digits=(16, 2))
+    other_total = fields.Monetary(sting='Other Total',currency_field='currency_id', digits=(16, 2))
 
     @api.depends('driver_over', 'driver_pay')
     def _compute_driver_total(self):

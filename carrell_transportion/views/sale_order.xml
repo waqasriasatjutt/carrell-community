@@ -357,6 +357,37 @@
 
 
 
+            <div style="margin-top: 0px;">
+                <h3 style="margin-bottom: 10px;">Revenue</h3>
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                    <!-- Lease KEY -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="driver_pay">Driver Pay</label>
+                        <field name="driver_pay"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="per_cent">Per Cent</label>
+                        <field name="per_cent"/>
+                    </div>
+                    <!-- Rig -->
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery To City -->
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery PIN -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="fork_lift_price">Fork Lift Cost</label>
+                        <field name="fork_lift_price"/>
+                    </div>
+                </div>
+
+            </div>
+
+
+
                 </xpath>
 
                 <xpath expr="//group[@name='sale_header']" position="after">
