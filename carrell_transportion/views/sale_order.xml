@@ -294,14 +294,6 @@
                         <label for="driver_pay">Driver Pay</label>
                         <field name="driver_pay"/>
                     </div>
-                    <div style="flex: 1; min-width: 30%;">
-                        <label for="trailer">Trailer</label>
-                        <field name="trailer"/>
-                    </div>
-                    <div style="flex: 1; width: 100%;">
-                        <label for="tons">Tons</label>
-                        <field name="tons" widget="text"/>
-                    </div>
                 </div>
 
             </div>
