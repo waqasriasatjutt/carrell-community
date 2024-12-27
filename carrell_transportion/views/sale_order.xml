@@ -278,14 +278,6 @@
                         <label for="s_instruction">Special Instruction</label>
                         <field name="s_instruction"/>
                     </div>
-                    <div style="flex: 1; min-width: 30%;">
-                        <label for="trailer">Trailer</label>
-                        <field name="trailer"/>
-                    </div>
-                    <div style="flex: 1; width: 100%;">
-                        <label for="tons">Tons</label>
-                        <field name="tons" widget="text"/>
-                    </div>
                 </div>
 
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
