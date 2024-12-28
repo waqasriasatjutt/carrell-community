@@ -334,20 +334,20 @@
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
                     <!-- Delivery To City -->
                     <!-- Delivery State -->
-                    <div style="flex: 1; min-width: 10%;">
+                    <div style="display: flex;flex: 1; min-width: 10%;">
                         <label for="tons">Tons</label>
                         <field name="tons" style="min-width: 130px;"/>
                     </div>
-                    <div style="flex: 1; min-width: 10%;">
+                    <div style="display: flex;flex: 1; min-width: 10%;">
                         <label for="trucking_cost">Trucking</label>
                         <field name="trucking_cost" style="min-width: 130px;"/>
                     </div>
-                    <div style="flex: 1; min-width: 10%;">
+                    <div style="display: flex;flex: 1; min-width: 10%;">
                         <label for="fc">FC</label>
                         <field name="fc" style="min-width: 130px;"/>
                     </div>
                     <!-- Delivery County -->
-                    <div style="flex: 1; min-width: 10%;">
+                    <div style="display: flex;flex: 1; min-width: 10%;">
                         <label for="total_charge">Total Charge</label>
                         <field name="total_charge" style="min-width: 130px;"/>
                     </div>
