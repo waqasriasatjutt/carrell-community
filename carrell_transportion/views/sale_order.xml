@@ -292,6 +292,17 @@
 
 
             <div style="margin-top: 0px;">
+                <style>
+                    @media (max-width: 768px) {
+                        .billing-rates-container {
+                            flex-direction: column;
+                        }
+
+                        .billing-rates-container > div {
+                            width: 100%; /* Make each element take full width */
+                        }
+                    }
+                </style>
                 <h3 style="margin-bottom: 10px;">Billing Rates</h3>
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
                     <!-- Lease KEY -->
