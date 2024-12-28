@@ -307,37 +307,37 @@
     <h3 style="margin-bottom: 10px;">Billing Rates</h3>
     <div class="billing-rates-container" style="display: flex; flex-wrap: wrap; width: 100%; gap: 10px;">
         <!-- Lease KEY -->
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="rate_type">Rate Type</label>
             <field name="rate_type" />
         </div>
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="price_list">Price List</label>
             <field name="price_list" />
         </div>
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="miles">Act Miles</label>
             <field name="miles" />
         </div>
         <!-- Rig -->
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="bill_miles">Bill Miles</label>
             <field name="bill_miles" />
         </div>
         <!-- Operator -->
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="bill_rate">Bill Rate</label>
             <field name="bill_rate" />
         </div>
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="flat_price">Flat Rate</label>
             <field name="flat_price" />
         </div>
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="fc_type">FC Type</label>
             <field name="fc_type" />
         </div>
-        <div style="flex: 1; min-width: 130px;">
+        <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="fc_price">FC Price</label>
             <field name="fc_price" />
         </div>
