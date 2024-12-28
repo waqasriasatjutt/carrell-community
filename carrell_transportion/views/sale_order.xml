@@ -292,65 +292,55 @@
 
 
             <div style="margin-top: 0px;">
-                <style>
-                    @media (max-width: 768px) {
-                        .billing-rates-container {
-                            flex-direction: column;
-                        }
+    <style>
+        /* Add media query for mobile view */
+        @media (max-width: 768px) {
+            .billing-rates-container {
+                flex-direction: column; /* Stack items vertically */
+            }
 
-                        .billing-rates-container > div {
-                            width: 100%; /* Make each element take full width */
-                        }
-                    }
-                </style>
-                <h3 style="margin-bottom: 10px;">Billing Rates</h3>
-                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
-                <style>
-                    @media (max-width: 768px) {
-                        .billing-rates-container {
-                            flex-direction: column;
-                        }
-
-                        .billing-rates-container > div {
-                            width: 100%; /* Make each element take full width */
-                        }
-                    }
-                </style>
-                    <!-- Lease KEY -->
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="rate_type">Rate Type</label>
-                        <field name="rate_type" style="min-width: 130px;"/>
-                    </div>
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="price_list">Price List</label>
-                        <field name="price_list" style="min-width: 130px;"/>
-                    </div>
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="miles">Act Miles</label>
-                        <field name="miles" style="min-width: 130px;"/>
-                    </div>
-                    <!-- Rig -->
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="bill_miles">Bill Miles</label>
-                        <field name="bill_miles" style="min-width: 130px;"/>
-                    </div>
-                    <!-- Operator -->
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="bill_rate">Bill Rate</label>
-                        <field name="bill_rate" style="min-width: 130px;"/>
-                    </div>
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="flat_price">Flat Rate</label>
-                        <field name="flat_price" style="min-width: 130px;"/>
-                    </div>
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="fc_type">FC Type</label>
-                        <field name="fc_type" style="min-width: 130px;"/>
-                    </div>
-                    <div style="flex: 1; min-width: 10%;">
-                        <label for="fc_price">FC Price</label>
-                        <field name="fc_price" style="min-width: 130px;"/>
-                    </div>
+            .billing-rates-container > div {
+                width: 100%; /* Make each item take the full width */
+            }
+        }
+    </style>
+    <h3 style="margin-bottom: 10px;">Billing Rates</h3>
+    <div class="billing-rates-container" style="display: flex; flex-wrap: wrap; width: 100%; gap: 10px;">
+        <!-- Lease KEY -->
+        <div style="flex: 1; min-width: 130px;">
+            <label for="rate_type">Rate Type</label>
+            <field name="rate_type" />
+        </div>
+        <div style="flex: 1; min-width: 130px;">
+            <label for="price_list">Price List</label>
+            <field name="price_list" />
+        </div>
+        <div style="flex: 1; min-width: 130px;">
+            <label for="miles">Act Miles</label>
+            <field name="miles" />
+        </div>
+        <!-- Rig -->
+        <div style="flex: 1; min-width: 130px;">
+            <label for="bill_miles">Bill Miles</label>
+            <field name="bill_miles" />
+        </div>
+        <!-- Operator -->
+        <div style="flex: 1; min-width: 130px;">
+            <label for="bill_rate">Bill Rate</label>
+            <field name="bill_rate" />
+        </div>
+        <div style="flex: 1; min-width: 130px;">
+            <label for="flat_price">Flat Rate</label>
+            <field name="flat_price" />
+        </div>
+        <div style="flex: 1; min-width: 130px;">
+            <label for="fc_type">FC Type</label>
+            <field name="fc_type" />
+        </div>
+        <div style="flex: 1; min-width: 130px;">
+            <label for="fc_price">FC Price</label>
+            <field name="fc_price" />
+        </div>
                 </div>
 
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
