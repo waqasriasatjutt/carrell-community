@@ -464,7 +464,7 @@
                             <field name="fuel_s_rate"/>
                             <field name="trucking_cost"/>
                             <field name="fuel_s_cost"/>
-                            <field name="bar_cost"/>
+                            <!-- <field name="bar_cost"/> -->
                             <field name="other_services"/>
                             <!-- <field name="total_amount_carrel"/> -->
                         </group>
