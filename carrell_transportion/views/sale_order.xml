@@ -297,37 +297,37 @@
                     <!-- Lease KEY -->
                     <div style="flex: 1; min-width: 10%;">
                         <label for="rate_type">Rate Type</label>
-                        <field name="rate_type"/>
+                        <field name="rate_type" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 10%;">
                         <label for="price_list">Price List</label>
-                        <field name="price_list"/>
+                        <field name="price_list" style="min-width: 130px;"/>
                     </div>
-                    <div style="flex: 1; min-width: 10%;">
+                    <div style="flex: 1; min-width: 20%;">
                         <label for="miles">Act Miles</label>
-                        <field name="miles"/>
+                        <field name="miles" style="min-width: 130px;"/>
                     </div>
                     <!-- Rig -->
                     <div style="flex: 1; min-width: 10%;">
                         <label for="bill_miles">Bill Miles</label>
-                        <field name="bill_miles"/>
+                        <field name="bill_miles" style="min-width: 130px;"/>
                     </div>
                     <!-- Operator -->
                     <div style="flex: 1; min-width: 10%;">
                         <label for="bill_rate">Bill Rate</label>
-                        <field name="bill_rate"/>
+                        <field name="bill_rate" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 10%;">
                         <label for="flat_price">Flat Rate</label>
-                        <field name="flat_price"/>
+                        <field name="flat_price" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 10%;">
                         <label for="fc_type">FC Type</label>
-                        <field name="fc_type"/>
+                        <field name="fc_type" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 10%;">
                         <label for="fc_price">FC Price</label>
-                        <field name="fc_price"/>
+                        <field name="fc_price" style="min-width: 130px;"/>
                     </div>
                 </div>
 
@@ -336,20 +336,20 @@
                     <!-- Delivery State -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="tons">Tons</label>
-                        <field name="tons"/>
+                        <field name="tons" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 20%;">
                         <label for="trucking_cost">Trucking</label>
-                        <field name="trucking_cost"/>
+                        <field name="trucking_cost" style="min-width: 130px;"/>
                     </div>
                     <div style="flex: 1; min-width: 30%;">
                         <label for="fc">FC</label>
-                        <field name="fc"/>
+                        <field name="fc" style="min-width: 130px;"/>
                     </div>
                     <!-- Delivery County -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="total_charge">Total Charge</label>
-                        <field name="total_charge"/>
+                        <field name="total_charge" style="min-width: 130px;"/>
                     </div>
                 </div>
 
