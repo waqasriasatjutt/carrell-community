@@ -304,8 +304,8 @@
                         <field name="price_list"/>
                     </div>
                     <div style="flex: 1; min-width: 30%;">
-                        <label for="act_miles">Act Miles</label>
-                        <field name="act_miles"/>
+                        <label for="miles">Act Miles</label>
+                        <field name="miles"/>
                     </div>
                     <!-- Rig -->
                     <div style="flex: 1; min-width: 20%;">
