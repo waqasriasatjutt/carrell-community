@@ -256,12 +256,29 @@ class SaleOrder(models.Model):
     mp_number = fields.Char(string='MP Web Order Number')
 
     fuel_s_rate = fields.Float(string='Fuel Sur Rate')
-    trucking_cost = fields.Float(string='Trucking Cost')
+    trucking_cost = fields.Float(string="Trucking Cost", compute="_compute_trucking_cost", store=True)
     fuel_s_cost = fields.Float(string='Fuel Sur Cost')
     bar_cost = fields.Float(string='Bar Cost')
     other_services = fields.Float(string='Other Services')
-    total_amount_carrel = fields.Float(string='Total Amount')
-    fc = fields.Float(string='FC %')
+    total_charge = fields.Float(string='Total Charge', compute="_compute_total_charge")
+    fc = fields.Float(string='FC %', compute="_compute_FC")
+
+
+    @api.depends('trucking_cost', 'fc_price')
+    def _compute_FC(self):
+        for record in self:
+            record.fc = record.trucking_cost * record.fc_price
+
+
+    @api.depends('trucking_cost', 'fc')
+    def _compute_total_charge(self):
+        for record in self:
+            record.total_charge = record.trucking_cost + record.fc
+
+    @api.depends('tons', 'bill_rate', 'flat_price')
+    def _compute_trucking_cost(self):
+        for record in self:
+            record.trucking_cost = (record.tons * 2000 / 100 * record.bill_rate) + record.flat_price
 
     partner_contact1 = fields.Many2one(
         comodel_name='res.partner',

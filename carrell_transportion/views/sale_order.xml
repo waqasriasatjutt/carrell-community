@@ -335,13 +335,21 @@
                     <!-- Delivery To City -->
                     <!-- Delivery State -->
                     <div style="flex: 1; min-width: 20%;">
-                        <label for="mile_rate">Mile Rate</label>
-                        <field name="mile_rate"/>
+                        <label for="tons">Tons</label>
+                        <field name="tons"/>
+                    </div>
+                    <div style="flex: 1; min-width: 20%;">
+                        <label for="trucking_cost">Trucking</label>
+                        <field name="trucking_cost"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="fc">FC</label>
+                        <field name="fc"/>
                     </div>
                     <!-- Delivery County -->
                     <div style="flex: 1; min-width: 30%;">
-                        <label for="bar_price">Bar Cost</label>
-                        <field name="bar_price"/>
+                        <label for="total_charge">Total Charge</label>
+                        <field name="total_charge"/>
                     </div>
                 </div>
 
