@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//div[@class='oe_title']" position="before">
-                    <div style="display: flex; width: 100%; justify-content: space-between;">
+                    <div style="display: flex; width: 100%; justify-content: space-between;border: 1px;">
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="pro_number">PRO#</label>  <!-- Explicit label -->
                             <field name="pro_number" string="PRO#"/>
