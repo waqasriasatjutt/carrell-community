@@ -305,6 +305,17 @@
                 </style>
                 <h3 style="margin-bottom: 10px;">Billing Rates</h3>
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
+                <style>
+                    @media (max-width: 768px) {
+                        .billing-rates-container {
+                            flex-direction: column;
+                        }
+
+                        .billing-rates-container > div {
+                            width: 100%; /* Make each element take full width */
+                        }
+                    }
+                </style>
                     <!-- Lease KEY -->
                     <div style="flex: 1; min-width: 10%;">
                         <label for="rate_type">Rate Type</label>
