@@ -296,8 +296,16 @@
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px;">
                     <!-- Lease KEY -->
                     <div style="flex: 1; min-width: 30%;">
+                        <label for="rate_type">Rate Type</label>
+                        <field name="rate_type"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
                         <label for="price_list">Price List</label>
                         <field name="price_list"/>
+                    </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="act_miles">Act Miles</label>
+                        <field name="act_miles"/>
                     </div>
                     <!-- Rig -->
                     <div style="flex: 1; min-width: 20%;">
@@ -309,14 +317,22 @@
                         <label for="bill_rate">Bill Rate</label>
                         <field name="bill_rate"/>
                     </div>
-                </div>
-
-                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
-                    <!-- Delivery To City -->
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="flat_price">Flat Rate</label>
+                        <field name="flat_price"/>
+                    </div>
                     <div style="flex: 1; min-width: 30%;">
                         <label for="fc_type">FC Type</label>
                         <field name="fc_type"/>
                     </div>
+                    <div style="flex: 1; min-width: 30%;">
+                        <label for="fc_price">FC Price</label>
+                        <field name="fc_price"/>
+                    </div>
+                </div>
+
+                <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
+                    <!-- Delivery To City -->
                     <!-- Delivery State -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="mile_rate">Mile Rate</label>

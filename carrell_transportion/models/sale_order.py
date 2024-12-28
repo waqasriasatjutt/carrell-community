@@ -348,6 +348,7 @@ class SaleOrder(models.Model):
 
     bar_price = fields.Monetary(string='Bar Price', currency_field='currency_id')
     flat_price = fields.Monetary(sting='Flat Price', currency_field='currency_id')
+    fc_price = fields.Monetary(sting='FC Rate', currency_field='currency_id')
     fork_lift_price = fields.Monetary(sting='Fork Lift Charge', currency_field='currency_id')
     labour_charge = fields.Monetary(sting='Stacking/Labour Charge', currency_field='currency_id')
     rental_tank = fields.Monetary(sting='Rentals Tank', currency_field='currency_id')
@@ -361,7 +362,7 @@ class SaleOrder(models.Model):
     fuel_cost = fields.Monetary(sting='Fuel Cost(GL Used CPG)', currency_field='currency_id')
 
 
-    miles = fields.Float(string='Miles')
+    miles = fields.Float(string='Act Miles')
     mpg = fields.Float(sting='MPG', default=5)
     gall_used = fields.Float(string='Gall Used', compute='_compute_gall_used', store=True)
 
