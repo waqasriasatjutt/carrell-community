@@ -258,7 +258,6 @@ class SaleOrder(models.Model):
     fuel_s_rate = fields.Float(string='Fuel Sur Rate')
     trucking_cost = fields.Float(string="Trucking Cost", compute="_compute_trucking_cost", store=True)
     fuel_s_cost = fields.Float(string='Fuel Sur Cost')
-    bar_cost = fields.Float(string='Bar Cost')
     other_services = fields.Float(string='Other Services')
     total_charge = fields.Float(string='Total Charge', compute="_compute_total_charge")
     fc = fields.Float(string='FC %', compute="_compute_FC")
@@ -363,7 +362,15 @@ class SaleOrder(models.Model):
     warehouse = fields.Float(string='Warehouse')
 
 
-    bar_price = fields.Monetary(string='Bar Price', currency_field='currency_id')
+    bar_price = fields.Monetary(string='Bar Price',compute="_compute_bar_price", currency_field='currency_id')
+    bar_per_ton = fields.Monetary(string='Bar Per Tons', currency_field='currency_id')
+
+    @api.depends('bar_per_ton', 'tons')
+    def _compute_bar_price(self):
+        for record in self:
+            record.bar_price = record.bar_per_ton * record.tons 
+
+
     flat_price = fields.Monetary(sting='Flat Price', currency_field='currency_id')
     fc_price = fields.Monetary(sting='FC Rate', currency_field='currency_id')
     fork_lift_price = fields.Monetary(sting='Fork Lift Charge', currency_field='currency_id')

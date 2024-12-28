@@ -291,7 +291,7 @@
             </div>
 
 
-            <div style="margin-top: 0px;">
+    <div style="margin-top: 0px;">
     <style>
         /* Add media query for mobile view */
         @media (max-width: 768px) {
@@ -363,13 +363,21 @@
                         <label for="total_charge">Total Charge</label>
                         <field name="total_charge" style="min-width: 130px;"/>
                     </div>
+                    <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
+                        <label for="bar_per_ton">Bar Per Tons</label>
+                        <field name="bar_per_ton"/>
+                    </div>
+                    <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
+                        <label for="bar_price">Bar Price</label>
+                        <field name="bar_price"/>
+                    </div>
                 </div>
 
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
                     <!-- Delivery PIN -->
                     <div style="flex: 1; min-width: 30%;">
-                        <label for="fork_lift_price">Fork Lift Cost</label>
-                        <field name="fork_lift_price"/>
+                        <label for="bar_per_ton">Bar Per Tons</label>
+                        <field name="bar_per_ton"/>
                     </div>
                 </div>
 
