@@ -151,6 +151,7 @@ class SaleOrder(models.Model):
     bill_miles = fields.Selection(
         string="Bill Miles",
         selection=[
+            ('none', 'None'),
             ('0-50', '0-50'),
             ('51-60', '51-60'),
             ('61-70', '61-70'),
