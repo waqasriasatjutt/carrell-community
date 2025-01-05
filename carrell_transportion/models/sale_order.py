@@ -183,6 +183,16 @@ class SaleOrder(models.Model):
 
     bill_rate = fields.Float(string="Bill Rate", compute="_compute_bill_rate", store=True)
 
+
+    @api.onchange('price_list')
+    def _onchange_price_list(self):
+        if self.price_list:
+            # Clear or reset the fields
+            self.bill_rate = 0.0
+            self.flat_price = 0.0
+            self.bill_miles = None
+
+
     @api.depends('price_list', 'bill_miles')
     def _compute_bill_rate(self):
         rate_chart = {
