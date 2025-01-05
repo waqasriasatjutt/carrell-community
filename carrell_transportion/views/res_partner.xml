@@ -103,7 +103,7 @@
                                 <hr/>
                                 <group>
                                     <group>
-                                                <field name="active_address" />
+                                        <field name="active_address"/>
 
                                         <field name="name" string="Contact Name"
                                                attrs="{'required' : [('type', '=', 'contact')]}"/>
@@ -128,11 +128,16 @@
                                                 <field name="zip" placeholder="ZIP" class="o_address_zip"/>
                                                 <field name="country_id" placeholder="Country" class="o_address_country"
                                                        options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+
                                             </div>
                                         </div>
                                     </group>
                                 </group>
                                 <group>
+                                    <field name="pu_pin" placeholder="PU PIN"/>
+                                    <field name="pu_directions" placeholder="PU Directions"/>
+                                    <field name="del_pin" placeholder="DEL PIN"/>
+                                    <field name="del_directions" placeholder="DEL Directions"/>
                                     <field name="comment" placeholder="Internal notes..." nolabel="1" colspan="2"/>
                                 </group>
                                 <field name="lang" invisible="True"/>
