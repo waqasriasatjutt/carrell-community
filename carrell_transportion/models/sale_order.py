@@ -33,6 +33,14 @@ class ResPartner(models.Model):
     pu_pin = fields.Char(string='PU PIN')
     del_pin = fields.Char(string='DEL PIN')
 
+    p_street = fields.Char('PU Street')
+    p_city = fields.Char('PU City')
+    p_phone = fields.Char('PU Phone')
+
+    p_state_id = fields.Many2one('res.country.state', string="PU State")
+    p_country = fields.Many2one('res.country', string="PU Country")
+
+
 
 class SaleOrderGF(models.Model):
     _inherit = "sale.order"
@@ -65,12 +73,12 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    street = fields.Char(related='partner_id.street')
-    city = fields.Char(related='partner_invoice_id.city')
-    zip = fields.Char(related='partner_invoice_id.zip')
-    phone = fields.Char(related='partner_invoice_id.phone')
-    email = fields.Char(related='partner_invoice_id.email')
-    state_id = fields.Many2one(related='partner_invoice_id.state_id')
+    street = fields.Char(related='pu.street')
+    city = fields.Char(related='pu.city')
+    zip = fields.Char(related='pu.zip')
+    phone = fields.Char(related='pu.phone')
+    email = fields.Char(related='pu.email')
+    state_id = fields.Many2one(related='pu.state_id')
 
     pu = fields.Many2one(
         comodel_name='res.partner',
@@ -78,15 +86,15 @@ class SaleOrder(models.Model):
         help="Select an active delivery address related to the selected customer."
     )
 
-    pu_street = fields.Char(related='pu.street')
-    pu_city = fields.Char(related='pu.city')
-    pu_zip = fields.Char(related='pu.zip')
-    pu_phone = fields.Char(related='pu.phone')
-    pu_email = fields.Char(related='pu.email')
-    pu_state = fields.Many2one(related='pu.state_id')
-    pu_country = fields.Many2one(related='pu.country_id')
-    pu_pin = fields.Char(related='pu.pu_pin')
-    pu_directions = fields.Char(related='pu.pu_directions')
+    pu_street = fields.Char(related='lease_address.p_street')
+    pu_city = fields.Char(related='lease_address.p_city')
+    # pu_zip = fields.Char(related='pu.zip')
+    pu_phone = fields.Char(related='lease_address.p_phone')
+    # pu_email = fields.Char(related='lease_address.email')
+    pu_state = fields.Many2one(related='lease_address.p_state_id')
+    pu_country = fields.Many2one(related='lease_address.p_country')
+    pu_pin = fields.Char(related='lease_address.pu_pin')
+    pu_directions = fields.Char(related='lease_address.pu_directions')
 
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
