@@ -64,7 +64,7 @@ class SaleOrderGF(models.Model):
     del_state = fields.Many2one(related='lease_address.state_id')
     del_country = fields.Many2one(related='lease_address.country_id')
     del_directions = fields.Char(related='lease_address.del_directions')
-    del_pin = fields.Char(related='lease_address.del_pin')
+    # del_pin = fields.Char(related='lease_address.del_pin')
 
 
 from odoo import models, fields, api
