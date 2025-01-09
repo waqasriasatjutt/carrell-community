@@ -86,15 +86,15 @@ class SaleOrder(models.Model):
         help="Select an active delivery address related to the selected customer."
     )
 
-    pu_street = fields.Char(related='lease_address.p_street')
-    pu_city = fields.Char(related='lease_address.p_city')
+    # pu_street = fields.Char(related='lease_address.p_street')
+    # pu_city = fields.Char(related='lease_address.p_city')
     # pu_zip = fields.Char(related='pu.zip')
-    pu_phone = fields.Char(related='lease_address.p_phone')
+    # pu_phone = fields.Char(related='lease_address.p_phone')
     # pu_email = fields.Char(related='lease_address.email')
-    pu_state = fields.Many2one(related='lease_address.p_state_id')
-    pu_country = fields.Many2one(related='lease_address.p_country')
-    pu_pin = fields.Char(related='lease_address.pu_pin')
-    pu_directions = fields.Char(related='lease_address.pu_directions')
+    # pu_state = fields.Many2one(related='lease_address.p_state_id')
+    # pu_country = fields.Many2one(related='lease_address.p_country')
+    # pu_pin = fields.Char(related='lease_address.pu_pin')
+    # pu_directions = fields.Char(related='lease_address.pu_directions')
 
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
