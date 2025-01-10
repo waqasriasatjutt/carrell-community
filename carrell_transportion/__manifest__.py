@@ -13,8 +13,8 @@
     'depends' : ['sale_management', 'hr','stock'],
     'data': [
         'data/ir_sequence_data.xml',
-        # 'views/sale_order.xml',
-        # 'views/res_partner.xml',
+        'views/sale_order.xml',
+        'views/res_partner.xml',
     ],
     'qweb' : [
     ],
