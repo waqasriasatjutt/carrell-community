@@ -136,7 +136,7 @@
                                 <group attrs="{'invisible': [('type', '!=', 'delivery')]}">
                                     <group>
                                         <!-- Pickup Address Section -->
-                                        <field name="p_street" placeholder="PU Address" class="o_address_street"/>
+                                        <!-- <field name="p_street" placeholder="PU Address" class="o_address_street"/> -->
 
                                         <field name="p_city" placeholder="PU City" class="o_address_city"/>
 
