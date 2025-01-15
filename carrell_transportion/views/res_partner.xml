@@ -136,9 +136,9 @@
                                 <group attrs="{'invisible': [('type', '!=', 'delivery')]}">
                                     <group>
                                         <!-- Pickup Address Section -->
-                                        <!-- <field name="p_street" placeholder="PU Address" class="o_address_street"/> -->
+                                        <field name="p_street" placeholder="PU Address" class="o_address_street"/>
 
-                                        <!-- <field name="p_city" placeholder="PU City" class="o_address_city"/>
+                                        <field name="p_city" placeholder="PU City" class="o_address_city"/>
 
                                         <field name="p_state_id" class="o_address_state" placeholder="PU State"
                                                options="{'no_open': True, 'no_quick_create': True}"
@@ -147,14 +147,14 @@
                                         <field name="p_country" placeholder="PU Country" class="o_address_country"
                                                options="{'no_open': True, 'no_create': True}"/>
 
-                                        <field name="p_phone" placeholder="PU Phone"/> -->
+                                        <field name="p_phone" placeholder="PU Phone"/>
                                     </group>
                                     <group>
-                                        <!-- Additional Pickup and Delivery Details -->
-                                        <!-- <field name="pu_pin" placeholder="PU PIN"/>
+                                        <!-- Additional Pickup and Delivery Details --> 
+                                        <field name="pu_pin" placeholder="PU PIN"/>
                                         <field name="pu_directions" placeholder="PU Directions"/>
                                         <field name="del_pin" placeholder="DEL PIN"/>
-                                        <field name="del_directions" placeholder="DEL Directions"/> -->
+                                        <field name="del_directions" placeholder="DEL Directions"/>
                                     </group>
                                 </group>
 
