@@ -52,9 +52,9 @@
                             <field name="partner_id" widget="many2one"/>
                         </div>
                         <!-- Address -->
-                        <div style="flex: 1; min-width: 30%;">
+                        <div style="flex: 1; min-width: 30%;gap: 10px;">
                             <label style="margin: 20px;" for="street">Address</label>
-                            <field name="street" placeholder="Enter Address"/>
+                            <field name="street" style="padding: 5px;" placeholder="Enter Address"/>
                         </div>
                     </div>
 
