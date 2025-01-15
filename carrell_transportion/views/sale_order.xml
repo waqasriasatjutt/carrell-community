@@ -85,7 +85,7 @@
                         <!-- Phone -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="phone">Phone</label>
-                            <field name="phone"/>
+                            <field name="phone" style="padding: 10px;"/>
                         </div>
                         <!-- Email -->
                         <div style="flex: 1; min-width: 30%;">
