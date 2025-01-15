@@ -53,7 +53,7 @@
                         </div>
                         <!-- Address -->
                         <div style="flex: 1; min-width: 30%;">
-                            <label for="street">Address</label>
+                            <label style="margin: 20px;" for="street">Address</label>
                             <field name="street" placeholder="Enter Address"/>
                         </div>
                     </div>

@@ -74,19 +74,31 @@ class SaleOrder(models.Model):
 
 
 
-    street = fields.Char(related='partner_invoice_id.street')
-    city = fields.Char(related='partner_invoice_id.city')
-    zip = fields.Char(related='partner_invoice_id.zip')
-    phone = fields.Char(related='partner_invoice_id.phone')
-    email = fields.Char(related='partner_invoice_id.email')
+    street = fields.Char(related='partner_id.street')
+    city = fields.Char(related='partner_id.city')
+    zip = fields.Char(related='partner_id.zip')
+    phone = fields.Char(related='partner_id.phone')
+    email = fields.Char(related='partner_id.email')
 
 
     pu = fields.Many2one(
         comodel_name='res.partner',
         string='Pickup Address',
-        help="Select an active delivery address related to the selected customer."
+        compute='_compute_pu',
+        store=True,
+        help="Automatically filled from the invoice address of the customer. If no invoice address exists, it defaults to the customer."
     )
 
+    @api.depends('partner_id')
+    def _compute_pu(self):
+        for record in self:
+            if record.partner_id:
+                # Search for an "invoice" type address
+                invoice_address = record.partner_id.child_ids.filtered(
+                    lambda c: c.type == 'invoice'
+                )
+                # Set the first matching invoice address or default to the partner
+                record.pu = invoice_address[0] if invoice_address else record.partner_id
 
     pu_street = fields.Char(related='pu.street')
     pu_city = fields.Char(related='pu.city')
@@ -101,9 +113,21 @@ class SaleOrder(models.Model):
     lease_address = fields.Many2one(
         comodel_name='res.partner',
         string='Lease Address',
-        help="Select an active delivery address related to the selected customer."
+        compute='_compute_lease_address',
+        store=True,
+        help="Automatically filled from the delivery address of the customer. If no delivery address exists, it defaults to the customer."
     )
 
+    @api.depends('partner_id')
+    def _compute_lease_address(self):
+        for record in self:
+            if record.partner_id:
+                # Search for a "delivery" type address
+                delivery_address = record.partner_id.child_ids.filtered(
+                    lambda c: c.type == 'delivery'
+                )
+                # Set the first matching delivery address or default to the partner
+                record.lease_address = delivery_address[0] if delivery_address else record.partner_id
 
 
     # pu = fields.Many2one(
