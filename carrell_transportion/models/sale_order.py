@@ -27,6 +27,17 @@ class ResPartner(models.Model):
 
     active_address = fields.Boolean("Active", default=True)
 
+    pu_pin = fields.Char(string='PU PIN')
+    del_pin = fields.Char(string='DEL PIN')
+
+    p_street = fields.Char('PU Street')
+    p_city = fields.Char('PU City')
+    p_phone = fields.Char('PU Phone')
+    p_state_id = fields.Many2one('res.country.state', string="PU State")
+    p_country = fields.Many2one('res.country', string="PU Country")
+    pu_directions = fields.Char("Pu Directions")
+    del_directions = fields.Char("Del Directions")
+
 
 class SaleOrderGF(models.Model):
     _inherit = "sale.order"
