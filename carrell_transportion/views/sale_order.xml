@@ -12,33 +12,33 @@
                     <div style="display: flex; width: 100%; justify-content: space-between;border: solid;padding: 5px;">
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="pro_number">PRO#</label>  <!-- Explicit label -->
-                            <field name="pro_number" string="PRO#"/>
+                            <field name="pro_number" style="padding-left: 20px;" string="PRO#"/>
                         </div>
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="wo_number">WO#</label>  <!-- Explicit label -->
-                            <field name="wo_number" string="WO#"/>
+                            <field name="wo_number" style="padding-left: 20px;" string="WO#"/>
                         </div>
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="po_number">PO#</label>  <!-- Explicit label -->
-                            <field name="po_number" string="PO#"/>
+                            <field name="po_number" style="padding-left: 20px;" string="PO#"/>
                         </div>
                         <div style="flex-grow: 1; width: 25%;">
                             <label for="order_status">WO Status</label>  <!-- Explicit label -->
-                            <field name="order_status" string="WO Status"/>
+                            <field name="order_status" style="padding-left: 20px;" string="WO Status"/>
                         </div>
                     </div>
                     <div style="display: flex; width: 100%; justify-content: space-between;">
                         <div style="flex-grow: 1; width: 25%;">
                             <label for="date_order">Date</label>  <!-- Explicit label -->
-                            <field name="date_order" string="Date"/>
+                            <field name="date_order" style="padding-left: 20px;" string="Date"/>
                         </div>
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="date_order_changed_by">Enter By</label>  <!-- Explicit label -->
-                            <field name="date_order_changed_by" string="Enter By"/>
+                            <field name="date_order_changed_by" style="padding-left: 20px;" string="Enter By"/>
                         </div>
                         <div style="flex-grow: 1; padding-right: 10px; width: 25%;">
                             <label for="invoice_manual">Invoice#</label>  <!-- Explicit label -->
-                            <field name="invoice_manual" string="Invoice#"/>
+                            <field name="invoice_manual" style="padding-left: 20px;" string="Invoice#"/>
                         </div>
                     </div>
                  <div style="margin-top: 0px;">
@@ -49,12 +49,12 @@
                         <!-- Customer Name -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="partner_id">Customer Name</label>
-                            <field name="partner_id" widget="many2one"/>
+                            <field name="partner_id" style="padding-left: 20px;" widget="many2one"/>
                         </div>
                         <!-- Address -->
                         <div style="flex: 1; min-width: 30%;gap: 10px;">
                             <label style="margin: 20px;" for="street">Address</label>
-                            <field name="street" style="padding: 5px;" placeholder="Enter Address"/>
+                            <field name="street" style="padding-left: 20px;" placeholder="Enter Address"/>
                         </div>
                     </div>
 
@@ -62,22 +62,22 @@
                         <!-- City -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="city">City</label>
-                            <field name="city"/>
+                            <field name="city" style="padding-left: 20px;"/>
                         </div>
                         <!-- State -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="state_id">State</label>
-                            <field name="state_id"/>
+                            <field name="state_id" style="padding-left: 20px;"/>
                         </div>
                         <!-- ZIP -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="zip">ZIP</label>
-                            <field name="zip"/>
+                            <field name="zip" style="padding-left: 20px;"/>
                         </div>
                         <!-- Contact -->
                         <div style="flex: 1; min-width: 20%;gap: 10px;">
                             <label for="phone">Contact</label>
-                            <field name="phone"/>
+                            <field name="phone" style="padding-left: 20px;"/>
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@
                         <!-- Email -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="email">Email</label>
-                            <field name="email"/>
+                            <field name="email" style="padding-left: 20px;"/>
                         </div>
                         <!-- EB -->
                         <div style="flex: 1; min-width: 30%; text-align: center;">
@@ -112,12 +112,12 @@
                         <!-- Pu Name -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="pu">Pu Name</label>
-                            <field name="pu"/>
+                            <field name="pu" style="padding-left: 20px;"/>
                         </div>
                         <!-- Pu Address -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="pu_street">Pu Address</label>
-                            <field name="pu_street"/>
+                            <field name="pu_street" style="padding-left: 20px;"/>
                         </div>
                     </div>
 
@@ -125,17 +125,17 @@
                         <!-- Pu City -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="pu_city">Pu City</label>
-                            <field name="pu_city"/>
+                            <field name="pu_city" style="padding-left: 20px;"/>
                         </div>
                         <!-- Pu State -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="pu_state">Pu State</label>
-                            <field name="pu_state"/>
+                            <field name="pu_state" style="padding-left: 20px;"/>
                         </div>
                         <!-- Pu County -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="pu_country">Pu County</label>
-                            <field name="pu_country"/>
+                            <field name="pu_country" style="padding-left: 20px;"/>
                         </div>
                     </div>
 
@@ -143,12 +143,12 @@
                         <!-- Pu Contact -->
                         <div style="flex: 1; min-width: 30%;">
                             <label for="pu_phone">Pu Contact</label>
-                            <field name="pu_phone"/>
+                            <field name="pu_phone" style="padding-left: 20px;"/>
                         </div>
                         <!-- Pu PIN -->
                         <div style="flex: 1; min-width: 20%;">
                             <label for="pu_pin">Pu PIN</label>
-                            <field name="pu_pin"/>
+                            <field name="pu_pin" style="padding-left: 20px;"/>
                         </div>
                     </div>
 
@@ -156,7 +156,7 @@
                         <!-- Pu Directions -->
                         <div style="flex: 1; width: 100%;">
                             <label for="pu_directions">Pu Directions</label>
-                            <field name="pu_directions" widget="text"/>
+                            <field name="pu_directions" widget="text" style="padding-left: 20px;"/>
                         </div>
                     </div>
                 </div>
@@ -169,17 +169,17 @@
                     <!-- Lease KEY -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="lease_address">Lease KEY</label>
-                        <field name="lease_address"/>
+                        <field name="lease_address" style="padding-left: 20px;"/>
                     </div>
                     <!-- Rig -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="rig">Rig</label>
-                        <field name="rig"/>
+                        <field name="rig" style="padding-left: 20px;"/>
                     </div>
                     <!-- Operator -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="operator">Operator</label>
-                        <field name="operator"/>
+                        <field name="operator" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -187,17 +187,17 @@
                     <!-- Delivery To City -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="del_city">Del To City</label>
-                        <field name="del_city"/>
+                        <field name="del_city" style="padding-left: 20px;"/>
                     </div>
                     <!-- Delivery State -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="del_state">Del St</label>
-                        <field name="del_state"/>
+                        <field name="del_state" style="padding-left: 20px;"/>
                     </div>
                     <!-- Delivery County -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="del_country">Del County</label>
-                        <field name="del_country"/>
+                        <field name="del_country" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -205,7 +205,7 @@
                     <!-- Delivery PIN -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="del_pin">Del Pin</label>
-                        <field name="del_pin"/>
+                        <field name="del_pin" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -213,7 +213,7 @@
                     <!-- Delivery Directions -->
                     <div style="flex: 1; width: 100%;">
                         <label for="del_directions">Del Directions</label>
-                        <field name="del_directions" widget="text"/>
+                        <field name="del_directions" widget="text" style="padding-left: 20px;"/>
                     </div>
                 </div>
             </div>
@@ -225,17 +225,17 @@
                     <!-- Lease KEY -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="partner_id">Customer</label>
-                        <field name="partner_id"/>
+                        <field name="partner_id" style="padding-left: 20px;"/>
                     </div>
                     <!-- Rig -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="delivery_type">Delivery</label>
-                        <field name="delivery_type"/>
+                        <field name="delivery_type" style="padding-left: 20px;"/>
                     </div>
                     <!-- Operator -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="bar_type">Bar Type</label>
-                        <field name="bar_type"/>
+                        <field name="bar_type" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -243,17 +243,17 @@
                     <!-- Delivery To City -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="start_date">Del Date</label>
-                        <field name="start_date"/>
+                        <field name="start_date" style="padding-left: 20px;"/>
                     </div>
                     <!-- Delivery State -->
                     <div style="flex: 1; min-width: 20%;">
                         <label for="start_date">Time</label>
-                        <field name="start_date"/>
+                        <field name="start_date" style="padding-left: 20px;"/>
                     </div>
                     <!-- Delivery County -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="driver">Driver</label>
-                        <field name="driver"/>
+                        <field name="driver" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -261,22 +261,22 @@
                     <!-- Delivery PIN -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="truck">Truck</label>
-                        <field name="truck"/>
+                        <field name="truck" style="padding-left: 20px;"/>
                     </div>
                     <div style="flex: 1; min-width: 30%;">
                         <label for="trailer">Trailer</label>
-                        <field name="trailer"/>
+                        <field name="trailer" style="padding-left: 20px;"/>
                     </div>
                     <div style="flex: 1; width: 100%;">
                         <label for="tons">Tons</label>
-                        <field name="tons" widget="text"/>
+                        <field name="tons" widget="text" style="padding-left: 20px;"/>
                     </div>
                 </div>
                 <div style="display: flex; width: 100%; flex-wrap: wrap; gap: 10px; margin-top: 0px;">
                     <!-- Delivery PIN -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="s_instruction">Special Instruction</label>
-                        <field name="s_instruction"/>
+                        <field name="s_instruction" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -284,7 +284,7 @@
                     <!-- Delivery PIN -->
                     <div style="flex: 1; min-width: 30%;">
                         <label for="driver_pay">Driver Pay</label>
-                        <field name="driver_pay"/>
+                        <field name="driver_pay" style="padding-left: 20px;"/>
                     </div>
                 </div>
 
@@ -309,37 +309,37 @@
         <!-- Lease KEY -->
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="rate_type">Rate Type</label>
-            <field name="rate_type" />
+            <field name="rate_type" style="padding-left: 20px;"/>
         </div>
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="price_list">Price List</label>
-            <field name="price_list" />
+            <field name="price_list"  style="padding-left: 20px;"/>
         </div>
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="miles">Act Miles</label>
-            <field name="miles" />
+            <field name="miles" style="padding-left: 20px;"/>
         </div>
         <!-- Rig -->
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="bill_miles">Bill Miles</label>
-            <field name="bill_miles" />
+            <field name="bill_miles" style="padding-left: 20px;"/>
         </div>
         <!-- Operator -->
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="bill_rate">Bill Rate</label>
-            <field name="bill_rate" />
+            <field name="bill_rate" style="padding-left: 20px;"/>
         </div>
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="flat_price">Flat Rate</label>
-            <field name="flat_price" />
+            <field name="flat_price" style="padding-left: 20px;"/>
         </div>
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="fc_type">FC Type</label>
-            <field name="fc_type" />
+            <field name="fc_type" style="padding-left: 20px;"/>
         </div>
         <div style="display: flex;flex-direction: column;flex: 1; min-width: 130px;">
             <label for="fc_price">FC Price</label>
-            <field name="fc_price" />
+            <field name="fc_price" style="padding-left: 20px;"/>
         </div>
                 </div>
 
